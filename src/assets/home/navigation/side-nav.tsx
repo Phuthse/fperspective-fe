@@ -7,7 +7,7 @@ interface SideNavProps {
   onClose: () => void;
 }
 
-const SideNav: React.FC<SideNavProps> = () => {
+const SideNav: React.FC<SideNavProps> = ({ open, onClose }) => {
   const pathname = window.location.pathname; // Get the current pathname
 
   return (
@@ -15,6 +15,7 @@ const SideNav: React.FC<SideNavProps> = () => {
       style={{
         backgroundColor: 'black',
         color: 'common.white',
+        width: open ? '280px' : '0',
         position: 'fixed',
         top: '0',
         left: '0',
