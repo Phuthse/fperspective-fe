@@ -26,7 +26,6 @@ const LoginForm: React.FC = () => {
 
   return (
     <div>
-    
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div>

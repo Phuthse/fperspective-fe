@@ -1,44 +1,49 @@
 import React from 'react';
-import { HomeIcon } from '@heroicons/react/24/solid';
-import MagnifyingGlassIcon from '@heroicons/react/24/solid/MagnifyingGlassIcon';
-import BookmarkIcon from '@heroicons/react/24/solid/BookmarkIcon';
-import UserIcon from '@heroicons/react/24/solid/UserIcon';
+import SideNavItem from './side-nav-items';
+import items from './config';
 
+interface SideNavProps {
+  open: boolean;
+  onClose: () => void;
+}
 
-const SideNav: React.FC = () => {
-  const navItems = [
-    {
-      name: 'Home',
-      path: '/home',
-      icon: <HomeIcon className="w-6 h-6" />, // Use the imported Home icon component
-    },
-    {
-      name: 'Explore',
-      path: '/explore',
-      icon: <MagnifyingGlassIcon className="w-6 h-6" />, // Use the imported Search icon component
-    },
-    {
-      name: 'Saved',
-      path: '/saved',
-      icon: <BookmarkIcon className="w-6 h-6" />, // Use the imported Bookmark icon component
-    },
-    {
-      name: 'Profile',
-      path: '/profile',
-      icon: <UserIcon className="w-6 h-6" />, // Use the imported User icon component
-    },
-  ];
+const SideNav: React.FC<SideNavProps> = () => {
+  const pathname = window.location.pathname; // Get the current pathname
 
   return (
-    <div className="side-nav">
-      <div className="side-nav-items">
-        {navItems.map((item, index) => (
-          <div key={index} className="side-nav-item">
-            <span className="icon">{item.icon}</span>
-            <span className="label">{item.name}</span>
-          </div>
-        ))}
+    <div
+      style={{
+        backgroundColor: 'black',
+        color: 'common.white',
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        height: '100%',
+        overflowX: 'hidden',
+        transition: '0.5s',
+        zIndex: 1040, // Adjust the z-index as needed
+      }}
+    >
+      <div style={{ padding: '20px' }}>
+        {/* Your logo or branding here */}
       </div>
+      <div style={{ borderTop: '1px solid #333' }}></div>
+      <ul style={{ listStyleType: 'none', padding: '0', margin: '0' }}>
+        {items.map((item, index) => {
+          const active = item.path ? pathname === item.path : false;
+
+          return (
+            <SideNavItem
+              active={active}
+              icon={item.icon}
+              key={item.title}
+              path={item.path}
+              title={item.title}
+            />
+          );
+        })}
+      </ul>
+      <div style={{ borderTop: '1px solid neutral.700' }}></div>
     </div>
   );
 };

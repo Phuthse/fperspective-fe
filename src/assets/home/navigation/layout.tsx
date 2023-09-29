@@ -7,18 +7,38 @@ interface LayoutProps {
   children: ReactNode; // Include the children prop
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = () => {
+
   return (
-    <div className="layout">
+
+    <>
       <TopNav />
-      <div className="side-nav-container">
-        <SideNav />
+      <SideNav/>
+
+      <div
+        className="LayoutRoot"
+        style={{
+          display: 'flex',
+          flex: '1 1 auto',
+          maxWidth: '100%',
+          paddingLeft: 280
+        }}
+      >
+        <div
+          className="LayoutContainer"
+          style={{
+            display: 'flex',
+            flex: '1 1 auto',
+            flexDirection: 'column',
+            width: '100%'
+          }}
+        >
+          {children}
+          <Trending />
+        </div>
       </div>
-      <div className="content-container">
-        {children}
-        <Trending />
-      </div>
-    </div>
+
+    </>
   );
 };
 
