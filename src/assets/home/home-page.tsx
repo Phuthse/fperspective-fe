@@ -1,13 +1,12 @@
 import React from 'react';
-import Layout from './navigation/layout.tsx';
-import BlogTable from './blog-table';
 import { HomeIcon } from '@heroicons/react/24/solid';
 import './home-page.css'; // Import your CSS file for styling
+import FollowButton from './follow-button';
 
 const HomePage: React.FC = () => {
   return (
     <>
-      <nav>
+      <nav className='top-nav'>
         <div className="nav-left">
           <img
             src='src/assets/images/fperspective-logo.png'
@@ -47,6 +46,10 @@ const HomePage: React.FC = () => {
           </div>
           <div className="shortcut-links">
             <p>Your Shortcuts</p>
+            <a href='#'><img src='src/assets/images/shortcut-1.png' /> Web Developers </a>
+            <a href='#'><img src='src/assets/images/shortcut-2.png' /> Web Design Course </a>
+            <a href='#'><img src='src/assets/images/shortcut-3.png' /> Full Stack Development </a>
+            <a href='#'><img src='src/assets/images/shortcut-4.png' /> Website Experts </a>
           </div>
         </div>
         {/* Main content */}
@@ -54,9 +57,113 @@ const HomePage: React.FC = () => {
 
         </div>
 
-        {/* Right nav bar */}
+        {/* Right nav bar (treding tags)*/}
         <div className='right-sidebar'>
+          <div className='trending-table-container'>
+            <table className="trending-table">
+              <thead>
+                <tr>
+                  <th>Trending Tags</th>
+                </tr>
+              </thead>
+              <tbody>
 
+                <a href="#">
+                  <tr>
+                    <td>
+                      <span>#</span>
+                      <span> javascript</span>
+                    </td>
+                    <p> 15.5k posts </p>
+                  </tr>
+                </a>
+
+                <a href="#">
+                  <tr>
+                    <td>
+                      <span>#</span>
+                      <span> C++</span>
+                    </td>
+                    <p> 17k posts </p>
+                  </tr>
+                </a>
+
+                <a href="#">
+                  <tr>
+                    <td>
+                      <span>#</span>
+                      <span> Python</span>
+                    </td>
+                    <p> 20k posts </p>
+                  </tr>
+                </a>
+
+                <a href="#">
+                  <tr>
+                    <td>
+                      <span>#</span>
+                      <span> Node.js</span>
+                    </td>
+                    <p> 9.2k posts </p>
+                  </tr>
+                </a>
+
+              </tbody>
+            </table>
+          </div>
+
+          <div className='follow-table-container'>
+
+            <table className="follow-table">
+              <thead>
+                <tr>
+                  <th colSpan={2}>Who to Follow</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className='profile-pic'>
+                    <img src='src/assets/images/member-1.png' />
+                  </td>
+                  <td className='profile-name'>
+                    <p>Alivia Johnson</p>
+                    <p>@alivia</p>
+                  </td>
+                  <td className='follow-button'>
+                    <FollowButton />
+                  </td>
+                </tr>
+
+                <tr>
+                  <td className='profile-pic'>
+                    <img src='src/assets/images/member-2.png' />
+                  </td>
+                  <td className='profile-name'>
+                    <p>Mike Tyson</p>
+                    <p>@mikee</p>
+                  </td>
+                  <td className='follow-button'>
+                    <FollowButton />
+                  </td>
+                </tr>
+
+                <tr>
+                  <td className='profile-pic'>
+                    <img src='src/assets/images/member-3.png' />
+                  </td>
+                  <td className='profile-name'>
+                    <p>Lily Halberd</p>
+                    <p>@lilbeard</p>
+                  </td>
+                  <td className='follow-button'>
+                    <FollowButton />
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
         </div>
 
       </div>
