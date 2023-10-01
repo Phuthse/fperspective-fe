@@ -1,0 +1,24 @@
+/* UpAndDownVoteButton.css */
+
+.arrow-container {
+    display: flex;
+    align-items: center;
+}
+
+.arrow-button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+}
+
+.arrow-button:hover {
+    background: #333;
+    border-radius: 50%;
+}
+
+.count {
+    font-size: 13px;
+    color: white;
+    margin: 0 3px;
+}

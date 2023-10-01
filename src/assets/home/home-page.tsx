@@ -2,6 +2,7 @@ import React from 'react';
 import { HomeIcon } from '@heroicons/react/24/solid';
 import './home-page.css'; // Import your CSS file for styling
 import FollowButton from './follow-button';
+import UpAndDownVoteButton from './up-down-vote-button';
 
 const HomePage: React.FC = () => {
   return (
@@ -53,7 +54,75 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         {/* Main content */}
-        <div className='main-sidebar'>
+        <div className='main-content'>
+
+          <div className="post-container">
+
+            <div className="user-profile">
+              <img src='src/assets/images/profile-pic.png' />
+              <div className='user-info'>
+                <p>John Wingman</p>
+                <small>Oct 1 (2 hours ago)</small>
+              </div>
+            </div>
+            <h2 className='post-title'>
+              <a href='#'>Top 10 useful things when applying for a job relating to Python</a>
+            </h2>
+
+            <div className='post-tags'>
+              <a href='#' className='tag'>
+                #javascript
+              </a>
+              <a href='#' className='tag'>
+                #react.js
+              </a>
+              <a href='#' className='tag'>
+                #programming
+              </a>
+            </div>
+
+            <div className="post-details">
+              <UpAndDownVoteButton />
+              <a href='#' className='post-comment'>
+                11 Comment
+              </a>
+            </div>
+
+          </div>
+
+          <div className="post-container">
+
+            <div className="user-profile">
+              <img src='src/assets/images/member-4.png' />
+              <div className='user-info'>
+                <p>Danny Strongarm</p>
+                <small>Sep 23 (8 days ago)</small>
+              </div>
+            </div>
+            <h2 className='post-title'>
+              <a href='#'>How to get started on front-end developping</a>
+            </h2>
+
+            <div className='post-tags'>
+              <a href='#' className='tag'>
+                #front-end
+              </a>
+              <a href='#' className='tag'>
+                #boostrap
+              </a>
+              <a href='#' className='tag'>
+                #programming
+              </a>
+            </div>
+
+            <div className="post-details">
+              <UpAndDownVoteButton />
+              <a href='#' className='post-comment'>
+                15 Comment
+              </a>
+            </div>
+
+          </div>
 
         </div>
 
