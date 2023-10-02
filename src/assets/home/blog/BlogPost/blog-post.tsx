@@ -10,6 +10,7 @@ import BookmarkButton from '../../button/BookmarkButton/bookmark-button';
 type BlogPostProps = {
     fullName: string;
     timeUpload: string;
+    src: string
     blogTitle: string;
     blogTags: string[];
     upvote: number;
@@ -20,6 +21,7 @@ type BlogPostProps = {
 const BlogPost: React.FC<BlogPostProps> = ({
     fullName,
     timeUpload,
+    src,
     blogTitle,
     blogTags,
     upvote,
@@ -32,6 +34,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
             <UserProfile
                 name={fullName}
                 time={timeUpload}
+                src={src}
             />
 
             <BlogTitle title={blogTitle} />

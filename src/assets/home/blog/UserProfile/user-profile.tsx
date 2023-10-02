@@ -4,12 +4,13 @@ import './user-profile.css'
 type UserProfileProps = {
     name: string;
     time: string;
+    src: string
 }
 
-const UserProfile: React.FC<UserProfileProps> = ({name, time}) => {
+const UserProfile: React.FC<UserProfileProps> = ({name, time, src}) => {
     return (
         <div className="user-profile">
-            <img src='src/assets/images/profile-pic.png' />
+            <img src={src}/>
             <div className='user-info'>
                 <p>{name}</p>
                 <small>{time}</small>
