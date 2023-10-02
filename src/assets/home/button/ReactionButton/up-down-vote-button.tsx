@@ -8,10 +8,12 @@ import {
 import './up-down-vote-button.css';
 
 
-interface ArrowButtonProps {}
+type ArrowButtonProps = {
+  upvote: number;
+}
 
-const UpAndDownVoteButton: React.FC<ArrowButtonProps> = () => {
-  const [count, setCount] = useState<number>(100);
+const UpAndDownVoteButton: React.FC<ArrowButtonProps> = ({ upvote }) => {
+  const [Upvote, setUpvote] = useState<number>(upvote);
   const [arrowDirection, setArrowDirection] = useState<string | null>(null);
   const [isUpFilled, setIsUpFilled] = useState<boolean>(false);
   const [isDownFilled, setIsDownFilled] = useState<boolean>(false);
@@ -20,30 +22,30 @@ const UpAndDownVoteButton: React.FC<ArrowButtonProps> = () => {
     if (arrowDirection === null) {
       setArrowDirection(direction);
       if (direction === 'up') {
-        setCount(count + 1);
+        setUpvote(Upvote + 1);
         setIsUpFilled(true);
         setIsDownFilled(false);
       } else {
-        setCount(count - 1);
+        setUpvote(Upvote - 1);
         setIsDownFilled(true);
         setIsUpFilled(false);
       }
     } else if (arrowDirection === 'up' && direction === 'up') {
       setArrowDirection(null);
-      setCount(count - 1);
+      setUpvote(Upvote - 1);
       setIsUpFilled(false);
     } else if (arrowDirection === 'down' && direction === 'down') {
       setArrowDirection(null);
-      setCount(count + 1);
+      setUpvote(Upvote + 1);
       setIsDownFilled(false);
     } else if (arrowDirection === 'up' && direction === 'down') {
       setArrowDirection(direction);
-      setCount(count - 2);
+      setUpvote(Upvote - 2);
       setIsUpFilled(false);
       setIsDownFilled(true);
     } else if (arrowDirection === 'down' && direction === 'up') {
       setArrowDirection(direction);
-      setCount(count + 2);
+      setUpvote(Upvote + 2);
       setIsDownFilled(false);
       setIsUpFilled(true);
     }
@@ -55,16 +57,16 @@ const UpAndDownVoteButton: React.FC<ArrowButtonProps> = () => {
         className={'arrow-button'}
         onClick={() => handleArrowClick('up')}
       >
-        {isUpFilled ? <IconArrowBigUpFilled style={{color: 'orange'}}/> : <IconArrowBigUp style={{color: 'orange'}}/>}
+        {isUpFilled ? <IconArrowBigUpFilled style={{ color: '#FFA500' }} /> : <IconArrowBigUp style={{ color: '#FFA500' }} />}
       </div>
       <span className="count" style={{ color: 'white' }}>
-        {count}
+        {Upvote}
       </span>
       <div
         className={'arrow-button'}
         onClick={() => handleArrowClick('down')}
       >
-        {isDownFilled ? <IconArrowBigDownFilled style={{color: 'blue'}}/> : <IconArrowBigDown style={{color: 'blue'}}/>}
+        {isDownFilled ? <IconArrowBigDownFilled style={{ color: 'blue' }} /> : <IconArrowBigDown style={{ color: 'blue' }} />}
       </div>
     </div>
   );

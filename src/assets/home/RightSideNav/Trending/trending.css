@@ -1,0 +1,51 @@
+/* Trending Table */
+
+.trending-tags {
+    background: #111;
+    border-radius: 20px;
+    width: 350px;
+}
+
+.trending-tags h3 {
+    color: white;
+    padding: 15px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.trending-tag {
+    padding: 5px 20px;
+}
+
+.trending-tag:hover {
+    background-color: #1a1a1a;
+}
+
+.trending-tag:last-child:hover {
+    background-color: #1a1a1a;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.trending-tag a {
+    text-decoration: none;
+}
+
+.trending-tag span:first-child {
+    background: linear-gradient(45deg, red, red, cyan, green, yellow, red, red);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.trending-tag span{
+    color: white;
+    font-weight: bold;
+}
+
+.trending-tag p {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #666
+}

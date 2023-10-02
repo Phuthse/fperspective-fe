@@ -1,0 +1,13 @@
+.post-title {
+    margin-top: 15px;
+}
+
+.post-title a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.post-title a:hover {
+    color: blueviolet;
+}
