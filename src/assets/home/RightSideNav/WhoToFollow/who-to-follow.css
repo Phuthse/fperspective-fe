@@ -50,6 +50,10 @@
     font-size: 16px;
 }
 
+.profile-name p:first-child:hover {
+    text-decoration: underline;
+}
+
 .profile-name p:last-child {
     font-size: 13px;
     color: #666;

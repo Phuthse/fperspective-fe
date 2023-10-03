@@ -5,11 +5,21 @@
     align-items: center;
 }
 
-.arrow-button {
+.upvote-button {
+    color: #FFA500;
     cursor: pointer;
-    display: flex;
     align-items: center;
     padding: 3px;
+}
+
+.downvote-button {
+    color: blue;
+    cursor: pointer;
+    align-items: center;
+    padding: 3px;
+}
+.upvote-button:hover, .downvote-button:hover {
+    background: #333;
 }
 
 .arrow-button:hover {

@@ -1,0 +1,86 @@
+/* Post Creator profile */
+
+.post-creator {
+    background: #111;
+    border-radius: 20px;
+    width: 350px;
+}
+
+/* Name and User Name */
+
+.post-creator-name {
+    display: flex;
+    align-items: center;
+}
+
+.post-creator-name a {  
+    padding: 15px;
+    display: flex;
+    text-decoration: none;
+}
+
+.post-creator-name img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.profile-name {
+    width: 150px;
+    margin-left: 13px;
+}
+
+.profile-name p:first-child {
+    color: white;
+    margin-bottom: 3px;
+    font-size: 16px;
+}
+
+.profile-name p:first-child:hover {
+    text-decoration: underline;
+}
+
+.profile-name p:last-child {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Creator Bio */
+
+.post-creator-bio {
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+
+.post-creator-bio p {
+    color: #ccc;
+    font-size: 15px;
+}
+
+/* Detail (Location, work place, date joined,...) */
+
+.post-creator-details {
+    margin-top: 9px;
+}
+
+.post-creator-details-inner {
+    list-style: none;
+}
+
+.post-creator-details-inner li{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.post-creator-details-inner .key {
+    color: #ccc;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 2px;
+}
+
+.post-creator-details-inner .value {
+    color: white;
+    font-size: 13px;
+    padding: 2px;
+}

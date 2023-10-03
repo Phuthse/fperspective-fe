@@ -3,7 +3,7 @@ import './blog-post.css';
 import UserProfile from '../UserProfile/user-profile';
 import BlogTitle from '../BlogTitle/blog-title';
 import BlogTags from '../BlogTags/blog-tags';
-import UpAndDownVoteButton from '../../button/ReactionButton/up-down-vote-button';
+import UpAndDownVoteButtonHorizontal from '../../button/ReactionButton/up-down-vote-button-horizontal';
 import CommentButton from '../../button/CommentButton/comment-button';
 import BookmarkButton from '../../button/BookmarkButton/bookmark-button';
 
@@ -44,7 +44,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
             <div className="post-details">
 
                 <div className='post-interact'>
-                    <UpAndDownVoteButton upvote={upvote} />
+                    <UpAndDownVoteButtonHorizontal upvote={upvote} />
                     <CommentButton NumberOfComment={numberOfComment} />
                 </div>
 

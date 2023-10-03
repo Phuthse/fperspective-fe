@@ -5,14 +5,14 @@ import {
   IconArrowBigDownFilled,
   IconArrowBigDown,
 } from '@tabler/icons-react';
-import './up-down-vote-button.css';
+import './up-down-vote-button-horizontal.css'
 
 
 type ArrowButtonProps = {
   upvote: number;
 }
 
-const UpAndDownVoteButton: React.FC<ArrowButtonProps> = ({ upvote }) => {
+const UpAndDownVoteButtonHorizontal: React.FC<ArrowButtonProps> = ({ upvote }) => {
   const [Upvote, setUpvote] = useState<number>(upvote);
   const [arrowDirection, setArrowDirection] = useState<string | null>(null);
   const [isUpFilled, setIsUpFilled] = useState<boolean>(false);
@@ -54,22 +54,22 @@ const UpAndDownVoteButton: React.FC<ArrowButtonProps> = ({ upvote }) => {
   return (
     <div className="arrow-container">
       <div
-        className={'arrow-button'}
+        className={'upvote-button'}
         onClick={() => handleArrowClick('up')}
       >
-        {isUpFilled ? <IconArrowBigUpFilled style={{ color: '#FFA500' }} /> : <IconArrowBigUp style={{ color: '#FFA500' }} />}
+        {isUpFilled ? <IconArrowBigUpFilled /> : <IconArrowBigUp/>}
       </div>
-      <span className="count" style={{ color: 'white' }}>
+      <span className="count">
         {Upvote}
       </span>
       <div
-        className={'arrow-button'}
+        className={'downvote-button'}
         onClick={() => handleArrowClick('down')}
       >
-        {isDownFilled ? <IconArrowBigDownFilled style={{ color: 'blue' }} /> : <IconArrowBigDown style={{ color: 'blue' }} />}
+        {isDownFilled ? <IconArrowBigDownFilled/> : <IconArrowBigDown/>}
       </div>
     </div>
   );
 };
 
-export default UpAndDownVoteButton;
+export default UpAndDownVoteButtonHorizontal;

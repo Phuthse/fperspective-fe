@@ -1,0 +1,28 @@
+.comment-form {
+    display: flex;
+    align-items: top;
+    margin-top: 10px;
+}
+
+.comment-form span {
+    padding-right: 10px;
+}
+
+.comment-form img {
+    width: 35px;
+    border-radius: 50%;
+}
+
+.comment-box {
+    background: black;
+    resize: none;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+    width: 90%;
+    border-radius: 10px;
+}
+
+.comment-box::placeholder {
+    color: #626262;
+}
