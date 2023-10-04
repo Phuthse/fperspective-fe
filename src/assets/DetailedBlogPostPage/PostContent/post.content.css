@@ -1,0 +1,16 @@
+/* Post content */
+
+.post-content {
+    margin-top: 10px; 
+}
+
+.post-content h3 {
+    color: white;
+    font-weight: bold;
+}
+
+.post-content p {
+    color: #f2f2f2;
+    padding: 10px 0;
+    font-size: 14px;
+}

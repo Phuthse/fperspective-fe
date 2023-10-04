@@ -1,28 +1,32 @@
 /* UpAndDownVoteButton.css */
 
-.arrow-container {
+.vertical-arrow-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.upvote-button {
-    color: #FFA500;
+.vertical-upvote-button {
+    color: white;
     cursor: pointer;
     align-items: center;
     padding: 3px;
 }
 
-.downvote-button {
+.vertical-downvote-button {
+    color: white;
+    cursor: pointer;
+    align-items: center;
+    padding: 3px;
+}
+
+
+.vertical-downvote-button:hover {
     color: blue;
-    cursor: pointer;
-    align-items: center;
-    padding: 3px;
 }
 
-.arrow-button:hover {
-    background: #333;
-    border-radius: 50%;
+.vertical-upvote-button:hover {
+    color: orange
 }
 
 .count {

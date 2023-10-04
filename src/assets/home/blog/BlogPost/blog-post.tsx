@@ -47,10 +47,9 @@ const BlogPost: React.FC<BlogPostProps> = ({
                     <UpAndDownVoteButtonHorizontal upvote={upvote} />
                     <CommentButton NumberOfComment={numberOfComment} />
                 </div>
+                
+                <BookmarkButton />
 
-                <div className="bookmark-button">
-                    <BookmarkButton />
-                </div>
             </div>
 
         </div>

@@ -4,7 +4,7 @@ import TopNav from '../home/TopNavigation/top-nav';
 import DetailedBlogPost from './DetailedBlog/detailed-blog-post';
 import PostCreator from './PostCreatorDetail/post-creator-detail';
 import UpAndDownVoteButtonVertical from '../home/button/ReactionButton/up-down-vote-button-vertical';
-//import BookmarkButton from '../home/button/BookmarkButton/bookmark-button';
+import BookmarkButton from '../home/button/BookmarkButton/bookmark-button';
 
 
 const blogTags = ["JavaScript", "React.js", "CSS", "Web Development"];
@@ -19,7 +19,8 @@ const DetailedBlogPostPage: React.FC = () => {
         {/* Buttons ?? */}
         <div className="left-side-nav">
 
-          <UpAndDownVoteButtonVertical upvote={100} />
+          <UpAndDownVoteButtonVertical upvote={2399} />
+          <BookmarkButton/>
 
         </div>
 

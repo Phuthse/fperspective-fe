@@ -18,13 +18,16 @@ body {
     top: 140px;
     align-self: flex-start;
     align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Right side bar */
 
 .right-side-nav {
+    position: sticky;
     flex-basis: 20%;
-    top: 70px;
+    top: 100px;
     align-self: flex-start;
     padding: 10px;
     border-radius: 15px;

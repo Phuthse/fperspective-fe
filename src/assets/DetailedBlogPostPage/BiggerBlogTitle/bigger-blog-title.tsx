@@ -7,7 +7,7 @@ type BiggerBlogTitleProps = {
 
 const BiggerBlogTitle: React.FC<BiggerBlogTitleProps> = ({ title }) => {
     return (
-        <h2 className='post-title'>
+        <h2 className='bigger-post-title'>
             {title}
         </h2>
     );
