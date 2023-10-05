@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import HomePage from './assets/home/home-page';
+import './login-form.css';
+import background from './assets/images/bg.jpg'
+
 
 const LoginForm: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -13,7 +16,6 @@ const LoginForm: React.FC = () => {
     if (username === 'ad' && password === '1') {
       setIsLoggedIn(true); // Set login state to true
     }
-
     // Reset form fields after submission
     setUsername('');
     setPassword('');
@@ -25,33 +27,58 @@ const LoginForm: React.FC = () => {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+    <div className='row'>
+      <div className='col-md3'></div>
+      <div className='col-md6'>
+        <div className='login-form' style={{backgroundImage: `url(${background})`,
+        backgroundSize: "cover",
+      }}>
+        
+          <h2>Have an account?</h2>
+          <form onSubmit={handleSubmit}>
+          <div className='row-username'>
+            <label htmlFor="username"></label>
+            <br></br><input
+              placeholder=' User Name'
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+         </div>
+          <div className='row-password'>
+           <label htmlFor="password"></label>
+           <br></br><input
+              placeholder=' Password'
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+           />
+         </div>
+
+          <div className="row-refor">
+					<a href="#" >Register</a>
+          <a href="#" >Forgot Password</a>
+				</div>
+
+          <button type='submit'>Login</button>
+          <p className="row-text">&mdash;  Or  &mdash;</p>
+      <div className="row-google">
+      <a href='#'><img src='src/assets/images/sign-goo-icon.png' /></a>
+      
+        
+              </div>
+          </form>
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+      </div>
+      <div className='col-md3'></div>
+
     </div>
+
+    
   );
 };
 
