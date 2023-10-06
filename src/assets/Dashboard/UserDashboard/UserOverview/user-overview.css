@@ -1,0 +1,79 @@
+/* User overview */
+
+.user-overview-container {
+    color: white;
+}
+
+.user-overview {
+    display: flex;
+    padding-top: 10px;
+}
+
+/* User total Upvote */
+
+.user-total-upvote {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: #111;
+    border-radius: 7px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.user-total-upvote strong {
+    font-size: 25px;
+    width: fit-content;
+    margin-bottom: 3px;
+}
+
+.user-total-upvote span {
+    font-size: 15px;
+    color: #888;
+}
+
+/* User Total Post */ 
+
+.user-total-post {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: #111;
+    border-radius: 7px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.user-total-post strong {
+    font-size: 25px;
+    width: fit-content;
+    margin-bottom: 3px;
+}
+
+.user-total-post span {
+    font-size: 15px;
+    color: #888;
+}
+
+/* User total Credit */
+
+.user-total-credit {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: #111;
+    border-radius: 7px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.user-total-credit strong {
+    font-size: 25px;
+    width: fit-content;
+    margin-bottom: 3px;
+}
+
+.user-total-credit span {
+    font-size: 15px;
+    color: #888;
+}

@@ -1,0 +1,21 @@
+.post-container {
+    width: 100%;
+    background: #111;
+    border-radius: 6px;
+    padding: 20px;
+    color: #626262;
+    margin: 20px 0;
+}
+
+.post-details {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    justify-content: space-between;
+}
+
+.post-interact {
+    display: flex;
+    align-items: center;
+}
+

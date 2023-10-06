@@ -26,6 +26,7 @@ const DetailedBlogPostPage: React.FC = () => {
 
         {/* Blog post with content and comment section */}
         <div className='detailed-post-container'>
+
           <DetailedBlogPost
             fullName="John Doe"
             timeUpload="2023-10-02"
@@ -39,12 +40,14 @@ const DetailedBlogPostPage: React.FC = () => {
 
         {/* Post creator */}
         <div className='right-side-nav'>
+
           <PostCreator
             profilePic='src/assets/images/profile-pic.png'
             fullName='John Doe'
             userName='@johnD'
             bio='Professional game developer, lead developer of the game HADES'
           />
+          
         </div >
 
       </div >
