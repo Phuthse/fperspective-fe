@@ -1,4 +1,4 @@
-.user-follower-container {
+.user-following-tags-container {
     width: 100%;
     margin-top: 20px;
     display: grid;
@@ -6,7 +6,7 @@
     grid-gap: 10px;
 }
 
-.user-follower {
+.user-following-tags {
     background: #111;
     padding: 20px;
     width: 300px;
@@ -19,11 +19,11 @@
     border-radius: 10px;
 }
 
-.user-follower a {
+.user-following-tags a {
     text-decoration: none;
 }
 
-.user-follower img {
+.user-following-tags img {
     width: 90px;
     height: 90px;
     object-fit: cover;

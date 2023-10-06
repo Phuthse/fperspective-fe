@@ -1,0 +1,12 @@
+/* User dashboard content */ 
+
+.user-dashboard-content {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    border: 0.5px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    margin-left: 5px;
+}
