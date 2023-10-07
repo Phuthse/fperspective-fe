@@ -1,32 +1,29 @@
 import React from 'react';
 import './user-following-tags.css';
-import FollowButton from '../../../home/button/FollowButton/follow-button';
 
 type UserFollowingTagsProps = {
     TagName: string[];
-    NumberOfPosts: number[];
-    TagDesc: string[];
+    TagImage: string[];
 }
 
-const UserFollowingTags: React.FC<UserFollowingTagsProps> = ({ TagName, NumberOfPosts, TagDesc }) => {
+const UserFollowingTags: React.FC<UserFollowingTagsProps> = ({ TagName, TagImage }) => {
     return (
         <div className='user-following-tags-container'>
             {TagName.map((tagName, index) => (
-                <div className='user-following-tags'>
-                    <div className='following-tag-name'>
-                        <h4>
-                            <a href='#'><span>#</span>{tagName}</a>
-                        </h4>
-                        <div>{NumberOfPosts[index]} posts</div>
-                    </div>
-                    <p className="following-tag-des">{TagDesc[index]}</p>
+                <div className="user-following-tags">
+                    <a href="#">
+                        <img src={TagImage[index]} alt={`Profile of ${tagName}`} />
+                    </a>
 
-                    <div className="dashboard-tag-buttons-container">
-                        <FollowButton />
+                    <div className="profile-name">
+                        <h3>
+                            <a href="#">
+                                {tagName}
+                            </a>
+                        </h3>
                     </div>
                 </div>
             ))}
-
 
         </div>
 

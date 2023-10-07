@@ -1,9 +1,13 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-const config: AxiosRequestConfig = {
-  baseURL: "http://13.229.236.26:8080/api/v1/blog",
+const blogConfig: AxiosRequestConfig = {
+  baseURL: "http://localhost:8080/api/v1/blog",
 };
 
-const api = axios.create(config);
+const userConfig: AxiosRequestConfig = {
+  baseURL: "http://localhost:8080/api/v1/user",
+};
 
-export default api;
+export const blogApi = axios.create(blogConfig);
+
+export const userApi = axios.create(userConfig);

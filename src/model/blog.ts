@@ -1,12 +1,9 @@
 type Blog = {
-    blogId: string;
+    blogID: string;
     blogTitle: string;
     blogContent: string;
+    userID:string;
     uploadDate: string;
-    userID: string;
-    categoryID: string;
-    subjectID: string;
-    tagID: string;
     status: boolean;
 }
        

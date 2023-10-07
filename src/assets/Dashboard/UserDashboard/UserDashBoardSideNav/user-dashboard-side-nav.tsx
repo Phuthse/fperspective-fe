@@ -46,22 +46,22 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
                     </li>
 
                     <li
-                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'followingUsers' ? 'active' : ''}`}
-                        onClick={() => setSelectedNavItem('followingUsers')}
-                    >
-                        <a>
-                            Following users
-                            <span>{NumberOfFollowingUsers}</span>
-                        </a>
-                    </li>
-
-                    <li
                         className={`user-dashboard-left-nav-link ${selectedNavItem === 'followingTags' ? 'active' : ''}`}
                         onClick={() => setSelectedNavItem('followingTags')}
                     >
                         <a>
                             Following tags
                             <span>{NumberOfFollowingTags}</span>
+                        </a>
+                    </li>
+
+                    <li
+                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'followingUsers' ? 'active' : ''}`}
+                        onClick={() => setSelectedNavItem('followingUsers')}
+                    >
+                        <a>
+                            Following users
+                            <span>{NumberOfFollowingUsers}</span>
                         </a>
                     </li>
 
