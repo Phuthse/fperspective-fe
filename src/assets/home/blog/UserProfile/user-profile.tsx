@@ -5,14 +5,14 @@ import User from '../../../../model/user';
 type UserProfileProps = {
     user: User;
     time: string;
-    src: string
+    profileImage: string
 }
 
-const UserProfile: React.FC<UserProfileProps> = ({ user, time, src }) => {
+const UserProfile: React.FC<UserProfileProps> = ({ user, time, profileImage }) => {
     return (
         <div className="user-profile" >
             <a href='#'>
-                <img src={src} />
+                <img src={profileImage} />
                 <div className='user-info'>
                     <p>{user.userName}</p>
                     <small>{time}</small>

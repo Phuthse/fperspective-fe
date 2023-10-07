@@ -28,3 +28,9 @@ body {
 .main-content {
     flex-basis: 57%;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 5%;
+}

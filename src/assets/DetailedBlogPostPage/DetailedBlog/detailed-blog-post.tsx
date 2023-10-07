@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './detailed-blog-post.css';
 import UserProfile from '../../home/blog/UserProfile/user-profile';
 import BiggerBlogTitle from '../BiggerBlogTitle/bigger-blog-title';
@@ -6,14 +6,16 @@ import BlogTags from '../../home/blog/BlogTags/blog-tags';
 import PostCommentForm from '../PostCommentForm/post-comment-form';
 import PostContent from '../PostContent/post-content';
 import PostComment from '../PostCommentSection/Comment/post-comment';
+import Blog from '../../../model/blog';
+import User from '../../../model/user';
+import { userApi } from '../../../config/axios';
 
-type BlogPostProps = {
-    fullName: string;
-    timeUpload: string;
-    src: string
-    blogTitle: string;
+type DetailedBlogPostProps = {
+    userID: string;
+    profileImage: string;
     blogTags: string[];
-    numberOfComment: number;
+    blog: Blog;
+    uri: string;
 }
 
 const CommentSectionSample = {
@@ -23,13 +25,13 @@ const CommentSectionSample = {
         'src/assets/images/member-5.png',
     ],
     FullName: [
-        'John Doe', 
-        'Jane Smith', 
+        'John Doe',
+        'Jane Smith',
         'Alice Johnson'
     ],
     CommentDate: [
-        '2023-10-01', 
-        '2023-09-30', 
+        '2023-10-01',
+        '2023-09-30',
         '2023-09-29'
     ],
     CommentContent: [
@@ -45,24 +47,41 @@ const CommentSectionSample = {
 };
 
 
-const DetailedBlogPost: React.FC<BlogPostProps> = ({
-    fullName,
-    timeUpload,
-    src,
-    blogTitle,
+const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
+    userID,
+    profileImage,
     blogTags,
+    blog,
+    uri,
 }) => {
+
+    const [users, setUsers] = useState<User[]>([]);
+    const fetchUserData = async () => {
+        const response = await userApi.get(uri);
+        setUsers(response.data);
+    };
+    useEffect(() => {
+        fetchUserData();
+    }, [uri]);
 
     return (
         <div className="post-container">
 
-            <UserProfile
-                name={fullName}
-                time={timeUpload}
-                src={src}
-            />
+            <div>
+                {users.filter(user => user.userID === userID).map((user) => {
 
-            <BiggerBlogTitle title={blogTitle} />
+                    return (
+                        <UserProfile
+                            key={user.userID}
+                            user={user}
+                            time={blog.uploadDate}
+                            profileImage={profileImage}
+                        />
+                    )
+                })}
+            </div>
+
+            <BiggerBlogTitle title={blog.blogTitle} />
 
             <BlogTags tags={blogTags} />
 

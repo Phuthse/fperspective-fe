@@ -41,7 +41,7 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
         return (
           <BlogPost
             key={blog.blogID}
-            src="src/assets/images/profile-pic.png"
+            profileImage="src/assets/images/profile-pic.png"
             blogTags={blogTags1}
             upvote={8541}
             numberOfComment={10}

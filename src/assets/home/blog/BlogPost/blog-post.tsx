@@ -11,7 +11,7 @@ import User from "../../../../model/user";
 import { userApi } from "../../../../config/axios";
 
 type BlogPostProps = {
-  src: string;
+  profileImage: string;
   blogTags: string[];
   upvote: number;
   numberOfComment: number;
@@ -21,7 +21,7 @@ type BlogPostProps = {
 };
 
 const BlogPost: React.FC<BlogPostProps> = ({
-  src,
+  profileImage,
   blogTags,
   upvote,
   numberOfComment,
@@ -43,10 +43,15 @@ const BlogPost: React.FC<BlogPostProps> = ({
       <div>
         {users.filter(user => user.userID === userID).map((user) => {
 
-          return(
-            <UserProfile key={user.userID} user={user} time={blog.uploadDate} src={src} />
+          return (
+            <UserProfile
+              key={user.userID}
+              user={user}
+              time={blog.uploadDate}
+              profileImage={profileImage}
+            />
           )
-            
+
         })}
       </div>
 
