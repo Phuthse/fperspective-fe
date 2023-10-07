@@ -1,6 +1,5 @@
 import React from 'react';
 import './home-page.css'; // Import your CSS file for styling
-import TopNav from './TopNavigation/top-nav';
 import SideNav from './SideNavigation/side-nav';
 import TrendingTag from './RightSideNav/Trending/trending';
 import WhoToFollow from './RightSideNav/WhoToFollow/who-to-follow';
@@ -19,7 +18,6 @@ const recommendedProfileImage = ['src/assets/images/member-1.png', 'src/assets/i
 const HomePage: React.FC = () => {
   return (
     <>
-      <TopNav />
       <div className="container">
         <SideNav />
 
