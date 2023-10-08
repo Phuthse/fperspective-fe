@@ -39,6 +39,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
   }, [uri]);
 
   return (
+    
     <div className="post-container">
       <div>
         {users.filter(user => user.userID === userID).map((user) => {

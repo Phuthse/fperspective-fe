@@ -16,9 +16,12 @@ const TopNav: React.FC = () => {
           <input type="text" placeholder="Search" />
         </div>
 
+
+
         <div className='nav-user-icon'>
           <img src='src/assets/images/profile-pic.png' />
           <div className="dropdown-content">
+            <Link to='/create-blog'>Write a Blog</Link>
             <Link to="/dashboard">Dashboard</Link>
             <a href='#'>Logout</a>
           </div>
