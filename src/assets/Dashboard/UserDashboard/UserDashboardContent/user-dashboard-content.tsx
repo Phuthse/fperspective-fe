@@ -66,14 +66,10 @@ const followingTagsExample = {
 
 
 // Make these attribute into arrays
-type RecentPostProps = {
-    blogTags: string[]
-}
 
 
-const UserDashoardContent: React.FC<RecentPostProps> = ({
-    blogTags
-}) => {
+
+const UserDashoardContent: React.FC = () => {
 
     const { selectedNavItem } = useUserDashboard();
 
@@ -87,7 +83,6 @@ const UserDashoardContent: React.FC<RecentPostProps> = ({
                     <h2>Recent Blogs</h2>
                     <RecentPost
                         blogTitle="Getting Started with React.js"
-                        blogTags={blogTags}
                         upvote={8541}
                         numberOfComment={10}
                     />

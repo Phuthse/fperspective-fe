@@ -1,21 +1,19 @@
-import React from 'react';
-import './blog-tags.css'
+import React from "react";
+import "./blog-tags.css";
+import Tag from "../../../../model/tag";
 
 type BlogTagsProps = {
-    tags: string[];
-}
+  tag: Tag;
+};
 
-const BlogTags: React.FC<BlogTagsProps> = ({ tags }) => {
-    return (
+const BlogTags: React.FC<BlogTagsProps> = ({ tag }) => {
 
-        <div className="post-tags">
-            {tags.map((tag, index) => (
-                <a key={index} href='#' className='tag'>
-                    #{tag}
-                </a>
-            ))}
-        </div>
-    );
+      return (
+        <a key={tag.tagID} href="#" className="tag">
+          #{tag.tagName}
+        </a>
+      );
+    //}
 };
 
 export default BlogTags;

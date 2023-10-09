@@ -5,8 +5,6 @@ import UserDashboardSideNav from './UserDashBoardSideNav/user-dashboard-side-nav
 import UserDashoardContent from './UserDashboardContent/user-dashboard-content';
 import { UserDashboardProvider } from './user-dashboard-context';
 
-const blogTags1 = ["JavaScript", "React.js", "CSS", "Web Development"];
-
 const UserDashboard: React.FC = () => {
     return (
         <>
@@ -29,7 +27,7 @@ const UserDashboard: React.FC = () => {
                                 NumberOfFollowingUsers={85}
                                 NumberOfHiddenTags={8}
                             />
-                            <UserDashoardContent blogTags={blogTags1} />
+                            <UserDashoardContent/>
                         </UserDashboardProvider>
 
                     </div>

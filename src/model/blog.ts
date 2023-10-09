@@ -3,6 +3,7 @@ type Blog = {
     blogTitle: string;
     blogContent: string;
     userID:string;
+    tagID: string[];
     uploadDate: string;
     status: boolean;
 }
