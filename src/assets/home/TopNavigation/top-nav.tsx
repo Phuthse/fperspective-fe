@@ -23,6 +23,8 @@ const TopNav: React.FC = () => {
           <div className="dropdown-content">
             <Link to='/create-blog'>Write a Blog</Link>
             <Link to="/dashboard">Dashboard</Link>
+            <Link to='/login'>Login</Link>
+            <Link to='/sign-up'>Sign up</Link>
             <a href='#'>Logout</a>
           </div>
         </div>

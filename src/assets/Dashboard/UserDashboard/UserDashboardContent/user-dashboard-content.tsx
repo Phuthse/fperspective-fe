@@ -94,6 +94,13 @@ const UserDashoardContent: React.FC<RecentPostProps> = ({
                 </div>
             )}
 
+            {selectedNavItem === 'bookmark' && (
+                <div>
+                    <h2>Your bookmarks</h2>
+                    
+                </div>
+            )}
+
             {/* Display user's followers */}
             {selectedNavItem === 'followers' && (
                 <div>

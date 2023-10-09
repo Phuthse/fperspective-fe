@@ -30,7 +30,7 @@ const SignUpForm: React.FC = () => {
     <div className='row'>
       <div className='col-md3'></div>
       <div className='col-md6'>
-        <div className='login-form' style={{backgroundImage: `url(${background})`,
+        <div className='login-form' style={{backgroundImage: `url()`,
         backgroundSize: "cover",
       }}>
         
