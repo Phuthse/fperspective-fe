@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import HomePage from './assets/home/home-page';
 import './login-form.css';
-import background from './assets/images/bg.jpg'
 
 
 const LoginForm: React.FC = () => {

@@ -6,13 +6,13 @@ const TopNav: React.FC = () => {
   return (
     <nav className="top-nav">
       <div className="nav-left">
-        <Link to="/"><img src="src/assets/images/fperspective-logo.png" className="logo" /></Link>
+        <Link to="/"><img src="src/assets/images/fperspective-logo.png" alt="" className="logo" /></Link>
       </div>
 
       <div className="nav-right">
 
         <div className="search-box">
-          <img src="src/assets/images/search.png" />
+          <img src="src/assets/images/search.png" alt=""/>
           <input type="text" placeholder="Search" />
         </div>
 

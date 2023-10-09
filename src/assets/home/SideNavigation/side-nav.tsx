@@ -10,7 +10,6 @@ import {
 import {
   IconMessage,
 } from '@tabler/icons-react';
-import { Link } from 'react-router-dom';
 
 const SideNav: React.FC = () => {
 
