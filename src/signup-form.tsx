@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './login-form.css';
-import background from './assets/images/bg.jpg'
 import LoginForm from './login-form';
 
 
