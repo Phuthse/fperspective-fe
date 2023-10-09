@@ -3,15 +3,13 @@ import Blog from "../../../../model/blog";
 import { blogApi } from "../../../../config/axios";
 import BlogPost from "../BlogPost/blog-post";
 
-const blogTags1 = ["JavaScript", "React.js", "CSS", "Web Development"];
-
 type BlogListProps = {
   uri: string;
 };
 
 const BlogList: React.FC<BlogListProps> = ({ uri }) => {
 
-    const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true); 
 
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const fetchBlogData = async () => {
@@ -39,18 +37,18 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
         const userId = blog.userID;
 
         return (
-          <BlogPost
+            <BlogPost
             key={blog.blogID}
             profileImage="src/assets/images/profile-pic.png"
-            blogTags={blogTags1}
             upvote={8541}
             numberOfComment={10}
             blog={blog}
-            uri={apiUri}
-            userID={userId}
-          />
+            userUri={apiUri}
+            userID={userId} />
         );
+        
       })}
+      
     </>
   );
 };

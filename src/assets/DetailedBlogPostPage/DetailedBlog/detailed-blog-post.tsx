@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './detailed-blog-post.css';
 import UserProfile from '../../home/blog/UserProfile/user-profile';
 import BiggerBlogTitle from '../BiggerBlogTitle/bigger-blog-title';
-import BlogTags from '../../home/blog/BlogTags/blog-tags';
+// import BlogTags from '../../home/blog/BlogTags/blog-tags';
 import PostCommentForm from '../PostCommentForm/post-comment-form';
 import PostContent from '../PostContent/post-content';
 import PostComment from '../PostCommentSection/Comment/post-comment';
@@ -13,7 +13,7 @@ import { userApi } from '../../../config/axios';
 type DetailedBlogPostProps = {
     userID: string;
     profileImage: string;
-    blogTags: string[];
+    // blogTags: string[];
     blog: Blog;
     uri: string;
 }
@@ -50,7 +50,7 @@ const CommentSectionSample = {
 const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
     userID,
     profileImage,
-    blogTags,
+    // blogTags,
     blog,
     uri,
 }) => {
@@ -83,7 +83,7 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
 
             <BiggerBlogTitle title={blog.blogTitle} />
 
-            <BlogTags tags={blogTags} />
+            {/* <BlogTags tags={blogTags} /> */}
 
             <PostContent />
 
