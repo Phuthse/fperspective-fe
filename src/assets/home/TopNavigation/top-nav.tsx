@@ -6,20 +6,20 @@ const TopNav: React.FC = () => {
   return (
     <nav className="top-nav">
       <div className="nav-left">
-        <Link to="/"><img src="src/assets/images/fperspective-logo.png" alt="" className="logo" /></Link>
+        <Link to="/"><img src="src/images/fperspective-logo.png" alt="" className="logo" /></Link>
       </div>
 
       <div className="nav-right">
 
         <div className="search-box">
-          <img src="src/assets/images/search.png" alt=""/>
+          <img src="src/images/search.png" alt=""/>
           <input type="text" placeholder="Search" />
         </div>
 
 
 
         <div className='nav-user-icon'>
-          <img src='src/assets/images/profile-pic.png' />
+          <img src='src/images/profile-pic.png' />
           <div className="dropdown-content">
             <Link to='/create-blog'>Write a Blog</Link>
             <Link to="/dashboard">Dashboard</Link>
