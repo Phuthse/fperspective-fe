@@ -34,6 +34,7 @@ const SignUpForm: React.FC = () => {
           />
 
         </div>
+        
         <div className='sign-up-form-login'>
           Already have an account? <Link to='/login'>Log in</Link>
         </div>

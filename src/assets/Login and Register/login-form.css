@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
 }
 
@@ -12,7 +12,7 @@
 
 .login-form-container h1 {
     color: white;
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .login-form-header {
@@ -28,8 +28,39 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 80%;
 }
+
+/* GOOGLE LOGIN METHOD */
+
+.login-form-action-provider {
+    width: 80%;
+}
+
+.google-login-button {
+    background-color: transparent !important;
+    color: white !important;
+    border: 1px solid white !important;
+    border-radius: 5px !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;   
+}
+
+.google-login-button:hover {
+    background-color: #333 !important; 
+}
+
+.google-login-button span {
+    width: 100% !important;
+    align-items: center !important;
+}
+
+.google-login-button div{
+    background-color: transparent !important;
+    align-items: center !important;
+}
+
 
 /* DIVIDER BETWEEN 2 METHODs */
 
@@ -113,14 +144,7 @@ input[type="text"],
     text-decoration: underline;
 }
 
-.checkbox {
-    background: transparent;
-    border-radius: 2px;
-}
-
-.checkbox:checked {
-    background-color: blue;
-}
+/* LOGIN BUTTON */
 
 .login-button {
     text-align: center;
@@ -129,7 +153,7 @@ input[type="text"],
 }
 
 .login-button input {
-    width: 80%;
+    width: 100%;
     height: 43px;
     background: transparent;
     border: 0.5px solid #555;
@@ -142,6 +166,8 @@ input[type="text"],
 .login-button input:hover {
     background: #111;
 }
+
+/* CREATE ACCOUNT BUTTON */
 
 .login-form-register a {
     text-decoration: none;
