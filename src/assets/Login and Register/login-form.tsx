@@ -1,13 +1,20 @@
 import React from 'react';
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 import { Link } from 'react-router-dom';
 import './login-form.css'
 
 const LoginForm: React.FC = () => {
-  const responseGoogle = (response: any) => {
-    console.log(response);
+
+
+  const responseGoogle = (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+
+    console.log("Google Sign-In failed.", response);
 
   };
+
+  const onSuccess = (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+    console.log("Login successful", response);
+  }
 
   return (
     <div className='login-form-container'>
@@ -24,7 +31,7 @@ const LoginForm: React.FC = () => {
             className='google-login-button'
             clientId="27389697282-aceacvu2tnn8qrjsakbi9kras8nj9f2s.apps.googleusercontent.com"
             buttonText="Continue with Google"
-            onSuccess={responseGoogle}
+            onSuccess={onSuccess}
             onFailure={responseGoogle}
             cookiePolicy={'single_host_origin'}
           />
@@ -55,9 +62,9 @@ const LoginForm: React.FC = () => {
                 <input className="checkbox" type="checkbox" />
                 <label>Remember me</label>
               </div>
-              <a href='#'>
-                Forgot password?
-              </a>
+
+              <Link to='/forgot-password'>Forgot password</Link>
+
             </div>
 
             <div className='login-button'>

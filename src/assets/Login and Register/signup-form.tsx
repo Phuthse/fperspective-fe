@@ -12,8 +12,6 @@ const SignUpForm: React.FC = () => {
   };
   return (
 
-
-
     <div className='sign-up-form-container'>
       <div className="sign-up-form-header">
 
@@ -34,7 +32,7 @@ const SignUpForm: React.FC = () => {
           />
 
         </div>
-        
+
         <div className='sign-up-form-login'>
           Already have an account? <Link to='/login'>Log in</Link>
         </div>

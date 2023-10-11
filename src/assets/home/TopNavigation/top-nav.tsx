@@ -16,8 +16,6 @@ const TopNav: React.FC = () => {
           <input type="text" placeholder="Search" />
         </div>
 
-
-
         <div className='nav-user-icon'>
           <img src='src/images/profile-pic.png' />
           <div className="dropdown-content">
@@ -25,6 +23,7 @@ const TopNav: React.FC = () => {
             <Link to="/dashboard">Dashboard</Link>
             <Link to='/login'>Login</Link>
             <Link to='/sign-up'>Sign up</Link>
+            <Link to='/user-profile'>User Profile (General)</Link>
             <a href='#'>Logout</a>
           </div>
         </div>

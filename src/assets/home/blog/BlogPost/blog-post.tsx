@@ -54,8 +54,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
         })}
 
       <BlogTitle title={blog.blogTitle} />
-      
-      <TagList uri={"/show"} tagID={blog.tagID}/>
+
+      <TagList uri={"/show"} tagID={blog.tagID} />
 
       <div className="post-details">
         <div className="post-interact">

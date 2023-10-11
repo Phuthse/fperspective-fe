@@ -9,7 +9,7 @@ type BlogListProps = {
 
 const BlogList: React.FC<BlogListProps> = ({ uri }) => {
 
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
 
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const fetchBlogData = async () => {
@@ -37,18 +37,17 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
         const userId = blog.userID;
 
         return (
-            <BlogPost
+          <BlogPost
             key={blog.blogID}
             profileImage="src/assets/images/profile-pic.png"
             upvote={8541}
             numberOfComment={10}
             blog={blog}
             userUri={apiUri}
-            userID={userId} />
+            userID={userId}
+          />
         );
-        
       })}
-      
     </>
   );
 };
