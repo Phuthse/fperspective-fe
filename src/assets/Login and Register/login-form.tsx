@@ -48,8 +48,8 @@ const LoginForm: React.FC = () => {
           <form>
 
             <div className="login-form-user-name">
-              <label >User Name</label>
-              <input className="login-form-textfield" type="text" />
+              <label >Email</label>
+              <input className="login-form-textfield" type="email" />
             </div>
 
             <div className="login-form-password">
