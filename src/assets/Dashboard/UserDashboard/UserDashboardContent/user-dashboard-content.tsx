@@ -5,6 +5,7 @@ import RecentPost from '../UserDashBoardRecentPost/recent-post';
 import UserFollower from '../UserFollower/user-follower';
 import UserFollowing from '../UserFollowing/user-following';
 import UserFollowingTags from '../UserFollowingTags/user-following-tags';
+import UserBookmark from '../UserBookmark/user-bookmark';
 
 
 const followerExample = {
@@ -70,6 +71,35 @@ const followingTagsExample = {
     ]
 };
 
+const bookmarkExample = {
+    bookmarkTitle: [
+        'Compile code programmatically by using C# compiler',
+        'JavaScript Comparison and Logical Operators',
+        'How to boost your C, C++ and C# programming knowledge',
+        'What are Frameworks in Python? Know Top 5 Python Frameworks',
+    ],
+    bookmarkDesc: [
+        'This article describes how to compile code from a text source by using C# compiler.',
+        'Comparison and Logical operators are used to test for true or false.',
+        'Whether you\'re looking for some tips on good learning paths or you\'re completely new to C, C++ and C#, we have broken down some of the key points.',
+        'Python is one of the most popular and effective programming languages that contain vast libraries and frameworks for almost every technical domain.'
+    ],
+    authorProfileImage: [
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg',
+        'https://dudeproducts.com/cdn/shop/articles/gigachad_1068x.jpg?v=1667928905',
+        'https://parade.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTk3MTU5ODE0NzEzODQ1MDU1/morgan-freeman-copy.jpg',
+        'https://i.kym-cdn.com/entries/icons/original/000/026/152/gigachadd.jpg'
+    ],
+    authorFullName: [
+        'Real man',
+        'Cool guy',
+        'Nice dude',
+        'Based lad'
+    ],
+    
+    
+};
+
 
 // Make these attribute into arrays
 
@@ -95,10 +125,16 @@ const UserDashoardContent: React.FC = () => {
                 </div>
             )}
 
+            {/* Display user's bookmark */}
             {selectedNavItem === 'bookmark' && (
                 <div>
                     <h2>Your bookmarks</h2>
-                    
+                    <UserBookmark
+                        BookmarkTitle={bookmarkExample.bookmarkTitle}
+                        BookmarkDesc={bookmarkExample.bookmarkDesc}
+                        authorProfileImage={bookmarkExample.authorProfileImage}
+                        authorFullName={bookmarkExample.authorFullName}
+                    />
                 </div>
             )}
 
