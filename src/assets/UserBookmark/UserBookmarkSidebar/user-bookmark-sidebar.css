@@ -1,0 +1,24 @@
+/* BODY SIDE BAR*/
+
+.user-bookmark-side ul {
+    padding: 10px;
+    width: 250px;
+}
+
+.user-bookmark-side li {
+    margin: 3px 0;
+    width: 100%;
+}
+
+.user-bookmark-side li:hover {
+    background: #333;
+    border-radius: 5px;
+}
+
+.user-bookmark-side li a {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    display: block;
+    padding: 13px 8px;
+}

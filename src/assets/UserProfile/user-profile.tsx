@@ -1,6 +1,7 @@
 import './user-profile.css';
 import FollowButton from '../home/button/FollowButton/follow-button';
-
+import UpAndDownVoteButtonHorizontal from '../home/button/ReactionButton/up-down-vote-button-horizontal';
+import CommentButton from '../home/button/CommentButton/comment-button';
 
 const UserProfile: React.FC = () => {
 
@@ -131,9 +132,59 @@ const UserProfile: React.FC = () => {
 
             </div>
 
-            <div className="user-profile-body-main">
+            <div className="user-profile-body-main-post-container">
 
-              <h1>hi</h1>
+              <div className="user-profile-body-main">
+
+                <div className="user-profile-body-main-post">
+                  <div className="user-profile-body-main-post-top">
+
+                    <img src='https://cdn.vox-cdn.com/thumbor/RcAdlMhw-adDQnJiVWKRPUSP10M=/0x0:2024x1038/1200x800/filters:focal(989x320:1311x642)/cdn.vox-cdn.com/uploads/chorus_image/image/71278865/Screen_Shot_2022_08_23_at_4.22.21_PM.0.png' />
+
+                    <div className="user-profile-body-main-post-top-detail">
+                      <h4>Andrew Tate</h4>
+                      <p>Oct 2 2023</p>
+                    </div>
+
+                  </div>
+
+                  <div className="user-profile-body-main-post-body">
+
+                    <div className="user-profile-body-main-post-body-title">
+                      <h2>
+                        <a href='#'>How I made 9 digit a month (Not clickbait)</a>
+                      </h2>
+                    </div>
+
+                    <div className="user-profile-body-main-post-body-tags">
+
+                      <a href="#" className="user-profile-body-main-post-body-tags">
+                        #css
+                      </a>
+
+                      <a href="#" className="user-profile-body-main-post-body-tags">
+                        #react
+                      </a>
+
+                      <a href="#" className="user-profile-body-main-post-body-tags">
+                        #nodejs
+                      </a>
+
+                    </div>
+
+                    <div className="user-profile-body-main-post-body-bottom">
+                      <UpAndDownVoteButtonHorizontal upvote={100} />
+                      <CommentButton NumberOfComment={10}/>
+                    </div>
+
+                  </div>
+
+
+                </div>
+
+              </div>
+
+
 
             </div>
 
