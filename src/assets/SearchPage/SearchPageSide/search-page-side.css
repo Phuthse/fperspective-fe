@@ -1,21 +1,26 @@
-/* BODY SIDE BAR*/
+/* BODY SIDE */
 
-.user-bookmark-side ul {
-    padding: 10px;
-    width: 250px;
+.search-page-body {
+    display: flex;
 }
 
-.user-bookmark-side li {
+.search-page-side ul {
+    padding: 10px;
+    width: 200px;
+    list-style-type: none;
+}
+
+.search-page-side li {
     margin: 3px 0;
     width: 100%;
 }
 
-.user-bookmark-side li:hover {
-    background: #333;
+.search-page-side li:hover {
+    background: #222;
     border-radius: 5px;
 }
 
-.user-bookmark-side-option {
+.search-page-side-option {
     text-decoration: none;
     color: white;
     width: 100%;
@@ -23,7 +28,7 @@
     padding: 13px 8px;
 }
 
-.selected {
+.active {
     background: rgb(41, 86, 200);
     border-radius: 5px;
 }

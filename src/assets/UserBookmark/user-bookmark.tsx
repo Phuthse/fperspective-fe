@@ -41,7 +41,7 @@ const UserBookmark: React.FC = () => {
 
     const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-    const handleTagClick = (tag: string) => {
+    const handleTagClick = (tag: string | null) => {
         setSelectedTag(tag);
     };
 
