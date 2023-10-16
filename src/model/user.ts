@@ -1,5 +1,5 @@
 type User = {
-    userID: string;
+    userId: string;
     userName: string;
     status: boolean;
 }

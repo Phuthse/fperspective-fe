@@ -16,7 +16,7 @@ type BlogPostProps = {
   numberOfComment: number;
   blog: Blog;
   userUri: string;
-  userID: string;
+  userId: string;
 };
 
 const BlogPost: React.FC<BlogPostProps> = ({
@@ -25,7 +25,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
   numberOfComment,
   blog,
   userUri,
-  userID,
+  userId,
 }) => {
   const [users, setUsers] = useState<User[]>([]);
   const fetchUserData = async () => {
@@ -36,16 +36,15 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fetchUserData();
   }, [userUri]);
 
-
   return (
 
     <div className="post-container">
       {users
-        .filter((user) => user.userID === userID)
+        .filter((user) => user.userId === userId)
         .map((user) => {
           return (
             <UserProfile
-              key={user.userID}
+              key={user.userId}
               user={user}
               time={blog.uploadDate}
               profileImage={profileImage}
@@ -55,7 +54,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
 
       <BlogTitle title={blog.blogTitle} />
       
-      <TagList uri={"/show"} tagID={blog.tagID}/>
+      <TagList tagList={blog.btag}/>
 
       <div className="post-details">
         <div className="post-interact">

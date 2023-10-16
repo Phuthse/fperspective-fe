@@ -11,7 +11,7 @@ import User from '../../../model/user';
 import { userApi } from '../../../config/axios';
 
 type DetailedBlogPostProps = {
-    userID: string;
+    userId: string;
     profileImage: string;
     // blogTags: string[];
     blog: Blog;
@@ -48,7 +48,7 @@ const CommentSectionSample = {
 
 
 const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
-    userID,
+    userId,
     profileImage,
     // blogTags,
     blog,
@@ -68,11 +68,11 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
         <div className="post-container">
 
             <div>
-                {users.filter(user => user.userID === userID).map((user) => {
+                {users.filter(user => user.userId === userId).map((user) => {
 
                     return (
                         <UserProfile
-                            key={user.userID}
+                            key={user.userId}
                             user={user}
                             time={blog.uploadDate}
                             profileImage={profileImage}

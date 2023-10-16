@@ -9,7 +9,7 @@ type BlogTagsProps = {
 const BlogTags: React.FC<BlogTagsProps> = ({ tag }) => {
 
       return (
-        <a key={tag.tagID} href="#" className="tag">
+        <a key={tag.tagId} href="#" className="tag">
           #{tag.tagName}
         </a>
       );
