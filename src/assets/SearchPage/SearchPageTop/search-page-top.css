@@ -1,0 +1,13 @@
+/* SEARCH PAGE HEADER */
+
+.search-page-header {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.search-page-header h1 {
+    color: #9900ff;
+    text-transform: uppercase;
+    margin-left: 10px;
+}

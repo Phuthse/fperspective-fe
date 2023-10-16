@@ -21,6 +21,8 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
     setIsLoading(false);
   }, [uri]);
 
+// IGNORE OK?
+
 // const [blogs, setBlogs] = useState();
 // const fetchBlogData = async () => {
 //   console.log(blogApi.toString() + uri);
@@ -43,6 +45,7 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
 //     setIsLoading(false);
 //   }, [uri]);
 
+//NOTHING HERE
 
   if (isLoading) {
     return (
@@ -70,6 +73,7 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
             />
           );
         }
+
       })}
     </>
   );

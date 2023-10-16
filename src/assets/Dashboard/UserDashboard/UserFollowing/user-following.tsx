@@ -1,13 +1,13 @@
 import React from 'react';
 import './user-following.css';
 
-type UserFollowerProps = {
+type UserFollowingProps = {
     FullName: string[];
     UserName: string[];
     ProfileImage: string[];
 }
 
-const UserFollowing: React.FC<UserFollowerProps> = ({ FullName, UserName, ProfileImage }) => {
+const UserFollowing: React.FC<UserFollowingProps> = ({ FullName, UserName, ProfileImage }) => {
     return (
         <div className='user-following-container'>
             {FullName.map((fullName, index) => (

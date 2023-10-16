@@ -1,0 +1,106 @@
+/* USER PROFILE CONTAINER DIV TAG */
+
+.user-profile-header-container {
+    color: white;
+}
+
+/* USER PROFILE HEADER TAG */
+
+.user-profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background: linear-gradient(to bottom, #333 19%, #111 19%);
+    border-radius: 10px;
+}
+
+/* TOP OF THE HEADER TAG */
+
+.user-profile-header-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.user-profile-avatar img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #333;
+    padding: 10px;
+}
+
+.user-profile-header-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+}
+
+/* BODY OF THE HEADER TAG */
+
+.user-profile-header-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0;
+    width: 100%;
+}
+
+/* FULL NAME */
+
+.user-profile-header-full-name {
+    margin-bottom: 10px;
+}
+
+/* BIO */
+
+.user-profile-header-bio {
+    color: #fefefe;
+}
+
+/* DETAIL */
+
+.user-profile-header-detail {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 50%;
+    padding: 15px 7px;
+}
+
+.user-profile-header-country,
+.user-profile-header-join {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile-header-country path,
+.user-profile-header-join path {
+    fill: #a3a3a3;
+}
+
+.user-profile-header-country svg,
+.user-profile-header-join svg {
+    margin-right: 5px;
+}
+
+/* WORK */
+
+.user-profile-header-work {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 0.5px solid #333;
+}
+
+.user-profile-header-work strong {
+    padding: 5px 0;
+}

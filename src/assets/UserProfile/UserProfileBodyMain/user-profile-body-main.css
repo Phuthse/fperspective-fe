@@ -1,0 +1,86 @@
+/* MAIN POSTS */
+
+.user-profile-body-main-post {
+    background: #111;
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+/* TOP OF POST (PROFILE IMAGE + DATE POSTED + USER NAME */
+
+.user-profile-body-main-post-top {
+    display: flex;
+}
+
+/* PROFILE IMAGE */
+
+.user-profile-body-main-post-top img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* USER NAME AND DATE POSTED */
+
+.user-profile-body-main-post-top-detail {
+    padding: 0 10px;
+    color: white;
+}
+
+.user-profile-body-main-post-top-detail p {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #acacac;
+}
+
+/* BODY OF POST (TITLE + TAGS + BOTTOM) */
+
+/* POST TITLE */
+
+.user-profile-body-main-post-body {
+    padding-left: 50px;
+}
+
+.user-profile-body-main-post-body-title {
+    padding: 7px 0;
+}
+
+.user-profile-body-main-post-body-title a {
+    text-decoration: none;
+    color: #efefef;
+}
+
+.user-profile-body-main-post-body-title a:hover {
+    color: blueviolet;
+}
+
+/* POST TAGS */
+
+.user-profile-body-main-post-body-tags {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0px 0px 5px -3px;
+}
+
+.user-profile-body-main-post-body-tags a {
+    padding: 5px 7px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #efefef;
+}
+
+.user-profile-body-main-post-body-tags a:hover {
+    background: #333;
+}
+
+/* BODY BOTTOM */
+
+.user-profile-body-main-post-body-bottom {
+    display: flex;
+    align-items: center;
+}

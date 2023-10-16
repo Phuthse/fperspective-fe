@@ -1,0 +1,179 @@
+/* LOGIN FORM CONTAINER */
+
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+/* LOGIN FORM HEAD */
+
+.login-form-container h1 {
+    color: white;
+    font-size: 30px;
+}
+
+.login-form-header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* LOGIN METHOD */
+
+.login-form-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+/* GOOGLE LOGIN METHOD */
+
+.login-form-action-provider {
+    width: 80%;
+}
+
+.google-login-button {
+    background-color: transparent !important;
+    color: white !important;
+    border: 1px solid white !important;
+    border-radius: 5px !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;   
+}
+
+.google-login-button:hover {
+    background-color: #333 !important; 
+}
+
+.google-login-button span {
+    width: 100% !important;
+    align-items: center !important;
+}
+
+.google-login-button div{
+    background-color: transparent !important;
+    align-items: center !important;
+}
+
+
+/* DIVIDER BETWEEN 2 METHODs */
+
+.login-form-divider-container {
+    align-items: center;
+    text-align: center;
+}
+
+.login-form-divider {
+    width: 100%;
+    background: #e5e5e5;
+    margin: 20px 0;
+}
+
+.login-form-label {
+    color: white;
+    background-color: transparent;
+}
+
+
+/* USER NAME AND PASSWORD METHOD */
+
+.login-form-action-user-name {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 80%;
+}
+
+.login-form-action-user-name {
+    color: white;
+}
+
+/* USER NAME AND PASSOWORD TEXTFIELD */
+
+.login-form-user-name,
+.login-form-password {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 6px 0;
+}
+
+.login-form-textfield {
+    padding: 8px !important; 
+    margin: 5px 0 !important;
+    background: transparent !important;
+    border: 1px solid #444 !important;
+    border-radius: 5px !important;
+    width: 100% !important;
+    height: 38px !important;
+    color: white !important;
+}
+
+/* REMEMBER ME CHECK BOX AND FORGOT PASSWORD */
+
+.login-form-extra {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+.login-form-extra div {
+    display: flex;
+}
+
+.login-form-extra label {
+    margin-left: 5px;
+}
+
+.login-form-extra a {
+    text-decoration: none;
+    color: aqua;
+}
+
+.login-form-extra a:hover {
+    text-decoration: underline;
+}
+
+/* LOGIN BUTTON */
+
+.login-button {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.login-button input {
+    width: 100%;
+    height: 43px;
+    background: transparent;
+    border: 0.5px solid #555;
+    color: white;
+    cursor: pointer;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.login-button input:hover {
+    background: #111;
+}
+
+/* CREATE ACCOUNT BUTTON */
+
+.login-form-register a {
+    text-decoration: none;
+    color: cyan;
+}
+
+.login-form-register a:hover {
+    text-decoration: underline
+}

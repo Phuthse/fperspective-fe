@@ -1,0 +1,19 @@
+/* USER BOOKMARK HEADER */
+
+.user-bookmark-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    width: 1450px;
+}
+
+/* HEADER SEARCH BOX */ 
+
+.user-bookmark-header input {
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.user-bookmark-header input:focus {
+    outline: none;
+}

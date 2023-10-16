@@ -1,0 +1,31 @@
+/* USER PROFILE BODY SIDE BAR */
+
+.user-profile-body-side {
+    background: #111;
+    border-radius: 10px;
+    padding: 14px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 210px
+}
+
+.side-info {
+    display: flex;
+    align-items: center;
+    padding: 9px;
+}
+
+.side-info svg {
+    margin-right: 7px;
+}
+
+.side-info path {
+    fill: #acacac;
+}
+
+.side-info span {
+    color: #e5e5e5;
+    font-size: 15px;
+}
