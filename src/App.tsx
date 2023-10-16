@@ -11,6 +11,7 @@ import ForgotPasswordForm from "./assets/Login and Register/forgot-password";
 import UserProfile from "./assets/UserProfile/user-profile";
 import UserBookmark from "./assets/UserBookmark/user-bookmark";
 import SearchPage from "./assets/SearchPage/search-page";
+import NotificationPage from "./assets/NotificationPage/notification-page";
 import { BrowserRouter } from "react-router-dom";
 
 
@@ -26,6 +27,7 @@ function App() {
             <Route path='user-profile' element={<UserProfile />} />
             <Route path='bookmark' element={<UserBookmark />} />
             <Route path='search' element={<SearchPage />} />
+            <Route path='notification' element={<NotificationPage />} />
           </Route>
 
           <Route path='login' element={<LoginForm />} />
