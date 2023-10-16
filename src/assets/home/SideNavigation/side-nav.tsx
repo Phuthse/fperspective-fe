@@ -14,7 +14,7 @@ const SideNav: React.FC = () => {
       <div className="side-nav-links">
         <a href='#'><HomeIcon className='side-nav-icon' /> HOME </a>
         <Link to='/bookmark'><BookmarkIcon className='side-nav-icon' />Bookmark</Link>
-        <a href='#'><UserIcon className='side-nav-icon' /> Tags </a>
+        <a href='/tags'><UserIcon className='side-nav-icon' /> Tags </a>
         <a href='#'><svg viewBox="0 0 44 44" width="24" height="24">
           <g className="icon-container">
             <path fill="white" d="M36.017 24.181L21.345 9.746C20.687 9.087 19.823 9 18.96 9H8.883C7.029 9 6 10.029 6 11.883v10.082c0 .861.089 1.723.746 2.38L21.3 39.017a3.287 3.287 0 004.688 0l10.059-10.088c1.31-1.312 1.28-3.438-.03-4.748zm-23.596-8.76a1.497 1.497 0 11-2.118-2.117 1.497 1.497 0 012.118 2.117z"></path>
