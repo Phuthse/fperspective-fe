@@ -1,0 +1,12 @@
+/* NOTIFICATION PAGE HEADER */
+
+.notification-page-header {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.notification-page-header h1 {
+    color: #efefef;
+    margin-left: 10px;
+}

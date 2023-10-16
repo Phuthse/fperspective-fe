@@ -1,27 +1,22 @@
 import React from 'react';
 import './notification-page.css';
-import { SearchPageProvider } from '../SearchPage/search-page-context';
-import SearchPageTop from '../SearchPage/SearchPageTop/search-page-top';
-import SearchPageSide from '../SearchPage/SearchPageSide/search-page-side';
-import SearchPageMain from '../SearchPage/SearchPageMain/search-page-main';
-
+import { NotificationPageProvider } from './notification-page-context';
+import NotificationPageTop from './NofiticationPageTop/notification-page-top';
+import NotificationPageSide from './NotificationPageSide/notification-page-side';
+import NotificationPageMain from './NotificationPageMain/notification-page-main';
 
 const NotificationPage: React.FC = () => {
 
     return (
-        <div className='search-page-container'>
+        <div className='notification-page-container'>
 
-            <header className='notification-page-header'>
+            <NotificationPageTop />
 
-                <h1>Notification</h1>
-
-            </header>
-
-            <div className='search-page-body'>
-                <SearchPageProvider>
-                    <SearchPageSide />
-                    <SearchPageMain />
-                </SearchPageProvider>
+            <div className='notification-page-body'>
+                <NotificationPageProvider>
+                    <NotificationPageSide />
+                    <NotificationPageMain />
+                </NotificationPageProvider>
             </div>
         </div>
     );

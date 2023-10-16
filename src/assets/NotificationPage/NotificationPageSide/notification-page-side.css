@@ -1,0 +1,35 @@
+/* BODY SIDE */
+
+.notification-page-body {
+    display: flex;
+}
+
+.notification-page-side ul {
+    padding: 10px;
+    width: 200px;
+    list-style-type: none;
+}
+
+.notification-page-side li {
+    margin: 3px 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.notification-page-side li:hover {
+    background: #222;
+    border-radius: 5px;
+}
+
+.notification-page-side-option {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    display: block;
+    padding: 13px 8px;
+}
+
+.active {
+    background: #222;
+    border-radius: 5px;
+}
