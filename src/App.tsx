@@ -12,6 +12,7 @@ import UserProfile from "./assets/UserProfile/user-profile";
 import UserBookmark from "./assets/UserBookmark/user-bookmark";
 import SearchPage from "./assets/SearchPage/search-page";
 import NotificationPage from "./assets/NotificationPage/notification-page";
+import TagsPage from "./assets/TagsPage/tags-page";
 import { BrowserRouter } from "react-router-dom";
 
 
@@ -28,6 +29,7 @@ function App() {
             <Route path='bookmark' element={<UserBookmark />} />
             <Route path='search' element={<SearchPage />} />
             <Route path='notification' element={<NotificationPage />} />
+            <Route path='tag-page' element={<TagsPage />} />
           </Route>
 
           <Route path='login' element={<LoginForm />} />

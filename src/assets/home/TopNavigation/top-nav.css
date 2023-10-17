@@ -37,7 +37,7 @@ nav {
 }
 
 .nav-user-icon {
-    margin-left: 30px;
+    margin-left: 15px;
 }
 
 .search-box {
@@ -47,11 +47,8 @@ nav {
     border: 0.5px solid #333;
     display: flex;
     align-items: center;
-    padding: 0 15px
-}
-
-.search-box img {
-    width: 18px;
+    padding: 0 15px;
+    margin-right: 10px;
 }
 
 .search-box input {
@@ -61,6 +58,18 @@ nav {
     outline: none;
     border: 0;
 }
+
+.top-nav-search-button {
+    background-color: transparent;
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.top-nav-search-button svg {
+    fill: #efefef;
+}
+
 
 .dropdown-content {
     display: none;
@@ -99,4 +108,3 @@ nav {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
-
