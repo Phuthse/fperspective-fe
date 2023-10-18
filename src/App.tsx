@@ -14,6 +14,7 @@ import SearchPage from "./assets/SearchPage/search-page";
 import NotificationPage from "./assets/NotificationPage/notification-page";
 import TagsPage from "./assets/TagsPage/tags-page";
 import AdminDashboard from "./assets/Dashboard/AdminDashboard/admin-dashboard";
+import UserAnalytic from "./assets/UserAnalytics/user-analytic";
 import { BrowserRouter } from "react-router-dom";
 
 
@@ -33,6 +34,7 @@ function App() {
             <Route path='notification' element={<NotificationPage />} />
             <Route path='tag-page' element={<TagsPage />} />
             <Route path="admin-dashboard" element={<AdminDashboard />} />
+            <Route path="user-analytic" element={<UserAnalytic />} />
           </Route>
 
           <Route path='login' element={<LoginForm />} />

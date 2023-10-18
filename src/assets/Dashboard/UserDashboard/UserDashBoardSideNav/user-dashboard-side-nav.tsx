@@ -1,6 +1,7 @@
 import React from 'react';
 import './user-dashboard-side-nav.css';
 import { useUserDashboard } from '../user-dashboard-context';
+import { Link } from 'react-router-dom';
 
 
 type UserDashboardSideNavProps = {
@@ -26,7 +27,8 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
         <div className="user-dashboard-left-nav">
             <nav>
                 <ul className="user-dashboard-left-nav-list">
-                    <li className={`user-dashboard-left-nav-link ${selectedNavItem === 'posts' ? 'active' : ''}`}
+                    <li
+                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'posts' ? 'active' : ''}`}
                         onClick={() => setSelectedNavItem('posts')}
                     >
                         <a>
@@ -75,14 +77,12 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
                         </a>
                     </li>
 
-                    {/* <li>
-                        <a
-                            className="user-dashboard-left-nav-link"
-                            href="/dashboard/analytics"
-                        >
-                            Analytics (Maybe)
-                        </a>
-                    </li> */}
+                    <li
+                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'analytic' ? 'active' : ''}`}
+                        onClick={() => setSelectedNavItem('analytic')}
+                    >
+                        <Link to='/user-analytic'>Analytic</Link>
+                    </li>
 
                 </ul>
             </nav>
