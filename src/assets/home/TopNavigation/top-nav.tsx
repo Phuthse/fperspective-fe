@@ -32,10 +32,10 @@ const TopNav: React.FC = () => {
           <img src='src/images/profile-pic.png' />
           <div className="dropdown-content">
             <Link to='/create-blog'>Write a Blog</Link>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/user-dashboard">Dashboard</Link>
+            <Link to="/admin-dashboard">Admin Dashboard</Link>
             <Link to='/login'>Login</Link>
             <Link to='/sign-up'>Sign up</Link>
-            <Link to='/user-profile'>User Profile (General)</Link>
             <a href='#'>Logout</a>
           </div>
         </div>

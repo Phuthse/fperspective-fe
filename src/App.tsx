@@ -13,6 +13,7 @@ import UserBookmark from "./assets/UserBookmark/user-bookmark";
 import SearchPage from "./assets/SearchPage/search-page";
 import NotificationPage from "./assets/NotificationPage/notification-page";
 import TagsPage from "./assets/TagsPage/tags-page";
+import AdminDashboard from "./assets/Dashboard/AdminDashboard/admin-dashboard";
 import { BrowserRouter } from "react-router-dom";
 
 
@@ -24,13 +25,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path="dashboard" element={<UserDashboard />} />
+            <Route path="user-dashboard" element={<UserDashboard />} />
             <Route path='create-blog' element={<CreateBlog />} />
             <Route path='user-profile' element={<UserProfile />} />
             <Route path='bookmark' element={<UserBookmark />} />
             <Route path='search' element={<SearchPage />} />
             <Route path='notification' element={<NotificationPage />} />
             <Route path='tag-page' element={<TagsPage />} />
+            <Route path="admin-dashboard" element={<AdminDashboard />} />
           </Route>
 
           <Route path='login' element={<LoginForm />} />

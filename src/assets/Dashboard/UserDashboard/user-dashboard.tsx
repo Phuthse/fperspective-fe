@@ -14,7 +14,6 @@ const UserDashboard: React.FC = () => {
                     <UserOverview
                         TotalPosts={100}
                         TotalUpvotes={2530}
-                        TotalCredits={3999}
                     />
 
                     <div className='user-dashboard-nav-content-container'>
@@ -27,11 +26,11 @@ const UserDashboard: React.FC = () => {
                                 NumberOfFollowingUsers={85}
                                 NumberOfHiddenTags={8}
                             />
-                            <UserDashoardContent/>
+                            <UserDashoardContent />
                         </UserDashboardProvider>
 
                     </div>
-                    
+
 
                 </div>
 

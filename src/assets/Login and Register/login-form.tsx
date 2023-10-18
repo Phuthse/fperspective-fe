@@ -23,8 +23,14 @@ const LoginForm: React.FC = () => {
 
     try {
       const response = await axios.post('/api/login', formData);
-      // Handle the response (e.g., set user state or redirect)
-      console.log('Login Successful', response.data);
+      // Check the response from the server
+      if (response.status === 200) {
+        // Login successful, handle the response (e.g., set user state or redirect)
+        console.log('Login Successful', response.data);
+      } else {
+        // Handle other cases, e.g., display an error message
+        console.error('Login Failed', response.data);
+      }
     } catch (error) {
       // Handle login error (e.g., show an error message)
       console.error('Login Error', error);

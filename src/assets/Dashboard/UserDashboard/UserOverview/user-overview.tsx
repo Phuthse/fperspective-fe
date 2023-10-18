@@ -5,7 +5,6 @@ import './user-overview.css';
 type UserOverviewProps = {
     TotalUpvotes: number;
     TotalPosts: number;
-    TotalCredits: number;
 }
 
 const formatNumber = (number: number): string => {
@@ -25,7 +24,6 @@ const formatNumber = (number: number): string => {
 const UserOverview: React.FC<UserOverviewProps> = ({
     TotalUpvotes,
     TotalPosts,
-    TotalCredits
 }) => {
 
     return (
@@ -43,12 +41,6 @@ const UserOverview: React.FC<UserOverviewProps> = ({
                         {formatNumber(TotalPosts)}
                     </strong>
                     <span>Total Posts</span>
-                </div>
-                <div className="user-total-credit">
-                    <strong>
-                        {TotalCredits}
-                    </strong>
-                    <span>Total Credits</span>
                 </div>
             </div>
         </header>
