@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import './admin-dashboard-post.css';
-import LineChartPostWeek from '../PostCharts/PostWeek/admin-dashboard-post-chart-week';
-import LineChartPostMonth from '../PostCharts/PostMonth/admin-dashboard-post-chart-month';
-import LineChartPostYear from '../PostCharts/PostYear/admin-dashboard-post-chart-year';
+import './user-analytic-post.css';
+import LineChartPostWeek from '../PostCharts/PostWeek/user-analytic-post-chart-week';
+import LineChartPostMonth from '../PostCharts/PostMonth/user-analytic-post-chart-month';
+import LineChartPostYear from '../PostCharts/PostYear/user-analytic-post-chart-year';
 
 interface ChartOption {
     id: number;
     label: string;
 }
 
-const AdminDashoardPostCharts: React.FC = () => {
+const UserAnalyticPostCharts: React.FC = () => {
 
     const [selectedChart, setSelectedChart] = useState<JSX.Element | null>(<LineChartPostWeek />);
     const [selectedOption, setSelectedOption] = useState<number>(1);
@@ -84,11 +84,11 @@ const AdminDashoardPostCharts: React.FC = () => {
 
     return (
         <>
-            <div className="admin-dashboard-post-filter">
+            <div className="user-analytic-post-filter">
                 {chartOptions.map(option => (
                     <a
                         key={option.id}
-                        className={`admin-dashboard-post-filter-option${selectedOption === option.id ? ' selected-filter' : ''}`}
+                        className={`user-analytic-post-filter-option${selectedOption === option.id ? ' selected-filter' : ''}`}
                         onClick={() => handleChartChange(option.id)}
                     >
                         {option.label}
@@ -101,4 +101,4 @@ const AdminDashoardPostCharts: React.FC = () => {
     );
 };
 
-export default AdminDashoardPostCharts;
+export default UserAnalyticPostCharts;
