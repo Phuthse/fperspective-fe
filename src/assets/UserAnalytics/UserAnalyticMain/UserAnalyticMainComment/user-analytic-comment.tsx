@@ -87,11 +87,11 @@ const UserAnalyticCommentCharts: React.FC = () => {
 
     return (
         <>
-            <div className="admin-dashboard-user-filter">
+            <div className="user-analytic-comment-filter">
                 {chartOptions.map(option => (
                     <a
                         key={option.id}
-                        className={`admin-dashboard-user-filter-option${selectedOption === option.id ? ' selected-filter' : ''}`}
+                        className={`user-analytic-comment-filter-option${selectedOption === option.id ? ' selected-filter' : ''}`}
                         onClick={() => handleChartChange(option.id)}
                     >
                         {option.label}
