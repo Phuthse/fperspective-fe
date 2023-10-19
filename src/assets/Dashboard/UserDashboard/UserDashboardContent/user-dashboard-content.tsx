@@ -139,7 +139,6 @@ const UserDashoardContent: React.FC = () => {
             {selectedNavItem === 'analytic' && (
                 <div>
                     <h2>Analytic</h2>
-
                 </div>
             )}
 

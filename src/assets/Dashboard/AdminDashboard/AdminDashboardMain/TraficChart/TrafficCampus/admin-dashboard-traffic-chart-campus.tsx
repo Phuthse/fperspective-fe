@@ -12,7 +12,7 @@ const data = [
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF', '#FF0080'];
 
-const PieChartUser: React.FC = () => {
+const PieChartTrafficCampus: React.FC = () => {
     const total = data.reduce((acc, actor) => acc + actor.value, 0);
 
     const dataWithPercentage = data.map((actor) => ({
@@ -26,8 +26,8 @@ const PieChartUser: React.FC = () => {
                 data={dataWithPercentage}
                 cx="50%"
                 cy="50%"
-                innerRadius={60}
-                outerRadius={80}
+                innerRadius={90}
+                outerRadius={120}
                 fill="#8884d8"
                 dataKey="value"
                 label={({ name, percentage }) => `${name} (${percentage})`}
@@ -49,4 +49,4 @@ const PieChartUser: React.FC = () => {
     );
 };
 
-export default PieChartUser;
+export default PieChartTrafficCampus;

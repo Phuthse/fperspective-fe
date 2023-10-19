@@ -2,6 +2,7 @@ import React from 'react';
 import './user-setting-main.css';
 import { useUserSetting } from '../user-setting-context';
 import UserSettingProfile from './UserSettingProfile/user-setting-profile';
+import UserSettingAccount from './UserSettingAccount/user-setting-account';
 
 
 const UserSettingMain: React.FC = () => {
@@ -20,7 +21,7 @@ const UserSettingMain: React.FC = () => {
 
             {selectedNavItem === 'account' && (
                 <>
-                    <h1>Account</h1>
+                    <UserSettingAccount />
                 </>
             )}
 

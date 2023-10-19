@@ -35,7 +35,25 @@ const AdminDashboardSideNav: React.FC = () => {
                         onClick={() => setSelectedNavItem('user')}
                     >
                         <a>
-                            Users
+                            New Users
+                        </a>
+                    </li>
+
+                    <li
+                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'trafic' ? 'dashboard-action' : ''}`}
+                        onClick={() => setSelectedNavItem('trafic')}
+                    >
+                        <a>
+                            Current Users
+                        </a>
+                    </li>
+
+                    <li
+                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'major' ? 'dashboard-action' : ''}`}
+                        onClick={() => setSelectedNavItem('major')}
+                    >
+                        <a>
+                            Major
                         </a>
                     </li>
 

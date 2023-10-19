@@ -4,7 +4,6 @@ import LineChartUserWeek from '../UserCharts/UserWeek/admin-dashboard-user-chart
 import LineChartUserMonth from '../UserCharts/UserMonth/admin-dashboard-user-chart-month';
 import LineChartUserYear from '../UserCharts/UserYear/admin-dashboard-user-chart-year';
 import LineChartUserAll from '../UserCharts/UserAll/admin-dashboard-user-chart-all';
-import PieChartUser from '../UserCharts/UserPie/admin-dashboard-user-chart-pie';
 
 interface ChartOption {
     id: number;
@@ -21,7 +20,6 @@ const AdminDashoardUserCharts: React.FC = () => {
         { id: 2, label: 'This month' },
         { id: 3, label: 'This year' },
         { id: 4, label: 'All time' },
-        { id: 5, label: 'Trafic' },
     ];
 
     const handleChartChange = (chartNumber: number) => {
@@ -39,8 +37,6 @@ const AdminDashoardUserCharts: React.FC = () => {
                 return <LineChartUserYear />;
             case 4:
                 return <LineChartUserAll />;
-            case 5:
-                return <PieChartUser />
             default:
                 return <LineChartUserWeek />;
         }
@@ -49,8 +45,6 @@ const AdminDashoardUserCharts: React.FC = () => {
     useEffect(() => {
         if (selectedOption === 4) {
             setDateRange("all time");
-        } else if (selectedOption === 5) {
-            setDateRange("percentage");
         } else {
             const currentDate = new Date();
             let startDate = new Date();
