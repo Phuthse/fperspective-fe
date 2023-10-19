@@ -21,7 +21,6 @@ const UserAnalyticCommentCharts: React.FC = () => {
         { id: 2, label: 'This month' },
         { id: 3, label: 'This year' },
         { id: 4, label: 'All time' },
-        { id: 5, label: 'Trafic' },
     ];
 
     const handleChartChange = (chartNumber: number) => {

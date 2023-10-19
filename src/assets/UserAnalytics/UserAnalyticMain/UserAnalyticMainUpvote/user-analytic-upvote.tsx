@@ -22,7 +22,6 @@ const UserAnalyticUpvoteCharts: React.FC = () => {
         { id: 2, label: 'This month' },
         { id: 3, label: 'This year' },
         { id: 4, label: 'All time' },
-        { id: 5, label: 'Trafic' },
     ];
 
     const handleChartChange = (chartNumber: number) => {
@@ -88,7 +87,7 @@ const UserAnalyticUpvoteCharts: React.FC = () => {
 
     return (
         <>
-            <div className=user-analytic-upvote-filter">
+            <div className="user-analytic-upvote-filter">
                 {chartOptions.map(option => (
                     <a
                         key={option.id}
