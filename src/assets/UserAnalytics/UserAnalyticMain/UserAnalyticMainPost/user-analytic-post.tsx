@@ -84,11 +84,11 @@ const UserAnalyticPostCharts: React.FC = () => {
 
     return (
         <>
-            <div className="admin-dashboard-post-filter">
+            <div className="user-analytic-post-filter">
                 {chartOptions.map(option => (
                     <a
                         key={option.id}
-                        className={`admin-dashboard-post-filter-option${selectedOption === option.id ? ' selected-filter' : ''}`}
+                        className={`user-analytic-post-filter-option${selectedOption === option.id ? ' selected-filter' : ''}`}
                         onClick={() => handleChartChange(option.id)}
                     >
                         {option.label}
