@@ -30,7 +30,7 @@
     cursor: pointer;
 }
 
-.active{
+.dashboard-action {
    background: #222;
    border-radius: 10px;
 }

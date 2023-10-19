@@ -1,8 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './create-blog-tags.css'
+import './create-blog-tags.css';
 
-const CreateBlogTags: React.FC = () => {
-    const [tags, setTags] = useState<string[]>([]);
+interface CreateBlogTagsProps {
+    setTags: (tags: string[]) => void;
+}
+
+const CreateBlogTags: React.FC<CreateBlogTagsProps> = ({ setTags }) => {
+    const [tags, setTagsState] = useState<string[]>([]);
     const [inputValue, setInputValue] = useState<string>('');
     const [placeholder, setPlaceholder] = useState<string>('Add up to 4 tags...');
     const [showOptions, setShowOptions] = useState<boolean>(false);
@@ -18,20 +22,23 @@ const CreateBlogTags: React.FC = () => {
 
     const handleOptionClick = (option: string) => {
         if (tags.length < 4 && !tags.includes(option)) {
-            setTags([...tags, option]);
+            const updatedTags = [...tags, option];
+            setTags(updatedTags);
+            setTagsState(updatedTags);
             setInputValue('');
             if (tags.length === 3) {
                 setPlaceholder('Max tags reached');
             } else if (tags.length >= 0) {
-                setPlaceholder('Add another...')
+                setPlaceholder('Add another...');
             }
         }
         hideOptions();
     };
 
     const handleTagRemove = (tagToRemove: string) => {
-        const updatedTags = tags.filter(tag => tag !== tagToRemove);
+        const updatedTags = tags.filter((tag) => tag !== tagToRemove);
         setTags(updatedTags);
+        setTagsState(updatedTags);
     };
 
     const showOptionsOnInputClick = () => {
@@ -63,9 +70,9 @@ const CreateBlogTags: React.FC = () => {
     }, []);
 
     return (
-        <div className='post-tags'>
-            <ul className='current-tags'>
-                {tags.map(tag => (
+        <div className="post-tags">
+            <ul className="current-tags">
+                {tags.map((tag) => (
                     <li key={tag}>
                         {tag}
                         <button onClick={() => handleTagRemove(tag)}>X</button>
@@ -73,7 +80,7 @@ const CreateBlogTags: React.FC = () => {
                 ))}
                 <li>
                     <input
-                        type='text'
+                        type="text"
                         placeholder={placeholder}
                         value={inputValue}
                         onChange={handleInputChange}
@@ -81,10 +88,10 @@ const CreateBlogTags: React.FC = () => {
                         ref={inputRef}
                     />
                     {showOptions && (
-                        <ul className='tag-options' ref={optionsRef}>
+                        <ul className="tag-options" ref={optionsRef}>
                             {options
-                                .filter(option => !tags.includes(option))
-                                .map(option => (
+                                .filter((option) => !tags.includes(option))
+                                .map((option) => (
                                     <li key={option} onClick={() => handleOptionClick(option)}>
                                         {option}
                                     </li>

@@ -34,6 +34,7 @@ const TopNav: React.FC = () => {
             <Link to='/create-blog'>Write a Blog</Link>
             <Link to="/user-dashboard">Dashboard</Link>
             <Link to="/admin-dashboard">Admin Dashboard</Link>
+            <Link to='/setting'>Setting</Link>
             <Link to='/login'>Login</Link>
             <Link to='/sign-up'>Sign up</Link>
             <a href='#'>Logout</a>

@@ -13,7 +13,7 @@ const AdminDashboardSideNav: React.FC = () => {
             <nav>
                 <ul className="admin-dashboard-left-nav-list">
                     <li
-                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'posts' ? 'active' : ''}`}
+                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'posts' ? 'dashboard-action' : ''}`}
                         onClick={() => setSelectedNavItem('posts')}
                     >
                         <a>
@@ -22,7 +22,7 @@ const AdminDashboardSideNav: React.FC = () => {
                     </li>
 
                     <li
-                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'tag' ? 'active' : ''}`}
+                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'tag' ? 'dashboard-action' : ''}`}
                         onClick={() => setSelectedNavItem('tag')}
                     >
                         <a>
@@ -31,7 +31,7 @@ const AdminDashboardSideNav: React.FC = () => {
                     </li>
 
                     <li
-                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'user' ? 'active' : ''}`}
+                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'user' ? 'dashboard-action' : ''}`}
                         onClick={() => setSelectedNavItem('user')}
                     >
                         <a>
