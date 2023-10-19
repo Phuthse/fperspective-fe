@@ -25,7 +25,7 @@ export const UserAnalyticProvider: React.FC<UserAnalyticProviderProps> = ({ chil
 export const useUserAnalytic = () => {
     const context = useContext(UserAnalyticContext);
     if (context === undefined) {
-        throw new Error('!');
+        throw new Error('useUserAnalytic must be used within a UserAnalyticProvider!');
     }
     return context;
 };
