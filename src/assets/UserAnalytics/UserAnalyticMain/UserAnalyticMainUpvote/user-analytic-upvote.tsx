@@ -88,11 +88,11 @@ const UserAnalyticUpvoteCharts: React.FC = () => {
 
     return (
         <>
-            <div className="admin-dashboard-user-filter">
+            <div className=user-analytic-upvote-filter">
                 {chartOptions.map(option => (
                     <a
                         key={option.id}
-                        className={`admin-dashboard-user-filter-option${selectedOption === option.id ? ' selected-filter' : ''}`}
+                        className={`user-analytic-upvote-filter-option${selectedOption === option.id ? ' selected-filter' : ''}`}
                         onClick={() => handleChartChange(option.id)}
                     >
                         {option.label}
