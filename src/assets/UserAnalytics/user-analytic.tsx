@@ -1,11 +1,17 @@
 import React from 'react';
 import './user-analytic.css';
+import { UserAnalyticProvider } from './user-analytic-context';
+import UserAnalyticSideNav from './UserAnalyticSide/user-analytic-side';
+import UserAnalyticContent from './UserAnalyticMain/user-analytic-main';
 
 const UserAnalytic: React.FC = () => {
 
     return (
         <div className="user-analytic-container">
-            <h1>Analytic</h1>
+                <UserAnalyticProvider>
+                    <UserAnalyticSideNav />
+                    <UserAnalyticContent />
+                </UserAnalyticProvider>
         </div>
     );
 };

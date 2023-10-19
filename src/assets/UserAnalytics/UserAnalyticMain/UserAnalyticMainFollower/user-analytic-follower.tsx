@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import './admin-dashboard-post.css';
-import LineChartPostWeek from '../PostCharts/PostWeek/admin-dashboard-post-chart-week';
-import LineChartPostMonth from '../PostCharts/PostMonth/admin-dashboard-post-chart-month';
-import LineChartPostYear from '../PostCharts/PostYear/admin-dashboard-post-chart-year';
+import React, { useState, useEffect } from 'react';
+import './user-analytic-follower.css';
+import LineChartFollowerWeek from '../FollowerCharts/FollowerWeek/user-analytic-follower-chart-week';
+import LineChartFollowerMonth from '../FollowerCharts/FollowerMonth/user-analytic-follower-chart-month';
+import LineChartFollowerYear from '../FollowerCharts/FollowerYear/user-analytic-follower-chart-year';
+import LineChartFollowerAll from '../FollowerCharts/FollowerAll/user-analytic-follower-chart-all';
 
 interface ChartOption {
     id: number;
     label: string;
 }
 
-const AdminDashoardPostCharts: React.FC = () => {
-
-    const [selectedChart, setSelectedChart] = useState<JSX.Element | null>(<LineChartPostWeek />);
+const UserAnalyticFollowerCharts: React.FC = () => {
+    const [selectedChart, setSelectedChart] = useState<JSX.Element | null>(<LineChartFollowerWeek />);
     const [selectedOption, setSelectedOption] = useState<number>(1);
     const [dateRange, setDateRange] = useState<string>('');
 
@@ -19,7 +19,8 @@ const AdminDashoardPostCharts: React.FC = () => {
         { id: 1, label: 'This week' },
         { id: 2, label: 'This month' },
         { id: 3, label: 'This year' },
-        { id: 4, label: ' All time' },
+        { id: 4, label: 'All time' },
+        { id: 5, label: 'Trafic' },
     ];
 
     const handleChartChange = (chartNumber: number) => {
@@ -30,21 +31,23 @@ const AdminDashoardPostCharts: React.FC = () => {
     const getSelectedChartComponent = (chartNumber: number): JSX.Element => {
         switch (chartNumber) {
             case 1:
-                return <LineChartPostWeek />;
+                return <LineChartFollowerWeek />;
             case 2:
-                return <LineChartPostMonth />;
+                return <LineChartFollowerMonth />;
             case 3:
-                return <LineChartPostYear />;
+                return <LineChartFollowerYear />;
             case 4:
-                return <LineChartPostWeek />
+                return <LineChartFollowerAll />;
             default:
-                return <LineChartPostWeek />;
+                return <LineChartFollowerWeek />;
         }
     };
 
     useEffect(() => {
         if (selectedOption === 4) {
             setDateRange("all time");
+        } else if (selectedOption === 5) {
+            setDateRange("percentage");
         } else {
             const currentDate = new Date();
             const startDate = new Date();
@@ -81,24 +84,23 @@ const AdminDashoardPostCharts: React.FC = () => {
         return ` ${month} ${year}`;
     }
 
-
     return (
         <>
-            <div className="admin-dashboard-post-filter">
+            <div className="admin-dashboard-user-filter">
                 {chartOptions.map(option => (
                     <a
                         key={option.id}
-                        className={`admin-dashboard-post-filter-option${selectedOption === option.id ? ' selected-filter' : ''}`}
+                        className={`admin-dashboard-user-filter-option${selectedOption === option.id ? ' selected-filter' : ''}`}
                         onClick={() => handleChartChange(option.id)}
                     >
                         {option.label}
                     </a>
                 ))}
-                <h2>Total posts <span>{dateRange}</span></h2>
+                <h2> Total Followers <span>{dateRange}</span></h2>
             </div>
             {selectedChart}
         </>
     );
 };
 
-export default AdminDashoardPostCharts;
+export default UserAnalyticFollowerCharts;
