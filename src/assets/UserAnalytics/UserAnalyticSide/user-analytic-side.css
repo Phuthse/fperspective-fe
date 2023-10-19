@@ -1,27 +1,27 @@
-/* admin Dashboard left navigation */ 
+/* user Analytic left navigation */ 
 
-.admin-dashboard-left-nav {
+.user-analytic-left-nav {
     width: 230px;
 }
 
-.admin-dashboard-left-nav nav{
+.user-analytic-left-nav nav{
     background: black;
     padding: 0;
     padding: 5px;
 }
 
-.admin-dashboard-left-nav-list {
+.user-analytic-left-nav-list {
     list-style: none;
     width: 260px;
     margin-top: 10px;
 }
 
-.admin-dashboard-left-nav-list li{
+.user-analytic-left-nav-list li{
     padding: 13px;
     margin-bottom: 5px;
 }
 
-.admin-dashboard-left-nav-link a{
+.user-analytic-left-nav-link a{
     text-decoration: none;
     color: white;
     font-size: 15px;
@@ -36,12 +36,12 @@
    border-radius: 10px;
 }
 
-.admin-dashboard-left-nav-list li:hover{
+.user-analytic-left-nav-list li:hover{
     background: #333;
     border-radius: 10px;
 }
 
-.admin-dashboard-left-nav-list span {
+.user-analytic-left-nav-list span {
     padding: 5px;
     background: #1a1a1a;
     border-radius: 10px;
