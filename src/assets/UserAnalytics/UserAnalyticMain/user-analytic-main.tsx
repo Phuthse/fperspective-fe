@@ -14,7 +14,7 @@ const UserAnalyticContent: React.FC = () => {
 
     return (
 
-        <div className="admin-dashboard-content">
+        <div className="user-analytic-content">
 
             {/* Display user's recent posts */}
             {selectedNavItem === 'posts' && (
@@ -23,21 +23,21 @@ const UserAnalyticContent: React.FC = () => {
                 </>
             )}
 
-            {/* Display user's followers */}
+            {/* Display user's upvotes */}
             {selectedNavItem === 'upvotes' && (
                 <>
                     <UserAnalyticUpvoteCharts />
                 </>
             )}
 
-            {/* Display user's following tags */}
+            {/* Display user's comments */}
             {selectedNavItem === 'comments' && (
                 <>
                     <UserAnalyticCommentCharts />
                 </>
             )}
 
-            {/* Display user's following tags */}
+            {/* Display user's followers */}
             {selectedNavItem === 'followers' && (
                 <>
                     <UserAnalyticFollowerCharts />
