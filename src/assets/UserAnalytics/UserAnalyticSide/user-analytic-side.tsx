@@ -9,11 +9,11 @@ const UserAnalyticSideNav: React.FC = () => {
     const { selectedNavItem, setSelectedNavItem } = useUserAnalytic();
 
     return (
-        <div className="admin-dashboard-left-nav">
+        <div className="user-analytic-left-nav">
             <nav>
-                <ul className="admin-dashboard-left-nav-list">
+                <ul className="user-analytic-left-nav-list">
                     <li
-                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'posts' ? 'active' : ''}`}
+                        className={`user-analytic-left-nav-link ${selectedNavItem === 'posts' ? 'active' : ''}`}
                         onClick={() => setSelectedNavItem('posts')}
                     >
                         <a>
@@ -22,7 +22,7 @@ const UserAnalyticSideNav: React.FC = () => {
                     </li>
 
                     <li
-                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'upvotes' ? 'active' : ''}`}
+                        className={`user-analytic-left-nav-link ${selectedNavItem === 'upvotes' ? 'active' : ''}`}
                         onClick={() => setSelectedNavItem('upvotes')}
                     >
                         <a>
@@ -31,7 +31,7 @@ const UserAnalyticSideNav: React.FC = () => {
                     </li>
 
                     <li
-                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'comments' ? 'active' : ''}`}
+                        className={`user-analytic-left-nav-link ${selectedNavItem === 'comments' ? 'active' : ''}`}
                         onClick={() => setSelectedNavItem('comments')}
                     >
                         <a>
@@ -40,7 +40,7 @@ const UserAnalyticSideNav: React.FC = () => {
                     </li>
 
                     <li
-                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'followers' ? 'active' : ''}`}
+                        className={`user-analytic-left-nav-link ${selectedNavItem === 'followers' ? 'active' : ''}`}
                         onClick={() => setSelectedNavItem('followers')}
                     >
                         <a>
