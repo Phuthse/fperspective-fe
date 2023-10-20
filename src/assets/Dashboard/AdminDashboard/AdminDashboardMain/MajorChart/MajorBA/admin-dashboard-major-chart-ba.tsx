@@ -20,13 +20,13 @@ const PieChartMajorBA: React.FC = () => {
     }));
 
     return (
-        <PieChart width={600} height={350} >
+        <PieChart width={1000} height={400} >
             <Pie
                 data={dataWithPercentage}
                 cx="50%"
                 cy="50%"
                 innerRadius={80}
-                outerRadius={100} 
+                outerRadius={100}
                 fill="#8884d8"
                 dataKey="value"
                 label={({ fullName, percentage }) => `${fullName} (${percentage})`}

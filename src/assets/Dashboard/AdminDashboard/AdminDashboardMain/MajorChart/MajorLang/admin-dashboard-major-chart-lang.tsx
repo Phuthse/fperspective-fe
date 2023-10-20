@@ -19,7 +19,7 @@ const PieChartMajorLang: React.FC = () => {
     }));
 
     return (
-        <PieChart width={600} height={350} >
+        <PieChart width={1000} height={400} >
             <Pie
                 data={dataWithPercentage}
                 cx="50%"
