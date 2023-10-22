@@ -19,7 +19,7 @@ const UserProfile: React.FC = () => {
   return (
     <div className="container">
 
-      <div className='main-content'>
+      <div className='user-profile-main-content'>
 
         <UserProfileTop
           ProfileImage='https://cdn.vox-cdn.com/thumbor/RcAdlMhw-adDQnJiVWKRPUSP10M=/0x0:2024x1038/1200x800/filters:focal(989x320:1311x642)/cdn.vox-cdn.com/uploads/chorus_image/image/71278865/Screen_Shot_2022_08_23_at_4.22.21_PM.0.png'

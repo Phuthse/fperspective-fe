@@ -8,9 +8,9 @@ import { UserDashboardProvider } from './user-dashboard-context';
 const UserDashboard: React.FC = () => {
     return (
         <>
-            <div className="container">
+            <div className="user-dashboard-container">
 
-                <div className='main-content'>
+                <div className='user-dashboard-main-content'>
                     <UserOverview
                         TotalPosts={100}
                         TotalUpvotes={2530}

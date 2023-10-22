@@ -6,9 +6,6 @@
     box-sizing: border-box;
 }
 
-body {
-    background: black;
-}
 
 /* Right side bar */
 
@@ -25,8 +22,9 @@ body {
 
 /* Middle */
 
-.main-content {
-    flex-basis: 57%;
+.home-page-main-content {
+    flex-basis: 77%;
 }
+
 
 

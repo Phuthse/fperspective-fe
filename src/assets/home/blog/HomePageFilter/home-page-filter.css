@@ -1,0 +1,22 @@
+.home-page-filter {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.home-page-filter a {
+    padding: 7px 10px;
+    text-decoration: none;
+    color: #efefef;
+    margin: 5px;
+}
+
+.home-page-filter a:hover {
+    background: #222;
+    border-radius: 5px;
+}
+
+.selected-home-filter {
+    background: #333;
+    border-radius: 5px;
+}

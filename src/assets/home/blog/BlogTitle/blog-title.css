@@ -1,14 +1,14 @@
-.post-title {
+.home-page-post-title {
     margin-top: 15px;
     font-size: 30px;
 }
 
-.post-title a {
+.home-page-post-title a {
     color: white;
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.post-title a:hover {
+.home-page-post-title a:hover {
     color: blueviolet;
 }

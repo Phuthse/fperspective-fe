@@ -1,18 +1,18 @@
-.tag {
+.home-page-tag {
     text-decoration: none;
     background-color: transparent;
     color: #d4d4d4;
     padding: 4px 7px;
 }
 
-.tag:hover {
+.home-page-tag:hover {
     background-color: #333;
     color: white;
     border-color: #333;
     border-radius: 4px;
 }
 
-.post-tags {
+.home-page-post-tags {
     margin-top: 8px;
     display: flex;
     gap: 13px;

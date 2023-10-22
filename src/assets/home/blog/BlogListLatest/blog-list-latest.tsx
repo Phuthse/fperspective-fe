@@ -7,7 +7,7 @@ type BlogListProps = {
   uri: string;
 };
 
-const BlogList: React.FC<BlogListProps> = ({ uri }) => {
+const BlogListLatest: React.FC<BlogListProps> = ({ uri }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -79,4 +79,4 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
   );
 };
 
-export default BlogList;
+export default BlogListLatest;

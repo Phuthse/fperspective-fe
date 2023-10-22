@@ -9,7 +9,7 @@ const TagList: React.FC<TagListProps> = ({ tagList }) => {
 //   console.log(tagID);
 
   return (
-    <div className="post-tags">
+    <div className="home-page-post-tags">
       {tagList
         .map((tag) => {
             return <BlogTags key={tag.tagId} tag={tag} />;

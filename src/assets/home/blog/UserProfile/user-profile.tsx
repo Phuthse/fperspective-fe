@@ -10,10 +10,10 @@ type UserProfileProps = {
 
 const UserProfile: React.FC<UserProfileProps> = ({ user, time, profileImage }) => {
     return (
-        <div className="user-profile" >
+        <div className="home-page-user-profile" >
             <a href='#'>
                 <img src={profileImage} />
-                <div className='user-info'>
+                <div className='home-page-user-info'>
                     <p>{user.userName}</p>
                     <small>{time}</small>
                 </div>

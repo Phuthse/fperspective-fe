@@ -1,29 +1,32 @@
-.user-profile {
+.home-page-user-profile {
     display: flex;
     align-items: center;
 }
 
-.user-profile a {
+.home-page-user-profile a {
     text-decoration: none;
     display: flex;
     align-items: center;
 }
 
-.user-profile img {
+.home-page-user-profile img {
     width: 40px;
+    height: 40px;
+    object-fit: cover;
     border-radius: 50%;
     margin-right: 10px;
 }
 
-.user-info p {
+.home-page-user-info p {
     color: white;
     font-weight: 600;
 }
 
-.user-info p:hover {
+.home-page-user-info p:hover {
    text-decoration: underline;
 }
 
-.user-info small {
+.home-page-user-info small {
     color: #666;
 }
+
