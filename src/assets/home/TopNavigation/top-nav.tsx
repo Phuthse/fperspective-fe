@@ -31,6 +31,7 @@ const TopNav: React.FC = () => {
         <div className='nav-user-icon'>
           <img src='src/images/profile-pic.png' />
           <div className="dropdown-content">
+            <Link to='#'>Name</Link>
             <Link to='/create-blog'>Write a Blog</Link>
             <Link to="/user-dashboard">Dashboard</Link>
             <Link to="/admin-dashboard">Admin Dashboard</Link>

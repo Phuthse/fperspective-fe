@@ -9,6 +9,7 @@
     text-decoration: none;
     color: #efefef;
     margin: 5px;
+    cursor: pointer;
 }
 
 .home-page-filter a:hover {
@@ -17,6 +18,11 @@
 }
 
 .selected-home-filter {
+    background: #333;
+    border-radius: 5px;
+}
+
+.selected-right-option {
     background: #333;
     border-radius: 5px;
 }

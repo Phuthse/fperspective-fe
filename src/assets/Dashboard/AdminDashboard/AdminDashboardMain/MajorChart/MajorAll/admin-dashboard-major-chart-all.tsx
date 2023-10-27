@@ -38,7 +38,7 @@ const PieChartMajorAll: React.FC = () => {
                 cx="50%"
                 cy="50%"
                 innerRadius={120}
-                outerRadius={150}
+                outerRadius={150}   
                 fill="#8884d8"
                 dataKey="value"
                 label={({ fullName, percentage }) => `${fullName} (${percentage})`}

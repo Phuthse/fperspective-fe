@@ -14,13 +14,11 @@ const HomePageFilter: React.FC<{ onFilterChange: (filter: string) => void }> = (
             <div className='home-page-filter-left'>
                 <a
                     className={`user-dashboard-left-nav-link ${selectedFilter === 'Latest' ? 'selected-home-filter' : ''}`}
-                    href='#'
                     onClick={() => handleFilterChange('Latest')}>
                     Latest
                 </a>
                 <a
                     className={`user-dashboard-left-nav-link ${selectedFilter === 'Top' ? 'selected-home-filter' : ''}`}
-                    href='#'
                     onClick={() => handleFilterChange('Top')}>
                     Top
                 </a>
@@ -31,25 +29,21 @@ const HomePageFilter: React.FC<{ onFilterChange: (filter: string) => void }> = (
                     <>
                         <a
                             className='home-page-filter-right-option'
-                            href='#'
                             onClick={() => handleFilterChange('Week')}>
                             Week
                         </a>
                         <a
                             className='home-page-filter-right-option'
-                            href='#'
                             onClick={() => handleFilterChange('Month')}>
                             Month
                         </a>
                         <a
                             className='home-page-filter-right-option'
-                            href='#'
                             onClick={() => handleFilterChange('Year')}>
                             Year
                         </a>
                         <a
                             className='home-page-filter-right-option'
-                            href='#'
                             onClick={() => handleFilterChange('AllTime')}>
                             All time
                         </a>
