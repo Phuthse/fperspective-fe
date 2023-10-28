@@ -6,12 +6,11 @@ import UpAndDownVoteButtonHorizontal from "../../button/ReactionButton/up-down-v
 import CommentButton from "../../button/CommentButton/comment-button";
 import BookmarkButton from "../../button/BookmarkButton/bookmark-button";
 import Blog from "../../../../model/blog";
-import User from "../../../../model/user";
 import { userApi } from "../../../../config/axios";
 import TagList from "../TagList/tag-list";
+import User from "../../../../model/user";
 
 type BlogPostProps = {
-  profileImage: string;
   upvote: number;
   numberOfComment: number;
   blog: Blog;
@@ -20,37 +19,57 @@ type BlogPostProps = {
 };
 
 const BlogPost: React.FC<BlogPostProps> = ({
-  profileImage,
   upvote,
   numberOfComment,
   blog,
   userUri,
-  userId,
 }) => {
-  const [users, setUsers] = useState<User[]>([]);
+
+  const initialUser: User = {
+    userID: "1",
+    username: "test",
+    avatarUrl: "test.png",
+    status: false
+  }
+  
+
+  const [users, setUsers] = useState<User>(initialUser);
   const fetchUserData = async () => {
-    const response = await userApi.get(userUri);
+    const response = await userApi.get(userUri, {withCredentials: true});
     setUsers(response.data);
   };
   useEffect(() => {
     fetchUserData();
   }, [userUri]);
 
+// const [users, setUsers] = useState<User[]>([]);
+// const fetchUserData = async () => {
+//     const response = await fetch(
+//       userApi.toString() + userUri,
+//       {method: 'GET', redirect: "follow", credentials: "include"}
+//     ).then((response) => response);
+
+//     if(response.redirected){
+//       document.location = response.url;
+//     }
+
+//     const data = await response.json();
+//     console.log(data);
+//     setUsers(data);
+//   }
+//   useEffect(() => {
+//     fetchUserData();
+//   }, [userUri]);
+
   return (
 
     <div className="post-container">
-      {users
-        .filter((user) => user.userId === userId)
-        .map((user) => {
-          return (
+          
             <UserProfile
-              key={user.userId}
-              user={user}
+              key={users.userID}
+              user={users}
               time={blog.uploadDate}
-              profileImage={profileImage}
             />
-          );
-        })}
 
       <BlogTitle title={blog.blogTitle} />
       

@@ -1,6 +1,7 @@
 type User = {
-    userId: string;
-    userName: string;
+    userID: string;
+    username: string;
+    avatarUrl: string;
     status: boolean;
 }
        

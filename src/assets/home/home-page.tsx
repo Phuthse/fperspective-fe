@@ -22,7 +22,7 @@ const HomePage: React.FC = () => {
         <SideNav />
 
         <div className='main-content'>  
-          <BlogList uri={"/show"}/>
+          <BlogList key={"list"} uri={"/show"}/>
         </div>
 
         {/* Right nav bar (treding tags)*/}

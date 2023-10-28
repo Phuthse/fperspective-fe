@@ -12,7 +12,8 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
 
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const fetchBlogData = async () => {
-    const response = await blogApi.get(uri)
+    const response = await blogApi.get(uri, {withCredentials: true})
+    console.log(response.data);
     setBlogs(response.data);
   };
   useEffect(() => {
@@ -23,9 +24,8 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
 
 // IGNORE OK?
 
-// const [blogs, setBlogs] = useState();
+// const [blogs, setBlogs] = useState<Blog[]>([]);
 // const fetchBlogData = async () => {
-//   console.log(blogApi.toString() + uri);
 //     const response = await fetch(
 //       blogApi.toString() + uri,
 //       {method: 'GET', redirect: "follow", credentials: "include"}
@@ -36,6 +36,7 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
 //     }
 
 //     const data = await response.json();
+//     console.log(response);
 //     console.log(data);
 //     setBlogs(data);
 //   }
@@ -58,13 +59,12 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
   return (
     <>
       {blogs.map((blog) => {
-        const apiUri = "/show";
         const userId = blog.userId;
+        const apiUri = "/show/" + userId;
         if (blog.status === true) {
           return (
             <BlogPost
               key={blog.blogID}
-              profileImage="src/assets/images/profile-pic.png"
               upvote={blog.like.length}
               numberOfComment={blog.commentId.length}
               blog={blog}
