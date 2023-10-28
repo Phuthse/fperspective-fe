@@ -1,0 +1,62 @@
+.notification-page-main-comment {
+    background: #111;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.notification-page-comment-profile {
+    display: flex;
+    align-items: center;
+}
+
+.notification-page-comment-profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 14px;
+    margin-bottom: 30px;
+}
+
+.notification-page-comment-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-page-comment-detail div {
+    display: flex;
+    align-items: center;
+}
+
+.notification-page-comment-detail a {
+    text-decoration: none;
+    color: #efefef;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.notification-page-comment-detail a:hover {
+    color: burlywood;
+}
+
+.notification-page-comment-detail p {
+    color: #acacac;
+    font-size: 14px;
+}
+
+.notification-page-comment-detail small {
+    color: #acacac;
+    margin-top: 3px;
+    font-size: 12px;
+}
+
+.notification-page-comment-detail-title h3 {
+    margin-top: 10px;
+    color: #acacac;
+}
+
+.notification-page-comment-detail-title h3:hover {
+    color: bisque;
+}
+

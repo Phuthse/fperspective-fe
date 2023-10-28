@@ -1,0 +1,55 @@
+.notification-page-main-upvote {
+    background: #111;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.notification-page-upvote-profile {
+    display: flex;
+    align-items: center;
+}
+
+.notification-page-upvote-profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 14px;
+}
+
+.notification-page-upvote-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-page-upvote-detail div {
+    display: flex;
+    align-items: center;
+}
+
+.notification-page-upvote-detail a {
+    color: #efefef;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.notification-page-upvote-detail a:hover {
+    color: burlywood;
+}
+
+.notification-page-upvote-detail p {
+    color: #acacac;
+    font-size: 14px;
+}
+
+.notification-page-upvote-detail small {
+    color: #acacac;
+    margin-top: 3px;
+    font-size: 12px;
+}
+
+
+

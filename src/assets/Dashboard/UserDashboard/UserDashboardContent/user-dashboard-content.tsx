@@ -135,6 +135,13 @@ const UserDashoardContent: React.FC = () => {
                 </div>
             )}
 
+            {/* Display user's analytics */}
+            {selectedNavItem === 'analytic' && (
+                <div>
+                    <h2>Analytic</h2>
+                </div>
+            )}
+
 
         </div>
     );

@@ -1,4 +1,4 @@
-.post-container {
+.home-page-post-container {
     width: 100%;
     background: #111;
     border-radius: 6px;
@@ -7,14 +7,14 @@
     margin: 20px 0;
 }
 
-.post-details {
+.home-page-post-details {
     display: flex;
     align-items: center;
     margin-top: 5px;
     justify-content: space-between;
 }
 
-.post-interact {
+.home-page-post-interact {
     display: flex;
     align-items: center;
 }

@@ -1,0 +1,35 @@
+/* BODY SIDE */
+
+.user-setting-body {
+    display: flex;
+}
+
+.user-setting-side ul {
+    padding: 10px;
+    width: 250px;
+    list-style-type: none;
+}
+
+.user-setting-side li {
+    margin: 3px 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.user-setting-side li:hover {
+    background: #222;
+    border-radius: 5px;
+}
+
+.user-setting-side-option {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    display: block;
+    padding: 13px 8px;
+}
+
+.selectedOption {
+    background: #222;
+    border-radius: 5px;
+}

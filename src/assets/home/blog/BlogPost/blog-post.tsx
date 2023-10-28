@@ -62,7 +62,22 @@ const BlogPost: React.FC<BlogPostProps> = ({
 //   }, [userUri]);
 
   return (
+    <>
+      <div className="home-page-post-container">
+        {users
+          .filter((user) => user.userId === userId)
+          .map((user) => {
+            return (
+              <UserProfile
+                key={user.userId}
+                user={user}
+                time={blog.uploadDate}
+                profileImage={profileImage}
+              />
+            );
+          })}
 
+<<<<<<< HEAD
     <div className="post-container">
           
             <UserProfile
@@ -70,20 +85,22 @@ const BlogPost: React.FC<BlogPostProps> = ({
               user={users}
               time={blog.uploadDate}
             />
+=======
+        <BlogTitle title={blog.blogTitle} />
+>>>>>>> 76f366b3e93385a5cfd0dadb273275002eb570a4
 
-      <BlogTitle title={blog.blogTitle} />
-      
-      <TagList tagList={blog.btag}/>
+        <TagList tagList={blog.btag} />
 
-      <div className="post-details">
-        <div className="post-interact">
-          <UpAndDownVoteButtonHorizontal upvote={upvote} />
-          <CommentButton NumberOfComment={numberOfComment} />
+        <div className="home-page-post-details">
+          <div className="home-page-post-interact">
+            <UpAndDownVoteButtonHorizontal upvote={upvote} />
+            <CommentButton NumberOfComment={numberOfComment} />
+          </div>
+
+          <BookmarkButton />
         </div>
-
-        <BookmarkButton />
       </div>
-    </div>
+    </>
   );
 };
 

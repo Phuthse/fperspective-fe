@@ -1,0 +1,33 @@
+.user-analytic-post-filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+.user-analytic-post-filter a {
+    padding: 10px;
+    text-decoration: none;
+    color: #efefef;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.user-analytic-post-filter a:hover {
+    background: #333;
+    border-radius: 5px;
+}
+
+.selected-filter {
+    background: #333;
+    border-radius: 5px;
+}
+
+.user-analytic-post-filter h2 {
+    padding-left: 150px;
+    color: #efefef
+}
+
+.user-analytic-post-filter span {
+    color: #c41d1d;
+}

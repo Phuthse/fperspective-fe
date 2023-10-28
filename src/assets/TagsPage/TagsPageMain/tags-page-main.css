@@ -1,0 +1,53 @@
+
+
+/* TAGS */
+.tags-page-main {
+    display: grid;
+}
+
+.tags-page-content {
+    background: #111;
+    padding: 15px;
+    width: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    color: aliceblue;
+    margin: 10px 0;
+}
+
+/* TAGS NAME */
+
+
+.tags-name-num {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tags-name-num h4{
+    color: #acacac;
+    font-size: 15px;
+}
+
+.tags-name-num a {
+    text-decoration: none;
+    color: #efefef;
+    font-size: 20px;
+}
+
+.tags-name-num a:hover {
+    color: blueviolet
+}
+
+/* TAGS DESC */
+
+.tags-desc{
+    padding: 10px 0;
+    color: #acacac;
+    font-size: 14px;
+}
+
+

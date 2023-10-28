@@ -9,7 +9,7 @@ type UserProfileProps = {
 
 const UserProfile: React.FC<UserProfileProps> = ({ user, time }) => {
     return (
-        <div className="user-profile" >
+        <div className="home-page-user-profile" >
             <a href='#'>
                 <img src={user.avatarUrl} />
                 <div className='user-info'>

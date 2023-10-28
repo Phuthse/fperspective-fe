@@ -20,7 +20,7 @@ const ForgotPasswordForm: React.FC = () => {
                         <label >Email</label>
                         <input className="forgot-password-form-textfield" type="text" />
                     </div>
-
+                    
                     <div className='forgot-password-button'>
                         <input type="submit" value='Send reset link' />
                         <Link to='/login'>Go back</Link>

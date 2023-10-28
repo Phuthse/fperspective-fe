@@ -1,0 +1,131 @@
+.user-setting-profile-container {
+    display: flex;
+    flex-direction: column;
+    background: #111;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.user-setting-profile-container h2 {
+    padding-bottom: 20px;
+}
+
+/* USER SETTING CONTAINER */
+
+.user-setting-profile-user-container {
+    padding: 10px;
+}
+
+/* USERNAMe */
+
+.user-setting-profile-username {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.user-setting-profile-username label {
+    padding: 5px 0;
+    color: #efefef;
+    font-weight: 600;
+}
+
+.user-setting-profile-username input {
+    padding: 10px;
+    width: 300px;
+    border: 0.5px solid #333;
+    background: black;
+    outline: none;
+    border-radius: 5px;
+    width: 500px;
+}
+
+/* USER BIO */
+
+.user-setting-profile-bio {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.user-setting-profile-bio label {
+    padding: 5px 0;
+    color: #efefef;
+    font-weight: 600;
+}
+
+
+.user-setting-profile-bio textarea {
+    width: 500px;
+    background: black;
+    border: 0.5px solid #333;
+    outline: none;
+    resize: none;
+    color: white;
+    font-size: 16px;
+    overflow: hidden;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* USER AVATAR */
+
+.user-setting-profile-avatar-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.user-setting-profile-avatar-container label {
+    padding: 5px 0;
+    color: #efefef;
+    font-weight: 600;
+}
+
+.user-setting-profile-avatar {
+    display: flex;
+    align-items: center;
+    width: 500px;
+}
+
+.user-setting-profile-avatar span {
+    margin-right: 10px;
+}
+
+.user-setting-profile-avatar img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.user-setting-profile-avatar input {
+    padding: 15px;
+    border: 0.5px solid #333;
+    border-radius: 8px;
+    color: #efefef;
+    font-size: 16px;
+    width: 100%;
+}
+
+/* SAVE BUTTON */
+
+.user-setting-profile-save button {
+    width: 500px;
+    height: 43px;
+    border-radius: 8px;
+    background: black;
+    color: #efefef;
+    outline: none;
+    border: 0.5px solid #333;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.user-setting-profile-save button:hover {
+    background: #222;
+}
+
+.user-setting-profile-save button:active {
+    background: #333;
+}

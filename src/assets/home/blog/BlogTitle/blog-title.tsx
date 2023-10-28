@@ -8,7 +8,7 @@ type BlogTitleProps = {
 const BlogTitle: React.FC<BlogTitleProps> = ({ title }) => {
     return (
 
-        <h2 className='post-title'>
+        <h2 className='home-page-post-title'>
             <a href='#'>{title}</a>
         </h2>
 
