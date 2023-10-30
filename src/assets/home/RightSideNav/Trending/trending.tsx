@@ -1,9 +1,10 @@
 import React from 'react';
 import './trending.css'
+import Tag from '../../../../model/tag';
 
 type TrendingTagProps = {
-    tags: string[];
-    numberOfPost: number[]
+    tags: Tag;
+    // numberOfPost: number;
 }
 
 const formatNumber = (number: number): string => {
@@ -19,22 +20,17 @@ const formatNumber = (number: number): string => {
     return number.toString();
 };
 
-const TrendingTag: React.FC<TrendingTagProps> = ({ tags, numberOfPost }) => {
+const TrendingTag: React.FC<TrendingTagProps> = ({ tags }) => {
     return (
-        <div className='trending-tags'>
-            <h3>Trending Tags</h3>
-            <div className="trending-tags">
-                {tags.map((tag, index) => (
-                    <div key={index} className="trending-tag">
+       
+                    <div key={tags.tagId} className="trending-tag">
                         <a href="#">
                             <span>#</span>
-                            <span> {tag}</span>
-                            <p> {formatNumber(numberOfPost[index])} posts </p>
+                            <span> {tags.tagName}</span>
+                            {/* <p> {formatNumber(numberOfPost)} posts </p> */}
+                            <p> 10K posts </p>
                         </a>
                     </div>
-                ))}
-            </div>
-        </div>
 
     );
 };
