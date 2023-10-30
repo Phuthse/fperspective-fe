@@ -63,7 +63,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
 
   return (
     <>
-      <div className="home-page-post-container">
+      {/* <div className="home-page-post-container">
         {users
           .filter((user) => user.userId === userId)
           .map((user) => {
@@ -72,12 +72,19 @@ const BlogPost: React.FC<BlogPostProps> = ({
                 key={user.userId}
                 user={user}
                 time={blog.uploadDate}
-                profileImage={profileImage}
               />
             );
-          })}
+          })} */}
 
-        <BlogTitle title={blog.blogTitle} />
+    <div className="home-page-post-container">
+          
+            <UserProfile
+              key={users.userID}
+              user={users}
+              time={blog.uploadDate}
+            />
+
+          <BlogTitle title={blog.blogTitle}/>
 
         <TagList tagList={blog.btag} />
 
