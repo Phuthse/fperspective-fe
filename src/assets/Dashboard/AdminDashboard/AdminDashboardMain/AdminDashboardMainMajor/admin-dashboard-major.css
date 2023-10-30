@@ -1,0 +1,33 @@
+.admin-dashboard-major-filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+.admin-dashboard-major-filter a {
+    padding: 10px;
+    text-decoration: none;
+    color: #efefef;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.admin-dashboard-major-filter a:hover {
+    background: #333;
+    border-radius: 5px;
+}
+
+.selected-filter {
+    background: #333;
+    border-radius: 5px;
+}
+
+.admin-dashboard-major-filter h2 {
+    padding-left: 150px;
+    color: #efefef
+}
+
+.admin-dashboard-major-filter span {
+    color: #c41d1d;
+}

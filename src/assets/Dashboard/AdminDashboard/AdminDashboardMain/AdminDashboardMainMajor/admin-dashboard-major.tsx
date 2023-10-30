@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './admin-dashboard-major.css';
 import PieChartMajorIT from '../MajorChart/MajorIT/admin-dashboard-major-chart-it';
 import PieChartMajorBA from '../MajorChart/MajorBA/admin-dashboard-major-chart-ba';
@@ -15,6 +15,7 @@ const AdminDashoardMajorCharts: React.FC = () => {
 
     const [selectedChart, setSelectedChart] = useState<JSX.Element | null>(<PieChartMajorIT />);
     const [selectedOption, setSelectedOption] = useState<number>(1);
+    const [message, setMessage] = useState<string>('');
 
     const chartOptions: ChartOption[] = [
         { id: 1, label: 'IT' },
@@ -43,18 +44,31 @@ const AdminDashoardMajorCharts: React.FC = () => {
         }
     };
 
+    useEffect(() => {
+        if (selectedOption === 1) {
+            setMessage("Information Technology");
+        } else if (selectedOption === 2) {
+            setMessage('Business Administrator');
+        } else if (selectedOption === 3) {
+            setMessage('Language Studies');
+        } else if (selectedOption === 4) {
+            setMessage('All Major');
+        }
+    }, [selectedOption]);
+
     return (
         <>
-            <div className="admin-dashboard-post-filter">
+            <div className="admin-dashboard-major-filter">
                 {chartOptions.map(option => (
                     <a
                         key={option.id}
-                        className={`admin-dashboard-post-filter-option${selectedOption === option.id ? ' selected-filter' : ''}`}
+                        className={`admin-dashboard-post-major-option${selectedOption === option.id ? ' selected-filter' : ''}`}
                         onClick={() => handleChartChange(option.id)}
                     >
                         {option.label}
                     </a>
                 ))}
+                <h2> Traffic in  <span>{message}</span></h2>
             </div>
             {selectedChart}
         </>

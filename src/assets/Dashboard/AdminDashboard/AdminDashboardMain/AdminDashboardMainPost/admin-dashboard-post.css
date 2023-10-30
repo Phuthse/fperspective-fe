@@ -28,6 +28,10 @@
     color: #efefef
 }
 
-.admin-dashboard-post-filter span {
+.admin-dashboard-date-range{
     color: #c41d1d;
+}
+
+.admin-dashboard-total-post {
+    color: rgb(0, 153, 255);
 }

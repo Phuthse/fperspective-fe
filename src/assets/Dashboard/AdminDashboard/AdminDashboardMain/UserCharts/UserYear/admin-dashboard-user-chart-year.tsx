@@ -2,7 +2,13 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-function LineChartUserYear() {
+export function TotalUserYear() {
+    const UserData = [60, 70, 90, 110, 80, 75, 60, 50, 60, 75, 80, 90, 111]; // Replace with your desired values
+    const sum = UserData.reduce((acc, value) => acc + value, 0);
+    return sum;
+}
+
+export function LineChartUserYear() {
     const currentDate = new Date();
     const monthNames = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -41,5 +47,3 @@ function LineChartUserYear() {
         </LineChart>
     );
 }
-
-export default LineChartUserYear;

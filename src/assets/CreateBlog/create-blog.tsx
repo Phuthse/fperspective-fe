@@ -3,11 +3,22 @@ import './create.blog.css';
 import CreateBlogTitle from './CreateBlogTitle/create-blog-title';
 import CreateBlogTags from './CreateBlogTags/create-blog-tags';
 import axios from 'axios'; // Import Axios
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const CreateBlog: React.FC = () => {
     const [title, setTitle] = useState('');
     const [tags, setTags] = useState<string[]>([]);
     const [content, setContent] = useState('');
+
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, 4, 5, false] }],
+            ['bold', 'italic', 'underline'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link'],
+        ],
+    };
 
     const handlePublish = () => {
         // Create a data object to send to the backend
@@ -38,12 +49,17 @@ const CreateBlog: React.FC = () => {
                         <CreateBlogTags setTags={setTags} />
                     </div>
                     <div className="post-body">
-                        <textarea
-                            placeholder="Your post content here..."
+                        <ReactQuill
                             value={content}
-                            onChange={(e) => setContent(e.target.value)}
+                            onChange={setContent}
+                            className='post-body-input-field'
+                            modules={modules}
                         />
                     </div>
+                    <div className="preview">
+                        {content}
+                    </div>
+
                 </div>
                 <div className="create-post-form-footer">
                     <button onClick={handlePublish}>Publish</button>

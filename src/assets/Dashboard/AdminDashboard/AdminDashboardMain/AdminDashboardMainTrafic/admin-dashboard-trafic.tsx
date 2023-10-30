@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './admin-dashboard-trafic.css';
 import PieChartTrafficCampus from '../TraficChart/TrafficCampus/admin-dashboard-traffic-chart-campus';
 import PieChartTrafficTerm from '../TraficChart/TrafficTerm/admin-dashboard-traffic-chart-term';
@@ -12,6 +12,7 @@ interface ChartOption {
 const AdminDashoardTraficCharts: React.FC = () => {
     const [selectedChart, setSelectedChart] = useState<JSX.Element | null>(<PieChartTrafficCampus />);
     const [selectedOption, setSelectedOption] = useState<number>(1);
+    const [message, setMessage] = useState<string>('');
 
     const chartOptions: ChartOption[] = [
         { id: 1, label: 'By Campus' },
@@ -37,6 +38,16 @@ const AdminDashoardTraficCharts: React.FC = () => {
         }
     };
 
+    useEffect(() => {
+        if (selectedOption === 1) {
+            setMessage("Campus");
+        } else if (selectedOption === 2) {
+            setMessage('Term');
+        } else if (selectedOption === 3) {
+            setMessage('Major');
+        }
+    }, [selectedOption]);
+
     return (
         <>
             <div className="admin-dashboard-traffic-filter">
@@ -49,6 +60,7 @@ const AdminDashoardTraficCharts: React.FC = () => {
                         {option.label}
                     </a>
                 ))}
+                <h2>Traffic by <span>{message}</span></h2>
             </div>
             {selectedChart}
         </>

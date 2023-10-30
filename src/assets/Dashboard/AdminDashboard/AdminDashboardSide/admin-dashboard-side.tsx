@@ -12,6 +12,7 @@ const AdminDashboardSideNav: React.FC = () => {
         <div className="admin-dashboard-left-nav">
             <nav>
                 <ul className="admin-dashboard-left-nav-list">
+
                     <li
                         className={`admin-dashboard-left-nav-link ${selectedNavItem === 'posts' ? 'dashboard-action' : ''}`}
                         onClick={() => setSelectedNavItem('posts')}

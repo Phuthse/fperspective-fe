@@ -28,7 +28,11 @@
     color: #efefef
 }
 
-.admin-dashboard-user-filter span {
+.admin-dashboard-date-range{
     color: #c41d1d;
+}
+
+.admin-dashboard-total-user {
+    color: rgb(0, 153, 255);
 }
 

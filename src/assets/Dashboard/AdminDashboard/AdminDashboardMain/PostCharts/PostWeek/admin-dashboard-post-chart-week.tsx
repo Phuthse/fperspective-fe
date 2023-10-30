@@ -3,7 +3,13 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-function LineChartPostWeek() {
+export function TotalPostWeek() {
+    const totalPostData = [10, 30, 123, 421, 320, 321, 421, 120];
+    const sum = totalPostData.reduce((acc, value) => acc + value, 0);
+    return sum;
+}
+
+export function LineChartPostWeek() {
     const currentDate = new Date();
     const monthNames = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -42,5 +48,3 @@ function LineChartPostWeek() {
         </LineChart>
     );
 }
-
-export default LineChartPostWeek;

@@ -77,17 +77,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
             );
           })}
 
-<<<<<<< HEAD
-    <div className="post-container">
-          
-            <UserProfile
-              key={users.userID}
-              user={users}
-              time={blog.uploadDate}
-            />
-=======
         <BlogTitle title={blog.blogTitle} />
->>>>>>> 76f366b3e93385a5cfd0dadb273275002eb570a4
 
         <TagList tagList={blog.btag} />
 
