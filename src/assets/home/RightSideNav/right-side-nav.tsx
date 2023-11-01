@@ -26,7 +26,6 @@ const RightSideBar: React.FC<RightSideNavProps> = ({ uri }) => {
     const response = await tagApi.get(uri, { withCredentials: true });
 
     setTags(response.data);
-    console.log(response.data);
   };
   useEffect(() => {
     fetchUserData();
@@ -38,10 +37,12 @@ const RightSideBar: React.FC<RightSideNavProps> = ({ uri }) => {
         <h3>Trending Tags</h3>
         <div className="trending-tags">
           {tags?.map((tag) => {
+            const url = "count/" + tag.tagName;
+            console.log(url);
             return (
               <TrendingTag
                 tags={tag}
-                // numberOfPost={tags.values}
+                uri = {url}
               />
             )
           })}

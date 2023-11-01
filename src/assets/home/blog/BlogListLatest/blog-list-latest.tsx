@@ -13,7 +13,6 @@ const BlogListLatest: React.FC<BlogListProps> = ({ uri }) => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const fetchBlogData = async () => {
     const response = await blogApi.get(uri, {withCredentials: true})
-    console.log(response.data);
     setBlogs(response.data);
   };
   useEffect(() => {
