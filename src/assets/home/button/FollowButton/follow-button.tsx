@@ -17,7 +17,7 @@ function FollowButton() {
             style={{
                 width: '100px',
                 backgroundColor: isFollowed ? (isHovered ? 'red' : 'black') : 'white',
-                color: isFollowed ? (isHovered ? 'white' : 'white') : 'black',
+                color: isFollowed ? (isHovered ? '#efefef' : '#efefef') : 'black',
                 border: isFollowed ? (isHovered ? '2px solid red' : '2px solid white') : '2px solid black',
                 borderRadius: '20px',
                 padding: '6px 12px',

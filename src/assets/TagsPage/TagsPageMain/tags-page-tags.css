@@ -8,14 +8,23 @@
 .tags-page-content {
     background: #111;
     padding: 15px;
-    width: 350px;
-    height: auto;
+    width: 300px;
+    height: 110px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 10px;
     color: aliceblue;
     margin: 10px 0;
+    position: relative;
+}
+
+.tags-page-content button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 7px !important;
+    height: 35px !important;
 }
 
 /* TAGS NAME */
@@ -29,7 +38,7 @@
 
 .tags-name-num h4{
     color: #acacac;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .tags-name-num a {
@@ -42,12 +51,5 @@
     color: blueviolet
 }
 
-/* TAGS DESC */
-
-.tags-desc{
-    padding: 10px 0;
-    color: #acacac;
-    font-size: 14px;
-}
 
 

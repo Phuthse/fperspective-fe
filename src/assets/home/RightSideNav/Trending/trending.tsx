@@ -23,6 +23,7 @@ const formatNumber = (number: number): string => {
 
 const TrendingTag: React.FC<TrendingTagProps> = ({ tags, uri }) => {
 
+<<<<<<< HEAD
         const [count, setCount] = useState<number>(1);
         const fetchUserData = async () => {
           const response = await tagApi.get(uri, { withCredentials: true });
@@ -32,17 +33,29 @@ const TrendingTag: React.FC<TrendingTagProps> = ({ tags, uri }) => {
         useEffect(() => {
           fetchUserData();
         }, [tagApi]);
+=======
+    const [count, setCount] = useState<number>(1);
+    const fetchUserData = async () => {
+        const response = await tagApi.get(uri, { withCredentials: true });
+
+        setCount(response.data);
+        console.log(response.data);
+    };
+    useEffect(() => {
+        fetchUserData();
+    }, [tagApi]);
+>>>>>>> f52acf61b252337a505e4bf13cecc96b751a9fc9
 
     return (
-       
-                    <div key={tags.tagId} className="trending-tag">
-                        <a href="#">
-                            <span>#</span>
-                            <span> {tags.tagName}</span>
-                            <p> {formatNumber(count)} posts </p>
-                            {/* <p> 10K posts </p> */}
-                        </a>
-                    </div>
+
+        <div key={tags.tagId} className="trending-tag">
+            <a href="#">
+                <span>#</span>
+                <span> {tags.tagName}</span>
+                <p> {formatNumber(count)} posts </p>
+                {/* <p> 10K posts </p> */}
+            </a>
+        </div>
 
     );
 };
