@@ -27,7 +27,7 @@ const SideNav: React.FC = () => {
           </svg> Tags
         </Link>
 
-        <Link to='/subject-page'><IconBook className='side-nav-icon' />Subject</Link>
+        <Link to='/subject-page'><IconBook className='side-nav-icon' />Subjects</Link>
 
         <Link to='/user-profile'><UserIcon className='side-nav-icon' /> Profile </Link>
 

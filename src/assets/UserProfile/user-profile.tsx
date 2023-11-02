@@ -35,6 +35,7 @@ const UserProfile: React.FC = () => {
           <UserProfileBodySide
             PostShared={10}
             TagFollowed={32}
+            SubjectFollowed={10}
             Following={12}
             Follwers={23}
           />

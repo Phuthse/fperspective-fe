@@ -9,7 +9,7 @@ const AdminDashboard: React.FC = () => {
         <>
 
             <div className='user-dashboard-nav-content-container'>
-
+                
                 <AdminDashboardProvider>
                     <AdminDashboardSideNav />
                     <AdminDashoardContent />

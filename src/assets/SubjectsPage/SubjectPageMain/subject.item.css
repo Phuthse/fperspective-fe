@@ -43,12 +43,11 @@
 
 .subject-name-num a {
     text-decoration: none;
-    color: #efefef;
     font-size: 20px;
 }
 
 .subject-name-num a:hover {
-    color: blueviolet
+    text-decoration: underline;
 }
 
 
