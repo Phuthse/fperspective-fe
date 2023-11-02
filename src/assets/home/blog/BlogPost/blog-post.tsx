@@ -25,6 +25,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
   userUri,
 }) => {
 
+  const date = new Date(blog.uploadDate);
+
   const initialUser: User = {
     userID: "1",
     username: "test",
@@ -81,7 +83,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
         <UserProfile
           key={users.userID}
           user={users}
-          time={blog.uploadDate}
+          time={date.toLocaleString("en-US")}
         />
 
         <BlogTitle title={blog.blogTitle} />

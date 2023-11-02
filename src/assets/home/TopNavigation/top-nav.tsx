@@ -9,7 +9,7 @@ type TopNavProps = {
   uri: string;
 }
 
-const TopNav: React.FC<TopNavProps> = ({uri}) => {
+const TopNav: React.FC<TopNavProps> = ({ uri }) => {
 
   const [loginUser, setLoginUser] = useState<LoginUser>();
   const fetchLoginData = async () => {
@@ -25,10 +25,6 @@ const TopNav: React.FC<TopNavProps> = ({uri}) => {
     <nav className="top-nav">
       <div className="nav-left">
         <Link to="/"><img src="src/images/fperspective-logo.png" alt="" className="logo" /></Link>
-      </div>
-
-      <div className="nav-right">
-
         <div className="search-box">
           <input type="text" placeholder="Search" />
           <Link to='/search'>
@@ -40,12 +36,17 @@ const TopNav: React.FC<TopNavProps> = ({uri}) => {
             </button>
           </Link>
         </div>
+      </div>
+
+      <div className="nav-right">
+        <div className="create-blog-button">
+          <Link to='/create-blog'>Write a Blog</Link>
+        </div>
         <Link to='/notification'>
           <svg fill="white" width="24" height="24" viewBox="0 0 24 24">
             <path d="M20 17h2v2H2v-2h2v-7a8 8 0 1116 0v7zm-2 0v-7a6 6 0 10-12 0v7h12zm-9 4h6v2H9v-2z"></path>
           </svg>
         </Link>
-
         <div className='nav-user-icon'>
           <img src={loginUser?.picture} />
           <div className="dropdown-content">
