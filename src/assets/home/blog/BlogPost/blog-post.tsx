@@ -25,6 +25,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
   userUri,
 }) => {
 
+  const date = new Date(blog.uploadDate);
+
   const initialUser: User = {
     userID: "1",
     username: "test",
@@ -42,24 +44,6 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fetchUserData();
   }, [userUri]);
 
-// const [users, setUsers] = useState<User[]>([]);
-// const fetchUserData = async () => {
-//     const response = await fetch(
-//       userApi.toString() + userUri,
-//       {method: 'GET', redirect: "follow", credentials: "include"}
-//     ).then((response) => response);
-
-//     if(response.redirected){
-//       document.location = response.url;
-//     }
-
-//     const data = await response.json();
-//     console.log(data);
-//     setUsers(data);
-//   }
-//   useEffect(() => {
-//     fetchUserData();
-//   }, [userUri]);
 
   return (
     <>
@@ -81,7 +65,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
             <UserProfile
               key={users.userID}
               user={users}
-              time={blog.uploadDate}
+              time={date.toLocaleString("en-US")}
             />
 
           <BlogTitle title={blog.blogTitle}/>

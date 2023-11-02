@@ -28,7 +28,6 @@ const TrendingTag: React.FC<TrendingTagProps> = ({ tags, uri }) => {
           const response = await tagApi.get(uri, { withCredentials: true });
       
           setCount(response.data);
-          console.log(response.data);
         };
         useEffect(() => {
           fetchUserData();

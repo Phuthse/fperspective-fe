@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
           {currentFilter === 'Latest' ? (
 
             <>
-              <BlogListLatest uri={"/show"} />
+              <BlogListLatest uri={"/sort/latest"} />
             </>
 
           ) : currentFilter === 'Top' || currentFilter === 'Week' ? (
@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* Right nav bar (trending tags)*/}
-        <RightSideBar uri = {"/sort/4"}/>
+        <RightSideBar tagUri = {"/sort/4"}/>
       </div>
     </>
   );

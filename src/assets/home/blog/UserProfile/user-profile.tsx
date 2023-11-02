@@ -8,6 +8,7 @@ type UserProfileProps = {
 }
 
 const UserProfile: React.FC<UserProfileProps> = ({ user, time }) => {
+
     return (
         <div className="home-page-user-profile" >
             <a href='#'>

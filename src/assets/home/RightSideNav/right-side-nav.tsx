@@ -17,13 +17,14 @@ const recommendedProfileImage = [
 ];
 
 type RightSideNavProps = {
-  uri: string;
+  tagUri: string;
+  // userUri: string;
 };
 
-const RightSideBar: React.FC<RightSideNavProps> = ({ uri }) => {
+const RightSideBar: React.FC<RightSideNavProps> = ({ tagUri }) => {
   const [tags, setTags] = useState<Tag[]>();
   const fetchUserData = async () => {
-    const response = await tagApi.get(uri, { withCredentials: true });
+    const response = await tagApi.get(tagUri, { withCredentials: true });
 
     setTags(response.data);
   };
@@ -38,7 +39,6 @@ const RightSideBar: React.FC<RightSideNavProps> = ({ uri }) => {
         <div className="trending-tags">
           {tags?.map((tag) => {
             const url = "count/" + tag.tagName;
-            console.log(url);
             return (
               <TrendingTag
                 tags={tag}
