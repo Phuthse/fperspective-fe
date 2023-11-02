@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* Right nav bar (trending tags)*/}
-        <RightSideBar uri = {"/sort/most"}/>
+        <RightSideBar uri = {"/sort/4"}/>
       </div>
     </>
   );

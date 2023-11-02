@@ -14,7 +14,6 @@ const BlogListLatest: React.FC<BlogListProps> = ({ uri }) => {
   
   const fetchBlogData = async () => {
     const response = await blogApi.get(uri, {withCredentials: true})
-    console.log(response.data);
     setBlogs(response.data);
   };
 
