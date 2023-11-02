@@ -3,7 +3,7 @@
 .side-nav {
     flex-basis: 20%;
     position: sticky;
-    top: 80px;
+    top: 70px;
     align-self: flex-start;
 }
 

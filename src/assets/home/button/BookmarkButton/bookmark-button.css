@@ -4,6 +4,7 @@
     width: 22px;
     padding: 1px;
     position: relative;
+    cursor: pointer;
 }
 
 .bookmark-button:hover {

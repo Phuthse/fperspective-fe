@@ -17,7 +17,7 @@ const SAMPLE_TAGS_2 = [
 
 const UserProfile: React.FC = () => {
   return (
-    <div className="container">
+    <div className="user-profile-container">
 
       <div className='user-profile-main-content'>
 

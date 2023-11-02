@@ -88,6 +88,26 @@ const UserDashoardContent: React.FC = () => {
                         upvote={8541}
                         numberOfComment={10}
                     />
+                    <RecentPost
+                        blogTitle="Getting Started with React.js"
+                        upvote={8541}
+                        numberOfComment={10}
+                    />
+                     <RecentPost
+                        blogTitle="Getting Started with React.js"
+                        upvote={8541}
+                        numberOfComment={10}
+                    />
+                     <RecentPost
+                        blogTitle="Getting Started with React.js"
+                        upvote={8541}
+                        numberOfComment={10}
+                    />
+                     <RecentPost
+                        blogTitle="Getting Started with React.js"
+                        upvote={8541}
+                        numberOfComment={10}
+                    />
                 </div>
             )}
 

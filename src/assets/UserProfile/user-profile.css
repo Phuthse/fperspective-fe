@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
+.user-profile-container {
+    padding: 30px 150px;
+}
+
 /* USER PROFILE BODY */
 
 .user-profile-body-container {

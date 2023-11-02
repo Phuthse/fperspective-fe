@@ -9,6 +9,11 @@
     margin-top: 50px;
 }
 
+.login-logo {
+    width: 40px;
+    margin-bottom: 15px;
+}
+
 /* LOGIN FORM HEAD */
 
 .login-form-container h1 {
