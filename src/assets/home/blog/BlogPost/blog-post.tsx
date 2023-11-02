@@ -31,35 +31,35 @@ const BlogPost: React.FC<BlogPostProps> = ({
     avatarUrl: "test.png",
     status: false
   }
-  
+
 
   const [users, setUsers] = useState<User>(initialUser);
   const fetchUserData = async () => {
-    const response = await userApi.get(userUri, {withCredentials: true});
+    const response = await userApi.get(userUri, { withCredentials: true });
     setUsers(response.data);
   };
   useEffect(() => {
     fetchUserData();
   }, [userUri]);
 
-// const [users, setUsers] = useState<User[]>([]);
-// const fetchUserData = async () => {
-//     const response = await fetch(
-//       userApi.toString() + userUri,
-//       {method: 'GET', redirect: "follow", credentials: "include"}
-//     ).then((response) => response);
+  // const [users, setUsers] = useState<User[]>([]);
+  // const fetchUserData = async () => {
+  //     const response = await fetch(
+  //       userApi.toString() + userUri,
+  //       {method: 'GET', redirect: "follow", credentials: "include"}
+  //     ).then((response) => response);
 
-//     if(response.redirected){
-//       document.location = response.url;
-//     }
+  //     if(response.redirected){
+  //       document.location = response.url;
+  //     }
 
-//     const data = await response.json();
-//     console.log(data);
-//     setUsers(data);
-//   }
-//   useEffect(() => {
-//     fetchUserData();
-//   }, [userUri]);
+  //     const data = await response.json();
+  //     console.log(data);
+  //     setUsers(data);
+  //   }
+  //   useEffect(() => {
+  //     fetchUserData();
+  //   }, [userUri]);
 
   return (
     <>
@@ -76,15 +76,15 @@ const BlogPost: React.FC<BlogPostProps> = ({
             );
           })} */}
 
-    <div className="home-page-post-container">
-          
-            <UserProfile
-              key={users.userID}
-              user={users}
-              time={blog.uploadDate}
-            />
+      <div className="home-page-post-container">
 
-          <BlogTitle title={blog.blogTitle}/>
+        <UserProfile
+          key={users.userID}
+          user={users}
+          time={blog.uploadDate}
+        />
+
+        <BlogTitle title={blog.blogTitle} />
 
         <TagList tagList={blog.btag} />
 

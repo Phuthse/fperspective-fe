@@ -41,7 +41,6 @@ const TrendingTag: React.FC<TrendingTagProps> = ({ tags, uri }) => {
                 <span>#</span>
                 <span> {tags.tagName}</span>
                 <p> {formatNumber(count)} posts </p>
-                {/* <p> 10K posts </p> */}
             </a>
         </div>
 

@@ -5,7 +5,7 @@ import TopNav from "../TopNavigation/top-nav";
 const Layout: React.FC = () => {
   return (
     <>
-        <TopNav/>
+        <TopNav uri="/attribute"/>
         <Outlet />
     </>
   );

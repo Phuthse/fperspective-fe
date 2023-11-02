@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./top-nav.css";
 import { Link } from "react-router-dom";
+import LoginUser from "../../../model/loginUser";
+import { loginApi } from "../../../config/axios";
 
-const TopNav: React.FC = () => {
+
+type TopNavProps = {
+  uri: string;
+}
+
+const TopNav: React.FC<TopNavProps> = ({uri}) => {
+
+  const [loginUser, setLoginUser] = useState<LoginUser>();
+  const fetchLoginData = async () => {
+    const response = await loginApi.get(uri, { withCredentials: true });
+    console.log(response.data);
+    setLoginUser(response.data);
+  };
+  useEffect(() => {
+    fetchLoginData();
+  }, [loginApi]);
+
   return (
     <nav className="top-nav">
       <div className="nav-left">
@@ -29,9 +47,9 @@ const TopNav: React.FC = () => {
         </Link>
 
         <div className='nav-user-icon'>
-          <img src='src/images/profile-pic.png' />
+          <img src={loginUser?.picture} />
           <div className="dropdown-content">
-            <Link to='#'>Name</Link>
+            <Link to='#'>{loginUser?.name}</Link>
             <Link to='/create-blog'>Write a Blog</Link>
             <Link to="/user-dashboard">Dashboard</Link>
             <Link to="/admin-dashboard">Admin Dashboard</Link>

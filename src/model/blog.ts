@@ -8,7 +8,7 @@ type Blog = {
     btag: tag[];
     like: string[]
     commentId: string[];
-    uploadDate: string;
+    uploadDate: number;
     status: boolean;
 }
        
