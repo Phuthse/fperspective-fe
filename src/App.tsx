@@ -16,6 +16,7 @@ import TagsPage from "./assets/TagsPage/tags-page";
 import AdminDashboard from "./assets/Dashboard/AdminDashboard/admin-dashboard";
 import UserAnalytic from "./assets/UserAnalytics/user-analytic";
 import UserSetting from "./assets/UserSettings/user-setting";
+import SubjectPage from "./assets/SubjectsPage/subjects-page";
 import { BrowserRouter } from "react-router-dom";
 
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="admin-dashboard" element={<AdminDashboard />} />
             <Route path="user-analytic" element={<UserAnalytic />} />
             <Route path="setting" element={<UserSetting />} />
+            <Route path="subject-page" element={<SubjectPage />} />
           </Route>
           <Route path='login' element={<LoginForm />} />
           <Route path='sign-up' element={<SignUpForm />} />

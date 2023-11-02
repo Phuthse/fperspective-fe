@@ -4,6 +4,7 @@ import { HomeIcon, UserIcon } from '@heroicons/react/24/solid';
 import {
   BookmarkIcon
 } from '@heroicons/react/24/solid';
+import { IconBook } from '@tabler/icons-react';
 
 import { Link } from 'react-router-dom';
 
@@ -13,7 +14,7 @@ const SideNav: React.FC = () => {
     <div className='side-nav'>
       <div className="side-nav-links">
 
-        <a href='#'><HomeIcon className='side-nav-icon' /> HOME </a>
+        <Link to='/'><HomeIcon className='side-nav-icon' /> HOME</Link>
 
         <Link to='/bookmark'><BookmarkIcon className='side-nav-icon' />Bookmark</Link>
 
@@ -25,6 +26,8 @@ const SideNav: React.FC = () => {
             </g>
           </svg> Tags
         </Link>
+
+        <Link to='/subject-page'><IconBook className='side-nav-icon' />Subject</Link>
 
         <Link to='/user-profile'><UserIcon className='side-nav-icon' /> Profile </Link>
 

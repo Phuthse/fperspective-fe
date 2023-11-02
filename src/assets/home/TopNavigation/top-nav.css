@@ -1,6 +1,7 @@
 nav {
     display: flex;
     align-items: center;
+    height: 76px;
     justify-content: space-between;
     background: #111;
     padding: 0px 5%;
@@ -10,8 +11,12 @@ nav {
 }
 
 .logo {
-    width: 120px;
+    width: 33px;
     margin-right: 45px;
+}
+
+.nav-left {
+    margin-left: 10px;
 }
 
 .nav-left,
@@ -49,7 +54,7 @@ nav {
     display: flex;
     align-items: center;
     padding: 0 15px;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .search-box input {

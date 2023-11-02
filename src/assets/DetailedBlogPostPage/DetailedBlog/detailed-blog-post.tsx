@@ -53,6 +53,8 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
     uri,
 }) => {
 
+    const date = new Date(blog.uploadDate);
+
     const [users, setUsers] = useState<User[]>([]);
     const fetchUserData = async () => {
         const response = await userApi.get(uri);
@@ -72,7 +74,7 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
                         <UserProfile
                             key={user.userID}
                             user={user}
-                            time={blog.uploadDate}
+                            time={date.toLocaleString("en-US")}
                         />
                     )
                 })}
