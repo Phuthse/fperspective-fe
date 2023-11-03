@@ -19,6 +19,16 @@
     position: relative;
 }
 
+.subject-name-num h3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.semester-number{
+    font-size: 12px;
+    font-weight: bold;
+}
+
 .subject-page-content button {
     position: absolute;
     bottom: 10px;
@@ -43,7 +53,8 @@
 
 .subject-name-num a {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 23   px;
+    font-weight: bold;
 }
 
 .subject-name-num a:hover {

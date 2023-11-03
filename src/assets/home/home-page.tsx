@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './home-page.css'
 import SideNav from './SideNavigation/side-nav';
-import BlogListLatest from './blog/BlogListLatest/blog-list-latest';
+import BlogList from './blog/BlogPost/blog-list';
 import HomePageFilter from './blog/HomePageFilter/home-page-filter';
 import RightSideBar from './RightSideNav/right-side-nav';
 
@@ -23,22 +23,30 @@ const HomePage: React.FC = () => {
           <HomePageFilter onFilterChange={handleFilterChange} />
           {currentFilter === 'Latest' ? (
             <>
-              <BlogListLatest uri={"/sort/latest"} />
+              <BlogList uri={"/sort/latest"} />
             </>
 
           ) : currentFilter === 'Top' || currentFilter === 'Week' ? (
-            <h1> Top Week</h1>
+            <>
+              <BlogList uri={"/sort/week"} />
+            </>
           ) : currentFilter === 'Month' ? (
-            <h1> Top Month</h1>
+            <>
+              <BlogList uri={"/sort/month"} />
+            </>
           ) : currentFilter === 'Year' ? (
-            <h1> Top Year</h1>
+            <>
+              <BlogList uri={"/sort/year"} />
+            </>
           ) : currentFilter === 'AllTime' ? (
-            <h1> Top All</h1>
+            <>
+              <BlogList uri={"/sort/all"} />
+            </>
           ) : null}
         </div>
 
         {/* Right nav bar (trending tags)*/}
-        <RightSideBar tagUri = {"/sort/4"}/>
+        <RightSideBar tagUri={"/sort/4"} />
       </div>
     </>
   );

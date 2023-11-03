@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Blog from "../../../../model/blog";
 import { blogApi } from "../../../../config/axios";
-import BlogPost from "../BlogPost/blog-post";
+import BlogPost from "./blog-post";
 
 type BlogListProps = {
   uri: string;
 };
 
-const BlogListLatest: React.FC<BlogListProps> = ({ uri }) => {
+const BlogList: React.FC<BlogListProps> = ({ uri }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -53,4 +53,4 @@ const BlogListLatest: React.FC<BlogListProps> = ({ uri }) => {
   );
 };
 
-export default BlogListLatest;
+export default BlogList;

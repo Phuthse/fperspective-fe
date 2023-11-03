@@ -87,6 +87,7 @@ const SubjectItem: React.FC<SubjectItemProps> = ({ subjects }) => {
                     10k posts
                 </h4>
             </div>
+            <span style={{ color: SemesterColor }} className="semester-number">Semester {Semester}</span>
             <FollowButton />
         </div>
     );
