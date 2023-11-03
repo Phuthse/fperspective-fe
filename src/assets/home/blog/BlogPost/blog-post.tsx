@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./blog-post.css";
-import UserProfile from "../UserProfile/user-profile";
+import PostUserProfile from "../UserProfile/user-profile";
 import BlogTitle from "../BlogTitle/blog-title";
 import UpAndDownVoteButtonHorizontal from "../../button/ReactionButton/up-down-vote-button-horizontal";
 import CommentButton from "../../button/CommentButton/comment-button";
@@ -30,10 +30,16 @@ const BlogPost: React.FC<BlogPostProps> = ({
   const initialUser: User = {
     userID: "1",
     username: "test",
-    avatarUrl: "test.png",
-    status: false
+    bio: "test",
+    email: "test",
+    avatarUrl: "test",
+    campus: "test",
+    term: "test",
+    category: "test",
+    fullName: "test",
+    createdDate: 2,
+    status: false,
   }
-
 
   const [users, setUsers] = useState<User>(initialUser);
   const fetchUserData = async () => {
@@ -44,49 +50,17 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fetchUserData();
   }, [userUri]);
 
-  // const [users, setUsers] = useState<User[]>([]);
-  // const fetchUserData = async () => {
-  //     const response = await fetch(
-  //       userApi.toString() + userUri,
-  //       {method: 'GET', redirect: "follow", credentials: "include"}
-  //     ).then((response) => response);
-
-  //     if(response.redirected){
-  //       document.location = response.url;
-  //     }
-
-  //     const data = await response.json();
-  //     console.log(data);
-  //     setUsers(data);
-  //   }
-  //   useEffect(() => {
-  //     fetchUserData();
-  //   }, [userUri]);
-
   return (
     <>
-      {/* <div className="home-page-post-container">
-        {users
-          .filter((user) => user.userId === userId)
-          .map((user) => {
-            return (
-              <UserProfile
-                key={user.userId}
-                user={user}
-                time={blog.uploadDate}
-              />
-            );
-          })} */}
-
       <div className="home-page-post-container">
 
-        <UserProfile
+        <PostUserProfile
           key={users.userID}
           user={users}
           time={date.toLocaleString("en-US")}
         />
 
-        <BlogTitle title={blog.blogTitle} />
+        <BlogTitle blogProp={blog} />
 
         <TagList tagList={blog.btag} />
 

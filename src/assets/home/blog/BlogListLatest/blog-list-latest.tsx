@@ -48,7 +48,6 @@ const BlogListLatest: React.FC<BlogListProps> = ({ uri }) => {
             />
           );
         }
-
       })}
     </>
   );

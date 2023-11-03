@@ -1,6 +1,6 @@
 import React from 'react';
 import './side-nav.css'
-import { HomeIcon, UserIcon } from '@heroicons/react/24/solid';
+import { HomeIcon } from '@heroicons/react/24/solid';
 import {
   BookmarkIcon
 } from '@heroicons/react/24/solid';
@@ -28,9 +28,6 @@ const SideNav: React.FC = () => {
         </Link>
 
         <Link to='/subject-page'><IconBook className='side-nav-icon' />Subjects</Link>
-
-        <Link to='/user-profile'><UserIcon className='side-nav-icon' /> Profile </Link>
-
       </div>
     </div>
   );

@@ -1,13 +1,14 @@
 import React from 'react';
 import './user-profile.css'
 import User from '../../../../model/user';
+import { Link } from 'react-router-dom';
 
 type UserProfileProps = {
     user: User;
     time: string;
 }
 
-const UserProfile: React.FC<UserProfileProps> = ({ user, time }) => {
+const PostUserProfile: React.FC<UserProfileProps> = ({ user, time }) => {
     const postDate = new Date(time);
     const currentDate = new Date();
     const timeDiffMillis = currentDate.getTime() - postDate.getTime();
@@ -36,15 +37,15 @@ const UserProfile: React.FC<UserProfileProps> = ({ user, time }) => {
 
     return (
         <div className="home-page-user-profile">
-            <a href='#'>
+            <Link to={`/user-profile/${user.userID}`}> 
                 <img src={user.avatarUrl} alt={user.username} />
                 <div className='home-page-user-info'>
                     <p>{user.username}</p>
                     <small>{formattedTime}</small>
                 </div>
-            </a>
+            </Link>
         </div>
     );
 };
 
-export default UserProfile;
+export default PostUserProfile;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './detailed-blog-post.css';
 import UserProfile from '../../home/blog/UserProfile/user-profile';
 import BiggerBlogTitle from '../BiggerBlogTitle/bigger-blog-title';
-// import BlogTags from '../../home/blog/BlogTags/blog-tags';
+import TagList from '../../home/blog/TagList/tag-list';
 import PostCommentForm from '../PostCommentForm/post-comment-form';
 import PostContent from '../PostContent/post-content';
 import PostComment from '../PostCommentSection/Comment/post-comment';
@@ -11,83 +11,52 @@ import User from '../../../model/user';
 import { userApi } from '../../../config/axios';
 
 type DetailedBlogPostProps = {
-    userID: string;
-    // blogTags: string[];
     blog: Blog;
-    uri: string;
+    userUri: string;
 }
-
-const CommentSectionSample = {
-    ProfilePic: [
-        'src/assets/images/member-3.png',
-        'src/assets/images/member-4.png',
-        'src/assets/images/member-5.png',
-    ],
-    FullName: [
-        'John Doe',
-        'Jane Smith',
-        'Alice Johnson'
-    ],
-    CommentDate: [
-        '2023-10-01',
-        '2023-09-30',
-        '2023-09-29'
-    ],
-    CommentContent: [
-        'Great stuff dawg, yo hit me up sometime if you wanna get high or sum shizz.',
-        'Yo, nice blog man, really like this one.',
-        'YOoooooooooooo, that\'s sum gud shit my dude, real nice post ya got there.',
-    ],
-    Upvote: [
-        2342,
-        8421,
-        6431,
-    ]
-};
 
 
 const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
-    userID,
-    // blogTags,
     blog,
-    uri,
+    userUri,
 }) => {
 
     const date = new Date(blog.uploadDate);
 
-    const [users, setUsers] = useState<User[]>([]);
+    const initialUser: User = {
+        userID: "1",
+        username: "test",
+        avatarUrl: "test.png",
+        status: false
+    }
+
+    const [user, setUsers] = useState<User>(initialUser);
     const fetchUserData = async () => {
-        const response = await userApi.get(uri);
+        const response = await userApi.get(userUri);
         setUsers(response.data);
     };
     useEffect(() => {
         fetchUserData();
-    }, [uri]);
+    }, [userUri]);
 
     return (
         <div className="post-container">
 
             <div>
-                {users.filter(user => user.userID === userID).map((user) => {
-
-                    return (
-                        <UserProfile
-                            key={user.userID}
-                            user={user}
-                            time={date.toLocaleString("en-US")}
-                        />
-                    )
-                })}
+                <UserProfile
+                    key={user.userID}
+                    user={user}
+                    time={date.toLocaleString("en-US")}
+                />
             </div>
 
             <BiggerBlogTitle title={blog.blogTitle} />
 
-            {/* <BlogTags tags={blogTags} /> */}
+            <TagList tagList={blog.btag} />
 
-            <PostContent />
+            <PostContent content={blog.blogContent} />
 
-            <PostCommentForm ProfilePic='src/assets/images/member-1.png' />
-
+            {/* <PostCommentForm ProfilePic='src/assets/images/member-1.png' />
 
             <PostComment
                 ProfilePic={CommentSectionSample.ProfilePic}
@@ -95,7 +64,7 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
                 CommentDate={CommentSectionSample.CommentDate}
                 CommentContent={CommentSectionSample.CommentContent}
                 Upvote={CommentSectionSample.Upvote}
-            />
+            /> */}
 
 
         </div>

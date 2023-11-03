@@ -17,6 +17,7 @@ import AdminDashboard from "./assets/Dashboard/AdminDashboard/admin-dashboard";
 import UserAnalytic from "./assets/UserAnalytics/user-analytic";
 import UserSetting from "./assets/UserSettings/user-setting";
 import SubjectPage from "./assets/SubjectsPage/subjects-page";
+import DetailedBlogPostPage from "./assets/DetailedBlogPostPage/detail-blog-post-page";
 import { BrowserRouter } from "react-router-dom";
 
 
@@ -30,7 +31,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="user-dashboard" element={<UserDashboard />} />
             <Route path='create-blog' element={<CreateBlog />} />
-            <Route path='user-profile' element={<UserProfile />} />
+            <Route path="user-profile/:userID" element={<UserProfile />} />
             <Route path='bookmark' element={<UserBookmark />} />
             <Route path='search' element={<SearchPage />} />
             <Route path='notification' element={<NotificationPage />} />
@@ -39,6 +40,7 @@ function App() {
             <Route path="user-analytic" element={<UserAnalytic />} />
             <Route path="setting" element={<UserSetting />} />
             <Route path="subject-page" element={<SubjectPage />} />
+            <Route path="detail-blog" element={<DetailedBlogPostPage />} />
           </Route>
           <Route path='login' element={<LoginForm />} />
           <Route path='sign-up' element={<SignUpForm />} />
