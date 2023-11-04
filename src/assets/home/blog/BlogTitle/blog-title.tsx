@@ -11,7 +11,7 @@ const BlogTitle: React.FC<BlogTitleProps> = ({ blogProp }) => {
     return (
 
         <h2 className='home-page-post-title'>
-            <Link to={`/detail-blog/user=${blogProp.userId}_blog-title=${blogProp.blogTitle}`}> {blogProp.blogTitle} </Link>
+            <Link to={`/detail-blog/${blogProp.blogId}`}> {blogProp.blogTitle} </Link>
         </h2>
 
     );

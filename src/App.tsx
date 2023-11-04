@@ -40,7 +40,7 @@ function App() {
             <Route path="user-analytic" element={<UserAnalytic />} />
             <Route path="setting" element={<UserSetting />} />
             <Route path="subject-page" element={<SubjectPage />} />
-            <Route path="detail-blog" element={<DetailedBlogPostPage />} />
+            <Route path="detail-blog/:blogId" element={<DetailedBlogPostPage />} />
           </Route>
           <Route path='login' element={<LoginForm />} />
           <Route path='sign-up' element={<SignUpForm />} />

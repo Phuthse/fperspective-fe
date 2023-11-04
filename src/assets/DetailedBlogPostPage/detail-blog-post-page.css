@@ -1,18 +1,7 @@
-/* General Styling */
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'poppins', 'arial';
-    box-sizing: border-box;
-}
-
-body {
-    background: black;
-}
 
 /* Left side bar */
 
-.left-side-nav {
+.detail-blog-post-page-left {
     flex-basis: 5%;
     position: sticky;
     top: 140px;
@@ -24,7 +13,7 @@ body {
 
 /* Right side bar */
 
-.right-side-nav {
+.detail-blog-post-page-right {
     position: sticky;
     flex-basis: 20%;
     top: 100px;

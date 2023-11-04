@@ -25,7 +25,7 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
 
   if (isLoading) {
     return (
-      <section>
+      <section style={{color: "white"}}>
         <h1>Loading...</h1>
       </section>
     );
@@ -39,7 +39,7 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
         if (blog.status === true) {
           return (
             <BlogPost
-              key={blog.blogID}
+              key={blog.blogId}
               upvote={blog.like.length}
               numberOfComment={blog.commentId.length}
               blog={blog}

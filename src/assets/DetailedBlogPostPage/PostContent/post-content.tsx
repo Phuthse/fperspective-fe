@@ -1,17 +1,18 @@
 import React from 'react';
 import './post.content.css';
+import Blog from '../../../model/blog';
 
 type PostContentProp = {
-    content: string;
+    blogContent: Blog;
 }
 
 
-const PostContent: React.FC<PostContentProp> = ({ content }) => {
+const PostContent: React.FC<PostContentProp> = ({ blogContent }) => {
 
     return (
 
         <div className="post-content">
-            <p>{content}</p>
+            <p>{blogContent.blogContent}</p>
         </div>
     );
 };

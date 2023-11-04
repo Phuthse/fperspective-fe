@@ -24,7 +24,7 @@ const RecentPost: React.FC<RecentPostProps> = ({
 
             <div className="recent-post-content">
 
-                <BlogTitle title={blogTitle} />
+                {/* <BlogTitle title={blogTitle} /> */}
 
                 <div className="post-details">
 
