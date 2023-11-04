@@ -60,6 +60,8 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
             <BiggerBlogTitle blogTitle={detailBlog} />
 
             <TagList tagList={detailBlog.btag} />
+
+            <div className="detail-post-divider"></div>
             
             <PostContent blogContent={detailBlog} />
 

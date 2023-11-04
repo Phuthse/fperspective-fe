@@ -16,12 +16,12 @@ const tagConfig: AxiosRequestConfig = {
 };
 
 const loginConfig: AxiosRequestConfig = {
-  // baseURL: "https://fperspective-server.onrender.com/api/v1/tag",
+  // baseURL: "https://fperspective-server.onrender.com/api/v1/admin",
   baseURL: "http://localhost:8080/api/v1/admin",
 };
 
 const subjectConfig: AxiosRequestConfig = {
-  // baseURL: "https://fperspective-server.onrender.com/api/v1/tag",
+  // baseURL: "https://fperspective-server.onrender.com/api/v1/subject",
   baseURL: "http://localhost:8080/api/v1/subject",
 };
 

@@ -7,6 +7,7 @@ import { userApi } from '../../../config/axios';
 import Blog from '../../../model/blog';
 import TagList from '../../home/blog/TagList/tag-list';
 import { Link } from 'react-router-dom';
+import PostUserProfile from '../../home/blog/UserProfile/user-profile';
 
 type UserProfileBodyMain = {
     blog: Blog;
@@ -20,8 +21,6 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> =
     }) => {
 
         const uploadDate = new Date(blog.uploadDate);
-        const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
-        const formattedUploadDate = uploadDate.toLocaleString('en-US', options);
 
         const initialUser: User = {
             userID: "1",
@@ -49,16 +48,10 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> =
         return (
 
             <div className="user-profile-body-main-post">
-                <div className="user-profile-body-main-post-top">
-
-                    <img src={user.avatarUrl} />
-
-                    <div className="user-profile-body-main-post-top-detail">
-                        <h4>{user.username}</h4>
-                        <p>{formattedUploadDate}</p>
-                    </div>
-
-                </div>
+                <PostUserProfile
+                    user={user}
+                    time={uploadDate.toLocaleString("en-US")}
+                />
 
                 <div className="user-profile-body-main-post-body">
 

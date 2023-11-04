@@ -69,16 +69,15 @@
     padding-top: 5px;
 }
 
-.post-comment-inner footer{
+.post-comment-inner footer {
     display: flex;
     margin-left: 4px;
     margin-top: 4px;
-} 
+}
 
-.detail-post-divider span {
-    border: 1px solid white;
-    margin: 20px 0;
-    height: 1px;
-    width: 50px;
-    justify-content: center;
+.detail-post-divider {
+    width: 40%;
+    height: 0.5px;
+    background-color: gray;
+    margin: 25px auto;
 }
