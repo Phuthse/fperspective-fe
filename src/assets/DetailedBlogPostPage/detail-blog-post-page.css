@@ -28,3 +28,7 @@
 .detailed-post-container {
     flex-basis: 67%;
 }
+
+.detail-post-divider {
+    border: 1px solid white;
+}

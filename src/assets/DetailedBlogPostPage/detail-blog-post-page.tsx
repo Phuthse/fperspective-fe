@@ -41,9 +41,9 @@ const DetailedBlogPostPage: React.FC = () => {
 
   const userId = blog.userId;
   const USER_URI = 'show/' + userId;
-
-  console.log('upvote: ' + blog.like.length)
   
+  console.log(blog.like.length);
+
   return (
     <>
       <div className="container">
@@ -53,22 +53,16 @@ const DetailedBlogPostPage: React.FC = () => {
           <BookmarkButton />
         </div>
 
-        {/* Blog post with content and comment section */}
         <div className='detailed-post-container'>
-
           <DetailedBlogPostGenerator
             blogUri={BLOG_URI}
           />
-
         </div>
 
-        {/* Post creator */}
         <div className='detail-blog-post-page-right'>
-
           <PostCreator
             userUri={USER_URI}
           />
-
         </div >
 
       </div >

@@ -37,9 +37,9 @@ const UserProfile: React.FC = () => {
           <div className="user-profile-body-main">
 
             <UserProfileBodyMain
-              UserName='Andrew Tate'
+              UserName='Nguyen Do Chung Quy'
               DatePosted='Oct 2 2023'
-              PostTitle='How I made 9 digit a month (Not clickbait)'
+              PostTitle='Top 10 Reacr projects to get started with'
               PostTags={SAMPLE_TAGS_1}
               NumberOfUpvote={4221}
               NumberOfComment={12}

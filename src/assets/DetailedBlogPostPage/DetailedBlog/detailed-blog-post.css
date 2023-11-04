@@ -75,4 +75,10 @@
     margin-top: 4px;
 } 
 
-
+.detail-post-divider span {
+    border: 1px solid white;
+    margin: 20px 0;
+    height: 1px;
+    width: 50px;
+    justify-content: center;
+}

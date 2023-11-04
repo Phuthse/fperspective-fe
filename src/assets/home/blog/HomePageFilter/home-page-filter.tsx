@@ -22,6 +22,11 @@ const HomePageFilter: React.FC<{ onFilterChange: (filter: string) => void }> = (
                     onClick={() => handleFilterChange('Top')}>
                     Top
                 </a>
+                <a
+                    className={`user-dashboard-left-nav-link ${selectedFilter === 'Approve' ? 'selected-home-filter' : ''}`}
+                    onClick={() => handleFilterChange('Approve')}>
+                    Approve post
+                </a>
             </div>
 
             <div className='home-page-filter-right'>

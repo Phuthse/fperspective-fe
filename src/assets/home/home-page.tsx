@@ -13,6 +13,12 @@ const HomePage: React.FC = () => {
     setCurrentFilter(filter);
   };
 
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+  const week = Math.ceil(day / 7);
+
   return (
     <div className="container">
       <SideNav />
@@ -22,13 +28,15 @@ const HomePage: React.FC = () => {
         {currentFilter === 'Latest' ? (
           <BlogList uri={"/sort/latest"} />
         ) : currentFilter === 'Top' || currentFilter === 'Week' ? (
-          <BlogList uri={"/sort/week"} />
+          <BlogList uri={`/sort/week/${year}/${month}/${week}`} />
         ) : currentFilter === 'Month' ? (
-          <BlogList uri={"/sort/month"} />
+          <BlogList uri={`/sort/month/${year}/${month}`} />
         ) : currentFilter === 'Year' ? (
-          <BlogList uri={"/sort/year"} />
+          <BlogList uri={`/sort/year/${year}`} />
         ) : currentFilter === 'AllTime' ? (
           <BlogList uri={"/sort/all"} />
+        ) : currentFilter === 'Approve' ? (
+          <h1>Approve page</h1>
         ) : null}
       </div>
 

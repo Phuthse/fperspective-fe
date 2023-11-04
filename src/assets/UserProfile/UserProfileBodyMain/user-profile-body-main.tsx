@@ -26,7 +26,7 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> =
             <div className="user-profile-body-main-post">
                 <div className="user-profile-body-main-post-top">
 
-                    <img src='https://cdn.vox-cdn.com/thumbor/RcAdlMhw-adDQnJiVWKRPUSP10M=/0x0:2024x1038/1200x800/filters:focal(989x320:1311x642)/cdn.vox-cdn.com/uploads/chorus_image/image/71278865/Screen_Shot_2022_08_23_at_4.22.21_PM.0.png' />
+                    <img src='https://lh3.googleusercontent.com/a/ACg8ocKQQc9H1q_ksC6VfRl3KJrypNcOuBXEN60tA9WL7EMXEMk=s96-c' />
 
                     <div className="user-profile-body-main-post-top-detail">
                         <h4>{UserName}</h4>
