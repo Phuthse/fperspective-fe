@@ -14,41 +14,26 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="container">
+    <div className="container">
+      <SideNav />
 
-        <SideNav />
-
-        <div className='home-page-main-content'>
-          <HomePageFilter onFilterChange={handleFilterChange} />
-          {currentFilter === 'Latest' ? (
-            <>
-              <BlogList uri={"/sort/latest"} />
-            </>
-
-          ) : currentFilter === 'Top' || currentFilter === 'Week' ? (
-            <>
-              <BlogList uri={"/sort/week"} />
-            </>
-          ) : currentFilter === 'Month' ? (
-            <>
-              <BlogList uri={"/sort/month"} />
-            </>
-          ) : currentFilter === 'Year' ? (
-            <>
-              <BlogList uri={"/sort/year"} />
-            </>
-          ) : currentFilter === 'AllTime' ? (
-            <>
-              <BlogList uri={"/sort/all"} />
-            </>
-          ) : null}
-        </div>
-
-        {/* Right nav bar (trending tags)*/}
-        <RightSideBar tagUri={"/sort/4"} />
+      <div className='home-page-main-content'>
+        <HomePageFilter onFilterChange={handleFilterChange} />
+        {currentFilter === 'Latest' ? (
+          <BlogList uri={"/sort/latest"} />
+        ) : currentFilter === 'Top' || currentFilter === 'Week' ? (
+          <BlogList uri={"/sort/week"} />
+        ) : currentFilter === 'Month' ? (
+          <BlogList uri={"/sort/month"} />
+        ) : currentFilter === 'Year' ? (
+          <BlogList uri={"/sort/year"} />
+        ) : currentFilter === 'AllTime' ? (
+          <BlogList uri={"/sort/all"} />
+        ) : null}
       </div>
-    </>
+
+      <RightSideBar tagUri={"/sort/4"} />
+    </div>
   );
 };
 

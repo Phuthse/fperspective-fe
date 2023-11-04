@@ -8,7 +8,6 @@ type DetailedBlogPostGeneratorProps = {
     blogUri: string;
 }
 
-
 const DetailedBlogPostGenerator: React.FC<DetailedBlogPostGeneratorProps> = ({ blogUri }) => {
 
     const initialBlog: Blog = {

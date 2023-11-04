@@ -43,6 +43,7 @@ const DetailedBlogPostPage: React.FC = () => {
   const USER_URI = 'show/' + userId;
 
   console.log('upvote: ' + blog.like.length)
+  
   return (
     <>
       <div className="container">
