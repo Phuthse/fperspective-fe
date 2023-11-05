@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './home-page.css'
 import SideNav from './SideNavigation/side-nav';
 import HomePageFilter from './blog/HomePageFilter/home-page-filter';
 import BlogList from './blog/BlogPost/blog-list';
 import RightSideBar from './RightSideNav/right-side-nav';
+import { loginApi } from '../../config/axios';
+import User from '../../model/user';
+
 import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom
 
 const HomePage: React.FC = () => {
   const { filter } = useParams();
 
+  const [loginUser, setLoginUser] = useState<User>();
+  const fetchLoginData = async () => {
+    const response = await loginApi.get("/currentUser", { withCredentials: true });
+    setLoginUser(response.data);
+  };
+
+  useEffect(() => {
+    fetchLoginData();
+  }, [loginApi]);
+
+  const user = loginUser?.username as string;
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
@@ -41,7 +55,7 @@ const HomePage: React.FC = () => {
         ) : null}
       </div>
 
-      <RightSideBar tagUri={"/sort/4"} />
+      <RightSideBar tagUri={"/sort/4"} userUri={`/recommend/all`} currentUser={user} />
     </div>
   );
 };
