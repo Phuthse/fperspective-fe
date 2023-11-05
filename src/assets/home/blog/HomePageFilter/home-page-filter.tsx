@@ -1,74 +1,45 @@
 import React, { useState } from 'react';
-import './home-page-filter.css'
+import './home-page-filter.css';
 import { Link } from 'react-router-dom';
 
-const HomePageFilter: React.FC<{ onFilterChange: (filter: string) => void }> = ({ onFilterChange }) => {
-    const [selectedFilter, setSelectedFilter] = useState('Latest');
+const HomePageFilter: React.FC = () => {
+    const [showTopOptions, setShowTopOptions] = useState(false);
 
-    const handleFilterChange = (filter: string) => {
-        setSelectedFilter(filter);
-        onFilterChange(filter);
+    const handleTopClick = () => {
+        setShowTopOptions(true);
+    };
+
+    const handleLatestOrApproveClick = () => {
+        setShowTopOptions(false);
     };
 
     return (
         <header className='home-page-filter'>
             <div className='home-page-filter-left'>
-                <Link
-                    to={`/${selectedFilter.toLowerCase()}`}
-                    className={`user-dashboard-left-nav-link ${selectedFilter === 'Latest' ? 'selected-home-filter' : ''}`}
-                    onClick={() => handleFilterChange('Latest')}
-                >
+                <Link to={`/latest`} onClick={handleLatestOrApproveClick}>
                     Latest
                 </Link>
-                <Link
-                    to={`/${selectedFilter.toLowerCase()}`}
-                    className={`user-dashboard-left-nav-link ${selectedFilter === 'Top' ? 'selected-home-filter' : ''}`}
-                    onClick={() => handleFilterChange('Top')}
-                >
+                <Link to={`/top`} onClick={handleTopClick}>
                     Top
                 </Link>
-                <Link
-                    to={`/${selectedFilter.toLowerCase()}`}
-                    className={`user-dashboard-left-nav-link ${selectedFilter === 'Approve' ? 'selected-home-filter' : ''}`}
-                    onClick={() => handleFilterChange('Approve')}
-                >
+                <Link to={`/approve`} onClick={handleLatestOrApproveClick}>
                     Approve
                 </Link>
             </div>
 
-            <div className='home-page-filter-right'>
-                {selectedFilter === 'Top' ? (
-                    <>
-                        <Link
-                            to={`/top/week`}
-                            className='home-page-filter-right-option'
-                            onClick={() => handleFilterChange('Week')}
-                        >
-                            Week
-                        </Link>
-                        <Link
-                            to={`/top/month`}
-                            className='home-page-filter-right-option'
-                            onClick={() => handleFilterChange('Month')}
-                        >
-                            Month
-                        </Link>
-                        <Link
-                            to={`/top/year`}
-                            className='home-page-filter-right-option'
-                            onClick={() => handleFilterChange('Year')}
-                        >
-                            Year
-                        </Link>
-                        <Link
-                            to={`/top/all`}
-                            className='home-page-filter-right-option'
-                            onClick={() => handleFilterChange('AllTime')}
-                        >
-                            All time
-                        </Link>
-                    </>
-                ) : null}
+            <div className='home-page-filter-right' style={{ display: showTopOptions ? 'block' : 'none' }}>
+                <Link to={`/top/week`}>
+                    Week
+                </Link>
+                <Link to={`/top/month`}>
+                    Month
+                </Link>
+                <Link to={`/top/year`}>
+                    Year
+                </Link>
+                <Link to={`/top/all`}>
+                    All time
+                </Link>
             </div>
         </header>
     );

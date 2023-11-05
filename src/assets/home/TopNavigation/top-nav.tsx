@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./top-nav.css";
 import { Link } from "react-router-dom";
-import LoginUser from "../../../model/loginUser";
 import { loginApi } from "../../../config/axios";
-
+import User from "../../../model/user";
 
 type TopNavProps = {
   uri: string;
@@ -11,12 +10,13 @@ type TopNavProps = {
 
 const TopNav: React.FC<TopNavProps> = ({ uri }) => {
 
-  const [loginUser, setLoginUser] = useState<LoginUser>();
+  const [loginUser, setLoginUser] = useState<User>();
   const fetchLoginData = async () => {
     const response = await loginApi.get(uri, { withCredentials: true });
     console.log(response.data);
     setLoginUser(response.data);
   };
+
   useEffect(() => {
     fetchLoginData();
   }, [loginApi]);
@@ -24,7 +24,12 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
   return (
     <nav className="top-nav">
       <div className="nav-left">
-        <Link to="/"><img src="https://media.discordapp.net/attachments/599068838151061544/1169593522853249124/f_grey.png?ex=6555f7d9&is=654382d9&hm=c7744635b2c35004d4e95e737f91a750818b504a1da277611b7521f37c8d99dd&=&width=150&height=166" alt="" className="logo" /></Link>
+        <Link to="/">
+          <img
+            src="https://media.discordapp.net/attachments/599068838151061544/1169593522853249124/f_grey.png?ex=6555f7d9&is=654382d9&hm=c7744635b2c35004d4e95e737f91a750818b504a1da277611b7521f37c8d99dd&=&width=150&height=166"
+            className="logo"
+          />
+        </Link>
         <div className="search-box">
           <input type="text" placeholder="Search" />
           <Link to='/search'>
@@ -48,9 +53,12 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
           </svg>
         </Link>
         <div className='nav-user-icon'>
-          <img src={loginUser?.picture} />
+          <img src={loginUser?.avatarUrl} />
           <div className="dropdown-content">
-            <Link to={`/user-profile/${loginUser?.userID}`}>{loginUser?.name}</Link>
+            <Link to={`/user-profile/${loginUser?.userID}`}>
+                {loginUser?.username}
+            </Link>
+            <hr />
             <Link to='/create-blog'>Write a Blog</Link>
             <Link to="/user-dashboard">Dashboard</Link>
             <Link to="/admin-dashboard">Admin Dashboard</Link>

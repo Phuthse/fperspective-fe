@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './home-page.css'
 import SideNav from './SideNavigation/side-nav';
 import HomePageFilter from './blog/HomePageFilter/home-page-filter';
@@ -9,11 +9,6 @@ import { useParams } from 'react-router-dom'; // Import useParams from react-rou
 const HomePage: React.FC = () => {
   const { filter } = useParams();
 
-  const [currentFilter, setCurrentFilter] = useState(filter || 'Latest');
-
-  const handleFilterChange = (filter: string) => {
-    setCurrentFilter(filter);
-  };
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
@@ -21,24 +16,28 @@ const HomePage: React.FC = () => {
   const day = currentDate.getDate();
   const week = Math.ceil(day / 7);
 
+  console.log("FILTER: " + filter)
+
   return (
     <div className="container">
       <SideNav />
 
       <div className='home-page-main-content'>
-        <HomePageFilter onFilterChange={handleFilterChange} />
-        {currentFilter === 'Latest' ? (
+        <HomePageFilter />
+        {filter === 'latest' ? (
           <BlogList uri={"/sort/latest"} />
-        ) : currentFilter === 'Top' || currentFilter === 'Week' ? (
+        ) : filter === 'top' || filter === 'week' ? (
           <BlogList uri={`/sort/week/${year}/${month}/${week}`} />
-        ) : currentFilter === 'Month' ? (
+        ) : filter === 'month' ? (
           <BlogList uri={`/sort/month/${year}/${month}`} />
-        ) : currentFilter === 'Year' ? (
+        ) : filter === 'year' ? (
           <BlogList uri={`/sort/year/${year}`} />
-        ) : currentFilter === 'AllTime' ? (
+        ) : filter === 'all' ? (
           <BlogList uri={"/sort/all"} />
-        ) : currentFilter === 'Approve' ? (
+        ) : filter === 'approve' ? (
           <h1>Approve page</h1>
+        ) : filter === undefined ? (
+          <BlogList uri={"/sort/latest"} />
         ) : null}
       </div>
 
