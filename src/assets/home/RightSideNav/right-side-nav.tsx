@@ -8,20 +8,22 @@ import Tag from "../../../model/tag";
 // const trendingTags = ["React", "JavaScript", "CSS", 'C++'];
 // const numberOfPost = [24241, 47723, 5491, 2123];
 
-const recommendedFullName = ["Alivia Johnson", "Mike Tyson", "Linda Hellgate"];
-const recommendedUserName = ["alivia", "michael", "lind4"];
-const recommendedProfileImage = [
-  "src/images/member-1.png",
-  "src/images/member-2.png",
-  "src/images/member-3.png",
-];
+// const recommendedFullName = ["Alivia Johnson", "Mike Tyson", "Linda Hellgate"];
+// const recommendedUserName = ["alivia", "michael", "lind4"];
+// const recommendedProfileImage = [
+//   "src/images/member-1.png",
+//   "src/images/member-2.png",
+//   "src/images/member-3.png",
+// ];
 
 type RightSideNavProps = {
   tagUri: string;
-  // userUri: string;
+  userUri: string;
+  currentUser: string;
 };
 
-const RightSideBar: React.FC<RightSideNavProps> = ({ tagUri }) => {
+const RightSideBar: React.FC<RightSideNavProps> = ({ tagUri, userUri, currentUser }) => {
+
   const [tags, setTags] = useState<Tag[]>();
   const fetchUserData = async () => {
     const response = await tagApi.get(tagUri, { withCredentials: true });
@@ -50,9 +52,8 @@ const RightSideBar: React.FC<RightSideNavProps> = ({ tagUri }) => {
       </div>
 
       <WhoToFollow
-        FullName={recommendedFullName}
-        UserName={recommendedUserName}
-        ProfileImage={recommendedProfileImage}
+        uri = {userUri}
+        currentUser = {currentUser}
       />
     </div>
   );

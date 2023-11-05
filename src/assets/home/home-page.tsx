@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './home-page.css'
 import SideNav from './SideNavigation/side-nav';
 import BlogListLatest from './blog/BlogListLatest/blog-list-latest';
 import HomePageFilter from './blog/HomePageFilter/home-page-filter';
 import RightSideBar from './RightSideNav/right-side-nav';
+import { loginApi } from '../../config/axios';
+import User from '../../model/user';
 
 
 const HomePage: React.FC = () => {
@@ -12,6 +14,17 @@ const HomePage: React.FC = () => {
   const handleFilterChange = (filter: string) => {
     setCurrentFilter(filter);
   };
+
+  const [loginUser, setLoginUser] = useState<User>();
+  const fetchLoginData = async () => {
+    const response = await loginApi.get("/currentUser", { withCredentials: true });
+    setLoginUser(response.data);
+  };
+  useEffect(() => {
+    fetchLoginData();
+  }, [loginApi]);
+
+  const user = loginUser?.username as string;
 
   return (
     <>
@@ -39,7 +52,7 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* Right nav bar (trending tags)*/}
-        <RightSideBar tagUri = {"/sort/4"}/>
+        <RightSideBar tagUri = {"/sort/4"} userUri={`/recommend/all`} currentUser = {user}/>
       </div>
     </>
   );

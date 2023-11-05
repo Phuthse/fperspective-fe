@@ -29,9 +29,11 @@ const BlogPost: React.FC<BlogPostProps> = ({
 
   const initialUser: User = {
     userID: "1",
-    username: "test",
-    avatarUrl: "test.png",
-    status: false
+    username: "",
+    avatarUrl: "",
+    status: false,
+    email: "",
+    category: ""
   }
   
 

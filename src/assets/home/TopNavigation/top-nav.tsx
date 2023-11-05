@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./top-nav.css";
 import { Link } from "react-router-dom";
-import LoginUser from "../../../model/loginUser";
 import { loginApi } from "../../../config/axios";
+import User from "../../../model/user";
 
 
 type TopNavProps = {
@@ -11,10 +11,9 @@ type TopNavProps = {
 
 const TopNav: React.FC<TopNavProps> = ({uri}) => {
 
-  const [loginUser, setLoginUser] = useState<LoginUser>();
+  const [loginUser, setLoginUser] = useState<User>();
   const fetchLoginData = async () => {
     const response = await loginApi.get(uri, { withCredentials: true });
-    console.log(response.data);
     setLoginUser(response.data);
   };
   useEffect(() => {
@@ -47,9 +46,9 @@ const TopNav: React.FC<TopNavProps> = ({uri}) => {
         </Link>
 
         <div className='nav-user-icon'>
-          <img src={loginUser?.picture} />
-          <div className="dropdown-content">
-            <Link to='#'>{loginUser?.name}</Link>
+          <img src={loginUser?.avatarUrl} />
+          <div key={loginUser?.userID} className="dropdown-content">
+            <Link to='#'>{loginUser?.username}</Link>
             <Link to='/create-blog'>Write a Blog</Link>
             <Link to="/user-dashboard">Dashboard</Link>
             <Link to="/admin-dashboard">Admin Dashboard</Link>

@@ -1,6 +1,7 @@
 type LoginUser = {
+    userID: string;
     email: string;
-    picture: string;
+    avatarUrl: string;
     name: string;
 }
 
