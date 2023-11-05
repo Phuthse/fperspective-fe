@@ -11,7 +11,6 @@ type RecentPostProps = {
     blog: Blog;
 }
 
-
 const RecentPost: React.FC<RecentPostProps> = ({
     blog,
 }) => {

@@ -28,7 +28,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/:filter" element={<HomePage />} />
+            <Route path="/top/:filter" element={<HomePage />} />
             <Route path="user-dashboard" element={<UserDashboard />} />
             <Route path='create-blog' element={<CreateBlog />} />
             <Route path="user-profile/:userID" element={<UserProfile />} />
@@ -45,7 +47,6 @@ function App() {
           <Route path='login' element={<LoginForm />} />
           <Route path='sign-up' element={<SignUpForm />} />
           <Route path='forgot-password' element={<ForgotPasswordForm />} />
-
         </Routes>
       </BrowserRouter>
     </>

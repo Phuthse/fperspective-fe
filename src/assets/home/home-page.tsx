@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import './home-page.css'
 import SideNav from './SideNavigation/side-nav';
-import BlogList from './blog/BlogPost/blog-list';
 import HomePageFilter from './blog/HomePageFilter/home-page-filter';
+import BlogList from './blog/BlogPost/blog-list';
 import RightSideBar from './RightSideNav/right-side-nav';
-
+import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom
 
 const HomePage: React.FC = () => {
-  const [currentFilter, setCurrentFilter] = useState('Latest');
+  const { filter } = useParams();
+
+  const [currentFilter, setCurrentFilter] = useState(filter || 'Latest');
 
   const handleFilterChange = (filter: string) => {
     setCurrentFilter(filter);
