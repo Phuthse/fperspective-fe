@@ -55,7 +55,12 @@ const HomePage: React.FC = () => {
         ) : null}
       </div>
 
-      <RightSideBar tagUri={"/sort/4"} userUri={`/recommend/all`} currentUser={user} />
+      <RightSideBar
+        tagUri={"/sort/4"}
+        userUri={`/recommend/all`}
+        currentUser={user}
+      />
+      
     </div>
   );
 };
