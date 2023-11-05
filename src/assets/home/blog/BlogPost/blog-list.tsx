@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Blog from "../../../../model/blog";
 import { blogApi } from "../../../../config/axios";
-import BlogPost from "../BlogPost/blog-post";
+import BlogPost from "./blog-post";
 
 type BlogListProps = {
   uri: string;
 };
 
-const BlogListLatest: React.FC<BlogListProps> = ({ uri }) => {
+const BlogList: React.FC<BlogListProps> = ({ uri }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -25,7 +25,7 @@ const BlogListLatest: React.FC<BlogListProps> = ({ uri }) => {
 
   if (isLoading) {
     return (
-      <section>
+      <section style={{color: "white"}}>
         <h1>Loading...</h1>
       </section>
     );
@@ -39,7 +39,7 @@ const BlogListLatest: React.FC<BlogListProps> = ({ uri }) => {
         if (blog.status === true) {
           return (
             <BlogPost
-              key={blog.blogID}
+              key={blog.blogId}
               upvote={blog.like.length}
               numberOfComment={blog.commentId.length}
               blog={blog}
@@ -48,10 +48,9 @@ const BlogListLatest: React.FC<BlogListProps> = ({ uri }) => {
             />
           );
         }
-
       })}
     </>
   );
 };
 
-export default BlogListLatest;
+export default BlogList;

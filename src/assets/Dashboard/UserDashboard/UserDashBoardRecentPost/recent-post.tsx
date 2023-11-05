@@ -4,19 +4,15 @@ import BlogTitle from '../../../home/blog/BlogTitle/blog-title';
 import UpAndDownVoteButtonHorizontal from '../../../home/button/ReactionButton/up-down-vote-button-horizontal';
 import CommentButton from '../../../home/button/CommentButton/comment-button';
 import { Link } from 'react-router-dom';
+import Blog from '../../../../model/blog';
 
 // Make these attribute into arrays
 type RecentPostProps = {
-    blogTitle: string;
-    upvote: number;
-    numberOfComment: number;
+    blog: Blog;
 }
 
-
 const RecentPost: React.FC<RecentPostProps> = ({
-    blogTitle,
-    upvote,
-    numberOfComment
+    blog,
 }) => {
 
     return (
@@ -24,13 +20,13 @@ const RecentPost: React.FC<RecentPostProps> = ({
 
             <div className="recent-post-content">
 
-                <BlogTitle title={blogTitle} />
+                <BlogTitle blogProp={blog} />
 
                 <div className="post-details">
 
                     <div className='post-interact'>
-                        <UpAndDownVoteButtonHorizontal upvote={upvote} />
-                        <CommentButton NumberOfComment={numberOfComment} />
+                        <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
+                        <CommentButton NumberOfComment={blog.commentId.length} />
                     </div>
 
                 </div>

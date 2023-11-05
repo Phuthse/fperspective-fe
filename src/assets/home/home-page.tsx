@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './home-page.css'
 import SideNav from './SideNavigation/side-nav';
-import BlogListLatest from './blog/BlogListLatest/blog-list-latest';
 import HomePageFilter from './blog/HomePageFilter/home-page-filter';
+import BlogList from './blog/BlogPost/blog-list';
 import RightSideBar from './RightSideNav/right-side-nav';
 import { loginApi } from '../../config/axios';
 import User from '../../model/user';
 
+import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom
 
 const HomePage: React.FC = () => {
-  const [currentFilter, setCurrentFilter] = useState('Latest');
+  const { filter } = useParams();
+
+  const [currentFilter, setCurrentFilter] = useState(filter || 'Latest');
 
   const handleFilterChange = (filter: string) => {
     setCurrentFilter(filter);
@@ -25,36 +28,35 @@ const HomePage: React.FC = () => {
   }, [loginApi]);
 
   const user = loginUser?.username as string;
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+  const week = Math.ceil(day / 7);
 
   return (
-    <>
-      <div className="container">
+    <div className="container">
+      <SideNav />
 
-        <SideNav />
-
-        <div className='home-page-main-content'>
-          <HomePageFilter onFilterChange={handleFilterChange} />
-          {currentFilter === 'Latest' ? (
-
-            <>
-              <BlogListLatest uri={"/sort/latest"} />
-            </>
-
-          ) : currentFilter === 'Top' || currentFilter === 'Week' ? (
-            <h1> Top Week</h1>
-          ) : currentFilter === 'Month' ? (
-            <h1> Top Month</h1>
-          ) : currentFilter === 'Year' ? (
-            <h1> Top Year</h1>
-          ) : currentFilter === 'AllTime' ? (
-            <h1> Top All</h1>
-          ) : null}
-        </div>
-
-        {/* Right nav bar (trending tags)*/}
-        <RightSideBar tagUri = {"/sort/4"} userUri={`/recommend/all`} currentUser = {user}/>
+      <div className='home-page-main-content'>
+        <HomePageFilter onFilterChange={handleFilterChange} />
+        {currentFilter === 'Latest' ? (
+          <BlogList uri={"/sort/latest"} />
+        ) : currentFilter === 'Top' || currentFilter === 'Week' ? (
+          <BlogList uri={`/sort/week/${year}/${month}/${week}`} />
+        ) : currentFilter === 'Month' ? (
+          <BlogList uri={`/sort/month/${year}/${month}`} />
+        ) : currentFilter === 'Year' ? (
+          <BlogList uri={`/sort/year/${year}`} />
+        ) : currentFilter === 'AllTime' ? (
+          <BlogList uri={"/sort/all"} />
+        ) : currentFilter === 'Approve' ? (
+          <h1>Approve page</h1>
+        ) : null}
       </div>
-    </>
+
+      <RightSideBar tagUri={"/sort/4"} userUri={`/recommend/all`} currentUser = {user} />
+    </div>
   );
 };
 

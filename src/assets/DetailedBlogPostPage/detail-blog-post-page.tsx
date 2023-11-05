@@ -1,57 +1,73 @@
-// import React from 'react';
-// import './detail-blog-post-page.css';
-// import TopNav from '../home/TopNavigation/top-nav';
-// import DetailedBlogPost from './DetailedBlog/detailed-blog-post';
-// import PostCreator from './PostCreatorDetail/post-creator-detail';
-// import UpAndDownVoteButtonVertical from '../home/button/ReactionButton/up-down-vote-button-vertical';
-// import BookmarkButton from '../home/button/BookmarkButton/bookmark-button';
+import React, { useEffect, useState } from 'react';
+import './detail-blog-post-page.css';
+import DetailedBlogPostGenerator from './DetailedBlog/detailed-blog-post-generator';
+import UpAndDownVoteButtonVertical from '../home/button/ReactionButton/up-down-vote-button-vertical';
+import BookmarkButton from '../home/button/BookmarkButton/bookmark-button';
+import { useParams } from 'react-router';
+import Blog from '../../model/blog';
+import { blogApi } from '../../config/axios';
+import PostCreator from './PostCreatorDetail/post-creator-detail';
 
 
-// const blogTags = ["JavaScript", "React.js", "CSS", "Web Development"];
 
-// const DetailedBlogPostPage: React.FC = () => {
-//   return (
-//     <>
-//       <TopNav />
-//       <div className="container">
+const DetailedBlogPostPage: React.FC = () => {
 
-//         {/* Buttons ?? */}
-//         <div className="left-side-nav">
+  const { blogId } = useParams();
+  const BLOG_URI = '/show/' + blogId;
 
-//           <UpAndDownVoteButtonVertical upvote={2399} />
-//           <BookmarkButton/>
+  const initialBlog: Blog = {
+    blogId: "1",
+    blogTitle: "Example Blog",
+    blogContent: "This is an example blog content.",
+    userId: "user1",
+    btag: [
+      { tagId: "tag1", tagName: "Tag1", status: false },
+      { tagId: "tag2", tagName: "Tag2", status: false },
+    ],
+    like: [],
+    commentId: [],
+    uploadDate: Date.now(), // You can set the current timestamp or any specific date
+    status: true, // You can set it to true or false as needed
+  };
 
-//         </div>
+  const [blog, setBlog] = useState<Blog>(initialBlog);
+  const fetchBlogData = async () => {
+    const response = await blogApi.get(BLOG_URI, { withCredentials: true });
+    setBlog(response.data);
+  };
+  useEffect(() => {
+    fetchBlogData();
+  }, [BLOG_URI]);
 
-//         {/* Blog post with content and comment section */}
-//         <div className='detailed-post-container'>
+  const userId = blog.userId;
+  const USER_URI = 'show/' + userId;
+  
+  console.log(blog.like.length);
 
-//           <DetailedBlogPost
-//             fullName="John Doe"
-//             timeUpload="2023-10-02"
-//             src='src/assets/images/profile-pic.png'
-//             blogTitle="Getting Started with React.js"
-//             blogTags={blogTags}
-//             numberOfComment={10}
-//           />
+  return (
+    <>
+      <div className="container">
 
-//         </div>
+        <div className="detail-blog-post-page-left">
+          <UpAndDownVoteButtonVertical upvote={blog.like.length} />
+          <BookmarkButton />
+        </div>
 
-//         {/* Post creator */}
-//         <div className='right-side-nav'>
+        <div className='detailed-post-container'>
+          <DetailedBlogPostGenerator
+            blogUri={BLOG_URI}
+          />
+        </div>
 
-//           <PostCreator
-//             profilePic='src/assets/images/profile-pic.png'
-//             fullName='John Doe'
-//             userName='@johnD'
-//             bio='Professional game developer, lead developer of the game HADES'
-//           />
-          
-//         </div >
+        <div className='detail-blog-post-page-right'>
+          <PostCreator
+            userUri={USER_URI}
+          />
+        </div >
 
-//       </div >
-//     </>
-//   );
-// };
+      </div >
+    </>
+  );
+};
 
-// export default DetailedBlogPostPage;
+export default DetailedBlogPostPage;

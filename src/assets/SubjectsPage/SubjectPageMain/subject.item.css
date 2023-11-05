@@ -1,11 +1,11 @@
 
 
-/* TAGS */
-.tags-page-main {
+/* subject */
+.subject-page-main {
     display: grid;
 }
 
-.tags-page-content {
+.subject-page-content {
     background: #111;
     padding: 15px;
     width: 300px;
@@ -19,7 +19,17 @@
     position: relative;
 }
 
-.tags-page-content button {
+.subject-name-num h3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.semester-number{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.subject-page-content button {
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -27,28 +37,28 @@
     height: 35px !important;
 }
 
-/* TAGS NAME */
+/* subject NAME */
 
 
-.tags-name-num {
+.subject-name-num {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.tags-name-num h4{
+.subject-name-num h4{
     color: #acacac;
     font-size: 14px;
 }
 
-.tags-name-num a {
+.subject-name-num a {
     text-decoration: none;
-    color: #efefef;
-    font-size: 20px;
+    font-size: 23   px;
+    font-weight: bold;
 }
 
-.tags-name-num a:hover {
-    color: blueviolet
+.subject-name-num a:hover {
+    text-decoration: underline;
 }
 
 

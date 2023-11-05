@@ -1,41 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 import { Link } from 'react-router-dom';
 import './login-form.css'
-import axios from 'axios';
 
 const LoginForm: React.FC = () => {
-
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post('/api/login', formData);
-      // Check the response from the server
-      if (response.status === 200) {
-        // Login successful, handle the response (e.g., set user state or redirect)
-        console.log('Login Successful', response.data);
-      } else {
-        // Handle other cases, e.g., display an error message
-        console.error('Login Failed', response.data);
-      }
-    } catch (error) {
-      // Handle login error (e.g., show an error message)
-      console.error('Login Error', error);
-    }
-  };
 
 
   const responseGoogle = (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
@@ -50,7 +18,7 @@ const LoginForm: React.FC = () => {
     <div className='login-form-container'>
       <div className="login-form-header">
 
-        <Link to="/"><img src="src/images/fperspective-logo.png" alt="" className="logo" /></Link>
+        <Link to="/"><img src="https://media.discordapp.net/attachments/599068838151061544/1169593522853249124/f_grey.png?ex=6555f7d9&is=654382d9&hm=c7744635b2c35004d4e95e737f91a750818b504a1da277611b7521f37c8d99dd&=&width=150&height=166" alt="" className="login-logo" /></Link>
         <h1>Start sharing your perspective</h1>
       </div>
 
@@ -66,57 +34,6 @@ const LoginForm: React.FC = () => {
             cookiePolicy={'single_host_origin'}
           />
 
-        </div>
-
-        <div className="login-form-action-user-name">
-
-          <div className="login-form-divider-container">
-            <hr className='login-form-divider' />
-            <div className='login-form-label'>OR</div>
-          </div>
-
-          <form onSubmit={handleSubmit}>
-
-            <div className="login-form-user-name">
-              <label >Email</label>
-              <input
-                className="login-form-textfield"
-                type="email"
-                name='email'
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="login-form-password">
-              <label >Password</label>
-              <input
-                className="login-form-textfield"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="login-form-extra">
-              <div>
-                <input className="checkbox" type="checkbox" />
-                <label>Remember me</label>
-              </div>
-
-              <Link to='/forgot-password'>Forgot password</Link>
-
-            </div>
-
-            <div className='login-button'>
-              <input type="submit" value='Log in' />
-            </div>
-
-          </form>
-
-          <div className='login-form-register'>
-            Don't have an account? <Link to='/sign-up'>Create account</Link>
-          </div>
         </div>
 
       </div>

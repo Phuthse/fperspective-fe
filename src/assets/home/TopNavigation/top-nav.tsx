@@ -9,7 +9,7 @@ type TopNavProps = {
   uri: string;
 }
 
-const TopNav: React.FC<TopNavProps> = ({uri}) => {
+const TopNav: React.FC<TopNavProps> = ({ uri }) => {
 
   const [loginUser, setLoginUser] = useState<User>();
   const fetchLoginData = async () => {
@@ -23,11 +23,7 @@ const TopNav: React.FC<TopNavProps> = ({uri}) => {
   return (
     <nav className="top-nav">
       <div className="nav-left">
-        <Link to="/"><img src="src/images/fperspective-logo.png" alt="" className="logo" /></Link>
-      </div>
-
-      <div className="nav-right">
-
+        <Link to="/"><img src="https://media.discordapp.net/attachments/599068838151061544/1169593522853249124/f_grey.png?ex=6555f7d9&is=654382d9&hm=c7744635b2c35004d4e95e737f91a750818b504a1da277611b7521f37c8d99dd&=&width=150&height=166" alt="" className="logo" /></Link>
         <div className="search-box">
           <input type="text" placeholder="Search" />
           <Link to='/search'>
@@ -39,12 +35,17 @@ const TopNav: React.FC<TopNavProps> = ({uri}) => {
             </button>
           </Link>
         </div>
+      </div>
+
+      <div className="nav-right">
+        <div className="create-blog-button">
+          <Link to='/create-blog'>Write a Blog</Link>
+        </div>
         <Link to='/notification'>
           <svg fill="white" width="24" height="24" viewBox="0 0 24 24">
             <path d="M20 17h2v2H2v-2h2v-7a8 8 0 1116 0v7zm-2 0v-7a6 6 0 10-12 0v7h12zm-9 4h6v2H9v-2z"></path>
           </svg>
         </Link>
-
         <div className='nav-user-icon'>
           <img src={loginUser?.avatarUrl} />
           <div key={loginUser?.userID} className="dropdown-content">

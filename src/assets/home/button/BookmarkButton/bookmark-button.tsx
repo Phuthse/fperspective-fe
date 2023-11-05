@@ -4,7 +4,7 @@ import './bookmark-button.css';
 
 
 interface BookmarkToggleProps {
-    initialBookmarkState?: boolean; // You can make this prop optional
+    initialBookmarkState?: boolean; 
 }
 
 const BookmarkButton: React.FC<BookmarkToggleProps> = ({ initialBookmarkState = false }) => {

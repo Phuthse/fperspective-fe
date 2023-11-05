@@ -1,10 +1,15 @@
 type User = {
     userID: string;
     username: string;
-    avatarUrl: string;
+    bio: string;
     email: string;
+    avatarUrl: string;
+    campus: string;
+    term: string;
     category: string;
+    fullName: string;
+    createdDate: number;
     status: boolean;
 }
-       
+
 export default User;

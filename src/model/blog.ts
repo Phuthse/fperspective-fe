@@ -1,7 +1,7 @@
 import tag from "./tag";
 
 type Blog = {
-    blogID: string;
+    blogId: string;
     blogTitle: string;
     blogContent: string;
     userId:string;

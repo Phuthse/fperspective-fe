@@ -1,24 +1,19 @@
 import './user-profile-top.css';
 import FollowButton from '../../home/button/FollowButton/follow-button';
+import User from '../../../model/user';
 
 type UserProfileTopProp = {
-    ProfileImage: string;
-    UserFullName: string;
-    UserBio: string;
-    UserCampus: string;
-    DateJoined: string;
-    UserWork: string;
+    userProfile: User;
 }
 
 const UserProfileTop: React.FC<UserProfileTopProp> =
     ({
-        ProfileImage,
-        UserFullName,
-        UserBio,
-        UserCampus,
-        DateJoined,
-        UserWork
+        userProfile,
     }) => {
+
+        const JoinedDate = new Date(userProfile.createdDate);
+        const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
+        const formattedJoinedDate = JoinedDate.toLocaleString('en-US', options);
 
         return (
 
@@ -27,7 +22,7 @@ const UserProfileTop: React.FC<UserProfileTopProp> =
                     <div className="user-profile-header-top">
 
                         <span className="user-profile-avatar">
-                            <img src={ProfileImage} />
+                            <img src={userProfile.avatarUrl} />
                         </span>
 
                         <div className="user-profile-header-action">
@@ -41,11 +36,11 @@ const UserProfileTop: React.FC<UserProfileTopProp> =
 
                         <div className="user-profile-header-full-name">
                             <h1>
-                                {UserFullName}
+                                {userProfile.username}
                             </h1>
                         </div>
                         <p className='user-profile-header-bio'>
-                            {UserBio}
+                            {userProfile.bio}
                         </p>
 
                         <div className="user-profile-header-detail">
@@ -55,7 +50,7 @@ const UserProfileTop: React.FC<UserProfileTopProp> =
                                     <path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1112.728 0zM12 13a2 2 0 100-4 2 2 0 000 4z"></path>
                                 </svg>
                                 <span>
-                                    {UserCampus}
+                                    {userProfile.campus}
                                 </span>
                             </span>
 
@@ -64,7 +59,7 @@ const UserProfileTop: React.FC<UserProfileTopProp> =
                                     <path d="M8 6v3.999h3V6h2v3.999h3V6h2v3.999L19 10a3 3 0 012.995 2.824L22 13v1c0 1.014-.377 1.94-.999 2.645L21 21a1 1 0 01-1 1H4a1 1 0 01-1-1v-4.36a4.025 4.025 0 01-.972-2.182l-.022-.253L2 14v-1a3 3 0 012.824-2.995L5 10l1-.001V6h2zm11 6H5a1 1 0 00-.993.883L4 13v.971l.003.147a2 2 0 003.303 1.4c.363-.312.602-.744.674-1.218l.015-.153.005-.176c.036-1.248 1.827-1.293 1.989-.134l.01.134.004.147a2 2 0 003.992.031l.012-.282c.124-1.156 1.862-1.156 1.986 0l.012.282a2 2 0 003.99 0L20 14v-1a1 1 0 00-.883-.993L19 12zM7 1c1.32.871 1.663 2.088 1.449 2.888a1.5 1.5 0 11-2.898-.776C5.85 2.002 7 2.5 7 1zm5 0c1.32.871 1.663 2.088 1.449 2.888a1.5 1.5 0 01-2.898-.776C10.85 2.002 12 2.5 12 1zm5 0c1.32.871 1.663 2.088 1.449 2.888a1.5 1.5 0 01-2.898-.776C15.85 2.002 17 2.5 17 1z"></path>
                                 </svg>
                                 <span>
-                                    Joined on&nbsp;<time>{DateJoined}</time>
+                                    Joined on&nbsp;<time>{formattedJoinedDate}</time>
                                 </span>
                             </span>
 
@@ -79,14 +74,14 @@ const UserProfileTop: React.FC<UserProfileTopProp> =
                         </div>
                     </div>
 
-                    <div className="user-profile-header-work">
+                    {/* <div className="user-profile-header-work">
                         <strong className="crayons-definition__title">
                             <p>Work</p>
                         </strong>
                         <p>
                             {UserWork}
                         </p>
-                    </div>
+                    </div> */}
 
                 </header>
 

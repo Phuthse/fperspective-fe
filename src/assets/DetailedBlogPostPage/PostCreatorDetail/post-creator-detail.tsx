@@ -1,54 +1,79 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './post-creator-detail.css';
 import FollowButton from '../../home/button/FollowButton/follow-button';
+import User from '../../../model/user';
+import { userApi } from '../../../config/axios';
+import { Link } from 'react-router-dom';
 
 type BlogPostProps = {
-    profilePic: string;
-    fullName: string;
-    userName: string;
-    bio: string;
+    userUri: string
 }
 
 
 const PostCreator: React.FC<BlogPostProps> = ({
-    profilePic,
-    fullName,
-    userName,
-    bio,
+    userUri
 }) => {
+
+
+    const initialUser: User = {
+        userID: "1",
+        username: "test",
+        bio: "test",
+        email: "test",
+        avatarUrl: "test",
+        campus: "test",
+        term: "test",
+        category: "test",
+        fullName: "test",
+        createdDate: 2,
+        status: false,
+    }
+
+    const [user, setUsers] = useState<User>(initialUser);
+    const fetchUserData = async () => {
+        const response = await userApi.get(userUri, { withCredentials: true });
+        setUsers(response.data);
+    };
+    useEffect(() => {
+        fetchUserData();
+    }, [userUri]);
+
+    const JoinedDate = new Date(user.createdDate);
+    const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+    const formattedJoinedDate = JoinedDate.toLocaleString('vn-VN', options);
 
     return (
         <div className="post-creator">
             <div className='post-creator-name'>
-                <a href="#">
-                    <img src={profilePic} />
-                    <div className='profile-name'>
-                        <p>{fullName}</p>
-                        <p>{userName}</p>
+                <Link to={`/user-profile/${user.userID}`}>
+                    <img src={user.avatarUrl} />
+                    <div className='post-creator-profile-name'>
+                        <p>{user.fullName}</p>
+                        <p>{user.username}</p>
                     </div>
-                </a>
+                </Link>
                 <div className='follow-button'>
                     <FollowButton />
                 </div>
             </div>
             <div className="post-creator-bio">
-                <p>{bio}</p>
+                <p>{user.bio}</p>
                 <div className="post-creator-details">
                     <ul className="post-creator-details-inner">
                         <li>
                             <div className="key">
-                                Location
+                                Campus
                             </div>
                             <div className="value">
-                                HCM, Vietnam
+                                {user.campus}
                             </div>
                         </li>
                         <li>
                             <div className="key">
-                                Work
+                                Term
                             </div>
                             <div className="value">
-                                Developer at FSoftware
+                                {user.term}
                             </div>
                         </li>
                         <li>
@@ -56,7 +81,7 @@ const PostCreator: React.FC<BlogPostProps> = ({
                                 Joined
                             </div>
                             <div className="value">
-                                <time dateTime="2019-06-29T09:14:12Z" className="date">Jun 29, 2019</time>
+                                <time dateTime="2019-06-29T09:14:12Z" className="date">{formattedJoinedDate}</time>
                             </div>
                         </li>
                     </ul>

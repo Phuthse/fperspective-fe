@@ -1,15 +1,17 @@
 import React from 'react';
-import './blog-title.css'
+import './blog-title.css';
+import Blog from '../../../../model/blog';
+import { Link } from 'react-router-dom';
 
 type BlogTitleProps = {
-    title: string;
+    blogProp: Blog;
 }
 
-const BlogTitle: React.FC<BlogTitleProps> = ({ title }) => {
+const BlogTitle: React.FC<BlogTitleProps> = ({ blogProp }) => {
     return (
 
         <h2 className='home-page-post-title'>
-            <a href='#'>{title}</a>
+            <Link to={`/detail-blog/${blogProp.blogId}`}> {blogProp.blogTitle} </Link>
         </h2>
 
     );

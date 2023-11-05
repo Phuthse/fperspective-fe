@@ -1,7 +1,7 @@
 import React from 'react';
 import './user-dashboard-content.css';
 import { useUserDashboard } from '../user-dashboard-context';
-import RecentPost from '../UserDashBoardRecentPost/recent-post';
+import RecentBlogList from '../UserDashBoardRecentPost/recent-post-list';
 import UserFollower from '../UserFollower/user-follower';
 import UserFollowing from '../UserFollowing/user-following';
 import UserFollowingTags from '../UserFollowingTags/user-following-tags';
@@ -83,10 +83,8 @@ const UserDashoardContent: React.FC = () => {
             {selectedNavItem === 'posts' && (
                 <div>
                     <h2>Recent Blogs</h2>
-                    <RecentPost
-                        blogTitle="Getting Started with React.js"
-                        upvote={8541}
-                        numberOfComment={10}
+                    <RecentBlogList
+                        uri='/search/user/6535f24dd34a9244abf62c6a'
                     />
                 </div>
             )}

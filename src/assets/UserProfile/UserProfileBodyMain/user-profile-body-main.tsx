@@ -1,63 +1,78 @@
+import { useEffect, useState } from 'react';
+import User from '../../../model/user';
 import CommentButton from '../../home/button/CommentButton/comment-button';
 import UpAndDownVoteButtonHorizontal from '../../home/button/ReactionButton/up-down-vote-button-horizontal';
 import './user-profile-body-main.css';
+import { userApi } from '../../../config/axios';
+import Blog from '../../../model/blog';
+import TagList from '../../home/blog/TagList/tag-list';
+import { Link } from 'react-router-dom';
+import PostUserProfile from '../../home/blog/UserProfile/user-profile';
 
 type UserProfileBodyMain = {
-    UserName: string;
-    DatePosted: string;
-    PostTitle: string;
-    PostTags: string[];
-    NumberOfUpvote: number;
-    NumberOfComment: number;
+    blog: Blog;
+    userUri: string;
 }
 
 const UserProfileBodyMain: React.FC<UserProfileBodyMain> =
     ({
-        UserName,
-        DatePosted,
-        PostTitle,
-        PostTags,
-        NumberOfUpvote,
-        NumberOfComment
+        blog,
+        userUri
     }) => {
+
+        const uploadDate = new Date(blog.uploadDate);
+
+        const initialUser: User = {
+            userID: "1",
+            username: "test",
+            bio: "test",
+            email: "test",
+            avatarUrl: "test",
+            campus: "test",
+            term: "test",
+            category: "test",
+            fullName: "test",
+            createdDate: 2,
+            status: false,
+        }
+
+        const [user, setUser] = useState<User>(initialUser);
+        const fetchUserData = async () => {
+            const response = await userApi.get(userUri, { withCredentials: true });
+            setUser(response.data);
+        };
+        useEffect(() => {
+            fetchUserData();
+        }, [userUri]);
 
         return (
 
             <div className="user-profile-body-main-post">
-                <div className="user-profile-body-main-post-top">
-
-                    <img src='https://cdn.vox-cdn.com/thumbor/RcAdlMhw-adDQnJiVWKRPUSP10M=/0x0:2024x1038/1200x800/filters:focal(989x320:1311x642)/cdn.vox-cdn.com/uploads/chorus_image/image/71278865/Screen_Shot_2022_08_23_at_4.22.21_PM.0.png' />
-
-                    <div className="user-profile-body-main-post-top-detail">
-                        <h4>{UserName}</h4>
-                        <p>{DatePosted}</p>
-                    </div>
-
-                </div>
+                <PostUserProfile
+                    user={user}
+                    time={uploadDate.toLocaleString("en-US")}
+                />
 
                 <div className="user-profile-body-main-post-body">
 
                     <div className="user-profile-body-main-post-body-title">
                         <h2>
-                            <a href='#'>{PostTitle}</a>
+                            <Link to={`/detail-blog/${blog.blogId}`}> {blog.blogTitle} </Link>
                         </h2>
                     </div>
 
                     <div className="user-profile-body-main-post-body-tags">
-                        {PostTags.map((tag, index) => (
-                            <a key={index} href={`#${tag}`} className="user-bookmark-post-tag">
-                                #{tag}
-                            </a>
-                        ))}
+                        <TagList tagList={blog.btag} />
                     </div>
 
                     <div className="user-profile-body-main-post-body-bottom">
-                        <UpAndDownVoteButtonHorizontal upvote={NumberOfUpvote} />
-                        <CommentButton NumberOfComment={NumberOfComment} />
+                        <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
+                        <CommentButton NumberOfComment={blog.commentId.length} />
                     </div>
 
                 </div>
             </div>
+
 
         );
     };

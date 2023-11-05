@@ -1,4 +1,4 @@
-.post-container {
+.detailed-post-container {
     width: 100%;
     background: #111;
     border-radius: 6px;
@@ -69,10 +69,15 @@
     padding-top: 5px;
 }
 
-.post-comment-inner footer{
+.post-comment-inner footer {
     display: flex;
     margin-left: 4px;
     margin-top: 4px;
-} 
+}
 
-
+.detail-post-divider {
+    width: 40%;
+    height: 0.5px;
+    background-color: gray;
+    margin: 25px auto;
+}

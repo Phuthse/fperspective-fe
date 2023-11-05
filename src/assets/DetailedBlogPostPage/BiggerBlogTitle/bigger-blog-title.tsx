@@ -1,14 +1,15 @@
 import React from 'react';
 import './bigger-blog-title.css'
+import Blog from '../../../model/blog';
 
 type BiggerBlogTitleProps = {
-    title: string;
+    blogTitle: Blog;
 }
 
-const BiggerBlogTitle: React.FC<BiggerBlogTitleProps> = ({ title }) => {
+const BiggerBlogTitle: React.FC<BiggerBlogTitleProps> = ({ blogTitle }) => {
     return (
         <h2 className='bigger-post-title'>
-            {title}
+            {blogTitle.blogTitle}
         </h2>
     );
 };
