@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./create.blog.css";
+import "./create-blog.css";
 import CreateBlogTitle from "./CreateBlogTitle/create-blog-title";
 import CreateBlogTags from "./CreateBlogTags/create-blog-tags";
 import ReactQuill from "react-quill";

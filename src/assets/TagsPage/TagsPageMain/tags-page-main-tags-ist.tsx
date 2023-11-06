@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import TagsPageTags from './tags-page-tags';
 import Tag from '../../../model/tag';
-import { tagApi } from '../../../config/axios';
+import { loginApi, tagApi } from '../../../config/axios';
+import User from '../../../model/user';
+import TagPageTagsAdmin from './tags-page-tags-admin';
 
 type TagsPageMain = {
     uri: string;
 }
 
 const TagsPageTagsList: React.FC<TagsPageMain> = ({ uri }) => {
-
 
     const [tags, setTags] = useState<Tag[]>();
     const fetchUserData = async () => {
@@ -21,19 +22,47 @@ const TagsPageTagsList: React.FC<TagsPageMain> = ({ uri }) => {
         fetchUserData();
     }, [tagApi]);
 
-    return (
+    const [loginUser, setLoginUser] = useState<User>();
+    const fetchLoginData = async () => {
+        const response = await loginApi.get('/currentUser', { withCredentials: true });
+        setLoginUser(response.data);
+    };
+    useEffect(() => {
+        fetchLoginData();
+    }, [loginApi]);
 
-        <div className='tags-page-body'>
-            <div className='tags-page-container'>
-                {tags?.map((tag) => {
-                    return (
-                        <TagsPageTags
-                            tags={tag}
-                        />
-                    )
-                })}
+
+    if (loginUser?.role === 'ROLE_ADMIN') {
+        return (
+            <div className='tags-page-body'>
+                <div className='tags-page-container'>
+                    {tags?.map((tag) => {
+                        return (
+                            <TagsPageTags
+                                tags={tag}
+                            />
+                        )
+                    })}
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
+    else {
+        return (
+            <div className='tags-page-body'>
+                <div className='tags-page-container'>
+                    {tags?.map((tag) => {
+                        return (
+                            <TagPageTagsAdmin
+                                tags={tag}
+                            />
+                        )
+                    })}
+                </div>
+            </div>
+        );
+    }
+
+
 };
 export default TagsPageTagsList;

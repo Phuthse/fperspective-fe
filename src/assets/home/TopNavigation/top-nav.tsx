@@ -28,14 +28,8 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
 
   const [loginUser, setLoginUser] = useState<User>();
   const fetchLoginData = async () => {
-    try {
-      const response = await loginApi.get(uri, { withCredentials: true });
-      setLoginUser(response.data);
-    }
-    catch {
-      timeout(100)
-      // window.location.href = "http://localhost:5173/login"
-    }
+    const response = await loginApi.get(uri, { withCredentials: true });
+    setLoginUser(response.data);
   };
   useEffect(() => {
     fetchLoginData();
