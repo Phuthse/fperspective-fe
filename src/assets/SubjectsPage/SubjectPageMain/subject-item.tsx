@@ -1,5 +1,5 @@
 import React from 'react';
-import './subject.item.css';
+import './subject-item.css';
 import FollowButton from '../../home/button/FollowButton/follow-button';
 import Subject from '../../../model/subject';
 

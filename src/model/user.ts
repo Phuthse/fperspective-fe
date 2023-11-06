@@ -10,6 +10,7 @@ type User = {
     fullName: string;
     createdDate: number;
     status: boolean;
+    role: string;
 }
 
 export default User;

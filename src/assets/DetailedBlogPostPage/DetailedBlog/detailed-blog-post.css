@@ -12,6 +12,8 @@
     justify-content: space-between;
 }
 
+/* APPROVE BUTTONS */
+
 .detail-approve-button {
     padding: 10px;
     background: transparent;
@@ -29,6 +31,23 @@
     background: #6775f7;
     color: #efefef;
 }
+
+.not-detail-approve-button {
+    padding: 10px;
+    background: transparent;
+    color: rgb(241, 74, 94);
+    border-radius: 5px;
+    border: 0.5px solid rgb(241, 74, 94);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.not-detail-approve-button:hover {
+    background: rgb(241, 74, 94);
+    color: #efefef;
+}
+
+/* */
 
 .post-details {
     display: flex;

@@ -24,6 +24,13 @@
     align-items: center;
 }
 
+/* APPROVE BUTTON */
+
+.post-approve-button {
+    display: flex;
+    gap: 10px;
+}
+
 .approve-button {
     padding: 10px;
     background: transparent;
@@ -36,5 +43,20 @@
 
 .approve-button:hover {
     background: #6775f7;
+    color: #efefef;
+}
+
+.not-approve-button {
+    padding: 10px;
+    background: transparent;
+    color: rgb(241, 74, 94);
+    border-radius: 5px;
+    border: 0.5px solid rgb(241, 74, 94);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.not-approve-button:hover {
+    background: rgb(241, 74, 94);
     color: #efefef;
 }

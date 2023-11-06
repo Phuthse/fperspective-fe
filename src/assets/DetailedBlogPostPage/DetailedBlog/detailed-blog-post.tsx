@@ -98,7 +98,11 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
                         user={user}
                         time={date.toLocaleString("en-US")}
                     />
-                    <button className="detail-approve-button" onClick={HandleApprove(detailBlog.blogId)}>Approve</button>
+                    <div className="post-approve-button">
+                        <button className="detail-approve-button" onClick={HandleApprove(detailBlog.blogId)}>Approve</button>
+                        <button className="not-detail-approve-button">Don't Approve</button>
+                    </div>
+
                 </div>
                 <BiggerBlogTitle blogTitle={detailBlog} />
                 <TagList tagList={detailBlog.btag} />

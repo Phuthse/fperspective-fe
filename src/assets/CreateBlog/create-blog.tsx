@@ -50,13 +50,11 @@ const CreateBlog: React.FC = () => {
             .post(`/show`, postData, { withCredentials: true })
             .then((response) => {
                 console.log(postData);
-                // Handle success, e.g., show a success message or redirect
                 window.location.href = "http://localhost:5173";
                 console.log("Blog post created:", response.data);
             })
             .catch((error) => {
                 console.log(postData);
-                // Handle errors
                 console.error("Error creating blog post:", error);
             });
 

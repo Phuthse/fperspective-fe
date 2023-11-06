@@ -48,6 +48,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fullName: "test",
     createdDate: 2,
     status: false,
+    role: ""
   }
 
   const [users, setUsers] = useState<User>(initialUser);
@@ -58,8 +59,6 @@ const BlogPost: React.FC<BlogPostProps> = ({
   useEffect(() => {
     fetchUserData();
   }, [userUri]);
-
-  console.log(blog.blogTitle + ": " + blog.subject);
 
   if (blog.status !== false) {
 
@@ -114,8 +113,10 @@ const BlogPost: React.FC<BlogPostProps> = ({
               <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
               <CommentButton NumberOfComment={blog.commentId.length} />
             </div>
-
-            <button className="approve-button" onClick={HandleApprove(blog.blogId)}>Approve</button>
+            <div className="post-approve-button">
+              <button className="approve-button" onClick={HandleApprove(blog.blogId)}>Approve</button>
+              <button className="not-approve-button">Don't Approve</button>
+            </div>
           </div>
         </div>
       </>
