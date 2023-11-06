@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './user-analytic-follower.css';
-import LineChartFollowerWeek from '../FollowerCharts/FollowerWeek/user-analytic-follower-chart-week';
-import LineChartFollowerMonth from '../FollowerCharts/FollowerMonth/user-analytic-follower-chart-month';
-import LineChartFollowerYear from '../FollowerCharts/FollowerYear/user-analytic-follower-chart-year';
-import LineChartFollowerAll from '../FollowerCharts/FollowerAll/user-analytic-follower-chart-all';
+import { LineChartFollowerWeek, TotalFollowerWeek } from '../FollowerCharts/FollowerWeek/user-analytic-follower-chart-week';
+import { LineChartFollowerMonth, TotalFollowerMonth } from '../FollowerCharts/FollowerMonth/user-analytic-follower-chart-month';
+import { LineChartFollowerYear, TotalFollowerYear } from '../FollowerCharts/FollowerYear/user-analytic-follower-chart-year';
+import { LineChartFollowerAll, TotalFollowerAll } from '../FollowerCharts/FollowerAll/user-analytic-follower-chart-all';
 
 interface ChartOption {
     id: number;
@@ -14,6 +14,7 @@ const UserAnalyticFollowerCharts: React.FC = () => {
     const [selectedChart, setSelectedChart] = useState<JSX.Element | null>(<LineChartFollowerWeek />);
     const [selectedOption, setSelectedOption] = useState<number>(1);
     const [dateRange, setDateRange] = useState<string>('');
+    const [totalFollower, setTotalFollower] = useState<number>(TotalFollowerWeek);
 
     const chartOptions: ChartOption[] = [
         { id: 1, label: 'This week' },
@@ -45,8 +46,7 @@ const UserAnalyticFollowerCharts: React.FC = () => {
     useEffect(() => {
         if (selectedOption === 4) {
             setDateRange("all time");
-        } else if (selectedOption === 5) {
-            setDateRange("percentage");
+            setTotalFollower(TotalFollowerAll)
         } else {
             const currentDate = new Date();
             const startDate = new Date();
@@ -56,16 +56,19 @@ const UserAnalyticFollowerCharts: React.FC = () => {
                 const startDateStr = formatDateMonth(startDate);
                 const endDateStr = formatDateMonth(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
+                setTotalFollower(TotalFollowerWeek);
             } else if (selectedOption === 2) {
                 startDate.setDate(currentDate.getDate() - 30);
                 const startDateStr = formatDateMonth(startDate);
                 const endDateStr = formatDateMonth(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
+                setTotalFollower(TotalFollowerMonth);
             } else if (selectedOption === 3) {
                 startDate.setFullYear(currentDate.getFullYear() - 1);
                 const startDateStr = formatMonthYear(startDate);
                 const endDateStr = formatMonthYear(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
+                setTotalFollower(TotalFollowerYear);
             }
         }
     }, [selectedOption]);
@@ -95,7 +98,11 @@ const UserAnalyticFollowerCharts: React.FC = () => {
                         {option.label}
                     </a>
                 ))}
-                <h2> Total Followers <span>{dateRange}</span></h2>
+                <h2>
+                    Total Follower
+                    <span className='analytic-date-range'>&nbsp;{dateRange}</span>
+                    <span className='analytic-total-comment'>&nbsp;({totalFollower})</span>
+                </h2>
             </div>
             {selectedChart}
         </>

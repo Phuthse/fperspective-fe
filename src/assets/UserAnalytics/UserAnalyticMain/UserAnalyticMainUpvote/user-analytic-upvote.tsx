@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './user-analytic-upvote.css';
-import LineChartUpvoteWeek from '../UpvoteCharts/UpvoteWeek/user-analytic-upvote-chart-week';
-import LineChartUpvoteMonth from '../UpvoteCharts/UpvoteMonth/user-analytic-upvote-chart-month';
-import LineChartUpvoteYear from '../UpvoteCharts/UpvoteYear/user-analytic-upvote-chart-year';
-import LineChartUpvoteAll from '../UpvoteCharts/UpvoteAll/user-analytic-upvote-chart-all';
+import { LineChartUpvoteWeek, TotalUpvoteWeek } from '../UpvoteCharts/UpvoteWeek/user-analytic-upvote-chart-week';
+import { LineChartUpvoteMonth, TotalUpvoteMonth } from '../UpvoteCharts/UpvoteMonth/user-analytic-upvote-chart-month';
+import { LineChartUpvoteYear, TotalUpvoteYear } from '../UpvoteCharts/UpvoteYear/user-analytic-upvote-chart-year';
+import { LineChartUpvoteAll, TotalUpvoteAll } from '../UpvoteCharts/UpvoteAll/user-analytic-upvote-chart-all';
 
 
 
@@ -16,6 +16,7 @@ const UserAnalyticUpvoteCharts: React.FC = () => {
     const [selectedChart, setSelectedChart] = useState<JSX.Element | null>(<LineChartUpvoteWeek />);
     const [selectedOption, setSelectedOption] = useState<number>(1);
     const [dateRange, setDateRange] = useState<string>('');
+    const [totalUpvote, setTotalUpvote] = useState<number>(TotalUpvoteWeek)
 
     const chartOptions: ChartOption[] = [
         { id: 1, label: 'This week' },
@@ -47,8 +48,7 @@ const UserAnalyticUpvoteCharts: React.FC = () => {
     useEffect(() => {
         if (selectedOption === 4) {
             setDateRange("all time");
-        } else if (selectedOption === 5) {
-            setDateRange("percentage");
+            setTotalUpvote(TotalUpvoteAll)
         } else {
             const currentDate = new Date();
             const startDate = new Date();
@@ -58,16 +58,19 @@ const UserAnalyticUpvoteCharts: React.FC = () => {
                 const startDateStr = formatDateMonth(startDate);
                 const endDateStr = formatDateMonth(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
+                setTotalUpvote(TotalUpvoteWeek);
             } else if (selectedOption === 2) {
                 startDate.setDate(currentDate.getDate() - 30);
                 const startDateStr = formatDateMonth(startDate);
                 const endDateStr = formatDateMonth(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
+                setTotalUpvote(TotalUpvoteMonth);
             } else if (selectedOption === 3) {
                 startDate.setFullYear(currentDate.getFullYear() - 1);
                 const startDateStr = formatMonthYear(startDate);
                 const endDateStr = formatMonthYear(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
+                setTotalUpvote(TotalUpvoteYear);
             }
         }
     }, [selectedOption]);
@@ -97,7 +100,11 @@ const UserAnalyticUpvoteCharts: React.FC = () => {
                         {option.label}
                     </a>
                 ))}
-                <h2> Total Upvotes <span>{dateRange}</span></h2>
+                <h2>
+                    Total upvotes
+                    <span className='analytic-date-range'>&nbsp;{dateRange}</span>
+                    <span className='analytic-total-comment'>&nbsp;({totalUpvote})</span>
+                </h2>
             </div>
             {selectedChart}
         </>

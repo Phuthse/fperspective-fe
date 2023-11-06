@@ -46,6 +46,9 @@ const CreateBlog: React.FC = () => {
             uploadDate
         };
 
+        // Log the postData before sending the request
+        console.log('Blog post data to be sent:', postData);
+
         // Send a POST request to your backend
         blogApi.post(`/show`, postData,{withCredentials: true})
             .then((response) => {
@@ -61,6 +64,11 @@ const CreateBlog: React.FC = () => {
             });
             window.location.href = "http://localhost:5173";
     };
+
+    useEffect(() => {
+        // Log data whenever title, tags, or content change
+        console.log('Current blog data:', { title, tags, content });
+    }, [title, tags, content]);
 
     return (
         <div className="container">

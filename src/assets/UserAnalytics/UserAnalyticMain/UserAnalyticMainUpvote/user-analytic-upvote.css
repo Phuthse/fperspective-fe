@@ -28,7 +28,11 @@
     color: #efefef
 }
 
-.user-analytic-upvote-filter span {
+.analytic-date-range {
     color: #c41d1d;
+}
+
+.analytic-total-comment {
+    color: rgb(0, 221, 255);
 }
 

@@ -3,7 +3,16 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-function LineChartFollowerWeek() {
+// Create an array of Follower values for each day
+const FollowerData = [10, 30, 123, 421, 320, 321, 832, 200];
+
+export function TotalFollowerWeek() {
+    const totalCommentData = FollowerData;
+    const sum = totalCommentData.reduce((acc, value) => acc + value, 0);
+    return sum;
+}
+
+export function LineChartFollowerWeek() {
     const currentDate = new Date();
     const monthNames = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -18,9 +27,6 @@ function LineChartFollowerWeek() {
         const month = monthNames[date.getMonth()];
         return `${day} ${month}`;
     });
-
-    // Create an array of Follower values for each day
-    const FollowerData = [10, 30, 123, 421, 320, 321, 832, 200];
 
     // Combine the day and month data with Follower values
     const data = dayAndMonthData.map((name, index) => ({ name, TotalFollower: FollowerData[index] }));
@@ -43,4 +49,3 @@ function LineChartFollowerWeek() {
     );
 }
 
-export default LineChartFollowerWeek;

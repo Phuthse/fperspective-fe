@@ -3,7 +3,16 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-function LineChartFollowerMonth() {
+// Create an array of Follower values for each day
+const FollowerData = [10, 30, 123, 421, 320, 321, 421, 50, 60, 75, 80, 110, 90, 70, 60, 1000];
+
+export function TotalFollowerMonth() {
+    const totalCommentData = FollowerData;
+    const sum = totalCommentData.reduce((acc, value) => acc + value, 0);
+    return sum;
+}
+
+export function LineChartFollowerMonth() {
     const currentDate = new Date();
     const monthNames = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -18,9 +27,6 @@ function LineChartFollowerMonth() {
         const month = monthNames[date.getMonth()];
         return `${day} ${month}`;
     });
-
-    // Create an array of Follower values for each day
-    const FollowerData = [10, 30, 123, 421, 320, 321, 421, 50, 60, 75, 80, 110, 90, 70, 60, 1000];
 
     // Combine the day and month data with Follower values
     const data = dayAndMonthData.map((name, index) => ({ name, TotalFollower: FollowerData[index] }));
@@ -42,5 +48,3 @@ function LineChartFollowerMonth() {
         </LineChart>
     );
 }
-
-export default LineChartFollowerMonth;

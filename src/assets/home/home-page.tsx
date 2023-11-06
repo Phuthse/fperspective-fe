@@ -61,7 +61,7 @@ const HomePage: React.FC = () => {
         userUri={`/recommend/all`}
         currentUser={user}
       />
-      
+
     </div>
   );
 };

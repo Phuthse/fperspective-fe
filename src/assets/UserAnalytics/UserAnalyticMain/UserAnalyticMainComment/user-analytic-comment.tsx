@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './user-analytic-comment.css';
-import LineChartCommentWeek from '../CommentCharts/CommentWeek/user-analytic-comment-chart-week';
-import LineChartCommentMonth from '../CommentCharts/CommentMonth/user-analytic-comment-chart-month';
-import LineChartCommentYear from '../CommentCharts/CommentYear/user-analytic-comment-chart-year';
-import LineChartCommentAll from '../CommentCharts/CommentAll/user-analytic-comment-chart-all';
+import { LineChartCommentWeek, TotalCommentWeek } from '../CommentCharts/CommentWeek/user-analytic-comment-chart-week';
+import { LineChartCommentMonth, TotalCommentMonth } from '../CommentCharts/CommentMonth/user-analytic-comment-chart-month';
+import { LineChartCommentYear, TotalCommentYear } from '../CommentCharts/CommentYear/user-analytic-comment-chart-year';
+import { LineChartCommentAll, TotalCommentAll } from '../CommentCharts/CommentAll/user-analytic-comment-chart-all';
 
 
 interface ChartOption {
@@ -15,6 +15,7 @@ const UserAnalyticCommentCharts: React.FC = () => {
     const [selectedChart, setSelectedChart] = useState<JSX.Element | null>(<LineChartCommentWeek />);
     const [selectedOption, setSelectedOption] = useState<number>(1);
     const [dateRange, setDateRange] = useState<string>('');
+    const [totalComment, setTotalComment] = useState<number>(TotalCommentWeek);
 
     const chartOptions: ChartOption[] = [
         { id: 1, label: 'This week' },
@@ -46,8 +47,7 @@ const UserAnalyticCommentCharts: React.FC = () => {
     useEffect(() => {
         if (selectedOption === 4) {
             setDateRange("all time");
-        } else if (selectedOption === 5) {
-            setDateRange("percentage");
+            setTotalComment(TotalCommentAll);
         } else {
             const currentDate = new Date();
             const startDate = new Date();
@@ -57,16 +57,19 @@ const UserAnalyticCommentCharts: React.FC = () => {
                 const startDateStr = formatDateMonth(startDate);
                 const endDateStr = formatDateMonth(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
+                setTotalComment(TotalCommentWeek);
             } else if (selectedOption === 2) {
                 startDate.setDate(currentDate.getDate() - 30);
                 const startDateStr = formatDateMonth(startDate);
                 const endDateStr = formatDateMonth(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
+                setTotalComment(TotalCommentMonth);
             } else if (selectedOption === 3) {
                 startDate.setFullYear(currentDate.getFullYear() - 1);
                 const startDateStr = formatMonthYear(startDate);
                 const endDateStr = formatMonthYear(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
+                setTotalComment(TotalCommentYear);
             }
         }
     }, [selectedOption]);
@@ -96,7 +99,11 @@ const UserAnalyticCommentCharts: React.FC = () => {
                         {option.label}
                     </a>
                 ))}
-                <h2> Total Comments <span>{dateRange}</span></h2>
+                <h2>
+                    Total Comments
+                    <span className='analytic-date-range'>&nbsp;{dateRange}</span>
+                    <span className='analytic-total-comment'>&nbsp;({totalComment})</span>
+                </h2>
             </div>
             {selectedChart}
         </>

@@ -3,7 +3,13 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-function LineChartCommentMonth() {
+export function TotalCommentMonth() {
+    const totalCommentData = [50, 20, 123, 21, 220, 421, 221, 380, 120, 575, 180, 210, 40, 360, 30, 500];
+    const sum = totalCommentData.reduce((acc, value) => acc + value, 0);
+    return sum;
+}
+
+export function LineChartCommentMonth() {
     const currentDate = new Date();
     const monthNames = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -43,4 +49,3 @@ function LineChartCommentMonth() {
     );
 }
 
-export default LineChartCommentMonth;
