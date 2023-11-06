@@ -10,12 +10,19 @@ import User from '../../model/user';
 import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom
 
 const HomePage: React.FC = () => {
+
+
   const { filter } = useParams();
 
   const [loginUser, setLoginUser] = useState<User>();
   const fetchLoginData = async () => {
+    try{
     const response = await loginApi.get("/currentUser", { withCredentials: true });
     setLoginUser(response.data);
+    }
+    catch{
+      window.location.href = "http://localhost:5173/login"
+    }
   };
 
   useEffect(() => {

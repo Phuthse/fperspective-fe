@@ -6,7 +6,6 @@ import UpAndDownVoteButtonHorizontal from "../../button/ReactionButton/up-down-v
 import CommentButton from "../../button/CommentButton/comment-button";
 import BookmarkButton from "../../button/BookmarkButton/bookmark-button";
 import Blog from "../../../../model/blog";
-import axios from "axios";
 import { blogApi, userApi } from "../../../../config/axios";
 import TagList from "../TagList/tag-list";
 import User from "../../../../model/user";
@@ -19,17 +18,18 @@ type BlogPostProps = {
   userId: string;
 };
 
-const HandleApprove = (blogId:string) => () => {
+const HandleApprove = (blogId: string) => () => {
   // Send a DELETE request to your backend
-        blogApi.delete(`/approve/${blogId}`,{withCredentials: true})
-            .then((response) => {
-                // Handle success, e.g., show a success message or redirect
-                console.log('Blog post created:', response.data);
-            })
-            .catch((error) => {
-                // Handle errors
-                console.error('Error creating blog post:', error);
-            });
+  blogApi
+    .delete(`/approve/${blogId}`, { withCredentials: true })
+    .then((response) => {
+      // Handle success, e.g., show a success message or redirect
+      console.log("Blog post created:", response.data);
+    })
+    .catch((error) => {
+      // Handle errors
+      console.error("Error creating blog post:", error);
+    });
 };
 
 const BlogPost: React.FC<BlogPostProps> = ({
@@ -38,7 +38,6 @@ const BlogPost: React.FC<BlogPostProps> = ({
   blog,
   userUri,
 }) => {
-
   const date = new Date(blog.uploadDate);
 
   const initialUser: User = {
@@ -53,7 +52,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fullName: "test",
     createdDate: 2,
     status: false,
-  }
+  };
 
   const [users, setUsers] = useState<User>(initialUser);
   const fetchUserData = async () => {
@@ -64,12 +63,10 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fetchUserData();
   }, [userUri]);
 
-  if(blog.status !== false){
-
+  if (blog.status !== false) {
     return (
       <>
         <div className="home-page-post-container">
-
           <PostUserProfile
             key={users.userID}
             user={users}
@@ -87,18 +84,14 @@ const BlogPost: React.FC<BlogPostProps> = ({
             </div>
 
             <BookmarkButton />
-
           </div>
         </div>
       </>
     );
-
-  }
-  else {
+  } else {
     return (
       <>
         <div className="home-page-post-container">
-
           <PostUserProfile
             key={users.userID}
             user={users}
