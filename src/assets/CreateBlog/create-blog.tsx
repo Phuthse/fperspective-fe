@@ -6,10 +6,13 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { blogApi, loginApi } from "../../config/axios";
 import Tag from "../../model/tag";
+import CreateBlogSubjects from "./CreateBlogSubject/create-blog-subjects";
+import Subject from "../../model/subject";
 
 const CreateBlog: React.FC = () => {
     const [blogTitle, setTitle] = useState("");
     const [btag, setTags] = useState<Tag[]>([]);
+    const [subject, setSubject] = useState<Subject[]>([]);
     const [blogContent, setContent] = useState("");
 
     const modules = {
@@ -40,6 +43,7 @@ const CreateBlog: React.FC = () => {
         const postData = {
             blogTitle,
             btag,
+            subject,
             blogContent,
             userId,
             uploadDate,
@@ -67,6 +71,7 @@ const CreateBlog: React.FC = () => {
                     <div className="post-top">
                         <CreateBlogTitle setTitle={setTitle} />
                         <CreateBlogTags setTags={setTags} uri="/show" />
+                        <CreateBlogSubjects setSubjects={setSubject} uri="/show" />
                     </div>
                     <div className="post-body">
                         <ReactQuill

@@ -47,7 +47,7 @@ const CreateBlogTags: React.FC<CreateBlogTagsProps> = ({ setTags, uri }) => {
       if (tags.length === 3) {
         setPlaceholder("Max tags reached");
       } else if (tags.length >= 0) {
-        setPlaceholder("Add another...");
+        setPlaceholder("Add another tag...");
       }
     }
     hideOptions();
@@ -68,6 +68,7 @@ const CreateBlogTags: React.FC<CreateBlogTagsProps> = ({ setTags, uri }) => {
   };
 
   useEffect(() => {
+    // Add a click event listener to the document to hide options when clicking outside
     const handleDocumentClick = (event: MouseEvent) => {
       if (
         inputRef.current &&
@@ -105,15 +106,17 @@ const CreateBlogTags: React.FC<CreateBlogTagsProps> = ({ setTags, uri }) => {
             ref={inputRef}
           />
           {showOptions && (
-            <ul className="tag-options" ref={optionsRef}>
-              {options
-                .filter((option) => !tags.includes(option))
-                .map((option) => (
-                  <li key={option.tagId} onClick={() => handleOptionClick(option)}>
-                    {option.tagName}
-                  </li>
-                ))}
-            </ul>
+            <>
+              <ul className="tag-options" ref={optionsRef}>
+                {options
+                  .filter((option) => !tags.includes(option))
+                  .map((option) => (
+                    <li key={option.tagId} onClick={() => handleOptionClick(option)}>
+                      {option.tagName}
+                    </li>
+                  ))}
+              </ul>
+            </>
           )}
         </li>
       </ul>

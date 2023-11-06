@@ -1,4 +1,4 @@
-/* Style the input tag */
+/* Style the input subject */
 input[type='text'] {
     padding: 3px 4px;
     border: none;
@@ -7,12 +7,16 @@ input[type='text'] {
     color: white;
 }
 
-.post-tags ul {
+.post-subjects {
+    margin-top: 10px;
+}
+
+.post-subjects ul {
     display: flex;
 }
 
-/* Style each li tag */
-.current-tags li {
+/* Style each li subject */
+.current-subjects li {
     color: white;
     padding: 3px 5px;
     background: #222;
@@ -23,7 +27,7 @@ input[type='text'] {
     margin: 3px;
 }
 
-.current-tags li:last-child {
+.current-subjects li:last-child {
     background: transparent;
 }
 
@@ -45,11 +49,11 @@ li button:hover {
 }
 
 /* Style the options list */
-.tag-options {
+.subject-options {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    position: absolute;
+    position: absolute;   
     top: 250px;
     background: transparent;
     border-radius: 4px;
@@ -60,14 +64,14 @@ li button:hover {
 
 /* Style individual option items */
 
-.tag-options {
+.subject-options {
     padding: 10px;
     border-radius: 7px;
     background: #111;
     border: 0.5px solid #333;
 }
 
-.tag-options li {
+.subject-options li {
     padding: 4px 8px;
     cursor: pointer;
     color: white;
@@ -75,6 +79,6 @@ li button:hover {
 }
 
 /* Style option items on hover */
-.tag-options li:hover {
+.subject-options li:hover {
     background: #222;
 }
