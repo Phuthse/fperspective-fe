@@ -7,6 +7,29 @@
     margin: 20px 0;
 }
 
+.user-profile-and-approve-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-approve-button {
+    padding: 10px;
+    background: transparent;
+    color: #818cf8;
+    border-radius: 5px;
+    border: 0.5px solid #818cf8;
+    width: 100px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.detail-approve-button:hover {
+    background: #6775f7;
+    color: #efefef;
+}
+
 .post-details {
     display: flex;
     align-items: center;

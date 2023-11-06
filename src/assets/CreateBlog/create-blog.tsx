@@ -1,40 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import './create.blog.css';
-import CreateBlogTitle from './CreateBlogTitle/create-blog-title';
-import CreateBlogTags from './CreateBlogTags/create-blog-tags';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import { blogApi, loginApi } from '../../config/axios';
-import Tag from '../../model/tag';
-
-
+import React, { useEffect, useState } from "react";
+import "./create.blog.css";
+import CreateBlogTitle from "./CreateBlogTitle/create-blog-title";
+import CreateBlogTags from "./CreateBlogTags/create-blog-tags";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { blogApi, loginApi } from "../../config/axios";
+import Tag from "../../model/tag";
 
 const CreateBlog: React.FC = () => {
-    const [blogTitle, setTitle] = useState('');
+    const [blogTitle, setTitle] = useState("");
     const [btag, setTags] = useState<Tag[]>([]);
-    const [blogContent, setContent] = useState('');
+    const [blogContent, setContent] = useState("");
 
     const modules = {
         toolbar: [
-            [{ 'header': [1, 2, 3, 4, 5, false] }],
-            ['bold', 'italic', 'underline'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            ['link'],
+            [{ header: [1, 2, 3, 4, 5, false] }],
+            ["bold", "italic", "underline"],
+            [{ list: "ordered" }, { list: "bullet" }],
+            ["link"],
         ],
     };
 
-    const [userId, setLoginUser] = useState<string>('');
+    const [userId, setLoginUser] = useState<string>("");
     const fetchLoginData = async () => {
-    const response = await loginApi.get("/currentUser", { withCredentials: true });
-    setLoginUser(response.data.userID);
-  };
+        const response = await loginApi.get("/currentUser", {
+            withCredentials: true,
+        });
+        setLoginUser(response.data.userID);
+    };
 
-  useEffect(() => {
-    fetchLoginData();
-  }, [loginApi]);
+    useEffect(() => {
+        fetchLoginData();
+    }, [loginApi]);
 
-  const uploadDate = new Date()
-
+    const uploadDate = new Date();
 
     const handlePublish = () => {
         // Create a data object to send to the backend
@@ -43,32 +42,25 @@ const CreateBlog: React.FC = () => {
             btag,
             blogContent,
             userId,
-            uploadDate
+            uploadDate,
         };
 
-        // Log the postData before sending the request
-        console.log('Blog post data to be sent:', postData);
-
         // Send a POST request to your backend
-        blogApi.post(`/show`, postData,{withCredentials: true})
+        blogApi
+            .post(`/show`, postData, { withCredentials: true })
             .then((response) => {
-                console.log(postData)
+                console.log(postData);
                 // Handle success, e.g., show a success message or redirect
-                console.log('Blog post created:', response.data);
-                
+                window.location.href = "http://localhost:5173";
+                console.log("Blog post created:", response.data);
             })
             .catch((error) => {
-                console.log(postData)
+                console.log(postData);
                 // Handle errors
-                console.error('Error creating blog post:', error);
+                console.error("Error creating blog post:", error);
             });
-            window.location.href = "http://localhost:5173";
-    };
 
-    useEffect(() => {
-        // Log data whenever title, tags, or content change
-        console.log('Current blog data:', { title, tags, content });
-    }, [title, tags, content]);
+    };
 
     return (
         <div className="container">
@@ -76,20 +68,19 @@ const CreateBlog: React.FC = () => {
                 <div className="post-content-and-title">
                     <div className="post-top">
                         <CreateBlogTitle setTitle={setTitle} />
-                        <CreateBlogTags setTags={setTags} uri="/show"/>
+                        <CreateBlogTags setTags={setTags} uri="/show" />
                     </div>
                     <div className="post-body">
                         <ReactQuill
                             value={blogContent}
                             onChange={setContent}
-                            className='post-body-input-field'
+                            className="post-body-input-field"
                             modules={modules}
                         />
                     </div>
                     <div className="preview">
-                        {blogContent}
+                        <div dangerouslySetInnerHTML={{ __html: blogContent }} />
                     </div>
-
                 </div>
                 <div className="create-post-form-footer">
                     <button onClick={handlePublish}>Publish</button>

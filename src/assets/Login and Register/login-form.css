@@ -41,32 +41,19 @@
 
 .login-form-action-provider {
     width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.google-login-button {
-    background-color: transparent !important;
-    color: white !important;
-    border: 1px solid white !important;
+.login-form-action-provider div {
+    background: transparent !important;
+}
+
+.login-form-action-provider div[type="dark"][role="button"] {
+    border: 0.5px solid #333 !important;
     border-radius: 5px !important;
-    width: 100% !important;
-    display: flex !important;
-    align-items: center !important;   
 }
-
-.google-login-button:hover {
-    background-color: #333 !important; 
-}
-
-.google-login-button span {
-    width: 100% !important;
-    align-items: center !important;
-}
-
-.google-login-button div{
-    background-color: transparent !important;
-    align-items: center !important;
-}
-
 
 /* DIVIDER BETWEEN 2 METHODs */
 
@@ -112,7 +99,7 @@
 }
 
 .login-form-textfield {
-    padding: 8px !important; 
+    padding: 8px !important;
     margin: 5px 0 !important;
     background: transparent !important;
     border: 1px solid #444 !important;

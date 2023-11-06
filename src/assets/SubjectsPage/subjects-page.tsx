@@ -7,7 +7,7 @@ const SubjectPage: React.FC = () => {
 
     return (
         <div className='subject-page-top'>
-            <SubjectPageHeader NumberOfSubject={12} />
+            <SubjectPageHeader uri='/show' />
             <SubjectList uri="/show" />
         </div>
     );

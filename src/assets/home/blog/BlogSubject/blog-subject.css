@@ -1,0 +1,9 @@
+.home-page-subject {
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.home-page-subject:hover {
+    text-decoration: underline;
+}

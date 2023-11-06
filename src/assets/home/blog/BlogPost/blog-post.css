@@ -7,6 +7,11 @@
     margin: 20px 0;
 }
 
+.home-user-profile-and-subject {
+    display: flex;
+    justify-content: space-between;
+}
+
 .home-page-post-details {
     display: flex;
     align-items: center;
@@ -19,3 +24,17 @@
     align-items: center;
 }
 
+.approve-button {
+    padding: 10px;
+    background: transparent;
+    color: #818cf8;
+    border-radius: 5px;
+    border: 0.5px solid #818cf8;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.approve-button:hover {
+    background: #6775f7;
+    color: #efefef;
+}
