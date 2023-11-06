@@ -6,7 +6,8 @@ import UpAndDownVoteButtonHorizontal from "../../button/ReactionButton/up-down-v
 import CommentButton from "../../button/CommentButton/comment-button";
 import BookmarkButton from "../../button/BookmarkButton/bookmark-button";
 import Blog from "../../../../model/blog";
-import { userApi } from "../../../../config/axios";
+import axios from "axios";
+import { blogApi, userApi } from "../../../../config/axios";
 import TagList from "../TagList/tag-list";
 import User from "../../../../model/user";
 
@@ -16,6 +17,19 @@ type BlogPostProps = {
   blog: Blog;
   userUri: string;
   userId: string;
+};
+
+const HandleApprove = (blogId:string) => () => {
+  // Send a DELETE request to your backend
+        blogApi.delete(`/approve/${blogId}`,{withCredentials: true})
+            .then((response) => {
+                // Handle success, e.g., show a success message or redirect
+                console.log('Blog post created:', response.data);
+            })
+            .catch((error) => {
+                // Handle errors
+                console.error('Error creating blog post:', error);
+            });
 };
 
 const BlogPost: React.FC<BlogPostProps> = ({
@@ -50,31 +64,64 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fetchUserData();
   }, [userUri]);
 
-  return (
-    <>
-      <div className="home-page-post-container">
+  if(blog.status !== false){
 
-        <PostUserProfile
-          key={users.userID}
-          user={users}
-          time={date.toLocaleString("en-US")}
-        />
+    return (
+      <>
+        <div className="home-page-post-container">
 
-        <BlogTitle blogProp={blog} />
+          <PostUserProfile
+            key={users.userID}
+            user={users}
+            time={date.toLocaleString("en-US")}
+          />
 
-        <TagList tagList={blog.btag} />
+          <BlogTitle blogProp={blog} />
 
-        <div className="home-page-post-details">
-          <div className="home-page-post-interact">
-            <UpAndDownVoteButtonHorizontal upvote={upvote} />
-            <CommentButton NumberOfComment={numberOfComment} />
+          <TagList tagList={blog.btag} />
+
+          <div className="home-page-post-details">
+            <div className="home-page-post-interact">
+              <UpAndDownVoteButtonHorizontal upvote={upvote} />
+              <CommentButton NumberOfComment={numberOfComment} />
+            </div>
+
+            <BookmarkButton />
+
           </div>
-
-          <BookmarkButton />
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+
+  }
+  else {
+    return (
+      <>
+        <div className="home-page-post-container">
+
+          <PostUserProfile
+            key={users.userID}
+            user={users}
+            time={date.toLocaleString("en-US")}
+          />
+
+          <BlogTitle blogProp={blog} />
+
+          <TagList tagList={blog.btag} />
+
+          <div className="home-page-post-details">
+            <div className="home-page-post-interact">
+              <UpAndDownVoteButtonHorizontal upvote={upvote} />
+              <CommentButton NumberOfComment={numberOfComment} />
+            </div>
+
+            <BookmarkButton />
+            <button onClick={HandleApprove(blog.blogId)}>Approve</button>
+          </div>
+        </div>
+      </>
+    );
+  }
 };
 
 export default BlogPost;

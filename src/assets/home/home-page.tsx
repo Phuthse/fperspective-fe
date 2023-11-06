@@ -27,10 +27,11 @@ const HomePage: React.FC = () => {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1;
-  const day = currentDate.getDate();
-  const week = Math.ceil(day / 7);
-
-  console.log("FILTER: " + filter)
+  const startDate = new Date(currentDate.getFullYear(), 0, 1);
+  const days = Math.floor((currentDate.valueOf() - startDate.valueOf()) /
+    (24 * 60 * 60 * 1000));
+ 
+  const week = Math.ceil(days / 7);
 
   return (
     <div className="container">
@@ -49,7 +50,7 @@ const HomePage: React.FC = () => {
         ) : filter === 'all' ? (
           <BlogList uri={"/sort/all"} />
         ) : filter === 'approve' ? (
-          <h1>Approve page</h1>
+          <BlogList uri={"/approve/all"} />
         ) : filter === undefined ? (
           <BlogList uri={"/sort/latest"} />
         ) : null}

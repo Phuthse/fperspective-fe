@@ -36,7 +36,6 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
       {blogs.map((blog) => {
         const userId = blog.userId;
         const apiUri = "/show/" + userId;
-        if (blog.status === true) {
           return (
             <BlogPost
               key={blog.blogId}
@@ -48,7 +47,7 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
             />
           );
         }
-      })}
+      )}
     </>
   );
 };

@@ -19,7 +19,8 @@ const UserProfile: React.FC = () => {
         />
         <div className="user-profile-body-container">
           <UserProfileBodySide
-            PostShared={10}
+            uri={BLOG_URI}
+            // PostShared={10}
             TagFollowed={32}
             SubjectFollowed={10}
             Following={12}

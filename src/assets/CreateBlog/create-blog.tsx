@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './create.blog.css';
 import CreateBlogTitle from './CreateBlogTitle/create-blog-title';
 import CreateBlogTags from './CreateBlogTags/create-blog-tags';
-import axios from 'axios'; // Import Axios
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { blogApi, loginApi } from '../../config/axios';
+import Tag from '../../model/tag';
+
+
 
 const CreateBlog: React.FC = () => {
-    const [title, setTitle] = useState('');
-    const [tags, setTags] = useState<string[]>([]);
-    const [content, setContent] = useState('');
+    const [blogTitle, setTitle] = useState('');
+    const [btag, setTags] = useState<Tag[]>([]);
+    const [blogContent, setContent] = useState('');
 
     const modules = {
         toolbar: [
@@ -20,24 +23,43 @@ const CreateBlog: React.FC = () => {
         ],
     };
 
+    const [userId, setLoginUser] = useState<string>('');
+    const fetchLoginData = async () => {
+    const response = await loginApi.get("/currentUser", { withCredentials: true });
+    setLoginUser(response.data.userID);
+  };
+
+  useEffect(() => {
+    fetchLoginData();
+  }, [loginApi]);
+
+  const uploadDate = new Date()
+
+
     const handlePublish = () => {
         // Create a data object to send to the backend
         const postData = {
-            title,
-            tags,
-            content,
+            blogTitle,
+            btag,
+            blogContent,
+            userId,
+            uploadDate
         };
 
         // Send a POST request to your backend
-        axios.post('/api/blog', postData)
+        blogApi.post(`/show`, postData,{withCredentials: true})
             .then((response) => {
+                console.log(postData)
                 // Handle success, e.g., show a success message or redirect
                 console.log('Blog post created:', response.data);
+                
             })
             .catch((error) => {
+                console.log(postData)
                 // Handle errors
                 console.error('Error creating blog post:', error);
             });
+            window.location.href = "http://localhost:5173";
     };
 
     return (
@@ -46,18 +68,18 @@ const CreateBlog: React.FC = () => {
                 <div className="post-content-and-title">
                     <div className="post-top">
                         <CreateBlogTitle setTitle={setTitle} />
-                        <CreateBlogTags setTags={setTags} />
+                        <CreateBlogTags setTags={setTags} uri="/show"/>
                     </div>
                     <div className="post-body">
                         <ReactQuill
-                            value={content}
+                            value={blogContent}
                             onChange={setContent}
                             className='post-body-input-field'
                             modules={modules}
                         />
                     </div>
                     <div className="preview">
-                        {content}
+                        {blogContent}
                     </div>
 
                 </div>

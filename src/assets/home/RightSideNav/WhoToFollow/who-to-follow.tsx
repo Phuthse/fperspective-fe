@@ -33,9 +33,9 @@ const WhoToFollow: React.FC<WhoToFollowProps> = ({ uri, currentUser }) => {
                                 <Link to={`/user-profile/${filteredUser.userID}`}>
                                     <img src={filteredUser.avatarUrl} alt={`Profile of ${filteredUser.username}`} />
                                     <div className='profile-name'>
-                                        <p>{filteredUser.fullName}</p>
+                                        <p>{filteredUser.username}</p>
                                         {/* <p>@{filteredUser.username}</p> */}
-                                        <p>@noname</p>
+                                        {/* <p>@noname</p> */}
                                     </div>
                                 </Link>
                                 <div className='follow-button'>

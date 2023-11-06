@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const SignUpForm: React.FC = () => {
 
-  const responseGoogle = (response: any) => {
+  const responseGoogle = (response: unknown) => {
     console.log(response);
 
   };

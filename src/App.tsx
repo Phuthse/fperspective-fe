@@ -6,8 +6,6 @@ import HomePage from "./assets/home/home-page";
 import UserDashboard from "./assets/Dashboard/UserDashboard/user-dashboard";
 import CreateBlog from "./assets/CreateBlog/create-blog";
 import LoginForm from "./assets/Login and Register/login-form";
-import SignUpForm from "./assets/Login and Register/signup-form";
-import ForgotPasswordForm from "./assets/Login and Register/forgot-password";
 import UserProfile from "./assets/UserProfile/user-profile";
 import UserBookmark from "./assets/UserBookmark/user-bookmark";
 import SearchPage from "./assets/SearchPage/search-page";
@@ -46,8 +44,6 @@ function App() {
             <Route path="detail-blog/:blogId" element={<DetailedBlogPostPage />} />
           </Route>
           <Route path='login' element={<LoginForm />} />
-          <Route path='sign-up' element={<SignUpForm />} />
-          <Route path='forgot-password' element={<ForgotPasswordForm />} />
         </Routes>
       </BrowserRouter>
     </>

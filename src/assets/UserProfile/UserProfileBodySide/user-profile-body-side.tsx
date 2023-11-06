@@ -1,7 +1,10 @@
+import { useState, useEffect } from 'react';
+import { blogApi } from '../../../config/axios';
+import Blog from '../../../model/blog';
 import './user-profile-body-side.css';
 
 type UserProfileBodySideProp = {
-    PostShared: number;
+    uri: string;
     TagFollowed: number;
     SubjectFollowed: number;
     Following: number;
@@ -11,12 +14,21 @@ type UserProfileBodySideProp = {
 
 const UserProfileBodySide: React.FC<UserProfileBodySideProp> =
     ({
-        PostShared,
+        uri,
         TagFollowed,
         SubjectFollowed,
         Following,
         Follwers
     }) => {
+
+        const [blogs, setBlogs] = useState<Blog[]>([]);
+        const fetchBlogData = async () => {
+            const response = await blogApi.get(uri, { withCredentials: true })
+            setBlogs(response.data);
+        };
+        useEffect(() => {
+            fetchBlogData();
+        }, [uri]);
 
         return (
             <div className="user-profile-body-side">
@@ -27,7 +39,7 @@ const UserProfileBodySide: React.FC<UserProfileBodySideProp> =
                     </svg>
 
                     <span>
-                        {PostShared} perspective shared
+                        {blogs.length + 1} perspective shared
                     </span>
                 </span>
 

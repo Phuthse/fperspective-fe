@@ -8,12 +8,35 @@ type TopNavProps = {
   uri: string;
 }
 
+function timeout(delay: number) {
+  return new Promise( res => setTimeout(res, delay) );
+}
+
+
+
+const HandleLogout = async () => {
+  try{
+    window.location.href = "http://localhost:8080/logout"
+    await timeout(20);
+  } catch { /* empty */ }
+  finally{
+    window.location.href = "http://localhost:5173/login"
+  }
+}
+
 const TopNav: React.FC<TopNavProps> = ({ uri }) => {
 
   const [loginUser, setLoginUser] = useState<User>();
   const fetchLoginData = async () => {
-    const response = await loginApi.get(uri, { withCredentials: true });
-    setLoginUser(response.data);
+    try{
+      const response = await loginApi.get(uri, { withCredentials: true });
+      setLoginUser(response.data);
+    }
+    catch{
+      timeout(100)
+      // window.location.href = "http://localhost:5173/login"
+    }
+    
   };
 
   useEffect(() => {
@@ -62,9 +85,7 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
             <Link to="/user-dashboard">Dashboard</Link>
             <Link to="/admin-dashboard">Admin Dashboard</Link>
             <Link to='/setting'>Setting</Link>
-            <Link to='/login'>Login</Link>
-            <Link to='/sign-up'>Sign up</Link>
-            <a href='#'>Logout</a>
+            <Link onClick={HandleLogout} to={""}>Logout</Link>
           </div>
         </div>
       </div>
