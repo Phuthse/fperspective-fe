@@ -61,8 +61,8 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
 
             <TagList tagList={detailBlog.btag} />
 
-            <div className="detail-post-divider"></div>
-            
+            <div className="detail-post-divider" />
+
             <PostContent blogContent={detailBlog} />
 
             {/* <PostCommentForm ProfilePic='src/assets/images/member-1.png' />

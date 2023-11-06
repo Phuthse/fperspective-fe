@@ -49,7 +49,7 @@ const HomePage: React.FC = () => {
         ) : filter === 'all' ? (
           <BlogList uri={"/sort/all"} />
         ) : filter === 'approve' ? (
-          <h1>Approve page</h1>
+          <BlogList uri={"/approve/all"} />
         ) : filter === undefined ? (
           <BlogList uri={"/sort/latest"} />
         ) : null}
@@ -60,7 +60,7 @@ const HomePage: React.FC = () => {
         userUri={`/recommend/all`}
         currentUser={user}
       />
-      
+
     </div>
   );
 };

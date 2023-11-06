@@ -4,6 +4,7 @@ import Blog from '../../../model/blog';
 
 type PostContentProp = {
     blogContent: Blog;
+    //blogContent: string;
 }
 
 
@@ -12,7 +13,8 @@ const PostContent: React.FC<PostContentProp> = ({ blogContent }) => {
     return (
 
         <div className="post-content">
-            <p>{blogContent.blogContent}</p>
+            {/* <div dangerouslySetInnerHTML={{ __html: blogContent.blogContent }} />*/}
+            {blogContent.blogContent}
         </div>
     );
 };

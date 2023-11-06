@@ -2,7 +2,16 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-function LineChartUpvoteYear() {
+// Create an array of Upvote values for each month
+const UpvoteData = [60, 70, 90, 110, 80, 75, 60, 50, 60, 75, 80, 90, 111]; // Replace with your desired values
+
+export function TotalUpvoteYear() {
+    const totalPostData = UpvoteData;
+    const sum = totalPostData.reduce((acc, value) => acc + value, 0);
+    return sum;
+}
+
+export function LineChartUpvoteYear() {
     const currentDate = new Date();
     const monthNames = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -17,9 +26,6 @@ function LineChartUpvoteYear() {
         const year = date.getFullYear().toString().slice(-2);
         return `${month} ${year}`;
     });
-
-    // Create an array of Upvote values for each month
-    const UpvoteData = [60, 70, 90, 110, 80, 75, 60, 50, 60, 75, 80, 90, 111]; // Replace with your desired values
 
     // Combine the month and year data with Upvote values
     const data = monthAndYearData.map((name, index) => ({ name, TotalUpvote: UpvoteData[index] }));
@@ -42,4 +48,3 @@ function LineChartUpvoteYear() {
     );
 }
 
-export default LineChartUpvoteYear;

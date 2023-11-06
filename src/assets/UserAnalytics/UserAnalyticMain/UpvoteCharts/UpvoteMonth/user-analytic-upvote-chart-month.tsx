@@ -3,7 +3,16 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-function LineChartUpvoteMonth() {
+// Create an array of Upvote values for each day
+const UpvoteData = [10, 30, 123, 421, 320, 321, 421, 50, 60, 75, 80, 110, 90, 70, 60, 1000];
+
+export function TotalUpvoteMonth() {
+    const totalPostData = UpvoteData;
+    const sum = totalPostData.reduce((acc, value) => acc + value, 0);
+    return sum;
+}
+
+export function LineChartUpvoteMonth() {
     const currentDate = new Date();
     const monthNames = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -18,9 +27,6 @@ function LineChartUpvoteMonth() {
         const month = monthNames[date.getMonth()];
         return `${day} ${month}`;
     });
-
-    // Create an array of Upvote values for each day
-    const UpvoteData = [10, 30, 123, 421, 320, 321, 421, 50, 60, 75, 80, 110, 90, 70, 60, 1000];
 
     // Combine the day and month data with Upvote values
     const data = dayAndMonthData.map((name, index) => ({ name, TotalUpvote: UpvoteData[index] }));
@@ -43,4 +49,3 @@ function LineChartUpvoteMonth() {
     );
 }
 
-export default LineChartUpvoteMonth;

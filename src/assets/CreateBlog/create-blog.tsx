@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './create.blog.css';
 import CreateBlogTitle from './CreateBlogTitle/create-blog-title';
 import CreateBlogTags from './CreateBlogTags/create-blog-tags';
@@ -28,6 +28,9 @@ const CreateBlog: React.FC = () => {
             content,
         };
 
+        // Log the postData before sending the request
+        console.log('Blog post data to be sent:', postData);
+
         // Send a POST request to your backend
         axios.post('/api/blog', postData)
             .then((response) => {
@@ -39,6 +42,11 @@ const CreateBlog: React.FC = () => {
                 console.error('Error creating blog post:', error);
             });
     };
+
+    useEffect(() => {
+        // Log data whenever title, tags, or content change
+        console.log('Current blog data:', { title, tags, content });
+    }, [title, tags, content]);
 
     return (
         <div className="container">
