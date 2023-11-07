@@ -4,9 +4,16 @@
     margin-left: 10px;
 }
 
+.admin-subject-page-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 10px;
+    margin-top: 20px;
+}
 
-
-
+.subject-page-body {
+    width: 100%;
+}
 
 
 

@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
       if (loginUser === null || loginUser === undefined) {
         // window.location.href = 'http://localhost:5173/login';
       }
-    }, 200);
+    }, 500);
     return () => clearTimeout(delay);
   }, [loginUser]);
 

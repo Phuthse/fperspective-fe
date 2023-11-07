@@ -93,11 +93,15 @@ const BlogPost: React.FC<BlogPostProps> = ({
     return (
       <>
         <div className="home-page-post-container">
-          <PostUserProfile
-            key={users.userID}
-            user={users}
-            time={date.toLocaleString("en-US")}
-          />
+
+          <div className="home-user-profile-and-subject">
+            <PostUserProfile
+              key={users.userID}
+              user={users}
+              time={date.toLocaleString("en-US")}
+            />
+            <PostSubjectList subjectList={blog.subject ?? []} />
+          </div>
 
           <BlogTitle blogProp={blog} />
 
