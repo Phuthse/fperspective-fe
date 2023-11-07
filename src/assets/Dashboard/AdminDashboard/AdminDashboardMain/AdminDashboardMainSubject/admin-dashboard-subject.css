@@ -1,0 +1,34 @@
+.admin-dashboard-subject-filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+.admin-dashboard-subject-filter a {
+    padding: 10px;
+    text-decoration: none;
+    color: #efefef;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.admin-dashboard-subject-filter a:hover {
+    background: #333;
+    border-radius: 5px;
+}
+
+.selected-filter {
+    background: #333;
+    border-radius: 5px;
+}
+
+.admin-dashboard-subject-filter h2 {
+    padding-left: 150px;
+    color: #efefef
+}
+
+.admin-dashboard-subject-filter span {
+    color: #c41d1d;
+}
+

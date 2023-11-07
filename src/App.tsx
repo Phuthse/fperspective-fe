@@ -16,6 +16,7 @@ import UserAnalytic from "./assets/UserAnalytics/user-analytic";
 import UserSetting from "./assets/UserSettings/user-setting";
 import SubjectPage from "./assets/SubjectsPage/subjects-page";
 import DetailedBlogPostPage from "./assets/DetailedBlogPostPage/detail-blog-post-page";
+import AdminCreatePage from "./assets/AdminCreatePage/admin-create-page";
 import { BrowserRouter } from "react-router-dom";
 
 
@@ -42,6 +43,7 @@ function App() {
             <Route path="setting" element={<UserSetting />} />
             <Route path="subject-page" element={<SubjectPage />} />
             <Route path="detail-blog/:blogId" element={<DetailedBlogPostPage />} />
+            <Route path='admin-create-page' element={<AdminCreatePage />} />
           </Route>
           <Route path='login' element={<LoginForm />} />
         </Routes>

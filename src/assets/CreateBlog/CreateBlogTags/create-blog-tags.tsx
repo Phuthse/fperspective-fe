@@ -38,7 +38,7 @@ const CreateBlogTags: React.FC<CreateBlogTagsProps> = ({ setTags, uri }) => {
     setInputValue(value);
   };
 
-  const handleOptionClick = (options:Tag) => {
+  const handleOptionClick = (options: Tag) => {
     if (tags.length < 4 && !tags.includes(options)) {
       const updatedTags = [...tags, options];
       setTags(updatedTags);
@@ -68,7 +68,6 @@ const CreateBlogTags: React.FC<CreateBlogTagsProps> = ({ setTags, uri }) => {
   };
 
   useEffect(() => {
-    // Add a click event listener to the document to hide options when clicking outside
     const handleDocumentClick = (event: MouseEvent) => {
       if (
         inputRef.current &&

@@ -7,6 +7,48 @@
     margin: 20px 0;
 }
 
+.user-profile-and-approve-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* APPROVE BUTTONS */
+
+.detail-approve-button {
+    padding: 10px;
+    background: transparent;
+    color: #818cf8;
+    border-radius: 5px;
+    border: 0.5px solid #818cf8;
+    width: 100px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.detail-approve-button:hover {
+    background: #6775f7;
+    color: #efefef;
+}
+
+.not-detail-approve-button {
+    padding: 10px;
+    background: transparent;
+    color: rgb(241, 74, 94);
+    border-radius: 5px;
+    border: 0.5px solid rgb(241, 74, 94);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.not-detail-approve-button:hover {
+    background: rgb(241, 74, 94);
+    color: #efefef;
+}
+
+/* */
+
 .post-details {
     display: flex;
     align-items: center;

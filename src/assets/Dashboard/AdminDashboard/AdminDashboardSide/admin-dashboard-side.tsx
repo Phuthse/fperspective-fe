@@ -32,6 +32,15 @@ const AdminDashboardSideNav: React.FC = () => {
                     </li>
 
                     <li
+                        className={`admin-dashboard-left-nav-link ${selectedNavItem === 'subject' ? 'dashboard-action' : ''}`}
+                        onClick={() => setSelectedNavItem('subject')}
+                    >
+                        <a>
+                            Subjects
+                        </a>
+                    </li>
+
+                    <li
                         className={`admin-dashboard-left-nav-link ${selectedNavItem === 'user' ? 'dashboard-action' : ''}`}
                         onClick={() => setSelectedNavItem('user')}
                     >

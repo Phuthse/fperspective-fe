@@ -7,7 +7,7 @@ import RightSideBar from './RightSideNav/right-side-nav';
 import { loginApi } from '../../config/axios';
 import User from '../../model/user';
 
-import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom
+import { useParams } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
 
@@ -24,10 +24,20 @@ const HomePage: React.FC = () => {
       window.location.href = "http://localhost:5173/login"
     }
   };
-
   useEffect(() => {
     fetchLoginData();
   }, [loginApi]);
+
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      if (loginUser === null || loginUser === undefined) {
+        window.location.href = 'http://localhost:5173/login';
+      }
+    }, 200);
+    return () => clearTimeout(delay);
+  }, [loginUser]);
+
+  console.log("LOGIN USER: " + loginUser);
 
   const user = loginUser?.username as string;
 
@@ -37,7 +47,6 @@ const HomePage: React.FC = () => {
   const startDate = new Date(currentDate.getFullYear(), 0, 1);
   const days = Math.floor((currentDate.valueOf() - startDate.valueOf()) /
     (24 * 60 * 60 * 1000));
- 
   const week = Math.ceil(days / 7);
 
   return (

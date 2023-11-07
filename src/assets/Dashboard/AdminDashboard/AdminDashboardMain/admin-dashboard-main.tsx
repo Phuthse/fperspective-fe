@@ -3,6 +3,7 @@ import './admin-dashboard-main.css';
 import { useAdminDashboard } from '../admin-dashboard-context';
 import AdminDashoardPostCharts from './AdminDashboardMainPost/admin-dashboard-post';
 import AdminDashoardTagCharts from './AdminDashboardMainTag/admin-dashboard-tag';
+import AdminDashoardSubjectCharts from './AdminDashboardMainSubject/admin-dashboard-subject';
 import AdminDashoardUserCharts from './AdminDashboardMainUser/admin-dashboard-user';
 import AdminDashoardTraficCharts from './AdminDashboardMainTrafic/admin-dashboard-trafic';
 import AdminDashoardMajorCharts from './AdminDashboardMainMajor/admin-dashboard-major';
@@ -26,6 +27,12 @@ const AdminDashoardContent: React.FC = () => {
             {selectedNavItem === 'tag' && (
                 <>
                     <AdminDashoardTagCharts />
+                </>
+            )}
+
+            {selectedNavItem === 'subject' && (
+                <>
+                    <AdminDashoardSubjectCharts />
                 </>
             )}
 

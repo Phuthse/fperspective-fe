@@ -7,7 +7,7 @@ const TagsPage: React.FC = () => {
 
     return (
         <div className='tags-page-top'>
-            <TagsPageHeader NumberOfTags={12} />
+            <TagsPageHeader uri='/show' />
             <TagsPageTagsList uri="/show" />
         </div>
     );

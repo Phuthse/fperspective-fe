@@ -8,12 +8,23 @@ import TagList from '../../home/blog/TagList/tag-list';
 import PostContent from '../PostContent/post-content';
 import Blog from '../../../model/blog';
 import User from '../../../model/user';
-import { userApi } from '../../../config/axios';
+import { blogApi, userApi } from '../../../config/axios';
+import PostSubjectList from '../../home/blog/BlogSubject/blog-subject-list';
 
 type DetailedBlogPostProps = {
     detailBlog: Blog;
     userUri: string;
 }
+
+const HandleApprove = (blogId: string) => () => {
+    blogApi.delete(`/approve/${blogId}`, { withCredentials: true })
+        .then((response) => {
+            console.log('Blog post created:', response.data);
+        })
+        .catch((error) => {
+            console.error('Error creating blog post:', error);
+        });
+};
 
 
 const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
@@ -46,38 +57,70 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
         fetchUserData();
     }, [userUri]);
 
-    return (
-        <div className="detailed-post-container">
+    if (detailBlog.status !== false) {
+        return (
+            <div className="detailed-post-container">
 
-            <div>
-                <PostUserProfile
-                    key={user.userID}
-                    user={user}
-                    time={date.toLocaleString("en-US")}
-                />
+                <div className='user-profile-and-approve-button'>
+                    <PostUserProfile
+                        key={user.userID}
+                        user={user}
+                        time={date.toLocaleString("en-US")}
+                    />
+                    <PostSubjectList
+                        subjectList={detailBlog.subject}
+                    />
+                </div>
+                <BiggerBlogTitle blogTitle={detailBlog} />
+                <TagList tagList={detailBlog.btag} />
+                <div className="detail-post-divider" />
+                <PostContent blogContent={detailBlog} />
+
+                {/* <PostCommentForm ProfilePic='src/assets/images/member-1.png' />
+                <PostComment
+                    ProfilePic={CommentSectionSample.ProfilePic}
+                    FullName={CommentSectionSample.FullName}
+                    CommentDate={CommentSectionSample.CommentDate}
+                    CommentContent={CommentSectionSample.CommentContent}
+                    Upvote={CommentSectionSample.Upvote}
+                /> */}
+
             </div>
+        );
+    }
+    else {
+        return (
+            <div className="detailed-post-container">
 
-            <BiggerBlogTitle blogTitle={detailBlog} />
+                <div className='user-profile-and-approve-button'>
+                    <PostUserProfile
+                        key={user.userID}
+                        user={user}
+                        time={date.toLocaleString("en-US")}
+                    />
+                    <div className="post-approve-button">
+                        <button className="detail-approve-button" onClick={HandleApprove(detailBlog.blogId)}>Approve</button>
+                        <button className="not-detail-approve-button">Don't Approve</button>
+                    </div>
 
-            <TagList tagList={detailBlog.btag} />
+                </div>
+                <BiggerBlogTitle blogTitle={detailBlog} />
+                <TagList tagList={detailBlog.btag} />
+                <div className="detail-post-divider" />
+                <PostContent blogContent={detailBlog} />
 
-            <div className="detail-post-divider" />
+                {/* <PostCommentForm ProfilePic='src/assets/images/member-1.png' />
+                <PostComment
+                    ProfilePic={CommentSectionSample.ProfilePic}
+                    FullName={CommentSectionSample.FullName}
+                    CommentDate={CommentSectionSample.CommentDate}
+                    CommentContent={CommentSectionSample.CommentContent}
+                    Upvote={CommentSectionSample.Upvote}
+                /> */}
+            </div>
+        );
+    }
 
-            <PostContent blogContent={detailBlog} />
-
-            {/* <PostCommentForm ProfilePic='src/assets/images/member-1.png' />
-
-            <PostComment
-                ProfilePic={CommentSectionSample.ProfilePic}
-                FullName={CommentSectionSample.FullName}
-                CommentDate={CommentSectionSample.CommentDate}
-                CommentContent={CommentSectionSample.CommentContent}
-                Upvote={CommentSectionSample.Upvote}
-            /> */}
-
-
-        </div>
-    );
 };
 
 export default DetailedBlogPost;

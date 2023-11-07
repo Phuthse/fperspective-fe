@@ -15,14 +15,12 @@ const DetailedBlogPostGenerator: React.FC<DetailedBlogPostGeneratorProps> = ({ b
         blogTitle: "Example Blog",
         blogContent: "This is an example blog content.",
         userId: "user1",
-        btag: [
-            { tagId: "tag1", tagName: "Tag1", status: false },
-            { tagId: "tag2", tagName: "Tag2", status: false },
-        ],
+        btag: [],
         like: [],
         commentId: [],
-        uploadDate: Date.now(), // You can set the current timestamp or any specific date
-        status: true, // You can set it to true or false as needed
+        uploadDate: Date.now(),
+        status: true,
+        subject: []
     };
 
     const [blog, setBlog] = useState<Blog>(initialBlog);

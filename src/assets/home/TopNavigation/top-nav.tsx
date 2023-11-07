@@ -9,17 +9,17 @@ type TopNavProps = {
 }
 
 function timeout(delay: number) {
-  return new Promise( res => setTimeout(res, delay) );
+  return new Promise(res => setTimeout(res, delay));
 }
 
 
 
 const HandleLogout = async () => {
-  try{
+  try {
     window.location.href = "http://localhost:8080/logout"
     await timeout(20);
   } catch { /* empty */ }
-  finally{
+  finally {
     window.location.href = "http://localhost:5173/login"
   }
 }
@@ -28,17 +28,15 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
 
   const [loginUser, setLoginUser] = useState<User>();
   const fetchLoginData = async () => {
-    try{
+    try {
       const response = await loginApi.get(uri, { withCredentials: true });
       setLoginUser(response.data);
     }
-    catch{
+    catch {
       timeout(100)
       // window.location.href = "http://localhost:5173/login"
     }
-    
   };
-
   useEffect(() => {
     fetchLoginData();
   }, [loginApi]);
@@ -78,12 +76,15 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
           <img src={loginUser?.avatarUrl} />
           <div className="dropdown-content">
             <Link to={`/user-profile/${loginUser?.userID}`}>
-                {loginUser?.username}
+              {loginUser?.username}
             </Link>
             <hr />
             <Link to='/create-blog'>Write a Blog</Link>
             <Link to="/user-dashboard">Dashboard</Link>
             <Link to="/admin-dashboard">Admin Dashboard</Link>
+            {loginUser?.role === 'ROLE_ADMIN' && (
+              <Link to='admin-create-page'>Admin Create Page</Link>
+            )}
             <Link to='/setting'>Setting</Link>
             <Link onClick={HandleLogout} to={""}>Logout</Link>
           </div>

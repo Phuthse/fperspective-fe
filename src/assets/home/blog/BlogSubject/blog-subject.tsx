@@ -1,10 +1,9 @@
 import React from 'react';
-import './subject-item.css';
-import FollowButton from '../../home/button/FollowButton/follow-button';
-import Subject from '../../../model/subject';
+import './blog-subject.css';
+import Subject from '../../../../model/subject';
 
-type SubjectItemProps = {
-    subjects: Subject;
+type BlogSubjectProps = {
+    subject: Subject;
 }
 
 const getSemester = (subjectName: string) => {
@@ -56,8 +55,9 @@ const getSemester = (subjectName: string) => {
     return SemesterMap[subjectName] || 1;
 };
 
-const SubjectItem: React.FC<SubjectItemProps> = ({ subjects }) => {
-    const Semester = getSemester(subjects.subjectName);
+const BlogSubject: React.FC<BlogSubjectProps> = ({ subject }) => {
+
+    const Semester = getSemester(subject.subjectName);
     const SemesterColors = [
         'lightgreen',     // Semester 1
         'khaki',          // Semester 2
@@ -72,25 +72,17 @@ const SubjectItem: React.FC<SubjectItemProps> = ({ subjects }) => {
 
     const SemesterColor = SemesterColors[Semester - 1];
 
+
     return (
-        <div className="subject-page-content">
-            <div className='subject-name-num'>
-                <h3>
-                    <a
-                        href='#'
-                        style={{ color: SemesterColor }}
-                    >
-                        {subjects.subjectName}
-                    </a>
-                </h3>
-                <h4>
-                    10k posts
-                </h4>
-            </div>
-            <span style={{ color: SemesterColor }} className="semester-number">Semester {Semester}</span>
-            <FollowButton />
-        </div>
+        <a
+            key={subject.subjectId}
+            href="#"
+            className="home-page-subject"
+            style={{ color: SemesterColor }}
+        >
+            {subject.subjectName}
+        </a>
     );
 };
 
-export default SubjectItem;
+export default BlogSubject;
