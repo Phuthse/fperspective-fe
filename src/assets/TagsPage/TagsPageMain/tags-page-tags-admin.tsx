@@ -12,35 +12,35 @@ const TagPageTagsAdmin: React.FC<TagsPageAdminProp> = ({ tags }) => {
     /* TAG UPDATE AND DELETE METHODS */
 
     const [tagName, setTagName] = useState(tags.tagName);
-    const [status] = useState(tags.status);
+    //const [status] = useState(tags.status);
     const [count, setCount] = useState<number>(1);
 
-    const fetchUserData = async () => {
+    const fetchTagData = async () => {
         const response = await tagApi.get(`/count/${tags.tagName}`, { withCredentials: true });
         setCount(response.data);
     };
     useEffect(() => {
-        fetchUserData();
+        fetchTagData();
     }, [tagApi]);
 
-    const handleUpdate = () => {
-        const tagData = {
-            tagId: tags.tagId,
-            tagName: tagName,
-            status
-        };
-        tagApi
-            .post(`/update`, tagData, { withCredentials: true })
-            .then((response) => {
-                console.log(tagData);
-                window.location.href = "http://localhost:5173/tag-page";
-                console.log("TAG updated:", response.data);
-            })
-            .catch((error) => {
-                console.log(tagData);
-                console.error("Error updating tag: ", error);
-            });
-    };
+    // const handleUpdate = () => {
+    //     const tagData = {
+    //         tagId: tags.tagId,
+    //         tagName: tagName,
+    //         status
+    //     };
+    //     tagApi
+    //         .post(`/update`, tagData, { withCredentials: true })
+    //         .then((response) => {
+    //             console.log(tagData);
+    //             window.location.href = "http://localhost:5173/tag-page";
+    //             console.log("TAG updated:", response.data);
+    //         })
+    //         .catch((error) => {
+    //             console.log(tagData);
+    //             console.error("Error updating tag: ", error);
+    //         });
+    // };
 
     const handleDelete = () => {
         tagApi
@@ -73,7 +73,7 @@ const TagPageTagsAdmin: React.FC<TagsPageAdminProp> = ({ tags }) => {
                 <h4>{count} posts</h4>
             </div>
             <div className="admin-tag-button">
-                <button className='admin-tag-update' onClick={handleUpdate}>Update</button>
+                {/* <button className='admin-tag-update' onClick={handleUpdate}>Update</button> */}
                 <button className='admin-tag-delete' onClick={handleDelete}>Delete</button>
             </div>
         </div>

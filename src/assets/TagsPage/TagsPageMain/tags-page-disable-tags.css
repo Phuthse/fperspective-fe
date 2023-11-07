@@ -59,12 +59,12 @@
     width: 65px;
     background: transparent;
     border: 0.5px solid #333;
-    color: rgb(219, 255, 57);
+    color: rgb(77, 255, 53);
     border-radius: 5px;
     cursor: pointer;
 }
 
 .admin-deleted-tag-enable:hover {
-    background: rgb(219, 255, 57);
+    background:  rgb(77, 255, 53);
     color: black;
 }

@@ -34,6 +34,7 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> =
             fullName: "test",
             createdDate: 2,
             status: false,
+            role: ''
         }
 
         const [user, setUser] = useState<User>(initialUser);

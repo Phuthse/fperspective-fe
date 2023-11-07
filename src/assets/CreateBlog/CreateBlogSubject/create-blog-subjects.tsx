@@ -4,31 +4,28 @@ import Subject from "../../../model/subject";
 import { subjectApi } from "../../../config/axios";
 
 interface CreateBlogSubjectsProps {
-    setSubjects: (Subjects: Subject[]) => void;
+    setSubjects: (subjects: Subject[]) => void;
     uri: string;
 }
 
 const CreateBlogSubjects: React.FC<CreateBlogSubjectsProps> = ({ setSubjects, uri }) => {
-
     const [bSubjects, setBSubjects] = useState<Subject[]>([]);
+    const [filteredOptions, setFilteredOptions] = useState<Subject[]>([]);
+
     const fetchBTagData = async () => {
         const response = await subjectApi.get(uri, { withCredentials: true });
         setBSubjects(response.data);
+        setFilteredOptions(response.data);
     };
+
     useEffect(() => {
         fetchBTagData();
     }, [uri]);
 
-    const [Subjects, setSubjectsState] = useState<Subject[]>([]);
+    const [subjects, setSubjectsState] = useState<Subject[]>([]);
     const [inputValue, setInputValue] = useState<string>("");
     const [placeholder, setPlaceholder] = useState<string>("Add up to 2 Subjects...");
     const [showOptions, setShowOptions] = useState<boolean>(false);
-
-    const options: Subject[] = [];
-
-    bSubjects.map((btag) => {
-        options.push(btag)
-    })
 
     const inputRef = useRef<HTMLInputElement | null>(null);
     const optionsRef = useRef<HTMLUListElement | null>(null);
@@ -36,25 +33,29 @@ const CreateBlogSubjects: React.FC<CreateBlogSubjectsProps> = ({ setSubjects, ur
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         setInputValue(value);
+
+        // Filter the options based on the input value
+        const filtered = bSubjects.filter(option => option.subjectName.toLowerCase().includes(value.toLowerCase()));
+        setFilteredOptions(filtered);
     };
 
-    const handleOptionClick = (options: Subject) => {
-        if (Subjects.length < 2 && !Subjects.includes(options)) {
-            const updatedSubjects = [...Subjects, options];
+    const handleOptionClick = (option: Subject) => {
+        if (subjects.length < 2 && !subjects.includes(option)) {
+            const updatedSubjects = [...subjects, option];
             setSubjects(updatedSubjects);
             setSubjectsState(updatedSubjects);
             setInputValue("");
-            if (Subjects.length === 1) {
+            if (subjects.length === 1) {
                 setPlaceholder("Max Subjects reached");
-            } else if (Subjects.length >= 0) {
+            } else if (subjects.length >= 0) {
                 setPlaceholder("Add another subject...");
             }
+            hideOptions();
         }
-        hideOptions();
     };
 
-    const handleTagRemove = (tagToRemove: Subject) => {
-        const updatedSubjects = Subjects.filter((tag) => tag !== tagToRemove);
+    const handleTagRemove = (subjectToRemove: Subject) => {
+        const updatedSubjects = subjects.filter(subject => subject !== subjectToRemove);
         setSubjects(updatedSubjects);
         setSubjectsState(updatedSubjects);
     };
@@ -90,7 +91,7 @@ const CreateBlogSubjects: React.FC<CreateBlogSubjectsProps> = ({ setSubjects, ur
     return (
         <div className="post-subjects">
             <ul className="current-subjects">
-                {Subjects.map((subject) => (
+                {subjects.map((subject) => (
                     <li key={subject.subjectId}>
                         {subject.subjectName}
                         <button onClick={() => handleTagRemove(subject)}>X</button>
@@ -106,17 +107,15 @@ const CreateBlogSubjects: React.FC<CreateBlogSubjectsProps> = ({ setSubjects, ur
                         ref={inputRef}
                     />
                     {showOptions && (
-                        <>
-                            <ul className="subject-options" ref={optionsRef}>
-                                {options
-                                    .filter((option) => !Subjects.includes(option))
-                                    .map((option) => (
-                                        <li key={option.subjectId} onClick={() => handleOptionClick(option)}>
-                                            {option.subjectName}
-                                        </li>
-                                    ))}
-                            </ul>
-                        </>
+                        <ul className="subject-options" ref={optionsRef}>
+                            {filteredOptions
+                                .filter((option) => option.status === true && !subjects.includes(option))
+                                .map((option) => (
+                                    <li key={option.subjectId} onClick={() => handleOptionClick(option)}>
+                                        {option.subjectName}
+                                    </li>
+                                ))}
+                        </ul>
                     )}
                 </li>
             </ul>

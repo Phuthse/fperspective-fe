@@ -14,6 +14,8 @@ const CreateBlog: React.FC = () => {
     const [btag, setTags] = useState<Tag[]>([]);
     const [subject, setSubject] = useState<Subject[]>([]);
     const [blogContent, setContent] = useState("");
+    const [validationMessage, setValidationMessage] = useState<string>("");
+    const [validationMessageColor, setValidationMessageColor] = useState<string>("");
 
     const modules = {
         toolbar: [
@@ -39,33 +41,46 @@ const CreateBlog: React.FC = () => {
     const uploadDate = new Date();
 
     const handlePublish = () => {
-        // Create a data object to send to the backend
-        const postData = {
-            blogTitle,
-            btag,
-            subject,
-            blogContent,
-            userId,
-            uploadDate,
-        };
+        if (
+            blogTitle.trim() === "" ||
+            btag.length === 0 ||
+            blogContent.trim() === ""
+        ) {
+            setValidationMessage("Title, tags, and content must not be empty.");
+            setValidationMessageColor("red");
+        } else {
+            // Clear any previous error messages
+            setValidationMessage("");
+            setValidationMessageColor(""); // Clear color
 
-        // Send a POST request to your backend
-        blogApi
-            .post(`/show`, postData, { withCredentials: true })
-            .then((response) => {
-                window.location.href = "http://localhost:5173";
-                console.log("Blog post created:", response.data);
-            })
-            .catch((error) => {
-                console.log(postData);
-                console.error("Error creating blog post:", error);
-            });
+            const postData = {
+                blogTitle,
+                btag,
+                subject,
+                blogContent,
+                userId,
+                uploadDate,
+            };
 
+            blogApi
+                .post(`/show`, postData, { withCredentials: true })
+                .then((response) => {
+                    console.log("Blog post created:", response.data);
+                    setValidationMessage("Post successfully created");
+                    setValidationMessageColor("green");
+                    window.location.href = "http://localhost:5173";
+                })
+                .catch((error) => {
+                    console.log(postData);
+                    console.error("Error creating blog post:", error);
+                    setValidationMessage("Error creating blog post. Please try again.");
+                    setValidationMessageColor("red");
+                });
+        }
     };
 
     return (
-        <>
-        <div className="container">
+        <div className="create-blog-container">
             <form className="create-post-form">
                 <div className="post-content-and-title">
                     <div className="post-top">
@@ -86,12 +101,16 @@ const CreateBlog: React.FC = () => {
                     </div>
                 </div>
                 <div className="create-post-form-footer">
-                    <button onClick={handlePublish}>Publish</button>
+                    <button type="button" onClick={handlePublish}>Publish</button>
                 </div>
+                {validationMessage && (
+                    <div className="error-message" style={{ color: validationMessageColor }}>
+                        {validationMessage}
+                    </div>
+                )}
             </form>
         </div>
-        </>
-  );
+    );
 };
 
 export default CreateBlog;
