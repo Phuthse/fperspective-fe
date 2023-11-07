@@ -4,6 +4,16 @@
     margin-left: 10px;
 }
 
+.subject-page-disable-subject-header {
+    margin-top: 20px;
+}
+
+.deleted-subjects-page-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 10px;
+}
+
 .admin-subject-page-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

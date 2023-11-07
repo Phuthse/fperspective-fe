@@ -1,0 +1,70 @@
+.tag-page-disable-tag-header {
+    color: #efefef;
+    padding: 10px;
+}
+
+.admin-deleted-tag-page-content {
+    display: flex;
+    color: #efefef;
+    align-items: top;
+    background: #111;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+    height: 72px;
+    justify-content: space-between;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.admin-deleted-tag-name-num {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.admin-deleted-tag-name-num h3 span {
+    font-size: 18px;
+    margin-right: 3px;
+}
+
+.admin-deleted-tag-name-num input {
+    padding: 5px;
+    background: transparent;
+    border: none;
+    width: 100px;
+    color: #efefef;
+    font-size: 16px;
+}
+
+.admin-deleted-tag-name-num input:focus {
+    outline: 0.5px solid #333;
+    border-radius: 5px;
+}
+
+.admin-deleted-tag-name-num h4 {
+    color: gray;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.admin-deleted-tag-page-content span {
+    margin-top: 4px;
+    font-size: 10px;
+    margin-left: 10px;
+}
+
+.admin-deleted-tag-enable {
+    height: 37px;
+    width: 65px;
+    background: transparent;
+    border: 0.5px solid #333;
+    color: rgb(219, 255, 57);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-deleted-tag-enable:hover {
+    background: rgb(219, 255, 57);
+    color: black;
+}

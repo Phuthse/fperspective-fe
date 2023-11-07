@@ -6,16 +6,16 @@ type TagListProps = {
 };
 
 const TagList: React.FC<TagListProps> = ({ tagList }) => {
-//   console.log(tagID);
-
   return (
     <div className="home-page-post-tags">
       {tagList
+        .filter((tag) => tag.status === true)
         .map((tag) => {
-            return <BlogTags key={tag.tagId} tag={tag} />;
+          return <BlogTags key={tag.tagId} tag={tag} />;
         })}
     </div>
   );
 };
 
 export default TagList;
+
