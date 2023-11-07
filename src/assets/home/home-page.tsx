@@ -35,8 +35,9 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     const delay = setTimeout(() => {
-      timeout(30);
+      timeout(100);
       if (loginUser === null || loginUser === undefined) {
+        window.location.reload();
         // window.location.href = 'http://localhost:5173/login';
       }
     }, 500);

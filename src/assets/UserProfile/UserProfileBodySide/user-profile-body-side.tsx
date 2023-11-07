@@ -39,7 +39,7 @@ const UserProfileBodySide: React.FC<UserProfileBodySideProp> =
                     </svg>
 
                     <span>
-                        {blogs.length + 1} perspective shared
+                        {blogs.length} perspective shared
                     </span>
                 </span>
 
