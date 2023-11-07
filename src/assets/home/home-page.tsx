@@ -9,6 +9,11 @@ import User from '../../model/user';
 
 import { useParams } from 'react-router-dom';
 
+function timeout(delay: number) {
+  return new Promise(res => setTimeout(res, delay));
+}
+
+
 const HomePage: React.FC = () => {
 
 
@@ -21,7 +26,7 @@ const HomePage: React.FC = () => {
     setLoginUser(response.data);
     }
     catch{
-      window.location.href = "http://localhost:5173/login"
+      // window.location.href = "http://localhost:5173/login"
     }
   };
   useEffect(() => {
@@ -30,8 +35,9 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     const delay = setTimeout(() => {
+      timeout(30);
       if (loginUser === null || loginUser === undefined) {
-        window.location.href = 'http://localhost:5173/login';
+        // window.location.href = 'http://localhost:5173/login';
       }
     }, 200);
     return () => clearTimeout(delay);

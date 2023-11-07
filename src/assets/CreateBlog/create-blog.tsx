@@ -49,7 +49,6 @@ const CreateBlog: React.FC = () => {
         blogApi
             .post(`/show`, postData, { withCredentials: true })
             .then((response) => {
-                console.log(postData);
                 window.location.href = "http://localhost:5173";
                 console.log("Blog post created:", response.data);
             })
