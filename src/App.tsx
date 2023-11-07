@@ -34,7 +34,7 @@ function App() {
             <Route path='create-blog' element={<CreateBlog />} />
             <Route path="user-profile/:userID" element={<UserProfile />} />
             <Route path='bookmark' element={<UserBookmark />} />
-            <Route path='search' element={<SearchPage />} />
+            <Route path='search/:searchText' element={<SearchPage />} />
             <Route path='notification' element={<NotificationPage />} />
             <Route path='tag-page' element={<TagsPage />} />
             <Route path="admin-dashboard" element={<AdminDashboard />} />

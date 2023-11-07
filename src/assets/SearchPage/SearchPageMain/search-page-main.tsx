@@ -6,9 +6,15 @@ import SearchPageMainTag from './MainTag/main-tag';
 import SearchPageMainPeople from './MainPeople/main-people';
 
 
-const SearchPageMain: React.FC = () => {
+type SearchPageMainProps = {
+    // uri: string
+}
+
+const SearchPageMain: React.FC<SearchPageMainProps> = () => {
 
     const { selectedNavItem } = useSearchPage();
+
+
 
     return (
 

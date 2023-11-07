@@ -26,7 +26,7 @@ const HomePage: React.FC = () => {
       setLoginUser(response.data);
     }
     catch {
-      // window.location.href = "http://localhost:5173/login"
+      window.location.href = "http://localhost:5173/login"
     }
   };
   useEffect(() => {
