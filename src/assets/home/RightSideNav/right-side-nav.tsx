@@ -26,7 +26,7 @@ const RightSideBar: React.FC<RightSideNavProps> = ({ tagUri, userUri, currentUse
   return (
     <div className="right-sidebar">
       <div className="trending-tags">
-        <h3>Trending Tags</h3>
+        <h3>Popular Tags</h3>
         <div className="trending-tags">
           {tags?.map((tag) => {
             const url = "count/" + tag.tagName;

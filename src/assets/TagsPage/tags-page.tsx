@@ -1,7 +1,7 @@
 import React from 'react';
 import './tags-page.css';
 import TagsPageHeader from './TagsPageHeader/tags-page-header';
-import TagsPageTagsList from './TagsPageMain/tags-page-main-tags-ist';
+import TagsPageTagsList from './TagsPageMain/tags-page-main-tags-list';
 
 const TagsPage: React.FC = () => {
 

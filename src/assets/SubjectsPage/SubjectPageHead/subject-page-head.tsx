@@ -21,7 +21,7 @@ const SubjectPageHeader: React.FC<SubjectPageHeaderProp> = ({ uri }) => {
         fetchUserData();
     }, [subjectApi]);
 
-    const subjectCount = subjects ? subjects.length : 0;
+    const subjectCount = subjects ? subjects.filter(subject => subject.status === true).length : 0;
 
     return (
 

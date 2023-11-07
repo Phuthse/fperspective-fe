@@ -7,7 +7,6 @@ type TagsPageHeaderProp = {
     uri: string;
 }
 
-
 const TagsPageHeader: React.FC<TagsPageHeaderProp> = ({ uri }) => {
 
     const [tags, setTags] = useState<Tag[]>();
@@ -21,7 +20,7 @@ const TagsPageHeader: React.FC<TagsPageHeaderProp> = ({ uri }) => {
         fetchUserData();
     }, [tagApi]);
 
-    const tagCount = tags ? tags.length : 0;
+    const tagCount = tags ? tags.filter(tag => tag.status === true).length : 0;
 
     return (
         <header className='tags-page-header'>

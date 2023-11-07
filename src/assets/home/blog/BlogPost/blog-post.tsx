@@ -29,6 +29,16 @@ const HandleApprove = (blogId: string) => () => {
     });
 };
 
+const HandleNotApprove = (blogId: string) => () => {
+  blogApi.delete(`/delete/${blogId}`, { withCredentials: true })
+    .then((response) => {
+      console.log('Blog post created:', response.data);
+    })
+    .catch((error) => {
+      console.error('Error creating blog post:', error);
+    });
+}
+
 const BlogPost: React.FC<BlogPostProps> = ({
   blog,
   userUri,
@@ -118,7 +128,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
             </div>
             <div className="post-approve-button">
               <button className="approve-button" onClick={HandleApprove(blog.blogId)}>Approve</button>
-              <button className="not-approve-button">Don't Approve</button>
+              <button className="not-approve-button" onClick={HandleNotApprove(blog.blogId)}>Don't Approve</button>
             </div>
           </div>
         </div>

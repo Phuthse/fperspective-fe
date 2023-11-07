@@ -1,5 +1,3 @@
-
-
 /* TAGS */
 .tags-page-main {
     display: grid;
@@ -36,7 +34,7 @@
     align-items: center;
 }
 
-.tags-name-num h4{
+.tags-name-num h4 {
     color: #acacac;
     font-size: 14px;
 }
@@ -50,6 +48,3 @@
 .tags-name-num a:hover {
     color: blueviolet
 }
-
-
-

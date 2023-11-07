@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './subject-item-admin.css';
 import Subject from '../../../model/subject';
+import { subjectApi } from '../../../config/axios';
 
 type SubjectItemAdminProps = {
     subjects: Subject;
@@ -68,23 +69,64 @@ const SubjectItemAdmin: React.FC<SubjectItemAdminProps> = ({ subjects }) => {
         'lightgray',      // Semester 8
         'orangered',      // Semester 9
     ];
-
     const SemesterColor = SemesterColors[Semester - 1];
+
+    /* SUBJECT UPDATE AND DELETE METHOD */
+
+    const [subjectName, setSubjectName] = useState(subjects.subjectName);
+    const [status] = useState(subjects.status);
+
+    const handleUpdate = () => {
+        const subjectData = {
+            subjectId: subjects.subjectId,
+            subjectName: subjectName,
+            status
+        };
+
+        subjectApi
+            .post(`/update`, subjectData, { withCredentials: true })
+            .then((response) => {
+                console.log(subjectData);
+                window.location.href = "http://localhost:5173/subject-page";
+                console.log("TAG updated:", response.data);
+            })
+            .catch((error) => {
+                console.log(subjectData);
+                console.error("Error creating tag: ", error);
+            });
+    };
+
+    const handleDelete = () => {
+        subjectApi
+            .delete(`/delete/${subjects.subjectId}`, { withCredentials: true })
+            .then((response) => {
+                window.location.href = "http://localhost:5173/subject-page";
+                console.log("TAG updated:", response.data);
+            })
+            .catch((error) => {
+                console.error("Error creating tag: ", error);
+            });
+    };
+
+    const handleSubjectNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSubjectName(event.target.value);
+    };
 
     return (
         <div className="admin-subject-page-content">
             <div className='admin-subject-name-num'>
                 <h3>
                     <input
-                        value={subjects.subjectName}
+                        value={subjectName}
                         style={{ color: SemesterColor }}
+                        onChange={handleSubjectNameChange}
                     />
                 </h3>
                 <h4>10k posts</h4>
             </div>
             <div className="admin-subject-button">
-                <button className='admin-subject-update'>Update</button>
-                <button className='admin-subject-delete'>Delete</button>
+                <button className='admin-subject-update' onClick={handleUpdate}>Update</button>
+                <button className='admin-subject-delete' onClick={handleDelete}>Delete</button>
             </div>
         </div>
     );
