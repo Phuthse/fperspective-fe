@@ -46,7 +46,7 @@ const followingTagsExample = {
 };
 
 const UserDashoardContent: React.FC = () => {
-    
+
   const [userId, setLoginUser] = useState<string>("");
   const fetchLoginData = async () => {
     const response = await loginApi.get("/currentUser", {
@@ -61,7 +61,7 @@ const UserDashoardContent: React.FC = () => {
 
   const { selectedNavItem } = useUserDashboard();
 
-  const BLOG_URI = `/search/user/${userId}`;
+  const BLOG_URI = `/search/user/${userId}/-1`;
 
   return (
     <div className="user-dashboard-content">

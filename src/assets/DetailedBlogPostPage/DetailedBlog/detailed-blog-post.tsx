@@ -8,7 +8,7 @@ import TagList from '../../home/blog/TagList/tag-list';
 import PostContent from '../PostContent/post-content';
 import Blog from '../../../model/blog';
 import User from '../../../model/user';
-import { blogApi, userApi } from '../../../config/axios';
+import { blogApi, loginApi, userApi } from '../../../config/axios';
 import PostSubjectList from '../../home/blog/BlogSubject/blog-subject-list';
 
 type DetailedBlogPostProps = {
@@ -37,6 +37,8 @@ const HandleNotApprove = (blogId: string) => () => {
             console.error('Error creating blog post:', error);
         });
 }
+
+
 
 const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
     detailBlog,
@@ -69,10 +71,40 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
         fetchUserData();
     }, [userUri]);
 
+    const [loginUser, setLoginUser] = useState<User>();
+    const fetchLoginData = async () => {
+        const response = await loginApi.get('/currentUser', { withCredentials: true });
+        setLoginUser(response.data);
+    };
+    useEffect(() => {
+        fetchLoginData();
+    }, [loginApi]);
+
+
+    const handleDelete = () => {
+        blogApi
+            .delete(`/delete/${detailBlog.blogId}`, { withCredentials: true })
+            .then((response) => {
+                window.location.href = "http://localhost:5173";
+                console.log("blog deleted:", response.data);
+            })
+            .catch((error) => {
+                console.error("Error deleting blog: ", error);
+            });
+    };
+
     if (detailBlog.status !== false) {
         return (
             <div className="detailed-post-container">
 
+                {loginUser?.userID === user.userID && (
+                    <div className="post-manage-button">
+                        <button className="post-edit-button">Edit</button>
+                        <button className="post-delete-button" onClick={handleDelete}>
+                            Delete
+                        </button>
+                    </div>
+                )}
                 <div className='user-profile-and-approve-button'>
                     <PostUserProfile
                         key={user.userID}
@@ -103,18 +135,19 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
     else {
         return (
             <div className="detailed-post-container">
-
+                <div className="post-approve-button">
+                    <button className="detail-approve-button" onClick={HandleApprove(detailBlog.blogId)}>Approve</button>
+                    <button className="not-detail-approve-button" onClick={HandleNotApprove(detailBlog.blogId)}>Don't Approve</button>
+                </div>
                 <div className='user-profile-and-approve-button'>
                     <PostUserProfile
                         key={user.userID}
                         user={user}
                         time={date.toLocaleString("en-US")}
                     />
-                    <div className="post-approve-button">
-                        <button className="detail-approve-button" onClick={HandleApprove(detailBlog.blogId)}>Approve</button>
-                        <button className="not-detail-approve-button" onClick={HandleNotApprove(detailBlog.blogId)}>Don't Approve</button>
-                    </div>
-
+                    <PostSubjectList
+                        subjectList={detailBlog.subject}
+                    />
                 </div>
                 <BiggerBlogTitle blogTitle={detailBlog} />
                 <TagList tagList={detailBlog.btag} />

@@ -8,8 +8,9 @@ import { useParams } from 'react-router';
 const UserProfile: React.FC = () => {
 
   const { userID } = useParams();
+
   const USER_URI = `/show/${userID}`;
-  const BLOG_URI = `/search/user/${userID}/1`;
+  const BLOG_URI = `/search/user/${userID}/-1`;
 
   return (
     <div className="user-profile-container">
