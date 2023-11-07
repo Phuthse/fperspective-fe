@@ -9,13 +9,25 @@ import User from '../../model/user';
 
 import { useParams } from 'react-router-dom';
 
+function timeout(delay: number) {
+  return new Promise(res => setTimeout(res, delay));
+}
+
+
 const HomePage: React.FC = () => {
+
+
   const { filter } = useParams();
 
   const [loginUser, setLoginUser] = useState<User>();
   const fetchLoginData = async () => {
+    try{
     const response = await loginApi.get("/currentUser", { withCredentials: true });
     setLoginUser(response.data);
+    }
+    catch{
+      // window.location.href = "http://localhost:5173/login"
+    }
   };
   useEffect(() => {
     fetchLoginData();
@@ -23,8 +35,9 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     const delay = setTimeout(() => {
+      timeout(30);
       if (loginUser === null || loginUser === undefined) {
-        window.location.href = 'http://localhost:5173/login';
+        // window.location.href = 'http://localhost:5173/login';
       }
     }, 500);
     return () => clearTimeout(delay);

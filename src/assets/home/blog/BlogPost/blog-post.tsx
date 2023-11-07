@@ -43,7 +43,6 @@ const BlogPost: React.FC<BlogPostProps> = ({
   blog,
   userUri,
 }) => {
-
   const date = new Date(blog.uploadDate);
 
   const initialUser: User = {
@@ -96,14 +95,11 @@ const BlogPost: React.FC<BlogPostProps> = ({
             </div>
 
             <BookmarkButton />
-
           </div>
         </div>
       </>
     );
-
-  }
-  else {
+  } else {
     return (
       <>
         <div className="home-page-post-container">

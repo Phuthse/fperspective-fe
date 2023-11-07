@@ -53,7 +53,6 @@ const CreateBlog: React.FC = () => {
         blogApi
             .post(`/show`, postData, { withCredentials: true })
             .then((response) => {
-                console.log(postData);
                 window.location.href = "http://localhost:5173";
                 console.log("Blog post created:", response.data);
             })
@@ -65,6 +64,7 @@ const CreateBlog: React.FC = () => {
     };
 
     return (
+        <>
         <div className="container">
             <form className="create-post-form">
                 <div className="post-content-and-title">
@@ -90,7 +90,8 @@ const CreateBlog: React.FC = () => {
                 </div>
             </form>
         </div>
-    );
+        </>
+  );
 };
 
 export default CreateBlog;
