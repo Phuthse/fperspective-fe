@@ -76,30 +76,33 @@ const TagsPageTagsList: React.FC<TagsPageMain> = ({ uri }) => {
         );
     } else {
         return (
-            <div className='tags-page-body'>
-                <div className='tags-page-container'>
-                    {tags
-                        .filter(tag => tag.status === true) // Filter tags with status true
-                        .map(tag => (
-                            <TagPageTagsAdmin tags={tag} key={tag.tagId} />
-                        ))}
-                    <form className="create-tag-form">
-                        <input
-                            placeholder="Enter tag name"
-                            value={tagName}
-                            onChange={handleTagNameChange}
-                        />
-                        <div className="create-tag-form-footer">
-                            <button
-                                className='create-tag-button'
-                                onClick={handleCreate}
-                            >
-                                Create
-                            </button>
-                        </div>
-                    </form>
+            <>
+                <div className='tags-page-body'>
+                    <div className='tags-page-container'>
+                        {tags
+                            .filter(tag => tag.status === true) // Filter tags with status true
+                            .map(tag => (
+                                <TagPageTagsAdmin tags={tag} key={tag.tagId} />
+                            ))
+                        }
+                        <form className="create-tag-form">
+                            <input
+                                placeholder="Enter tag name"
+                                value={tagName}
+                                onChange={handleTagNameChange}
+                            />
+                            <div className="create-tag-form-footer">
+                                <button
+                                    className='create-tag-button'
+                                    onClick={handleCreate}
+                                >
+                                    Create
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            </>
         );
     }
 
