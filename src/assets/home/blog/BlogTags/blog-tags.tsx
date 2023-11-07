@@ -16,12 +16,12 @@ const BlogTags: React.FC<BlogTagsProps> = ({ uri }) => {
   }
 
   const [tags, setTags] = useState<Tag>(btag);
-  const fetchUserData = async () => {
+  const fetchTagData = async () => {
     const response = await tagApi.get(uri, { withCredentials: true });
     setTags(response.data);
   };
   useEffect(() => {
-    fetchUserData();
+    fetchTagData();
   }, [uri]);
 
   if(tags.status === true){

@@ -38,7 +38,7 @@ const PostUserProfile: React.FC<UserProfileProps> = ({ user, time }) => {
     return (
         <div className="home-page-user-profile">
             <Link to={`/user-profile/${user.userID}`}> 
-                <img src={user.avatarUrl} alt={user.username} />
+                <img src={user.avatarUrl} alt={user.username}  referrerPolicy="no-referrer"/>
                 <div className='home-page-user-info'>
                     <p>{user.username}</p>
                     <small>{formattedTime}</small>

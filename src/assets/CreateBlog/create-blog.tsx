@@ -40,7 +40,7 @@ const CreateBlog: React.FC = () => {
 
     const uploadDate = new Date();
 
-    const handlePublish = () => {
+    const HandlePublish = () => {
         if (
             blogTitle.trim() === "" ||
             btag.length === 0 ||
@@ -101,7 +101,7 @@ const CreateBlog: React.FC = () => {
                     </div>
                 </div>
                 <div className="create-post-form-footer">
-                    <button type="button" onClick={handlePublish}>Publish</button>
+                    <button type="button" onClick={HandlePublish}>Publish</button>
                 </div>
                 {validationMessage && (
                     <div className="error-message" style={{ color: validationMessageColor }}>
