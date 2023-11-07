@@ -23,6 +23,7 @@ const HandleApprove = (blogId: string) => () => {
   blogApi.delete(`/approve/${blogId}`, { withCredentials: true })
     .then((response) => {
       console.log('Blog post created:', response.data);
+      window.location.href = "http://localhost:5173/approve";
     })
     .catch((error) => {
       console.error('Error creating blog post:', error);
@@ -33,6 +34,7 @@ const HandleNotApprove = (blogId: string) => () => {
   blogApi.delete(`/delete/${blogId}`, { withCredentials: true })
     .then((response) => {
       console.log('Blog post created:', response.data);
+      window.location.href = "http://localhost:5173/approve";
     })
     .catch((error) => {
       console.error('Error creating blog post:', error);

@@ -20,12 +20,23 @@ const HandleApprove = (blogId: string) => () => {
     blogApi.delete(`/approve/${blogId}`, { withCredentials: true })
         .then((response) => {
             console.log('Blog post created:', response.data);
+            window.location.href = "http://localhost:5173/approve";
         })
         .catch((error) => {
             console.error('Error creating blog post:', error);
         });
 };
 
+const HandleNotApprove = (blogId: string) => () => {
+    blogApi.delete(`/delete/${blogId}`, { withCredentials: true })
+        .then((response) => {
+            console.log('Blog post created:', response.data);
+            window.location.href = "http://localhost:5173/approve";
+        })
+        .catch((error) => {
+            console.error('Error creating blog post:', error);
+        });
+}
 
 const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
     detailBlog,
@@ -46,6 +57,7 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
         fullName: "test",
         createdDate: 2,
         status: false,
+        role: ''
     }
 
     const [user, setUsers] = useState<User>(initialUser);
@@ -100,7 +112,7 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
                     />
                     <div className="post-approve-button">
                         <button className="detail-approve-button" onClick={HandleApprove(detailBlog.blogId)}>Approve</button>
-                        <button className="not-detail-approve-button">Don't Approve</button>
+                        <button className="not-detail-approve-button" onClick={HandleNotApprove(detailBlog.blogId)}>Don't Approve</button>
                     </div>
 
                 </div>

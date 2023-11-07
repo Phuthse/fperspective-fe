@@ -9,26 +9,23 @@ interface CreateBlogTagsProps {
 }
 
 const CreateBlogTags: React.FC<CreateBlogTagsProps> = ({ setTags, uri }) => {
-
   const [btags, setBTags] = useState<Tag[]>([]);
+  const [filteredOptions, setFilteredOptions] = useState<Tag[]>([]);
+
   const fetchBTagData = async () => {
     const response = await tagApi.get(uri, { withCredentials: true });
     setBTags(response.data);
+    setFilteredOptions(response.data);
   };
+
   useEffect(() => {
     fetchBTagData();
   }, [uri]);
 
   const [tags, setTagsState] = useState<Tag[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
-  const [placeholder, setPlaceholder] = useState<string>("Add up to 4 tags...");
+  const [placeholder, setPlaceholder] = useState<string>("Add up to 4 tags");
   const [showOptions, setShowOptions] = useState<boolean>(false);
-
-  const options: Tag[] = [];
-
-  btags.map((btag) => {
-    options.push(btag)
-  })
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const optionsRef = useRef<HTMLUListElement | null>(null);
@@ -36,21 +33,37 @@ const CreateBlogTags: React.FC<CreateBlogTagsProps> = ({ setTags, uri }) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setInputValue(value);
+    filterOptions(value);
   };
 
-  const handleOptionClick = (options: Tag) => {
-    if (tags.length < 4 && !tags.includes(options)) {
-      const updatedTags = [...tags, options];
+  const filterOptions = (filterText: string) => {
+    // Filter options based on the filterText
+    const filtered = btags.filter((option) =>
+      option.tagName.toLowerCase().includes(filterText.toLowerCase())
+    );
+
+    setFilteredOptions(filtered);
+  };
+
+  const handleOptionClick = (option: Tag, event: React.MouseEvent) => {
+    if (tags.length < 4 && !tags.includes(option)) {
+      const updatedTags = [...tags, option];
       setTags(updatedTags);
       setTagsState(updatedTags);
       setInputValue("");
+      setFilteredOptions(btags); // Reset the filtered options
       if (tags.length === 3) {
         setPlaceholder("Max tags reached");
-      } else if (tags.length >= 0) {
-        setPlaceholder("Add another tag...");
+      } else if (tags.length === -1) {
+        setPlaceholder("Add up to 4 tags");
+      } else {
+        setPlaceholder("Add another");
       }
+      hideOptions();
     }
-    hideOptions();
+
+    // Prevent the click event from propagating to the input field
+    event.stopPropagation();
   };
 
   const handleTagRemove = (tagToRemove: Tag) => {
@@ -61,6 +74,7 @@ const CreateBlogTags: React.FC<CreateBlogTagsProps> = ({ setTags, uri }) => {
 
   const showOptionsOnInputClick = () => {
     setShowOptions(true);
+    filterOptions(inputValue); // Filter options when the input field is clicked
   };
 
   const hideOptions = () => {
@@ -106,17 +120,18 @@ const CreateBlogTags: React.FC<CreateBlogTagsProps> = ({ setTags, uri }) => {
             ref={inputRef}
           />
           {showOptions && (
-            <>
-              <ul className="tag-options" ref={optionsRef}>
-                {options
-                  .filter((option) => !tags.includes(option))
-                  .map((option) => (
-                    <li key={option.tagId} onClick={() => handleOptionClick(option)}>
-                      {option.tagName}
-                    </li>
-                  ))}
-              </ul>
-            </>
+            <ul className="tag-options" ref={optionsRef}>
+              {filteredOptions
+                .filter((option) => option.status === true && !tags.includes(option))
+                .map((option) => (
+                  <li
+                    key={option.tagId}
+                    onClick={(event) => handleOptionClick(option, event)}
+                  >
+                    {option.tagName}
+                  </li>
+                ))}
+            </ul>
           )}
         </li>
       </ul>

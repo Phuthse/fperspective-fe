@@ -26,5 +26,9 @@
     flex-basis: 77%;
 }
 
+.approve-page-main-content {
+    flex-basis: 100%;
+    padding-right: 400px;
+}
 
 

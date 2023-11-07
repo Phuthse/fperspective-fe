@@ -9,15 +9,14 @@ type TagsPageMain = {
 
 const TagsPageDeletedTagsList: React.FC<TagsPageMain> = ({ uri }) => {
     const [tags, setTags] = useState<Tag[]>([]);
-
-    const fetchUserData = async () => {
+    const fetchTagData = async () => {
         const response = await tagApi.get(uri, { withCredentials: true });
         setTags(response.data);
         console.log(response.data);
     };
 
     useEffect(() => {
-        fetchUserData();
+        fetchTagData();
     }, [tagApi]);
 
     const disabledTags = tags.filter(tag => tag.status === false);

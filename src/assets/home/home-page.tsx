@@ -13,9 +13,7 @@ function timeout(delay: number) {
   return new Promise(res => setTimeout(res, delay));
 }
 
-
 const HomePage: React.FC = () => {
-
 
   const { filter } = useParams();
 
@@ -44,7 +42,7 @@ const HomePage: React.FC = () => {
     return () => clearTimeout(delay);
   }, [loginUser]);
 
-  console.log("LOGIN USER: " + loginUser);
+  console.log("FILTER: " + filter);
 
   const user = loginUser?.username as string;
 

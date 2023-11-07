@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './home-page-filter.css';
 import { Link } from 'react-router-dom';
+import { loginApi } from '../../../../config/axios';
+import User from '../../../../model/user';
 
 const HomePageFilter: React.FC = () => {
 
@@ -8,20 +10,23 @@ const HomePageFilter: React.FC = () => {
     const [activeLeftOption, setActiveLeftOption] = useState('');
     const [activeRightOption, setActiveRightOption] = useState('');
 
+    const [loginUser, setLoginUser] = useState<User>();
+    const fetchLoginData = async () => {
+        const response = await loginApi.get('/currentUser', { withCredentials: true });
+        setLoginUser(response.data);
+    };
+    useEffect(() => {
+        fetchLoginData();
+    }, [loginApi]);
+
     const handleTopClick = () => {
         setShowTopOptions(true);
         setActiveLeftOption('top');
     };
 
-
     const handleLatestClick = () => {
         setShowTopOptions(false);
         setActiveLeftOption('latest');
-    };
-
-    const handleApproveClick = () => {
-        setShowTopOptions(false);
-        setActiveLeftOption('approve');
     };
 
     const handleRightOptionClick = (option: string) => {
@@ -45,13 +50,14 @@ const HomePageFilter: React.FC = () => {
                 >
                     Top
                 </Link>
-                <Link
-                    to={`/approve`}
-                    onClick={handleApproveClick}
-                    className={activeLeftOption === 'latestOrApprove' ? 'selected-home-filter' : ''}
-                >
-                    Approve
-                </Link>
+                {loginUser?.role === "ROLE_USER" && (
+                    <Link
+                        to='/approve'
+                        className={activeLeftOption === 'latestOrApprove' ? 'selected-home-filter' : ''}
+                    >
+                        Approve
+                    </Link>
+                )}
             </div>
 
             <div className='home-page-filter-right' style={{ display: showTopOptions ? 'block' : 'none' }}>
@@ -84,7 +90,7 @@ const HomePageFilter: React.FC = () => {
                     All time
                 </Link>
             </div>
-        </header>
+        </header >
     );
 };
 

@@ -54,12 +54,13 @@ li button:hover {
     padding: 0;
     margin: 0;
     position: absolute;   
-    top: 250px;
+    top: 290px;
     background: transparent;
     border-radius: 4px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    z-index: 1;
 }
 
 /* Style individual option items */
