@@ -35,7 +35,7 @@ const UserProfileTop: React.FC<UserProfileTopProp> =
                 <header className="user-profile-header">
                     <div className="user-profile-header-top">
                         <span className="user-profile-avatar">
-                            <img src={userProfile.avatarUrl} />
+                            <img src={userProfile.avatarUrl} referrerPolicy="no-referrer"/>
                         </span>
                         <div className="user-profile-header-action">
                             {isCurrentUser ? (

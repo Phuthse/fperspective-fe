@@ -88,7 +88,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
 
           <BlogTitle blogProp={blog} />
 
-          <TagList tagList={blog.btag} />
+          <TagList uri={`/search/blog/${blog.blogId}`}/>
 
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
@@ -117,7 +117,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
 
           <BlogTitle blogProp={blog} />
 
-          <TagList tagList={blog.btag} />
+          <TagList uri={`/search/blog/${blog.blogId}`} />
 
           <div className="home-page-post-details">
             <div className="home-page-post-interact">

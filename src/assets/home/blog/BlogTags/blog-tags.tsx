@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './blog-tags.css';
 import Tag from '../../../../model/tag';
+import { tagApi } from '../../../../config/axios';
 
 type BlogTagsProps = {
-    tag: Tag;
+    uri: string
 }
 
-const BlogTags: React.FC<BlogTagsProps> = ({ tag }) => {
+const BlogTags: React.FC<BlogTagsProps> = ({ uri }) => {
 
-      return (
-        <a key={tag.tagId} href="#" className="home-page-tag">
-          #{tag.tagName}
-        </a>
-    );
+  const btag : Tag = {
+    tagId: "",
+    tagName: "",
+    status: false
+  }
+
+  const [tags, setTags] = useState<Tag>(btag);
+  const fetchTagData = async () => {
+    const response = await tagApi.get(uri, { withCredentials: true });
+    setTags(response.data);
+  };
+  useEffect(() => {
+    fetchTagData();
+  }, [uri]);
+
+  if(tags.status === true){
+        return (
+          <a key={tags.tagId} href="#" className="home-page-tag">
+            #{tags.tagName}
+          </a>
+      );
+    }
 };
 
 export default BlogTags;

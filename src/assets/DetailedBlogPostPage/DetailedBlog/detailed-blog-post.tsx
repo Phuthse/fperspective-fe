@@ -116,7 +116,7 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
                     />
                 </div>
                 <BiggerBlogTitle blogTitle={detailBlog} />
-                <TagList tagList={detailBlog.btag} />
+                <TagList uri={`/search/blog/${detailBlog.blogId}`} />
                 <div className="detail-post-divider" />
                 <PostContent blogContent={detailBlog} />
 
@@ -150,7 +150,7 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
                     />
                 </div>
                 <BiggerBlogTitle blogTitle={detailBlog} />
-                <TagList tagList={detailBlog.btag} />
+                <TagList uri={`/search/blog/${detailBlog.blogId}`} />
                 <div className="detail-post-divider" />
                 <PostContent blogContent={detailBlog} />
 

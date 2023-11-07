@@ -31,7 +31,7 @@ const WhoToFollow: React.FC<WhoToFollowProps> = ({ uri, currentUser }) => {
                         return (
                             <div key={filteredUser.userID} className="recommend-user">
                                 <Link to={`/user-profile/${filteredUser.userID}`}>
-                                    <img src={filteredUser.avatarUrl} alt={`Profile of ${filteredUser.username}`} />
+                                    <img src={filteredUser.avatarUrl} alt={`Profile of ${filteredUser.username}`} referrerPolicy="no-referrer"/>
                                     <div className='profile-name'>
                                         <p>{filteredUser.username}</p>
                                         {/* <p>@{filteredUser.username}</p> */}

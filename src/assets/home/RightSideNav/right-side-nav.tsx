@@ -16,7 +16,6 @@ const RightSideBar: React.FC<RightSideNavProps> = ({ tagUri, userUri, currentUse
   const [tags, setTags] = useState<Tag[]>();
   const fetchUserData = async () => {
     const response = await tagApi.get(tagUri, { withCredentials: true });
-
     setTags(response.data);
   };
   useEffect(() => {

@@ -34,7 +34,7 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> =
             fullName: "test",
             createdDate: 2,
             status: false,
-            role: ''
+            role: ""
         }
 
         const [user, setUser] = useState<User>(initialUser);
@@ -63,7 +63,7 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> =
                     </div>
 
                     <div className="user-profile-body-main-post-body-tags">
-                        <TagList tagList={blog.btag} />
+                        <TagList uri={`/search/blog/${blog.blogId}`} />
                     </div>
 
                     <div className="user-profile-body-main-post-body-bottom">
