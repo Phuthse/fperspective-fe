@@ -2,6 +2,7 @@ import React from 'react';
 import './subject-item.css';
 import FollowButton from '../../home/button/FollowButton/follow-button';
 import Subject from '../../../model/subject';
+import { Link } from 'react-router-dom';
 
 type SubjectItemProps = {
     subjects: Subject;
@@ -76,12 +77,13 @@ const SubjectItem: React.FC<SubjectItemProps> = ({ subjects }) => {
         <div className="subject-page-content">
             <div className='subject-name-num'>
                 <h3>
-                    <a
-                        href='#'
+                    <Link
+                        to={`/subject/${subjects.subjectName}`}
+                        key={subjects.subjectId}
                         style={{ color: SemesterColor }}
                     >
                         {subjects.subjectName}
-                    </a>
+                    </Link>
                 </h3>
                 <h4>
                     10k posts

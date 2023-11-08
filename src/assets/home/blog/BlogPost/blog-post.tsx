@@ -10,8 +10,6 @@ import { blogApi, userApi } from "../../../../config/axios";
 import TagList from "../TagList/tag-list";
 import User from "../../../../model/user";
 import PostSubjectList from "../BlogSubject/blog-subject-list";
-import BlogCategory from "../BlogCategory/blog-category";
-
 
 type BlogPostProps = {
   blog: Blog;
@@ -71,9 +69,6 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fetchUserData();
   }, [userUri]);
 
-  // console.log("SUBJECT: " + blog.subject);
-  // console.log("CATEGORY: " + blog.category);
-
   if (blog.status !== false) {
 
     return (
@@ -86,10 +81,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
               user={users}
               time={date.toLocaleString("en-US")}
             />
-            <div className="home-page-subject-and-category">
-              <PostSubjectList subjectList={blog.subject ?? []} />
-              <BlogCategory category={blog.category} />
-            </div>
+            <PostSubjectList subjectList={blog.subject ?? []} />
+
           </div>
 
           <BlogTitle blogProp={blog} />

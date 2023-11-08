@@ -3,6 +3,7 @@ import './tags-page-tags.css';
 import FollowButton from '../../home/button/FollowButton/follow-button';
 import Tag from '../../../model/tag';
 import { tagApi } from '../../../config/axios';
+import { Link } from 'react-router-dom';
 
 type TagsPageMain = {
     tags: Tag;
@@ -25,7 +26,12 @@ const TagsPageTags: React.FC<TagsPageMain> = ({ tags }) => {
 
             <div className='tags-name-num'>
                 <h3>
-                    <a href='#'>#{tags.tagName}</a>
+                    <Link
+                        to={`/tag/${tags.tagName}`}
+                        key={tags.tagId}
+                    >
+                        #{tags.tagName}
+                    </Link>
                 </h3>
                 <h4>
                     {count} posts

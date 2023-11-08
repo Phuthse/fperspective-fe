@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './subject-item-admin.css';
 import Subject from '../../../model/subject';
 import { subjectApi } from '../../../config/axios';
+import { Link } from 'react-router-dom';
 
 type SubjectItemAdminProps = {
     subjects: Subject;
@@ -122,7 +123,13 @@ const SubjectItemAdmin: React.FC<SubjectItemAdminProps> = ({ subjects }) => {
                         onChange={handleSubjectNameChange}
                     />
                 </h3>
-                <h4>10k posts</h4>
+                <Link
+                    to={`/subject/${subjects.subjectName}`}
+                    key={subjects.subjectId}
+                    style={{textDecoration: 'none'}}
+                >
+                    <h4>10k posts</h4>
+                </Link>
             </div>
             <div className="admin-subject-button">
                 <button className='admin-subject-update' onClick={handleUpdate}>Update</button>
