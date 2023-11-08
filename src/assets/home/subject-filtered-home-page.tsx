@@ -65,15 +65,13 @@ const SubjectFilteredHomePage: React.FC = () => {
                     {filter === 'latest' ? (
                         <BlogList uri={`/search/subject/${subjectFilter}/-1`} />
                     ) : filter === 'top' || filter === 'week' ? (
-                        <BlogList uri={`/sort/week/${year}/${month}/${week}`} />
+                        <BlogList uri={`/sort/subject/week/${year}/${month}/${week}/${subjectFilter}`} />
                     ) : filter === 'month' ? (
-                        <BlogList uri={`/sort/month/${year}/${month}`} />
+                        <BlogList uri={`/sort/subject/month/${year}/${month}/${subjectFilter}`} />
                     ) : filter === 'year' ? (
-                        <BlogList uri={`/sort/year/${year}`} />
+                        <BlogList uri={`/sort/subject/year/${year}/${subjectFilter}`} />
                     ) : filter === 'all' ? (
-                        <BlogList uri={"/sort/all"} />
-                    ) : filter === 'approve' ? (
-                        <BlogList uri={"/approve/all"} />
+                        <BlogList uri={`sort/subject/${subjectFilter}`} />
                     ) : filter === undefined ? (
                         <BlogList uri={`/search/subject/${subjectFilter}/-1`} />
                     ) : null}

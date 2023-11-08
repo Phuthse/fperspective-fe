@@ -21,8 +21,6 @@ import { BrowserRouter } from "react-router-dom";
 import CategoryPage from "./assets/CategoryPage/category-page";
 import TagFilteredHomePage from "./assets/home/tag-filtered-home-page";
 import SubjectFilteredHomePage from "./assets/home/subject-filtered-home-page";
-import CategoryFilteredHomePage from "./assets/home/category-filtered-home-page";
-
 
 function App() {
 
@@ -43,11 +41,7 @@ function App() {
             <Route path='subject/:subjectFilter' element={<SubjectFilteredHomePage />} />
             <Route path='subject/:subjectFilter/:filter' element={<SubjectFilteredHomePage />} />
             <Route path='subject/:subjectFilter/top/:filter' element={<SubjectFilteredHomePage />} />
-
-            <Route path='category/:categoryFilter' element={<CategoryFilteredHomePage />} />
-            <Route path='category/:categoryFilter/:filter' element={<CategoryFilteredHomePage />} />
-            <Route path='category/:categoryFilter/top/:filter' element={<CategoryFilteredHomePage />} />
-
+            
             <Route path="user-dashboard" element={<UserDashboard />} />
             <Route path='create-blog' element={<CreateBlog />} />
             <Route path="user-profile/:userID" element={<UserProfile />} />

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './home-page-filter.css';
 import { Link, useParams } from 'react-router-dom';
-import { loginApi } from '../../../../config/axios';
-import User from '../../../../model/user';
 
 const TagFilteredHomePageFilter: React.FC = () => {
 
@@ -11,15 +9,6 @@ const TagFilteredHomePageFilter: React.FC = () => {
     const [showTopOptions, setShowTopOptions] = useState(false);
     const [activeLeftOption, setActiveLeftOption] = useState('');
     const [activeRightOption, setActiveRightOption] = useState('');
-
-    const [loginUser, setLoginUser] = useState<User>();
-    const fetchLoginData = async () => {
-        const response = await loginApi.get('/currentUser', { withCredentials: true });
-        setLoginUser(response.data);
-    };
-    useEffect(() => {
-        fetchLoginData();
-    }, [loginApi]);
 
     const handleTopClick = () => {
         setShowTopOptions(true);
@@ -52,14 +41,6 @@ const TagFilteredHomePageFilter: React.FC = () => {
                 >
                     Top
                 </Link>
-                {loginUser?.role === "ROLE_USER" && (
-                    <Link
-                        to='/tag/${tagFilter}/approve'
-                        className={activeLeftOption === 'latestOrApprove' ? 'selected-home-filter' : ''}
-                    >
-                        Approve
-                    </Link>
-                )}
             </div>
 
             <div className='home-page-filter-right' style={{ display: showTopOptions ? 'block' : 'none' }}>

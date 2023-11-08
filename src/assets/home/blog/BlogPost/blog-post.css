@@ -30,6 +30,10 @@
     align-items: center;
 }
 
+.home-page-post-comment {
+    text-decoration: none;
+}
+
 /* APPROVE BUTTON */
 
 .post-approve-button {

@@ -13,7 +13,7 @@ function timeout(delay: number) {
     return new Promise(res => setTimeout(res, delay));
 }
 
-const FilteredHomePage: React.FC = () => {
+const TagFilteredHomePage: React.FC = () => {
 
     const { filter } = useParams();
 
@@ -66,15 +66,13 @@ const FilteredHomePage: React.FC = () => {
                     {filter === 'latest' ? (
                         <BlogList uri={`/search/tag/${tagFilter}/-1`} />
                     ) : filter === 'top' || filter === 'week' ? (
-                        <BlogList uri={`/sort/week/${year}/${month}/${week}`} />
+                        <BlogList uri={`/sort/tag/week/${year}/${month}/${week}/${tagFilter}`} />
                     ) : filter === 'month' ? (
-                        <BlogList uri={`/sort/month/${year}/${month}`} />
+                        <BlogList uri={`/sort/tag/month/${year}/${month}/${tagFilter}`} />
                     ) : filter === 'year' ? (
-                        <BlogList uri={`/sort/year/${year}`} />
+                        <BlogList uri={`/sort/tag/year/${year}/${tagFilter}`} />
                     ) : filter === 'all' ? (
-                        <BlogList uri={"/sort/all"} />
-                    ) : filter === 'approve' ? (
-                        <BlogList uri={"/approve/all"} />
+                        <BlogList uri={`/sort/tag/${tagFilter}`} />
                     ) : filter === undefined ? (
                         <BlogList uri={`/search/tag/${tagFilter}/-1`} />
                     ) : null}
@@ -90,4 +88,4 @@ const FilteredHomePage: React.FC = () => {
     );
 };
 
-export default FilteredHomePage;
+export default TagFilteredHomePage;

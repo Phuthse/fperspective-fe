@@ -6,8 +6,9 @@
     margin: 10px;
 }
 
-.search-page-header h1 {
+.search-page-header span {
     color: #9900ff;
     font-weight: bold;
-    margin-left: 10px;
+    font-size: 35px;
+    margin-left: 5px;
 }

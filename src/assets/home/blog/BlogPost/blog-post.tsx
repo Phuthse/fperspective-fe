@@ -10,6 +10,7 @@ import { blogApi, userApi } from "../../../../config/axios";
 import TagList from "../TagList/tag-list";
 import User from "../../../../model/user";
 import PostSubjectList from "../BlogSubject/blog-subject-list";
+import { Link } from "react-router-dom";
 
 type BlogPostProps = {
   blog: Blog;
@@ -92,7 +93,9 @@ const BlogPost: React.FC<BlogPostProps> = ({
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
               <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
-              <CommentButton NumberOfComment={blog.commentId.length} />
+              <Link className='home-page-post-comment' to={`/detail-blog/${blog.blogId}`}>
+                <CommentButton NumberOfComment={blog.commentId.length} />
+              </Link>
             </div>
 
             <BookmarkButton />

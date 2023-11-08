@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './subject-item.css';
 import FollowButton from '../../home/button/FollowButton/follow-button';
 import Subject from '../../../model/subject';
 import { Link } from 'react-router-dom';
+import { subjectApi } from '../../../config/axios';
 
 type SubjectItemProps = {
     subjects: Subject;
@@ -73,6 +74,15 @@ const SubjectItem: React.FC<SubjectItemProps> = ({ subjects }) => {
 
     const SemesterColor = SemesterColors[Semester - 1];
 
+    const [count, setCount] = useState<number>(1);
+    const fetchTagData = async () => {
+        const response = await subjectApi.get(`/count/${subjects.subjectName}`, { withCredentials: true });
+        setCount(response.data);
+    };
+    useEffect(() => {
+        fetchTagData();
+    }, [subjectApi]);
+
     return (
         <div className="subject-page-content">
             <div className='subject-name-num'>
@@ -86,7 +96,7 @@ const SubjectItem: React.FC<SubjectItemProps> = ({ subjects }) => {
                     </Link>
                 </h3>
                 <h4>
-                    10k posts
+                    {count} posts
                 </h4>
             </div>
             <span style={{ color: SemesterColor }} className="semester-number">Semester {Semester}</span>
