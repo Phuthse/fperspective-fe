@@ -8,7 +8,7 @@ type MainPeopleListProp = {
 };
 
 const MainPeopleList: React.FC<MainPeopleListProp> = ({ uri }) => {
-    
+
   const [loginUser, setLoginUser] = useState<string>(' ');
   const fetchLoginData = async () => {
     const response = await loginApi.get("/currentUser", { withCredentials: true });
@@ -27,13 +27,24 @@ const MainPeopleList: React.FC<MainPeopleListProp> = ({ uri }) => {
     fetchUserData();
   }, [uri]);
 
+  if (users.length === 0) {
+    return (
+      <section style={{ color: "white" }}>
+        <h1
+          style={{ padding: '15px' }}
+        >No users found</h1>
+      </section>
+    );
+  }
+
+
   return (
     <>
       {users
-      .filter((user) => user.userID != loginUser)
-      .map((filteredUser) => {
-        return <SearchPageMainPeople user={filteredUser} />;
-      })}
+        .filter((user) => user.userID != loginUser)
+        .map((filteredUser) => {
+          return <SearchPageMainPeople user={filteredUser} />;
+        })}
     </>
   );
 };

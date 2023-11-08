@@ -20,11 +20,22 @@ const MainTagList: React.FC<MainTagListProp> = ({ uri }) => {
     fetchTagData();
   }, [uri]);
 
+  if (tags.length === 0) {
+    return (
+      <section style={{ color: "white" }}>
+        <h1
+          style={{ padding: '15px' }}
+        >No tags found</h1>
+      </section>
+    );
+  }
+
+
   return (
     <>
       {tags.map((tag) => {
         return (
-            <SearchPageMainTag key={tag.tagId} btag={tag} uri={`/count/${tag.tagName}`} />
+          <SearchPageMainTag key={tag.tagId} btag={tag} uri={`/count/${tag.tagName}`} />
         );
       })}
     </>
