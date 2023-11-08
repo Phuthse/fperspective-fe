@@ -10,6 +10,7 @@ import CreateBlogSubjects from "./CreateBlogSubject/create-blog-subjects";
 import Subject from "../../model/subject";
 
 const CreateBlog: React.FC = () => {
+
     const [blogTitle, setTitle] = useState("");
     const [btag, setTags] = useState<Tag[]>([]);
     const [subject, setSubject] = useState<Subject[]>([]);

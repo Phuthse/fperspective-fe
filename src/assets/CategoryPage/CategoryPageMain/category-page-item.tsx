@@ -14,7 +14,7 @@ const CategoryPageCategory: React.FC<CategoryPageMain> = ({ category }) => {
 
             <div className='category-name-num'>
                 <h3>
-                    <a href='#'>#{category.categoryName}</a>
+                    <a href='#'>{category.categoryName}</a>
                 </h3>
                 <h4>
                     10k posts

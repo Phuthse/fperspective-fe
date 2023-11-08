@@ -34,13 +34,12 @@ const CategoryPageCategoryList: React.FC<CategoryPageMain> = ({ uri }) => {
     /* CATEGORY CREATION METHODS */
 
     const [categoryName, setCategoryName] = useState("");
-    const [status] = useState(true);
 
     const handleCreate = () => {
         // Create a data object to send to the backend
         const categoryData = {
             categoryName,
-            status
+            status: true
         };
 
         // Send a POST request to your backend
@@ -48,7 +47,7 @@ const CategoryPageCategoryList: React.FC<CategoryPageMain> = ({ uri }) => {
             .post(`/show`, categoryData, { withCredentials: true })
             .then((response) => {
                 console.log(categoryData);
-                window.location.href = "http://localhost:5173";
+                //window.location.href = "http://localhost:5173";
                 console.log("CATEGORY created:", response.data);
             })
             .catch((error) => {

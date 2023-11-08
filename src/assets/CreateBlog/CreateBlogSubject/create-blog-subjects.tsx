@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./create-blog-Subjects.css";
+import "./create-blog-subjects.css";
 import Subject from "../../../model/subject";
 import { subjectApi } from "../../../config/axios";
 

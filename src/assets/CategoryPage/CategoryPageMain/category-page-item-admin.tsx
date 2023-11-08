@@ -63,7 +63,6 @@ const CategoryPageAdmin: React.FC<CategoryPageAdminProp> = ({ category }) => {
         <div className="admin-category-page-content">
             <div className='admin-category-name-num'>
                 <h3>
-                    <span>#</span>
                     <input
                         key={category.categoryId}
                         onChange={handleCategoryNameChange}

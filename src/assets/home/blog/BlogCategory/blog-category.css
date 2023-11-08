@@ -1,0 +1,10 @@
+.home-page-category {
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.home-page-category:hover {
+    text-decoration: underline;
+}

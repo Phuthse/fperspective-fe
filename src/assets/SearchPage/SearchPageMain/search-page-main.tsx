@@ -17,9 +17,13 @@ const SearchPageMain: React.FC = () => {
     return (
 
         <div className="search-page-main-container">
-
             {selectedNavItem === 'post' && (
                 <>
+                    <div className="search-page-post-filter">
+                        <a href='#'>Latest</a>
+                        <a href='#'>Most Popular</a>
+                        <a href='#'>Oldest</a>
+                    </div>
                     <BlogList uri={`/search/text/${search}/-1`} />
                 </>
             )}

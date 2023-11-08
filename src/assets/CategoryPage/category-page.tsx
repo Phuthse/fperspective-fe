@@ -17,7 +17,6 @@ const CategoryPage: React.FC = () => {
         fetchLoginData();
     }, [loginApi]);
 
-
     return (
         <div className='category-page-top'>
             <CategoryPageHeader uri='/show' />

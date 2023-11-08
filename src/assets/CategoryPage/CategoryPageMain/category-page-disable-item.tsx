@@ -14,7 +14,6 @@ const CategoryPageDeletedCategory: React.FC<CategoryPageAdminProp> = ({ category
         <div className="admin-deleted-category-page-content">
             <div className='admin-deleted-category-name-num'>
                 <h3>
-                    <span>#</span>
                     <span key={category.categoryId}>
                         {category.categoryName}
                     </span>
