@@ -22,7 +22,7 @@ const UserProfileTopGenerator: React.FC<UserProfileTopProp> = ({ userUri }) => {
         fullName: "test",
         createdDate: 2,
         status: false,
-        role:"",
+        role: ''
     }
 
     const [users, setUsers] = useState<User>(initialUser);

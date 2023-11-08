@@ -20,7 +20,7 @@ const LoginForm: React.FC = () => {
       setLoginUser(undefined); // Set loginUser to undefined in case of an error
     }
   };
-  
+
   useEffect(() => {
     fetchLoginData();
   }, []);

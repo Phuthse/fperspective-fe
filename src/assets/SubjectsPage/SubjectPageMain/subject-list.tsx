@@ -62,7 +62,7 @@ const SubjectList: React.FC<SubjectListProps> = ({ uri }) => {
         setSubjectName(event.target.value);
     };
 
-    if (loginUser?.role === 'ROLE_ADMIN') {
+    if (loginUser?.role === 'ROLE_USER') {
         return (
             <div className='subject-page-body'>
                 <div className='subject-page-container'>

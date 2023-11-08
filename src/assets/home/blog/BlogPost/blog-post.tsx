@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./blog-post.css";
 import PostUserProfile from "../UserProfile/user-profile";
 import BlogTitle from "../BlogTitle/blog-title";
-
 import UpAndDownVoteButtonHorizontal from "../../button/ReactionButton/up-down-vote-button-horizontal";
 import CommentButton from "../../button/CommentButton/comment-button";
 import BookmarkButton from "../../button/BookmarkButton/bookmark-button";
@@ -11,6 +10,7 @@ import { blogApi, userApi } from "../../../../config/axios";
 import TagList from "../TagList/tag-list";
 import User from "../../../../model/user";
 import PostSubjectList from "../BlogSubject/blog-subject-list";
+import BlogCategory from "../BlogCategory/blog-category";
 
 
 type BlogPostProps = {
@@ -71,6 +71,9 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fetchUserData();
   }, [userUri]);
 
+  console.log("SUBJECT: " + blog.subject);
+  console.log("CATEGORY: " + blog.category);
+
   if (blog.status !== false) {
 
     return (
@@ -83,12 +86,15 @@ const BlogPost: React.FC<BlogPostProps> = ({
               user={users}
               time={date.toLocaleString("en-US")}
             />
-            <PostSubjectList subjectList={blog.subject ?? []} />
+            <div className="home-page-subject-and-category">
+              <PostSubjectList subjectList={blog.subject ?? []} />
+              <BlogCategory category={blog.category} />
+            </div>
           </div>
 
           <BlogTitle blogProp={blog} />
 
-          <TagList uri={`/search/blog/${blog.blogId}`}/>
+          <TagList uri={`/search/blog/${blog.blogId}`} />
 
           <div className="home-page-post-details">
             <div className="home-page-post-interact">

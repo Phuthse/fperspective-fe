@@ -12,6 +12,12 @@
     justify-content: space-between;
 }
 
+.home-page-subject-and-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .home-page-post-details {
     display: flex;
     align-items: center;
@@ -60,3 +66,4 @@
     background: rgb(241, 74, 94);
     color: #efefef;
 }
+

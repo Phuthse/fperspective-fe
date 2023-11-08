@@ -15,6 +15,20 @@
     border-radius: 10px;
 }
 
+.user-profile-header-action a {
+    text-decoration: none;
+    background: transparent;
+    color: #efefef;
+    padding: 10px 20px;
+    border: 0.5px solid #333;
+    border-radius: 5px;
+    transition: background 0.5s;
+}
+
+.user-profile-header-action a:hover {
+    background: rgb(31, 98, 255);
+}
+
 /* TOP OF THE HEADER TAG */
 
 .user-profile-header-top {

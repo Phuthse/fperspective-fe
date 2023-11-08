@@ -10,12 +10,10 @@ type RecentBlogListProps = {
 const RecentBlogList: React.FC<RecentBlogListProps> = ({ uri }) => {
 
     const [blogs, setBlogs] = useState<Blog[]>([]);
-
     const fetchBlogData = async () => {
         const response = await blogApi.get(uri, { withCredentials: true })
         setBlogs(response.data);
     };
-
     useEffect(() => {
         fetchBlogData();
     }, [uri]);

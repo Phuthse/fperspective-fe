@@ -1,6 +1,9 @@
 import './user-profile-top.css';
 import FollowButton from '../../home/button/FollowButton/follow-button';
 import User from '../../../model/user';
+import { useState, useEffect } from 'react';
+import { loginApi } from '../../../config/axios';
+import { Link } from 'react-router-dom';
 
 type UserProfileTopProp = {
     userProfile: User;
@@ -15,20 +18,31 @@ const UserProfileTop: React.FC<UserProfileTopProp> =
         const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
         const formattedJoinedDate = JoinedDate.toLocaleString('en-US', options);
 
+        const [loginUser, setLoginUser] = useState<User>();
+        const fetchLoginData = async () => {
+            const response = await loginApi.get('/currentUser', { withCredentials: true });
+            setLoginUser(response.data);
+        };
+        useEffect(() => {
+            fetchLoginData();
+        }, [loginApi]);
+
+        const isCurrentUser = loginUser?.userID === userProfile.userID;
+
         return (
 
             <div className="user-profile-header-container">
                 <header className="user-profile-header">
                     <div className="user-profile-header-top">
-
                         <span className="user-profile-avatar">
                             <img src={userProfile.avatarUrl} referrerPolicy="no-referrer"/>
                         </span>
-
                         <div className="user-profile-header-action">
-
-                            <FollowButton />
-
+                            {isCurrentUser ? (
+                                <Link to='/setting'>Edit Profile</Link>
+                            ) : (
+                                <FollowButton />
+                            )}
                         </div>
                     </div>
 

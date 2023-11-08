@@ -5,6 +5,7 @@ import UpAndDownVoteButtonHorizontal from '../../../home/button/ReactionButton/u
 import CommentButton from '../../../home/button/CommentButton/comment-button';
 import { Link } from 'react-router-dom';
 import Blog from '../../../../model/blog';
+import { blogApi } from '../../../../config/axios';
 
 // Make these attribute into arrays
 type RecentPostProps = {
@@ -15,6 +16,18 @@ const RecentPost: React.FC<RecentPostProps> = ({
     blog,
 }) => {
 
+    const handleDelete = () => {
+        blogApi
+            .delete(`/delete/${blog.blogId}`, { withCredentials: true })
+            .then((response) => {
+                window.location.href = "http://localhost:5173/user-dashboard";
+                console.log("blog deleted:", response.data);
+            })
+            .catch((error) => {
+                console.error("Error deleting blog: ", error);
+            });
+    };
+
     return (
         <div className="post-container">
 
@@ -23,22 +36,18 @@ const RecentPost: React.FC<RecentPostProps> = ({
                 <BlogTitle blogProp={blog} />
 
                 <div className="post-details">
-
                     <div className='post-interact'>
                         <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
                         <CommentButton NumberOfComment={blog.commentId.length} />
                     </div>
-
                 </div>
             </div>
 
             <div className="recent-post-action">
-                <a href='#'>
-                    Manage
-                </a>
                 <Link to='/create-blog'>
                     Edit
                 </Link>
+                <button onClick={handleDelete}>Delete</button>
             </div>
 
         </div>

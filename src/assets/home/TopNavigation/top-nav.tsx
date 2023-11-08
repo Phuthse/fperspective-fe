@@ -87,9 +87,6 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
             <Link to='/create-blog'>Write a Blog</Link>
             <Link to="/user-dashboard">Dashboard</Link>
             <Link to="/admin-dashboard">Admin Dashboard</Link>
-            {loginUser?.role === 'ROLE_ADMIN' && (
-              <Link to='admin-create-page'>Admin Create Page</Link>
-            )}
             <Link to='/setting'>Setting</Link>
             <Link onClick={HandleLogout} to={""}>Logout</Link>
           </div>

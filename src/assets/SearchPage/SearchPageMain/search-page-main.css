@@ -4,4 +4,23 @@
     border-radius: 10px;
     width: 80%;
     margin-top: 13px;
+    padding-left: 10px;
+}
+
+.search-page-post-filter {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.search-page-post-filter a {
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    color: #efefef;
+    margin-right: 10px;
+}
+
+.search-page-post-filter a:hover {
+    background: #222;
+    border-radius: 5px;
 }

@@ -38,8 +38,6 @@ const UserProfileBlogList: React.FC<UserProfileBlogListProp> =
                         }
                     })
                 }
-
-
             </>
         );
     };

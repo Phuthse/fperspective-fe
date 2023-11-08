@@ -5,7 +5,6 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 // Create an array of Follower values for each month
 const FollowerData = [60, 70, 90, 110, 80, 75, 60, 50, 60, 75, 80, 90, 111]; // Replace with your desired values
 
-
 export function TotalFollowerYear() {
     const totalCommentData = FollowerData;
     const sum = totalCommentData.reduce((acc, value) => acc + value, 0);

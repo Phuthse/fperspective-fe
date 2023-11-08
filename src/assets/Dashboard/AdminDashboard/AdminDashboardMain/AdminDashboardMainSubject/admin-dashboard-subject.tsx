@@ -11,7 +11,7 @@ interface ChartOption {
     label: string;
 }
 
-const AdminDashoardTagCharts: React.FC = () => {
+const AdminDashoardSubjectCharts: React.FC = () => {
     const [selectedChart, setSelectedChart] = useState<JSX.Element | null>(<BarChartSubjectWeek />);
     const [selectedOption, setSelectedOption] = useState<number>(1);
     const [dateRange, setDateRange] = useState<string>('');
@@ -101,4 +101,4 @@ const AdminDashoardTagCharts: React.FC = () => {
     );
 };
 
-export default AdminDashoardTagCharts;
+export default AdminDashoardSubjectCharts;
