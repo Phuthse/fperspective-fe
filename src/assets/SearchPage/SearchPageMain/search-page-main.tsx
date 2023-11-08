@@ -6,12 +6,7 @@ import BlogList from '../../home/blog/BlogPost/blog-list';
 import { useParams } from 'react-router';
 import TagList from '../../home/blog/TagList/tag-list';
 
-
-type SearchPageMainProps = {
-    // uri: string
-}
-
-const SearchPageMain: React.FC<SearchPageMainProps> = () => {
+const SearchPageMain: React.FC = () => {
 
     const { selectedNavItem } = useSearchPage();
 
@@ -25,13 +20,13 @@ const SearchPageMain: React.FC<SearchPageMainProps> = () => {
 
             {selectedNavItem === 'post' && (
                 <>
-                    <BlogList uri={`/search/text/${search}/-1`}/>
+                    <BlogList uri={`/search/text/${search}/-1`} />
                 </>
             )}
 
             {selectedNavItem === 'tag' && (
                 <>
-                    <TagList uri={`/search/text/${search}`}/>
+                    <TagList uri={`/search/text/${search}`} />
                 </>
             )}
 

@@ -23,15 +23,15 @@ const formatNumber = (number: number): string => {
 
 const TrendingTag: React.FC<TrendingTagProps> = ({ tags, uri }) => {
 
-        const [count, setCount] = useState<number>(1);
-        const fetchUserData = async () => {
-          const response = await tagApi.get(uri, { withCredentials: true });
-      
-          setCount(response.data);
-        };
-        useEffect(() => {
-          fetchUserData();
-        }, [tagApi]);
+    const [count, setCount] = useState<number>(1);
+    const fetchUserData = async () => {
+        const response = await tagApi.get(uri, { withCredentials: true });
+
+        setCount(response.data);
+    };
+    useEffect(() => {
+        fetchUserData();
+    }, [tagApi]);
 
     return (
 

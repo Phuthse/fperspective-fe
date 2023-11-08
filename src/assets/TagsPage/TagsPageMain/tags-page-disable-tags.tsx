@@ -21,7 +21,7 @@ const TagPageDeletedTags: React.FC<TagsPageAdminProp> = ({ tags }) => {
             .catch((error) => {
                 console.error("Error enabling tag: ", error);
             });
-    };    
+    };
 
     return (
         <div className="admin-deleted-tag-page-content">

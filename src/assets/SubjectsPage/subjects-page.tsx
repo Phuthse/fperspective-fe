@@ -22,7 +22,7 @@ const SubjectPage: React.FC = () => {
         <div className='subject-page-top'>
             <SubjectPageHeader uri='/show' />
             <SubjectList uri="/show" />
-            {loginUser?.role === "ROLE_USER" && (
+            {loginUser?.role === "ROLE_ADMIN" && (
                 <DeletedSubjectsList uri='/show' />
             )}
         </div>

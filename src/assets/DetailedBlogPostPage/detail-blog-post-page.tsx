@@ -12,6 +12,7 @@ import PostCreator from './PostCreatorDetail/post-creator-detail';
 const DetailedBlogPostPage: React.FC = () => {
 
   const { blogId } = useParams();
+  
   const BLOG_URI = '/show/' + blogId;
   console.log(BLOG_URI);
 

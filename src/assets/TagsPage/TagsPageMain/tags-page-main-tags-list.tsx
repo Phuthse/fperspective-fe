@@ -62,7 +62,7 @@ const TagsPageTagsList: React.FC<TagsPageMain> = ({ uri }) => {
     };
 
 
-    if (loginUser?.role === 'ROLE_ADMIN') {
+    if (loginUser?.role === 'ROLE_USER') {
         return (
             <div className='tags-page-body'>
                 <div className='tags-page-container'>

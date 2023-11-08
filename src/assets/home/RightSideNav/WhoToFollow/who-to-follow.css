@@ -41,14 +41,15 @@
 }
 
 .profile-name {
-    width: 150px;
+    width: 170px;
     margin-left: 13px;
+    align-items: center;
 }
 
 .profile-name p:first-child {
     color: white;
     margin-bottom: 3px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .profile-name p:first-child:hover {

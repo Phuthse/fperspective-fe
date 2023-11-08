@@ -17,12 +17,11 @@ const TagsPage: React.FC = () => {
         fetchLoginData();
     }, [loginApi]);
 
-
     return (
         <div className='tags-page-top'>
             <TagsPageHeader uri='/show' />
             <TagsPageTagsList uri="/show" />
-            {loginUser?.role === "ROLE_USER" && (
+            {loginUser?.role === "ROLE_ADMIN" && (
                 <TagsPageDeletedTagsList uri='/show' />
             )}
         </div>

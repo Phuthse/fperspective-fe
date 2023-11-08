@@ -9,11 +9,9 @@ type BlogTitleProps = {
 
 const BlogTitle: React.FC<BlogTitleProps> = ({ blogProp }) => {
     return (
-
         <h2 className='home-page-post-title'>
             <Link to={`/detail-blog/${blogProp.blogId}`}> {blogProp.blogTitle} </Link>
         </h2>
-
     );
 };
 
