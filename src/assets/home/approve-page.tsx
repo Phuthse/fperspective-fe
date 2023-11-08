@@ -29,7 +29,7 @@ const ApprovePage: React.FC = () => {
         <div className="container">
             <SideNav />
             <div className='approve-page-main-content'>
-                {roleChecked && (loginUser?.role === 'ROLE_USER') ? (
+                {roleChecked && (loginUser?.role === 'ROLE_ADMIN') ? (
                     <BlogList uri={"/approve/all"} />
                 ) : roleChecked && (
                     window.location.href = 'http://localhost:5173'

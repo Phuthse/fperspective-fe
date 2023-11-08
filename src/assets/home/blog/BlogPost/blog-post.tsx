@@ -71,8 +71,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fetchUserData();
   }, [userUri]);
 
-  console.log("SUBJECT: " + blog.subject);
-  console.log("CATEGORY: " + blog.category);
+  // console.log("SUBJECT: " + blog.subject);
+  // console.log("CATEGORY: " + blog.category);
 
   if (blog.status !== false) {
 

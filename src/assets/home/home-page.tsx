@@ -63,11 +63,11 @@ const HomePage: React.FC = () => {
         {filter === 'latest' ? (
           <BlogList uri={"/sort/latest"} />
         ) : filter === 'top' || filter === 'week' ? (
-          <BlogList uri={`/sort/week/${year}/${month}/${week}`} />
+          <BlogList uri={`/sort/blog/week/${year}/${month}/${week}`} />
         ) : filter === 'month' ? (
-          <BlogList uri={`/sort/month/${year}/${month}`} />
+          <BlogList uri={`/sort/blog/month/${year}/${month}`} />
         ) : filter === 'year' ? (
-          <BlogList uri={`/sort/year/${year}`} />
+          <BlogList uri={`/sort/blog/year/${year}`} />
         ) : filter === 'all' ? (
           <BlogList uri={"/sort/all"} />
         ) : filter === 'approve' ? (
