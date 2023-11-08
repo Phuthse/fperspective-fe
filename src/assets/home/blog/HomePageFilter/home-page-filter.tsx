@@ -50,7 +50,7 @@ const HomePageFilter: React.FC = () => {
                 >
                     Top
                 </Link>
-                {loginUser?.role === "ROLE_USER" && (
+                {loginUser?.role === "ROLE_ADMIN" && (
                     <Link
                         to='/approve'
                         className={activeLeftOption === 'latestOrApprove' ? 'selected-home-filter' : ''}
