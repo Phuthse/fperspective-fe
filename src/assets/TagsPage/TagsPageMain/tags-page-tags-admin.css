@@ -16,6 +16,15 @@
     gap: 10px;
 }
 
+.admin-tag-name-num a {
+    text-decoration: none;
+    color: #efefef;
+}
+
+.admin-tag-name-num a:hover {
+    color: burlywood;
+}
+
 .admin-tag-name-num h3 span {
     font-size: 18px;
     margin-right: 3px;

@@ -37,7 +37,9 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
   if (blogs.length === 0) {
     return (
       <section style={{ color: "white" }}>
-        <h1>NOTHING TO APPROVE</h1>
+        <h1
+          style={{padding: '15px'}}
+        >Posts not found</h1>
       </section>
     );
   }

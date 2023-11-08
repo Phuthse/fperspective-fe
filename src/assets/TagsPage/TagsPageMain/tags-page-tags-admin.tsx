@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './tags-page-tags-admin.css';
 import Tag from '../../../model/tag';
 import { tagApi } from '../../../config/axios';
+import { Link } from 'react-router-dom';
 
 type TagsPageAdminProp = {
     tags: Tag;
@@ -14,7 +15,6 @@ const TagPageTagsAdmin: React.FC<TagsPageAdminProp> = ({ tags }) => {
     const [tagName, setTagName] = useState(tags.tagName);
     //const [status] = useState(tags.status);
     const [count, setCount] = useState<number>(1);
-
     const fetchTagData = async () => {
         const response = await tagApi.get(`/count/${tags.tagName}`, { withCredentials: true });
         setCount(response.data);
@@ -60,10 +60,17 @@ const TagPageTagsAdmin: React.FC<TagsPageAdminProp> = ({ tags }) => {
     };
 
     return (
+
         <div className="admin-tag-page-content">
             <div className='admin-tag-name-num'>
                 <h3>
-                    <span>#</span>
+                    <Link
+                        to={`/tag/${tags.tagName}`}
+                        key={tags.tagId}
+                    >
+                        <span>#</span>
+                    </Link>
+
                     <input
                         key={tags.tagId}
                         onChange={handleTagNameChange}
@@ -77,6 +84,7 @@ const TagPageTagsAdmin: React.FC<TagsPageAdminProp> = ({ tags }) => {
                 <button className='admin-tag-delete' onClick={handleDelete}>Delete</button>
             </div>
         </div>
+
     );
 };
 

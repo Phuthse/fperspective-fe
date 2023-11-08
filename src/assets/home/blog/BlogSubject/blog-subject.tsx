@@ -1,6 +1,7 @@
 import React from 'react';
 import './blog-subject.css';
 import Subject from '../../../../model/subject';
+import { Link } from 'react-router-dom';
 
 type BlogSubjectProps = {
     subject: Subject;
@@ -74,14 +75,16 @@ const BlogSubject: React.FC<BlogSubjectProps> = ({ subject }) => {
 
 
     return (
-        <a
-            key={subject.subjectId}
-            href="#"
-            className="home-page-subject"
-            style={{ color: SemesterColor }}
-        >
-            {subject.subjectName}
-        </a>
+        <>
+            <Link
+                to={`/subject/${subject.subjectName}`}
+                key={subject.subjectId}
+                className="home-page-subject"
+                style={{ color: SemesterColor }}
+            >
+                {subject.subjectName}
+            </Link>
+        </>
     );
 };
 

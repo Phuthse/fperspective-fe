@@ -1,6 +1,7 @@
 import React from 'react';
 import './blog-category.css';
 import Category from '../../../../model/category';
+import { Link } from 'react-router-dom';
 
 type BlogCategoryProps = {
     category?: Category;
@@ -45,17 +46,19 @@ const BlogCategory: React.FC<BlogCategoryProps> = ({ category }) => {
         const MajorColor = MajorColors[Major - 1];
 
         return (
-            <a
-                key={category.categoryId}
-                href="#"
-                className="home-page-category"
-                style={{ color: MajorColor }}
-            >
-                {category.categoryName}
-            </a>
+            <>
+                <Link
+                    to={`/category/${category.categoryName}`}
+                    key={category.categoryName}
+                    className="home-page-category"
+                    style={{ color: MajorColor }}
+                >
+                    {category.categoryName}
+                </Link>
+            </>
         );
     } else {
-        return null; // Render nothing if category.status is not true
+        return null;
     }
 };
 

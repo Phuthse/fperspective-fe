@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './trending.css'
 import Tag from '../../../../model/tag';
 import { tagApi } from '../../../../config/axios';
+import { Link } from 'react-router-dom';
 
 type TrendingTagProps = {
     tags: Tag;
@@ -36,13 +37,15 @@ const TrendingTag: React.FC<TrendingTagProps> = ({ tags, uri }) => {
     return (
 
         <div key={tags.tagId} className="trending-tag">
-            <a href="#">
+            <Link
+                to={`/tag/${tags.tagName}`}
+                key={tags.tagId}
+            >
                 <span>#</span>
                 <span> {tags.tagName}</span>
                 <p> {formatNumber(count)} posts </p>
-            </a>
+            </Link>
         </div>
-
     );
 };
 

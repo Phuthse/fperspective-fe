@@ -12,7 +12,7 @@ import PostCreator from './PostCreatorDetail/post-creator-detail';
 const DetailedBlogPostPage: React.FC = () => {
 
   const { blogId } = useParams();
-  
+
   const BLOG_URI = '/show/' + blogId;
   console.log(BLOG_URI);
 
@@ -26,7 +26,12 @@ const DetailedBlogPostPage: React.FC = () => {
     commentId: [],
     uploadDate: Date.now(),
     status: true,
-    subject: []
+    subject: [],
+    category: {
+      categoryId: '',
+      categoryName: '',
+      status: false
+    }
   };
 
   const [blog, setBlog] = useState<Blog>(initialBlog);
