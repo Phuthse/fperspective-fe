@@ -22,7 +22,6 @@ const SearchPageMainSubject: React.FC<SearchPageMainTagProp> = ({ subject, uri }
 
     return (
         <div className="search-page-main-subject">
-            <span>#</span>
             <div className="search-page-main-subject-detail">
                 <h2>
                     <Link

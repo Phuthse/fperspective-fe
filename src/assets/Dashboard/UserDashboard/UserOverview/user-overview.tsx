@@ -1,11 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './user-overview.css';
-
-
-type UserOverviewProps = {
-    TotalUpvotes: number;
-    TotalPosts: number;
-}
+import { loginApi, blogApi } from '../../../../config/axios';
+import Blog from '../../../../model/blog';
+import User from '../../../../model/user';
 
 const formatNumber = (number: number): string => {
     if (number >= 1000000) {
@@ -20,26 +17,43 @@ const formatNumber = (number: number): string => {
     return number.toString();
 };
 
+const UserOverview: React.FC = () => {
+    const [loginUser, setLoginUser] = useState<User>();
+    const [blog, setBlog] = useState<Blog[]>([]);
 
-const UserOverview: React.FC<UserOverviewProps> = ({
-    TotalUpvotes,
-    TotalPosts,
-}) => {
+    const fetchLoginData = async () => {
+        const response = await loginApi.get('/currentUser', { withCredentials: true });
+        setLoginUser(response.data);
+    };
+
+    const fetchBlogData = async () => {
+        const response = await blogApi.get(`/sort/user/${loginUser?.userID}`, { withCredentials: true });
+        setBlog(response.data);
+    };
+
+    useEffect(() => {
+        fetchLoginData();
+    }, []);
+
+    useEffect(() => {
+        if (loginUser?.userID) {
+            fetchBlogData();
+        }
+    }, [loginUser?.userID]);
+
+    const totalUpvotes = blog.reduce((total, post) => total + post.like.length, 0);
+    const totalPosts = blog.length;
 
     return (
         <header className='user-overview-container'>
             <h1>Dashboard</h1>
             <div className="user-overview">
                 <div className="user-total-upvote">
-                    <strong>
-                        {formatNumber(TotalUpvotes)}
-                    </strong>
+                    <strong>{formatNumber(totalUpvotes)}</strong>
                     <span>Total Upvotes</span>
                 </div>
                 <div className="user-total-post">
-                    <strong>
-                        {formatNumber(TotalPosts)}
-                    </strong>
+                    <strong>{formatNumber(totalPosts)}</strong>
                     <span>Total Posts</span>
                 </div>
             </div>

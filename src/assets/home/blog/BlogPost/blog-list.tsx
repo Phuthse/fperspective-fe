@@ -39,7 +39,7 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
       <section style={{ color: "white" }}>
         <h1
           style={{padding: '15px'}}
-        >Posts not found</h1>
+        >No posts found</h1>
       </section>
     );
   }

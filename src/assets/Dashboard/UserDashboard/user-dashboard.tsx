@@ -11,10 +11,7 @@ const UserDashboard: React.FC = () => {
             <div className="user-dashboard-container">
 
                 <div className='user-dashboard-main-content'>
-                    <UserOverview
-                        TotalPosts={100}
-                        TotalUpvotes={2530}
-                    />
+                    <UserOverview />
 
                     <div className='user-dashboard-nav-content-container'>
 

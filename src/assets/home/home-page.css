@@ -31,4 +31,14 @@
     padding-right: 400px;
 }
 
+.current-home-page-filter {
+    color: #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
 
+.current-home-page-filter span {
+    color: burlywood;
+}

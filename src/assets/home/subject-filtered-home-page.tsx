@@ -58,6 +58,7 @@ const SubjectFilteredHomePage: React.FC = () => {
 
     return (
         <>
+            <h1 className='current-home-page-filter'>Filtering by<span>&nbsp;{subjectFilter}</span></h1>
             <div className="container">
                 <SideNav />
                 <div className='home-page-main-content'>

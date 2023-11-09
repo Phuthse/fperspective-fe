@@ -59,9 +59,11 @@ const TagFilteredHomePage: React.FC = () => {
 
     return (
         <>
+            <h1 className='current-home-page-filter'>Filtering by<span>&nbsp;{tagFilter}</span></h1>
             <div className="container">
                 <SideNav />
                 <div className='home-page-main-content'>
+
                     <TagFilteredHomePageFilter />
                     {filter === 'latest' ? (
                         <BlogList uri={`/search/tag/${tagFilter}/-1`} />
