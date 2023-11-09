@@ -15,6 +15,7 @@ const WhoToFollow: React.FC<WhoToFollowProps> = ({ uri, currentUser }) => {
     const [users, setUsers] = useState<User[]>([]);
     const fetchUserData = async () => {
         const response = await userApi.get(uri, { withCredentials: true });
+        console.log(response.data)
         setUsers(response.data);
     };
     useEffect(() => {

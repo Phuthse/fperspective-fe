@@ -77,7 +77,7 @@ const HomePage: React.FC = () => {
 
       <RightSideBar
         tagUri={"/sort/4"}
-        userUri={`/recommend/all`}
+        userUri={`/recommend/all/${loginUser?.userID}`}
         currentUser={user}
       />
 
