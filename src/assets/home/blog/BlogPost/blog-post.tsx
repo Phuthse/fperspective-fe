@@ -58,7 +58,9 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fullName: "test",
     createdDate: 2,
     status: false,
-    role: ""
+    role: "",
+    loginProvider: "",
+    name: ""
   }
 
   const [users, setUsers] = useState<User>(initialUser);
@@ -93,7 +95,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
             <div className="home-page-post-interact">
               <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
               <Link className='home-page-post-comment' to={`/detail-blog/${blog.blogId}`}>
-                <CommentButton NumberOfComment={blog.commentId.length} />
+                <CommentButton NumberOfComment={2} />
               </Link>
             </div>
 
@@ -123,7 +125,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
               <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
-              <CommentButton NumberOfComment={blog.commentId.length} />
+              <CommentButton NumberOfComment={2} />
             </div>
             <div className="post-approve-button">
               <button className="approve-button" onClick={HandleApprove(blog.blogId)}>Approve</button>

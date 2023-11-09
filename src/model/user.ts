@@ -11,6 +11,8 @@ type User = {
     createdDate: number;
     status: boolean;
     role: string;
+    loginProvider: string
+    name: string
 }
 
 export default User;
