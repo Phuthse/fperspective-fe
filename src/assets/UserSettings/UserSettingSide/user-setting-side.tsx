@@ -18,14 +18,6 @@ const UserSettingSide: React.FC = () => {
                         Profile
                     </a>
                 </li>
-                <li>
-                    <a
-                        className={`user-setting-side-option ${selectedNavItem === 'account' ? 'selectedOption' : ''}`}
-                        onClick={() => setSelectedNavItem('account')}
-                    >
-                        Account
-                    </a>
-                </li>
             </ul>
         </div>
     );
