@@ -2,7 +2,6 @@ import React from 'react';
 import './recent-post.css';
 import BlogTitle from '../../../home/blog/BlogTitle/blog-title';
 import UpAndDownVoteButtonHorizontal from '../../../home/button/ReactionButton/up-down-vote-button-horizontal';
-import CommentButton from '../../../home/button/CommentButton/comment-button';
 import { Link } from 'react-router-dom';
 import Blog from '../../../../model/blog';
 import { blogApi } from '../../../../config/axios';
@@ -38,7 +37,6 @@ const RecentPost: React.FC<RecentPostProps> = ({
                 <div className="post-details">
                     <div className='post-interact'>
                         <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
-                        <CommentButton NumberOfComment={blog.commentId.length} />
                     </div>
                 </div>
             </div>

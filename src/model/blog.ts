@@ -9,7 +9,6 @@ type Blog = {
     subject: Subject[];
     btag: tag[];
     like: string[]
-    commentId: string[];
     uploadDate: number;
     status: boolean;
 }

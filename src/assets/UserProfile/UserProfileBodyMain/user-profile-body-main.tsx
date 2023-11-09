@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import User from '../../../model/user';
-import CommentButton from '../../home/button/CommentButton/comment-button';
 import UpAndDownVoteButtonHorizontal from '../../home/button/ReactionButton/up-down-vote-button-horizontal';
 import './user-profile-body-main.css';
 import { userApi } from '../../../config/axios';
@@ -34,7 +33,11 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> =
             fullName: "test",
             createdDate: 2,
             status: false,
-            role: ""
+            role: "",
+            attributes: null,
+            authorities: null,
+            loginProvider: 'GOOGLE',
+            name: ''
         }
 
         const [user, setUser] = useState<User>(initialUser);
@@ -68,7 +71,6 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> =
 
                     <div className="user-profile-body-main-post-body-bottom">
                         <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
-                        <CommentButton NumberOfComment={blog.commentId.length} />
                     </div>
 
                 </div>

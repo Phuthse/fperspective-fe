@@ -22,7 +22,6 @@ const EditBlog: React.FC = () => {
         userId: "user1",
         btag: [],
         like: [],
-        commentId: [],
         uploadDate: Date.now(),
         status: true,
         subject: [],

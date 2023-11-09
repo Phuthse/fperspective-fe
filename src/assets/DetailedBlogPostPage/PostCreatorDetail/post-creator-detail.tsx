@@ -49,8 +49,8 @@ const PostCreator: React.FC<BlogPostProps> = ({
                 <Link to={`/user-profile/${user.userID}`}>
                     <img src={user.avatarUrl} />
                     <div className='post-creator-profile-name'>
-                        <p>{user.username}</p>
                         <p>{user.fullName}</p>
+                        <p>@{user.username}</p>
                     </div>
                 </Link>
                 <div className='follow-button'>

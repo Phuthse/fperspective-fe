@@ -3,14 +3,12 @@ import "./blog-post.css";
 import PostUserProfile from "../UserProfile/user-profile";
 import BlogTitle from "../BlogTitle/blog-title";
 import UpAndDownVoteButtonHorizontal from "../../button/ReactionButton/up-down-vote-button-horizontal";
-import CommentButton from "../../button/CommentButton/comment-button";
 import BookmarkButton from "../../button/BookmarkButton/bookmark-button";
 import Blog from "../../../../model/blog";
 import { blogApi, userApi } from "../../../../config/axios";
 import TagList from "../BlogTags/blog-tag-list";
 import User from "../../../../model/user";
 import PostSubjectList from "../BlogSubject/blog-subject-list";
-import { Link } from "react-router-dom";
 
 type BlogPostProps = {
   blog: Blog;
@@ -92,9 +90,6 @@ const BlogPost: React.FC<BlogPostProps> = ({
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
               <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
-              <Link className='home-page-post-comment' to={`/detail-blog/${blog.blogId}`}>
-                <CommentButton NumberOfComment={blog.commentId.length} />
-              </Link>
             </div>
 
             <BookmarkButton />
@@ -123,7 +118,6 @@ const BlogPost: React.FC<BlogPostProps> = ({
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
               <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
-              <CommentButton NumberOfComment={blog.commentId.length} />
             </div>
             <div className="post-approve-button">
               <button className="approve-button" onClick={HandleApprove(blog.blogId)}>Approve</button>

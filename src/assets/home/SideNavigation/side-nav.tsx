@@ -27,7 +27,7 @@ const SideNav: React.FC = () => {
           </svg> Tags
         </Link>
 
-        <Link to='/category-page'>
+        {/* <Link to='/category-page'>
           <svg width="24" height="24" fill='white'>
             <g className="icon-container">
               <path d="M3 6C3 4.34315 4.34315 3 6 3H7C8.65685 3 10 4.34315 10 6V7C10 8.65685 8.65685 10 7 10H6C4.34315 10 3 8.65685 3 7V6Z" stroke="#000000" stroke-width="2" />
@@ -36,7 +36,7 @@ const SideNav: React.FC = () => {
               <path d="M3 17C3 15.3431 4.34315 14 6 14H7C8.65685 14 10 15.3431 10 17V18C10 19.6569 8.65685 21 7 21H6C4.34315 21 3 19.6569 3 18V17Z" stroke="#000000" stroke-width="2" />
             </g>
           </svg> Categories
-        </Link>
+        </Link> */}
 
         <Link to='/subject-page'><IconBook className='side-nav-icon' />Subjects</Link>
       </div>

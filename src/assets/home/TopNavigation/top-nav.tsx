@@ -35,7 +35,7 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
     fetchLoginData();
   }, [loginApi]);
 
-  const[searchText, setSearchText] = useState<string>(' ');
+  const[searchText, setSearchText] = useState<string>();
 
   const handleSearchTextChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value)
