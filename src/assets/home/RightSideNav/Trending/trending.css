@@ -3,7 +3,7 @@
 .trending-tags {
     background: #111;
     border-radius: 20px;
-    width: 350px;
+    width: 100%;
 }
 
 .trending-tags h3 {

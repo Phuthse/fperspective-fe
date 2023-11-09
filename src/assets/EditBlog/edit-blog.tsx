@@ -101,7 +101,7 @@ const EditBlog: React.FC = () => {
                     setValidationMessage("Error updating blog. Please try again.");
                     setValidationMessageColor("red");
                 });
-        };
+        }
     };
 
     console.log("TITLE: " + newBlogTitle + "ACTUAL: " + blog.blogTitle)
