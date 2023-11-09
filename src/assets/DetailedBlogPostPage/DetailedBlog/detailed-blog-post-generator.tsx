@@ -17,15 +17,9 @@ const DetailedBlogPostGenerator: React.FC<DetailedBlogPostGeneratorProps> = ({ b
         userId: "user1",
         btag: [],
         like: [],
-        commentId: [],
         uploadDate: Date.now(),
         status: true,
         subject: [],
-        category: {
-            categoryId: '',
-            categoryName: '',
-            status: false
-        }
     };
 
     const [blog, setBlog] = useState<Blog>(initialBlog);

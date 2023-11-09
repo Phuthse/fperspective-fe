@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './subject-item.css';
-import FollowButton from '../../home/button/FollowButton/follow-button';
 import Subject from '../../../model/subject';
 import { Link } from 'react-router-dom';
 import { subjectApi } from '../../../config/axios';
@@ -100,7 +99,6 @@ const SubjectItem: React.FC<SubjectItemProps> = ({ subjects }) => {
                 </h4>
             </div>
             <span style={{ color: SemesterColor }} className="semester-number">Semester {Semester}</span>
-            <FollowButton />
         </div>
     );
 };

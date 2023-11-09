@@ -27,7 +27,9 @@ const PostCreator: React.FC<BlogPostProps> = ({
         fullName: "test",
         createdDate: 2,
         status: false,
-        role: ''
+        role: '',
+        loginProvider: '',
+        name: ''
     }
 
     const [user, setUsers] = useState<User>(initialUser);

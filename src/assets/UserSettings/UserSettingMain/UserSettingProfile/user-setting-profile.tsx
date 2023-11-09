@@ -21,8 +21,6 @@ const UserSettingProfile: React.FC = () => {
     createdDate: 0,
     status: false,
     role: "",
-    attributes: null,
-    authorities: null,
     loginProvider: "GOOGLE",
     name: ""
   }
@@ -81,11 +79,9 @@ const UserSettingProfile: React.FC = () => {
       {!loading && (
         <div className="user-setting-profile-container">
           <h2>User</h2>
-
           <EditUserName setUserName={setUserName} currentUserName={loginUser.username} />
           <EditUserBio setBio={setBio} currentBio={loginUser.bio} />
           <EditUserAvatar setAvatar={setAvatar} currentAvatar={loginUser.avatarUrl} />
-
           <div className="user-setting-profile-save">
             <button onClick={HandleUpdate}>Update profile</button>
           </div>

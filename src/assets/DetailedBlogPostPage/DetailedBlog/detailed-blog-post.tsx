@@ -3,14 +3,15 @@ import './detailed-blog-post.css';
 import PostUserProfile from '../../home/blog/UserProfile/user-profile';
 import BiggerBlogTitle from '../BiggerBlogTitle/bigger-blog-title';
 import TagList from '../../home/blog/BlogTags/blog-tag-list';
-//import PostCommentForm from '../PostCommentForm/post-comment-form';
+import PostCommentForm from '../PostCommentForm/post-comment-form';
 //import PostComment from '../PostCommentSection/Comment/post-comment';
 import PostContent from '../PostContent/post-content';
 import Blog from '../../../model/blog';
 import User from '../../../model/user';
 import { blogApi, loginApi, userApi } from '../../../config/axios';
 import PostSubjectList from '../../home/blog/BlogSubject/blog-subject-list';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import CommentList from '../PostCommentSection/Comment/post-comment-list';
 
 type DetailedBlogPostProps = {
     detailBlog: Blog;
@@ -39,12 +40,14 @@ const HandleNotApprove = (blogId: string) => () => {
         });
 }
 
-
-
 const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
     detailBlog,
     userUri,
 }) => {
+
+    const { blogId } = useParams()
+
+    const { commentFilter } = useParams();
 
     const date = new Date(detailBlog.uploadDate);
 
@@ -60,7 +63,9 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
         fullName: "test",
         createdDate: 2,
         status: false,
-        role: ''
+        role: '',
+        loginProvider: '',
+        name: ''
     }
 
     const [user, setUsers] = useState<User>(initialUser);
@@ -121,14 +126,20 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
                 <div className="detail-post-divider" />
                 <PostContent blogContent={detailBlog} />
 
-                {/* <PostCommentForm ProfilePic='src/assets/images/member-1.png' />
-                <PostComment
-                    ProfilePic={CommentSectionSample.ProfilePic}
-                    FullName={CommentSectionSample.FullName}
-                    CommentDate={CommentSectionSample.CommentDate}
-                    CommentContent={CommentSectionSample.CommentContent}
-                    Upvote={CommentSectionSample.Upvote}
-                /> */}
+                <PostCommentForm ProfilePic={loginUser?.avatarUrl} />
+
+                <div className="post-comment-filter">
+                    <Link to={`/detail-blog/${blogId}/best`}>Best</Link>
+                    <Link to={`/detail-blog/${blogId}/latest`}>Newest</Link>
+                </div>
+
+                {commentFilter === 'best' ? (
+                    <CommentList uri={`/sort/popular/${blogId}`} />
+                ) : commentFilter === 'latest' ? (
+                    <CommentList uri={`sort/latest/${blogId}`} />
+                ) : commentFilter === undefined ? (
+                    <CommentList uri={`/sort/popular/${blogId}`} />
+                ) : null}
 
             </div>
         );
@@ -154,14 +165,20 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
                 <div className="detail-post-divider" />
                 <PostContent blogContent={detailBlog} />
 
-                {/* <PostCommentForm ProfilePic='src/assets/images/member-1.png' />
-                <PostComment
-                    ProfilePic={CommentSectionSample.ProfilePic}
-                    FullName={CommentSectionSample.FullName}
-                    CommentDate={CommentSectionSample.CommentDate}
-                    CommentContent={CommentSectionSample.CommentContent}
-                    Upvote={CommentSectionSample.Upvote}
-                /> */}
+                <PostCommentForm ProfilePic={loginUser?.avatarUrl} />
+
+                <div className="post-comment-filter">
+                    <Link to={`/detail-blog/${blogId}/best`}>Best</Link>
+                    <Link to={`/detail-blog/${blogId}/latest`}>Newest</Link>
+                </div>
+
+                {commentFilter === 'best' ? (
+                    <CommentList uri={`/sort/popular/${blogId}`} />
+                ) : commentFilter === 'latest' ? (
+                    <CommentList uri={`sort/latest/${blogId}`} />
+                ) : commentFilter === undefined ? (
+                    <CommentList uri={`/sort/popular/${blogId}`} />
+                ) : null}
             </div>
         );
     }

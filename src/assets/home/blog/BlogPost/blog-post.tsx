@@ -5,10 +5,12 @@ import BlogTitle from "../BlogTitle/blog-title";
 import UpAndDownVoteButtonHorizontal from "../../button/ReactionButton/up-down-vote-button-horizontal";
 import BookmarkButton from "../../button/BookmarkButton/bookmark-button";
 import Blog from "../../../../model/blog";
-import { blogApi, userApi } from "../../../../config/axios";
+import { blogApi, commentApi, userApi } from "../../../../config/axios";
 import TagList from "../BlogTags/blog-tag-list";
 import User from "../../../../model/user";
 import PostSubjectList from "../BlogSubject/blog-subject-list";
+import CommentButton from "../../button/CommentButton/comment-button";
+import { Link } from "react-router-dom";
 
 type BlogPostProps = {
   blog: Blog;
@@ -56,7 +58,9 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fullName: "test",
     createdDate: 2,
     status: false,
-    role: ""
+    role: "",
+    loginProvider: "GOOGLE",
+    name: ""
   }
 
   const [users, setUsers] = useState<User>(initialUser);
@@ -67,6 +71,15 @@ const BlogPost: React.FC<BlogPostProps> = ({
   useEffect(() => {
     fetchUserData();
   }, [userUri]);
+
+  const [numberOfComment, setNumberOfComment] = useState<number>(0);
+  const fetchCommentData = async () => {
+    const response = await commentApi.get(`/sort/latest/${blog.blogId}`, { withCredentials: true });
+    setNumberOfComment(response.data.length);
+  };
+  useEffect(() => {
+    fetchCommentData();
+  }, []);
 
   if (blog.status !== false) {
 
@@ -90,6 +103,9 @@ const BlogPost: React.FC<BlogPostProps> = ({
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
               <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
+              <Link to={`/detail-blog/${blog.blogId}`}>
+                <CommentButton NumberOfComment={numberOfComment} />
+              </Link>
             </div>
 
             <BookmarkButton />
@@ -118,6 +134,9 @@ const BlogPost: React.FC<BlogPostProps> = ({
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
               <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
+              <Link to={`/detail-blog/${blog.blogId}`}>
+                <CommentButton NumberOfComment={numberOfComment} />
+              </Link>
             </div>
             <div className="post-approve-button">
               <button className="approve-button" onClick={HandleApprove(blog.blogId)}>Approve</button>

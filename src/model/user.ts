@@ -11,10 +11,8 @@ type User = {
     createdDate: number;
     status: boolean;
     role: string;
-    attributes: null,
-    authorities: null,
-    loginProvider: "GOOGLE"
-    name: string
+    loginProvider: string;
+    name: string;
 }
 
 export default User;

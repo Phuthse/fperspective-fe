@@ -52,6 +52,7 @@ function App() {
             <Route path="setting" element={<UserSetting />} />
             <Route path="subject-page" element={<SubjectPage />} />
             <Route path="detail-blog/:blogId" element={<DetailedBlogPostPage />} />
+            <Route path="detail-blog/:blogId/:commentFilter" element={<DetailedBlogPostPage />} />
             <Route path='approve' element={<ApprovePage />} />
             <Route path='/category-page' element={<CategoryPage />} />
             <Route path='edit-blog/:blogId' element={<EditBlog />} />

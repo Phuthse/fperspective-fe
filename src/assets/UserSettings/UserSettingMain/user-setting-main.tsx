@@ -9,17 +9,13 @@ const UserSettingMain: React.FC = () => {
     const { selectedNavItem } = useUserSetting();
 
     return (
-
         <div className="search-page-main-container">
-
             {selectedNavItem === 'profile' && (
                 <>
                     <UserSettingProfile />
                 </>
             )}
-
         </div>
-
     );
 };
 

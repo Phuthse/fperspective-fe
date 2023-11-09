@@ -1,7 +1,31 @@
 .comment-form {
     display: flex;
+    flex-direction: column;
     align-items: top;
     margin-top: 10px;
+}
+
+.comment-profile-and-text {
+    display: flex;
+    align-items: top;
+    margin-top: 10px;
+}
+
+.comment-publish-button {
+    width: 100px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 45px;
+    border-radius: 5px;
+    background: transparent;
+    border: 0.5px solid #333;
+    color: rgb(28, 145, 255);
+    cursor: pointer;
+}
+
+.comment-publish-button:hover {
+    background: rgb(28, 145, 255);
+    color: white;
 }
 
 .comment-form span {

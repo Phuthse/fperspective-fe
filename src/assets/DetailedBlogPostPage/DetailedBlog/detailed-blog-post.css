@@ -116,3 +116,26 @@
     background-color: gray;
     margin: 25px auto;
 }
+
+.detail-post-comment-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-comment-filter {
+    display: flex;
+    gap: 10px;
+    margin-left: 42px;
+    margin-top: 30px;
+}
+
+.post-comment-filter a {
+    text-decoration: none;
+    color: #efefef;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.post-comment-filter a:hover {
+    background: #333;
+}

@@ -14,7 +14,6 @@ const DetailedBlogPostPage: React.FC = () => {
   const { blogId } = useParams();
 
   const BLOG_URI = '/show/' + blogId;
-  console.log(BLOG_URI);
 
   const initialBlog: Blog = {
     blogId: "1",
@@ -42,7 +41,6 @@ const DetailedBlogPostPage: React.FC = () => {
   const userId = blog.userId;
   const USER_URI = 'show/' + userId;
 
-  console.log(blog.like.length);
 
   return (
     <>

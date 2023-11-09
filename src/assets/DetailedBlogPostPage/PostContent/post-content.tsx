@@ -1,12 +1,10 @@
 import React from 'react';
-import './post.content.css';
+import './post-content.css';
 import Blog from '../../../model/blog';
 
 type PostContentProp = {
     blogContent: Blog;
-    //blogContent: string;
 }
-
 
 const PostContent: React.FC<PostContentProp> = ({ blogContent }) => {
 
