@@ -73,7 +73,6 @@ const UserSettingProfile: React.FC = () => {
   console.log('BIO: ' + newBio)
   console.log("AVATAR: " + newAvatar)
 
-
   return (
     <>
       {!loading && (

@@ -108,14 +108,6 @@ const UserDashoardContent: React.FC = () => {
           />
         </div>
       )}
-
-      {/* Display user's hidden tags */}
-      {selectedNavItem === "hiddenTags" && (
-        <div>
-          <h2>Hidden Tags</h2>
-        </div>
-      )}
-
       {/* Display user's analytics */}
       {selectedNavItem === "analytic" && (
         <div>

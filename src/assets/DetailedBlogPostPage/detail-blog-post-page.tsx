@@ -41,7 +41,6 @@ const DetailedBlogPostPage: React.FC = () => {
   const userId = blog.userId;
   const USER_URI = 'show/' + userId;
 
-
   return (
     <>
       {!loading && (

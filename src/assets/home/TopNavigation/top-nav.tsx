@@ -78,8 +78,8 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
         <div className='nav-user-icon'>
           <img src={loginUser?.avatarUrl} />
           <div className="dropdown-content">
-            <Link to={`/user-profile/${loginUser?.userID}`}>
-              {loginUser?.username}
+            <Link className="top-nav-user-name" to={`/user-profile/${loginUser?.userID}`}>
+              @{loginUser?.username}
             </Link>
             <hr />
             <Link to='/create-blog'>Write a Blog</Link>

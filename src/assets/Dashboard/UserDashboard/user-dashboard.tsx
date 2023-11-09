@@ -21,7 +21,6 @@ const UserDashboard: React.FC = () => {
                                 NumberOfFollowers={42}
                                 NumberOfFollowingTags={53}
                                 NumberOfFollowingUsers={85}
-                                NumberOfHiddenTags={8}
                             />
                             <UserDashoardContent />
                         </UserDashboardProvider>

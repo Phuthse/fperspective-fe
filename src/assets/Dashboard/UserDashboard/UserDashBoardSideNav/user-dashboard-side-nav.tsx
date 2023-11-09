@@ -9,7 +9,6 @@ type UserDashboardSideNavProps = {
     NumberOfFollowers: number;
     NumberOfFollowingTags: number;
     NumberOfFollowingUsers: number;
-    NumberOfHiddenTags: number;
 }
 
 
@@ -18,7 +17,6 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
     NumberOfFollowers,
     NumberOfFollowingTags,
     NumberOfFollowingUsers,
-    NumberOfHiddenTags
 }) => {
 
     const { selectedNavItem, setSelectedNavItem } = useUserDashboard();
@@ -64,16 +62,6 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
                         <a>
                             Following users
                             <span>{NumberOfFollowingUsers}</span>
-                        </a>
-                    </li>
-
-                    <li
-                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'hiddenTags' ? 'active' : ''}`}
-                        onClick={() => setSelectedNavItem('hiddenTags')}
-                    >
-                        <a>
-                            Hidden tags
-                            <span>{NumberOfHiddenTags}</span>
                         </a>
                     </li>
 
