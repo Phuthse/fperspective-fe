@@ -7,7 +7,7 @@ import CommentButton from "../../button/CommentButton/comment-button";
 import BookmarkButton from "../../button/BookmarkButton/bookmark-button";
 import Blog from "../../../../model/blog";
 import { blogApi, userApi } from "../../../../config/axios";
-import TagList from "../TagList/tag-list";
+import TagList from "../BlogTags/blog-tag-list";
 import User from "../../../../model/user";
 import PostSubjectList from "../BlogSubject/blog-subject-list";
 import { Link } from "react-router-dom";
@@ -82,7 +82,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
               user={users}
               time={date.toLocaleString("en-US")}
             />
-            <PostSubjectList subjectList={blog.subject ?? []} />
+            <PostSubjectList uri={`/search/blog/${blog.blogId}`} />
           </div>
 
           <BlogTitle blogProp={blog} />
@@ -113,7 +113,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
               user={users}
               time={date.toLocaleString("en-US")}
             />
-            <PostSubjectList subjectList={blog.subject ?? []} />
+            <PostSubjectList uri={`/search/blog/${blog.blogId}`} />
           </div>
 
           <BlogTitle blogProp={blog} />

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './blog-subject.css';
 import Subject from '../../../../model/subject';
 import { Link } from 'react-router-dom';
+import { subjectApi } from '../../../../config/axios';
 
 type BlogSubjectProps = {
-    subject: Subject;
+    uri: string;
 }
 
 const getSemester = (subjectName: string) => {
@@ -56,7 +57,22 @@ const getSemester = (subjectName: string) => {
     return SemesterMap[subjectName] || 1;
 };
 
-const BlogSubject: React.FC<BlogSubjectProps> = ({ subject }) => {
+const BlogSubject: React.FC<BlogSubjectProps> = ({ uri }) => {
+
+    const subjectProp: Subject = {
+        subjectId: "",
+        subjectName: "",
+        status: false
+    }
+
+    const [subject, setSubject] = useState<Subject>(subjectProp);
+    const fetchTagData = async () => {
+        const response = await subjectApi.get(uri, { withCredentials: true });
+        setSubject(response.data);
+    };
+    useEffect(() => {
+        fetchTagData();
+    }, [uri]);
 
     const Semester = getSemester(subject.subjectName);
     const SemesterColors = [
@@ -73,19 +89,23 @@ const BlogSubject: React.FC<BlogSubjectProps> = ({ subject }) => {
 
     const SemesterColor = SemesterColors[Semester - 1];
 
-
-    return (
-        <>
-            <Link
-                to={`/subject/${subject.subjectName}`}
-                key={subject.subjectId}
-                className="home-page-subject"
-                style={{ color: SemesterColor }}
-            >
-                {subject.subjectName}
-            </Link>
-        </>
-    );
+    if (subject.status === true) {
+        return (
+            <>
+                <Link
+                    to={`/subject/${subject.subjectName}`}
+                    key={subject.subjectId}
+                    className="home-page-subject"
+                    style={{ color: SemesterColor }}
+                >
+                    {subject.subjectName}
+                </Link>
+            </>
+        );
+    }
+    else {
+        return null;
+    }
 };
 
 export default BlogSubject;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './detailed-blog-post.css';
 import PostUserProfile from '../../home/blog/UserProfile/user-profile';
 import BiggerBlogTitle from '../BiggerBlogTitle/bigger-blog-title';
-import TagList from '../../home/blog/TagList/tag-list';
+import TagList from '../../home/blog/BlogTags/blog-tag-list';
 //import PostCommentForm from '../PostCommentForm/post-comment-form';
 //import PostComment from '../PostCommentSection/Comment/post-comment';
 import PostContent from '../PostContent/post-content';
@@ -114,9 +114,7 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
                         user={user}
                         time={date.toLocaleString("en-US")}
                     />
-                    <PostSubjectList
-                        subjectList={detailBlog.subject}
-                    />
+                    <PostSubjectList uri={`/search/blog/${detailBlog.blogId}`} />
                 </div>
                 <BiggerBlogTitle blogTitle={detailBlog} />
                 <TagList uri={`/search/blog/${detailBlog.blogId}`} />
@@ -148,9 +146,8 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
                         user={user}
                         time={date.toLocaleString("en-US")}
                     />
-                    <PostSubjectList
-                        subjectList={detailBlog.subject}
-                    />
+                    <PostSubjectList uri={`/search/blog/${detailBlog.blogId}`} />
+
                 </div>
                 <BiggerBlogTitle blogTitle={detailBlog} />
                 <TagList uri={`/search/blog/${detailBlog.blogId}`} />

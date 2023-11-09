@@ -104,12 +104,6 @@ const EditBlog: React.FC = () => {
         };
     };
 
-    console.log("TITLE: " + newBlogTitle + "ACTUAL: " + blog.blogTitle)
-    console.log("CONTENT: " + newBlogContent + "ACTUAL: " + blog.blogContent)
-    console.log("TAG: " + newBtag + "ACTUAL: " + blog.btag)
-    console.log("SUBJECT: " + newSubject + "ACTUAL: " + blog.subject)
-    console.log("ID: " + blog.blogId)
-
     return (
         <div className="create-blog-container">
             <form className="create-post-form">

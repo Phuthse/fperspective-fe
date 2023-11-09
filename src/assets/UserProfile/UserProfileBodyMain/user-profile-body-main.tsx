@@ -5,7 +5,7 @@ import UpAndDownVoteButtonHorizontal from '../../home/button/ReactionButton/up-d
 import './user-profile-body-main.css';
 import { userApi } from '../../../config/axios';
 import Blog from '../../../model/blog';
-import TagList from '../../home/blog/TagList/tag-list';
+import TagList from '../../home/blog/BlogTags/blog-tag-list';
 import { Link } from 'react-router-dom';
 import PostUserProfile from '../../home/blog/UserProfile/user-profile';
 
