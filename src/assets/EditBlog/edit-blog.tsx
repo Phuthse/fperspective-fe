@@ -29,10 +29,12 @@ const EditBlog: React.FC = () => {
     };
 
     const [blog, setBlog] = useState<Blog>(initialBlog);
+    const [loading, setLoading] = useState<boolean>(true)
 
     const fetchBlogData = async () => {
         const response = await blogApi.get(`show/${blogId}`, { withCredentials: true });
         setBlog(response.data);
+        setLoading(false)
     };
 
     useEffect(() => {
@@ -45,6 +47,15 @@ const EditBlog: React.FC = () => {
     const [newBlogContent, setContent] = useState(blog.blogContent);
     const [validationMessage, setValidationMessage] = useState<string>("");
     const [validationMessageColor, setValidationMessageColor] = useState<string>("");
+
+    useEffect(() => {
+        if (blog.blogId) {
+            setTitle(blog.blogTitle);
+            setTags(blog.btag);
+            setSubject(blog.subject);
+            setContent(blog.blogContent);
+        }
+    }, [blog]);
 
     const modules = {
         toolbar: [
@@ -97,15 +108,20 @@ const EditBlog: React.FC = () => {
     console.log("CONTENT: " + newBlogContent + "ACTUAL: " + blog.blogContent)
     console.log("TAG: " + newBtag + "ACTUAL: " + blog.btag)
     console.log("SUBJECT: " + newSubject + "ACTUAL: " + blog.subject)
+    console.log("ID: " + blog.blogId)
 
     return (
         <div className="create-blog-container">
             <form className="create-post-form">
                 <div className="post-content-and-title">
                     <div className="post-top">
-                        <EditBlogTitle setTitle={setTitle} currentTitle={blog.blogTitle} />
-                        <EditBlogTags setTags={setTags} uri="/show" currentTags={blog.btag} />
-                        <EditBlogSubjects setSubjects={setSubject} uri="/show" currentSubject={blog.subject} />
+                        {!loading && (
+                            <>
+                                <EditBlogTitle setTitle={setTitle} currentTitle={blog.blogTitle} />
+                                <EditBlogTags setTags={setTags} uri="/show" currentTags={blog.btag} />
+                                <EditBlogSubjects setSubjects={setSubject} uri="/show" currentSubject={blog.subject} />
+                            </>
+                        )}
                     </div>
                     <div className="post-body">
                         <ReactQuill

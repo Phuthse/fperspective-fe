@@ -27,17 +27,14 @@ const DetailedBlogPostPage: React.FC = () => {
     uploadDate: Date.now(),
     status: true,
     subject: [],
-    category: {
-      categoryId: '',
-      categoryName: '',
-      status: false
-    }
   };
 
   const [blog, setBlog] = useState<Blog>(initialBlog);
+  const [loading, setLoading] = useState<boolean>(true)
   const fetchBlogData = async () => {
     const response = await blogApi.get(BLOG_URI, { withCredentials: true });
     setBlog(response.data);
+    setLoading(false)
   };
   useEffect(() => {
     fetchBlogData();
@@ -50,26 +47,28 @@ const DetailedBlogPostPage: React.FC = () => {
 
   return (
     <>
-      <div className="container">
+      {!loading && (
+        <div className="container">
+          <div className="detail-blog-post-page-left">
+            <UpAndDownVoteButtonVertical upvote={blog.like.length} />
+            <BookmarkButton />
+          </div>
 
-        <div className="detail-blog-post-page-left">
-          <UpAndDownVoteButtonVertical upvote={blog.like.length} />
-          <BookmarkButton />
-        </div>
+          <div className='detailed-post-container'>
+            <DetailedBlogPostGenerator
+              blogUri={BLOG_URI}
+            />
+          </div>
 
-        <div className='detailed-post-container'>
-          <DetailedBlogPostGenerator
-            blogUri={BLOG_URI}
-          />
-        </div>
+          <div className='detail-blog-post-page-right'>
+            <PostCreator
+              userUri={USER_URI}
+            />
+          </div >
 
-        <div className='detail-blog-post-page-right'>
-          <PostCreator
-            userUri={USER_URI}
-          />
         </div >
+      )}
 
-      </div >
     </>
   );
 };
