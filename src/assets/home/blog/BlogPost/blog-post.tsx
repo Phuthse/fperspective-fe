@@ -83,7 +83,6 @@ const BlogPost: React.FC<BlogPostProps> = ({
               time={date.toLocaleString("en-US")}
             />
             <PostSubjectList subjectList={blog.subject ?? []} />
-
           </div>
 
           <BlogTitle blogProp={blog} />

@@ -1,4 +1,4 @@
-/* Style the input category */
+/* Style the input subject */
 input[type='text'] {
     padding: 3px 4px;
     border: none;
@@ -7,16 +7,16 @@ input[type='text'] {
     color: white;
 }
 
-.post-categorys {
+.post-subjects {
     margin-top: 10px;
 }
 
-.post-categorys ul {
+.post-subjects ul {
     display: flex;
 }
 
-/* Style each li category */
-.current-categorys li {
+/* Style each li subject */
+.current-subjects li {
     color: white;
     padding: 3px 5px;
     background: #222;
@@ -27,7 +27,7 @@ input[type='text'] {
     margin: 3px;
 }
 
-.current-categorys li:last-child {
+.current-subjects li:last-child {
     background: transparent;
 }
 
@@ -49,7 +49,7 @@ li button:hover {
 }
 
 /* Style the options list */
-.category-options {
+.subject-options {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -65,14 +65,14 @@ li button:hover {
 
 /* Style individual option items */
 
-.category-options {
+.subject-options {
     padding: 10px;
     border-radius: 7px;
     background: #111;
     border: 0.5px solid #333;
 }
 
-.category-options li {
+.subject-options li {
     padding: 4px 8px;
     cursor: pointer;
     color: white;
@@ -80,6 +80,6 @@ li button:hover {
 }
 
 /* Style option items on hover */
-.category-options li:hover {
+.subject-options li:hover {
     background: #222;
 }

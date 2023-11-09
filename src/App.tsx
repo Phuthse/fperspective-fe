@@ -21,6 +21,7 @@ import { BrowserRouter } from "react-router-dom";
 import CategoryPage from "./assets/CategoryPage/category-page";
 import TagFilteredHomePage from "./assets/home/tag-filtered-home-page";
 import SubjectFilteredHomePage from "./assets/home/subject-filtered-home-page";
+import EditBlog from "./assets/EditBlog/edit-blog";
 
 function App() {
 
@@ -33,15 +34,12 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/:filter" element={<HomePage />} />
             <Route path="/top/:filter" element={<HomePage />} />
-
             <Route path='/tag/:tagFilter' element={<TagFilteredHomePage />} />
             <Route path='/tag/:tagFilter/:filter' element={<TagFilteredHomePage />} />
             <Route path='/tag/:tagFilter/top/:filter' element={<TagFilteredHomePage />} />
-
             <Route path='subject/:subjectFilter' element={<SubjectFilteredHomePage />} />
             <Route path='subject/:subjectFilter/:filter' element={<SubjectFilteredHomePage />} />
             <Route path='subject/:subjectFilter/top/:filter' element={<SubjectFilteredHomePage />} />
-            
             <Route path="user-dashboard" element={<UserDashboard />} />
             <Route path='create-blog' element={<CreateBlog />} />
             <Route path="user-profile/:userID" element={<UserProfile />} />
@@ -56,6 +54,7 @@ function App() {
             <Route path="detail-blog/:blogId" element={<DetailedBlogPostPage />} />
             <Route path='approve' element={<ApprovePage />} />
             <Route path='/category-page' element={<CategoryPage />} />
+            <Route path='edit-blog/:blogId' element={<EditBlog />} />
           </Route>
           <Route path='login' element={<LoginForm />} />
         </Routes>

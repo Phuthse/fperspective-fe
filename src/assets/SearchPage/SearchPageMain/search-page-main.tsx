@@ -5,6 +5,7 @@ import BlogList from '../../home/blog/BlogPost/blog-list';
 import { useParams } from 'react-router';
 import MainPeopleList from './MainPeople/main-people-list';
 import MainTagList from './MainTag/main-tag-list';
+import MainSubjectList from './MainSubject/main-subject-list';
 
 const SearchPageMain: React.FC = () => {
 
@@ -34,9 +35,15 @@ const SearchPageMain: React.FC = () => {
                 </>
             )}
 
+            {selectedNavItem === 'subject' && (
+                <>
+                    <MainSubjectList uri={`/search/text/${search}`} />
+                </>
+            )}
+
             {selectedNavItem === 'people' && (
                 <>
-                    <MainPeopleList uri={`/search/${search}`}/>
+                    <MainPeopleList uri={`/search/${search}`} />
                 </>
             )}
 

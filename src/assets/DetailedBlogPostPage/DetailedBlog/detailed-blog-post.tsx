@@ -10,6 +10,7 @@ import Blog from '../../../model/blog';
 import User from '../../../model/user';
 import { blogApi, loginApi, userApi } from '../../../config/axios';
 import PostSubjectList from '../../home/blog/BlogSubject/blog-subject-list';
+import { Link } from 'react-router-dom';
 
 type DetailedBlogPostProps = {
     detailBlog: Blog;
@@ -99,7 +100,9 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
 
                 {loginUser?.userID === user.userID && (
                     <div className="post-manage-button">
-                        <button className="post-edit-button">Edit</button>
+                        <Link className="post-edit-button" to={`/edit-blog/${detailBlog.blogId}`}>
+                            Edit
+                        </Link>
                         <button className="post-delete-button" onClick={handleDelete}>
                             Delete
                         </button>

@@ -1,15 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./create-blog-subjects.css";
+import "./edit-blog-subjects.css";
 import Subject from "../../../model/subject";
 import { subjectApi } from "../../../config/axios";
 
 interface CreateBlogSubjectsProps {
     setSubjects: (subjects: Subject[]) => void;
     uri: string;
+    currentSubject: Subject[];
 }
 
-const CreateBlogSubjects: React.FC<CreateBlogSubjectsProps> = ({ setSubjects, uri }) => {
-    
+const EditBlogSubjects: React.FC<CreateBlogSubjectsProps> = ({ setSubjects, uri, currentSubject }) => {
+
     const [bSubjects, setBSubjects] = useState<Subject[]>([]);
 
     const [filteredOptions, setFilteredOptions] = useState<Subject[]>([]);
@@ -23,7 +24,7 @@ const CreateBlogSubjects: React.FC<CreateBlogSubjectsProps> = ({ setSubjects, ur
         fetchBTagData();
     }, [uri]);
 
-    const [subjects, setSubjectsState] = useState<Subject[]>([]);
+    const [subjects, setSubjectsState] = useState<Subject[]>(currentSubject);
     const [inputValue, setInputValue] = useState<string>("");
     const [placeholder, setPlaceholder] = useState<string>("Add up to 2 Subjects...");
     const [showOptions, setShowOptions] = useState<boolean>(false);
@@ -124,4 +125,4 @@ const CreateBlogSubjects: React.FC<CreateBlogSubjectsProps> = ({ setSubjects, ur
     );
 };
 
-export default CreateBlogSubjects;
+export default EditBlogSubjects;

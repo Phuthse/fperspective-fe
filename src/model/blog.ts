@@ -1,4 +1,3 @@
-import Category from "./category";
 import Subject from "./subject";
 import tag from "./tag";
 
@@ -7,7 +6,6 @@ type Blog = {
     blogTitle: string;
     blogContent: string;
     userId: string;
-    category: Category;
     subject: Subject[];
     btag: tag[];
     like: string[]

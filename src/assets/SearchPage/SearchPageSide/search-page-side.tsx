@@ -28,6 +28,14 @@ const SearchPageSide: React.FC = () => {
                 </li>
                 <li>
                     <a
+                        className={`search-page-side-option ${selectedNavItem === 'subject' ? 'active' : ''}`}
+                        onClick={() => setSelectedNavItem('subject')}
+                    >
+                        Subject
+                    </a>
+                </li>
+                <li>
+                    <a
                         className={`search-page-side-option ${selectedNavItem === 'people' ? 'active' : ''}`}
                         onClick={() => setSelectedNavItem('people')}
                     >

@@ -1,0 +1,26 @@
+/* Post Title */
+
+.post-top {
+    padding: 32px 48px;
+    background: #111;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+
+.post-title textarea {
+    width: 100%;
+    background: #111;
+    border: none;
+    resize: none;
+    color: white;
+    font-size: 40px;
+    font-weight: 800;
+    overflow: hidden;
+    height: 80px;
+}
+
+.post-title textarea:focus {
+    outline: none;
+    border: none;
+}

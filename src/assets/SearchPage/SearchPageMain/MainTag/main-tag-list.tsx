@@ -30,7 +30,6 @@ const MainTagList: React.FC<MainTagListProp> = ({ uri }) => {
     );
   }
 
-
   return (
     <>
       {tags.map((tag) => {

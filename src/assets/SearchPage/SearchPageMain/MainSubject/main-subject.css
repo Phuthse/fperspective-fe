@@ -1,0 +1,41 @@
+.search-page-main-subject {
+    background: #111;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.search-page-main-subject span {
+    margin-bottom: 25px;
+    font-size: 30px;
+    background: linear-gradient(45deg, rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 0, 0), rgb(255, 166, 0), rgb(234, 255, 0), rgb(0, 255, 34), rgb(43, 180, 226), rgb(43, 180, 226) ,rgb(26, 19, 229), rgb(229, 19, 215), rgb(229, 19, 215), rgb(229, 19, 215), rgb(229, 19, 215) );
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.search-page-main-subject-detail {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.search-page-main-subject-detail h2 {
+    padding: 4px 0;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.search-page-main-subject-detail a {
+    text-decoration: none;
+    color: #efefef;
+}
+
+.search-page-main-subject-detail a:hover {
+    background: linear-gradient(45deg, #9f0, #0f9, rgb(19, 229, 128));
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}

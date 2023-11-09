@@ -44,7 +44,7 @@ const RecentPost: React.FC<RecentPostProps> = ({
             </div>
 
             <div className="recent-post-action">
-                <Link to='/create-blog'>
+                <Link to={`/edit-blog/${blog.blogId}`}>
                     Edit
                 </Link>
                 <button onClick={handleDelete}>Delete</button>

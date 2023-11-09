@@ -126,7 +126,6 @@ const SubjectItemAdmin: React.FC<SubjectItemAdminProps> = ({ subjects }) => {
                 <Link
                     to={`/subject/${subjects.subjectName}`}
                     key={subjects.subjectId}
-                    style={{textDecoration: 'none'}}
                 >
                     <h4>10k posts</h4>
                 </Link>
