@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './tags-page-tags.css';
-import FollowButton from '../../home/button/FollowButton/follow-button';
+import FollowButton from '../../home/button/FollowButtonForUser/follow-button';
 import Tag from '../../../model/tag';
 import { tagApi } from '../../../config/axios';
 import { Link } from 'react-router-dom';
@@ -37,7 +37,7 @@ const TagsPageTags: React.FC<TagsPageMain> = ({ tags }) => {
                     {count} posts
                 </h4>
             </div>
-            <FollowButton />
+            {/* <FollowButton /> */}
 
         </div>
 

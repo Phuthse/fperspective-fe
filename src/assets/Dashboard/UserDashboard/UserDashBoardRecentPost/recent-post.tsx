@@ -5,6 +5,7 @@ import UpAndDownVoteButtonHorizontal from '../../../home/button/ReactionButton/u
 import { Link } from 'react-router-dom';
 import Blog from '../../../../model/blog';
 import { blogApi } from '../../../../config/axios';
+import HeartButton from '../../../home/button/ReactionButton/heart-button';
 
 // Make these attribute into arrays
 type RecentPostProps = {
@@ -36,7 +37,7 @@ const RecentPost: React.FC<RecentPostProps> = ({
 
                 <div className="post-details">
                     <div className='post-interact'>
-                        <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
+                        <HeartButton currentBlog={blog} />
                     </div>
                 </div>
             </div>

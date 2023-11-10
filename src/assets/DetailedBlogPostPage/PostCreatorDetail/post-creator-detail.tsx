@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './post-creator-detail.css';
-import FollowButton from '../../home/button/FollowButton/follow-button';
+import UserFollowButton from '../../home/button/FollowButton/follow-button';
 import User from '../../../model/user';
 import { userApi } from '../../../config/axios';
 import { Link } from 'react-router-dom';
@@ -45,6 +45,17 @@ const PostCreator: React.FC<BlogPostProps> = ({
     const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' };
     const formattedJoinedDate = JoinedDate.toLocaleString('vn-VN', options);
 
+    const campusNames: { [key: string]: string } = {
+        HCM: "Ho Chi Minh",
+        DN: "Da Nang",
+        CT: "Can Tho",
+        HL: "Hoa Lac",
+        HN: "Ha Noi",
+        QN: "Quy Nhon",
+    };
+
+    const campusName = campusNames[user.campus] || user.campus;
+
     return (
         <div className="post-creator">
             <div className='post-creator-name'>
@@ -56,7 +67,7 @@ const PostCreator: React.FC<BlogPostProps> = ({
                     </div>
                 </Link>
                 <div className='follow-button'>
-                    <FollowButton />
+                    <UserFollowButton followUser={user} />
                 </div>
             </div>
             <div className="post-creator-bio">
@@ -68,7 +79,7 @@ const PostCreator: React.FC<BlogPostProps> = ({
                                 Campus
                             </div>
                             <div className="value">
-                                {user.campus}
+                                {campusName}
                             </div>
                         </li>
                         <li>

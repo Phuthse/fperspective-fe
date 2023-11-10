@@ -1,6 +1,5 @@
 import React from 'react';
 import './user-following-tags.css';
-import FollowButton from '../../../home/button/FollowButton/follow-button';
 
 type UserFollowingTagsProps = {
     TagName: string[];
@@ -21,12 +20,10 @@ const UserFollowingTags: React.FC<UserFollowingTagsProps> = ({ TagName, NumberOf
                     </div>
                     <p className="following-tag-des">{TagDesc[index]}</p>
                     <div className="dashboard-tag-buttons-container">
-                        <FollowButton />
+                        {/* <FollowButton /> */}
                     </div>
                 </div>
             ))}
-
-
         </div>
 
     );

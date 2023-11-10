@@ -28,6 +28,7 @@
 .home-page-post-interact {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
 .home-page-post-interact a {

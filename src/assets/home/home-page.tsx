@@ -17,6 +17,7 @@ const HomePage: React.FC = () => {
 
   const { filter } = useParams();
 
+  /* IF NOT LOGGED IN BACK TO LOGIN PAGE */
   const [loginUser, setLoginUser] = useState<User>();
   const fetchLoginData = async () => {
     try {
@@ -77,6 +78,7 @@ const HomePage: React.FC = () => {
 
       <RightSideBar
         tagUri={"/sort/4"}
+        subjectUri={'/sort/4'}
         userUri={`/recommend/all/${loginUser?.userID}`}
         currentUser={user}
       />

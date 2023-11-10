@@ -1,7 +1,7 @@
 import React from 'react';
 import './deleted-subject-item.css';
 import Subject from '../../../model/subject';
-import { subjectApi } from '../../../config/axios';
+import { blogApi, subjectApi } from '../../../config/axios';
 
 type subjectsPageAdminProp = {
     subjects: Subject;
@@ -13,7 +13,8 @@ const DeletedSubjectItem: React.FC<subjectsPageAdminProp> = ({ subjects }) => {
         subjectApi
             .delete(`/enable/${subjects.subjectId}`, { withCredentials: true })
             .then((response) => {
-                window.location.href = "http://localhost:5173/tag-page";
+                blogApi.delete(`/subject/${subjects.subjectName}`, { withCredentials: true })
+                window.location.reload();
                 console.log("subject enabled:", response.data);
             })
             .catch((error) => {

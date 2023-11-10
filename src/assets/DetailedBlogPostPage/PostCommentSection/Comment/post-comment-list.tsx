@@ -10,12 +10,10 @@ type TagListProps = {
 const CommentList: React.FC<TagListProps> = ({ uri }) => {
 
     const [comments, setComments] = useState<Comment[]>([]);
-
     const fetchCommentData = async () => {
         const response = await commentApi.get(uri, { withCredentials: true });
         setComments(response.data);
     };
-
     useEffect(() => {
         fetchCommentData();
     }, [uri]);

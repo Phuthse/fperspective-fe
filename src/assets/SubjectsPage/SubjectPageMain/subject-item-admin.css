@@ -21,7 +21,7 @@
 }
 
 .admin-subject-name-num a:hover {
-    text-decoration: underline;
+    color: white;
 }
 
 .admin-subject-name-num input {

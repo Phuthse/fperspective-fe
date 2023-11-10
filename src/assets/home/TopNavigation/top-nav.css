@@ -136,3 +136,10 @@
     background: #6b7aff;
     color: #efefef;
 }
+
+.top-nav-user-name {
+    text-decoration: underline !important;
+    justify-content: center;
+    margin: auto;
+    padding: 10px 45px !important;
+}

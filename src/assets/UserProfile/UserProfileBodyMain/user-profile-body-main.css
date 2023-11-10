@@ -83,4 +83,9 @@
 .user-profile-body-main-post-body-bottom {
     display: flex;
     align-items: center;
+    gap: 15px;
+}
+
+.user-profile-body-main-post-body-bottom a {
+    text-decoration: none;
 }

@@ -80,6 +80,7 @@ const SubjectFilteredHomePage: React.FC = () => {
 
                 <RightSideBar
                     tagUri={"/sort/4"}
+                    subjectUri='/sort/4'
                     userUri={`/recommend/all`}
                     currentUser={user}
                 />

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./blog-post.css";
 import PostUserProfile from "../UserProfile/user-profile";
 import BlogTitle from "../BlogTitle/blog-title";
-import UpAndDownVoteButtonHorizontal from "../../button/ReactionButton/up-down-vote-button-horizontal";
 import BookmarkButton from "../../button/BookmarkButton/bookmark-button";
 import Blog from "../../../../model/blog";
 import { blogApi, commentApi, userApi } from "../../../../config/axios";
@@ -11,6 +10,7 @@ import User from "../../../../model/user";
 import PostSubjectList from "../BlogSubject/blog-subject-list";
 import CommentButton from "../../button/CommentButton/comment-button";
 import { Link } from "react-router-dom";
+import HeartButton from "../../button/ReactionButton/heart-button";
 
 type BlogPostProps = {
   blog: Blog;
@@ -102,8 +102,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
 
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
-              <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
-              <Link className='home-page-post-comment' to={`/detail-blog/${blog.blogId}`}>
+              <HeartButton currentBlog={blog} />
+              <Link to={`/detail-blog/${blog.blogId}`}>
                 <CommentButton NumberOfComment={numberOfComment} />
               </Link>
             </div>
@@ -133,8 +133,10 @@ const BlogPost: React.FC<BlogPostProps> = ({
 
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
-              <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
-              <CommentButton NumberOfComment={numberOfComment} />
+              <HeartButton currentBlog={blog} />
+              <Link to={`/detail-blog/${blog.blogId}`}>
+                <CommentButton NumberOfComment={numberOfComment} />
+              </Link>
             </div>
             <div className="post-approve-button">
               <button className="approve-button" onClick={HandleApprove(blog.blogId)}>Approve</button>

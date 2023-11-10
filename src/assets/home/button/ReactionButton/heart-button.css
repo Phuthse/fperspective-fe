@@ -1,0 +1,21 @@
+.heart-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.heart-button svg {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.heart-button svg:hover {
+    background: #333;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.heart-button span {
+    color: #efefef;
+    font-size: 14px;
+}

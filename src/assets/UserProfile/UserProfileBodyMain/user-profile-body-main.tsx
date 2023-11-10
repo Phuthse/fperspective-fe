@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import User from '../../../model/user';
-import UpAndDownVoteButtonHorizontal from '../../home/button/ReactionButton/up-down-vote-button-horizontal';
 import './user-profile-body-main.css';
-import { userApi } from '../../../config/axios';
+import { commentApi, userApi } from '../../../config/axios';
 import Blog from '../../../model/blog';
 import TagList from '../../home/blog/BlogTags/blog-tag-list';
 import { Link } from 'react-router-dom';
 import PostUserProfile from '../../home/blog/UserProfile/user-profile';
+import HeartButton from '../../home/button/ReactionButton/heart-button';
+import CommentButton from '../../home/button/CommentButton/comment-button';
 
 type UserProfileBodyMain = {
     blog: Blog;
@@ -43,6 +44,15 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> = ({ blog, userUri }) =
         fetchUserData();
     }, [userUri]);
 
+    const [numberOfComment, setNumberOfComment] = useState<number>(0);
+    const fetchCommentData = async () => {
+        const response = await commentApi.get(`/sort/latest/${blog.blogId}`, { withCredentials: true });
+        setNumberOfComment(response.data.length);
+    };
+    useEffect(() => {
+        fetchCommentData();
+    }, []);
+
     return (
 
         <div className="user-profile-body-main-post">
@@ -50,23 +60,21 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> = ({ blog, userUri }) =
                 user={user}
                 time={uploadDate.toLocaleString("en-US")}
             />
-
             <div className="user-profile-body-main-post-body">
-
                 <div className="user-profile-body-main-post-body-title">
                     <h2>
                         <Link to={`/detail-blog/${blog.blogId}`}> {blog.blogTitle} </Link>
                     </h2>
                 </div>
-
                 <div className="user-profile-body-main-post-body-tags">
                     <TagList uri={`/search/blog/${blog.blogId}`} />
                 </div>
-
                 <div className="user-profile-body-main-post-body-bottom">
-                    <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
+                    <HeartButton currentBlog={blog} />
+                    <Link to={`/detail-blog/${blog.blogId}`}>
+                        <CommentButton NumberOfComment={numberOfComment} />
+                    </Link>
                 </div>
-
             </div>
         </div>
     );
