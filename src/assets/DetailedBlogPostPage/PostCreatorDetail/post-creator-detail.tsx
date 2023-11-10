@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './post-creator-detail.css';
-import FollowButton from '../../home/button/FollowButton/follow-button';
+import UserFollowButton from '../../home/button/FollowButton/follow-button';
 import User from '../../../model/user';
 import { userApi } from '../../../config/axios';
 import { Link } from 'react-router-dom';
@@ -67,7 +67,7 @@ const PostCreator: React.FC<BlogPostProps> = ({
                     </div>
                 </Link>
                 <div className='follow-button'>
-                    <FollowButton />
+                    <UserFollowButton followUser={user} />
                 </div>
             </div>
             <div className="post-creator-bio">

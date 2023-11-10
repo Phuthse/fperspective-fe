@@ -44,9 +44,6 @@ const TagFilteredHomePage: React.FC = () => {
         return () => clearTimeout(delay);
     }, [loginUser]);
 
-    console.log("FILTER: " + filter);
-    console.log("TAG: " + tagFilter);
-
     const user = loginUser?.username as string;
 
     const currentDate = new Date();
@@ -81,6 +78,7 @@ const TagFilteredHomePage: React.FC = () => {
 
                 <RightSideBar
                     tagUri={"/sort/4"}
+                    subjectUri='/sort/4'
                     userUri={`/recommend/all`}
                     currentUser={user}
                 />

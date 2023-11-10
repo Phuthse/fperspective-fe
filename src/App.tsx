@@ -18,7 +18,6 @@ import SubjectPage from "./assets/SubjectsPage/subjects-page";
 import DetailedBlogPostPage from "./assets/DetailedBlogPostPage/detail-blog-post-page";
 import ApprovePage from "./assets/home/approve-page";
 import { BrowserRouter } from "react-router-dom";
-import CategoryPage from "./assets/CategoryPage/category-page";
 import TagFilteredHomePage from "./assets/home/tag-filtered-home-page";
 import SubjectFilteredHomePage from "./assets/home/subject-filtered-home-page";
 import EditBlog from "./assets/EditBlog/edit-blog";
@@ -30,7 +29,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-
             <Route path="/" element={<HomePage />} />
             <Route path="/:filter" element={<HomePage />} />
             <Route path="/top/:filter" element={<HomePage />} />
@@ -54,7 +52,6 @@ function App() {
             <Route path="detail-blog/:blogId" element={<DetailedBlogPostPage />} />
             <Route path="detail-blog/:blogId/:commentFilter" element={<DetailedBlogPostPage />} />
             <Route path='approve' element={<ApprovePage />} />
-            <Route path='/category-page' element={<CategoryPage />} />
             <Route path='edit-blog/:blogId' element={<EditBlog />} />
           </Route>
           <Route path='login' element={<LoginForm />} />

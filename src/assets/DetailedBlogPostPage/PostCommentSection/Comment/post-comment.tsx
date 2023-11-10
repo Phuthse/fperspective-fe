@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./post-comment.css";
-import UpAndDownVoteButtonHorizontal from "../../../home/button/ReactionButton/up-down-vote-button-horizontal";
 import Comment from "../../../../model/comment";
 import { commentApi, loginApi, userApi } from "../../../../config/axios";
 import User from "../../../../model/user";
 import { Link, useParams } from "react-router-dom";
+import HeartButtonComment from "../../../home/button/ReactionButton/heart-button-comment";
 
 type PostCommentProps = {
     comment: Comment;
@@ -126,7 +126,7 @@ const PostComment: React.FC<PostCommentProps> = ({ comment }) => {
                         </div>
                     </div>
                     <footer>
-                        <UpAndDownVoteButtonHorizontal upvote={comment.like.length} />
+                        <HeartButtonComment currentComment={comment} />
                         {loginUser?.userID === comment.userId ? (
                             isEditMode ? (
                                 <div className="comment-action-button">

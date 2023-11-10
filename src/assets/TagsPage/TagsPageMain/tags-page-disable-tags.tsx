@@ -15,7 +15,8 @@ const TagPageDeletedTags: React.FC<TagsPageAdminProp> = ({ tags }) => {
         tagApi
             .delete(`/enable/${tags.tagId}`, { withCredentials: true })
             .then((response) => {
-                window.location.href = "http://localhost:5173/tag-page";
+                tagApi.delete(`/subject/${tags.tagName}`, { withCredentials: true })
+                window.location.reload()
                 console.log("tag enabled:", response.data);
             })
             .catch((error) => {

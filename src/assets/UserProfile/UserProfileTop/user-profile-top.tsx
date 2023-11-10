@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./user-profile-top.css";
-import FollowButton from "../../home/button/FollowButton/follow-button";
 import User from "../../../model/user";
 import { loginApi } from "../../../config/axios";
 import { Link } from "react-router-dom";
+import UserFollowButton from "../../home/button/FollowButton/follow-button";
 
 type UserProfileTopProp = {
   userProfile: User;
@@ -50,7 +50,7 @@ const UserProfileTop: React.FC<UserProfileTopProp> = ({ userProfile }) => {
             {isCurrentUser ? (
               <Link to="/setting">Edit Profile</Link>
             ) : (
-              <FollowButton />
+              <UserFollowButton followUser={userProfile} />
             )}
           </div>
         </div>

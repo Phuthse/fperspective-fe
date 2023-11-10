@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './user-dashboard-side-nav.css';
 import { useUserDashboard } from '../user-dashboard-context';
 import { Link } from 'react-router-dom';
+import User from '../../../../model/user';
+import Follow from '../../../../model/follow';
+import { followApi } from '../../../../config/axios';
 
 
 type UserDashboardSideNavProps = {
     NumberOfPost: number;
     NumberOfFollowers: number;
     NumberOfFollowingTags: number;
-    NumberOfFollowingUsers: number;
+    currentUser?: User;
 }
 
 
@@ -16,10 +19,24 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
     NumberOfPost,
     NumberOfFollowers,
     NumberOfFollowingTags,
-    NumberOfFollowingUsers,
+    currentUser,
 }) => {
 
     const { selectedNavItem, setSelectedNavItem } = useUserDashboard();
+
+    const [CurrentUser, SetCurrentUser] = useState<Follow>();
+    const fetchFollowData = async () => {
+        try {
+            const response = await followApi.get(`show/user/${currentUser?.userID}`, { withCredentials: true });
+            SetCurrentUser(response.data);
+        } catch (error) {
+            console.error('Error fetching follow data:', error);
+        }
+    };
+    useEffect(() => {
+        fetchFollowData();
+    }, [currentUser]);
+
 
     return (
         <div className="user-dashboard-left-nav">
@@ -61,7 +78,7 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
                     >
                         <a>
                             Following users
-                            <span>{NumberOfFollowingUsers}</span>
+                            <span>{CurrentUser?.followedUser.length}</span>
                         </a>
                     </li>
 

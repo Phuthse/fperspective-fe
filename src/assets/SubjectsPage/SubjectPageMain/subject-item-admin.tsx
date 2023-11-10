@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './subject-item-admin.css';
 import Subject from '../../../model/subject';
-import { subjectApi } from '../../../config/axios';
+import { blogApi, subjectApi } from '../../../config/axios';
 import { Link } from 'react-router-dom';
 
 type SubjectItemAdminProps = {
@@ -75,32 +75,32 @@ const SubjectItemAdmin: React.FC<SubjectItemAdminProps> = ({ subjects }) => {
     /* SUBJECT UPDATE AND DELETE METHOD */
 
     const [subjectName, setSubjectName] = useState(subjects.subjectName);
-    const [status] = useState(subjects.status);
-
-    const handleUpdate = () => {
-        const subjectData = {
-            subjectId: subjects.subjectId,
-            subjectName: subjectName,
-            status
-        };
-
-        subjectApi
-            .post(`/update`, subjectData, { withCredentials: true })
-            .then((response) => {
-                console.log(subjectData);
-                window.location.href = "http://localhost:5173/subject-page";
-                console.log("TAG updated:", response.data);
-            })
-            .catch((error) => {
-                console.log(subjectData);
-                console.error("Error creating tag: ", error);
-            });
-    };
+    
+    // const [status] = useState(subjects.status);
+    // const handleUpdate = () => {
+    //     const subjectData = {
+    //         subjectId: subjects.subjectId,
+    //         subjectName: subjectName,
+    //         status
+    //     };
+    //     subjectApi
+    //         .post(`/update`, subjectData, { withCredentials: true })
+    //         .then((response) => {
+    //             console.log(subjectData);
+    //             window.location.href = "http://localhost:5173/subject-page";
+    //             console.log("TAG updated:", response.data);
+    //         })
+    //         .catch((error) => {
+    //             console.log(subjectData);
+    //             console.error("Error creating tag: ", error);
+    //         });
+    // };
 
     const handleDelete = () => {
         subjectApi
             .delete(`/delete/${subjects.subjectId}`, { withCredentials: true })
             .then((response) => {
+                blogApi.delete(`/subject/${subjects.subjectName}`, { withCredentials: true })
                 window.location.href = "http://localhost:5173/subject-page";
                 console.log("TAG updated:", response.data);
             })
@@ -112,6 +112,15 @@ const SubjectItemAdmin: React.FC<SubjectItemAdminProps> = ({ subjects }) => {
     const handleSubjectNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSubjectName(event.target.value);
     };
+
+    const [count, setCount] = useState<number>(1);
+    const fetchUserData = async () => {
+        const response = await subjectApi.get("count/" + subjects.subjectName, { withCredentials: true });
+        setCount(response.data);
+    };
+    useEffect(() => {
+        fetchUserData();
+    }, [subjectApi]);
 
     return (
         <div className="admin-subject-page-content">
@@ -127,12 +136,12 @@ const SubjectItemAdmin: React.FC<SubjectItemAdminProps> = ({ subjects }) => {
                     to={`/subject/${subjects.subjectName}`}
                     key={subjects.subjectId}
                 >
-                    <h4>10k posts</h4>
+                    <h4>{count} posts</h4>
                 </Link>
             </div>
             <div className="admin-subject-button">
-                <button className='admin-subject-update' onClick={handleUpdate}>Update</button>
-                <button className='admin-subject-delete' onClick={handleDelete}>Delete</button>
+                {/* <button className='admin-subject-update' onClick={handleUpdate}>Update</button> */}
+                <button className='admin-subject-delete' onClick={handleDelete}>Disable</button>
             </div>
         </div>
     );

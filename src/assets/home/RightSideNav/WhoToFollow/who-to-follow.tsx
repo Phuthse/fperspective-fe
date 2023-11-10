@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './who-to-follow.css';
-import FollowButton from '../../button/FollowButton/follow-button';
+import UserFollowButton from '../../button/FollowButton/follow-button';
 import { userApi } from '../../../../config/axios';
 import User from '../../../../model/user';
 import { Link } from 'react-router-dom';
@@ -39,7 +39,7 @@ const WhoToFollow: React.FC<WhoToFollowProps> = ({ uri, currentUser }) => {
                                     </div>
                                 </Link>
                                 <div className='follow-button'>
-                                    <FollowButton />
+                                    <UserFollowButton followUser={filteredUser} />
                                 </div>
                             </div>
                         )

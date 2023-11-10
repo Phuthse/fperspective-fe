@@ -1,6 +1,6 @@
 
 import "./main-people.css";
-import FollowButton from "../../../home/button/FollowButton/follow-button";
+import UserFollowButton from "../../../home/button/FollowButton/follow-button";
 import User from "../../../../model/user";
 import { Link } from "react-router-dom";
 
@@ -30,7 +30,7 @@ const SearchPageMainPeople: React.FC<SearchPageMainPeopleProp> = ({ user }) => {
         </div>
 
       </div>
-      <FollowButton />
+      <UserFollowButton followUser={user} />
     </div>
   );
 };
