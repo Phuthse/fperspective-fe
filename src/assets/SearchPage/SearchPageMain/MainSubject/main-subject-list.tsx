@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { tagApi } from "../../../../config/axios";
+import { subjectApi } from "../../../../config/axios";
 import SearchPageMainSubject from "./main-subject";
 import Subject from "../../../../model/subject";
 
@@ -12,7 +12,7 @@ const MainSubjectList: React.FC<MainSubjectListProp> = ({ uri }) => {
     const [subjects, setSubjects] = useState<Subject[]>([]);
 
     const fetchTagData = async () => {
-        const response = await tagApi.get(uri, { withCredentials: true });
+        const response = await subjectApi.get(uri, { withCredentials: true });
         setSubjects(response.data);
     };
 

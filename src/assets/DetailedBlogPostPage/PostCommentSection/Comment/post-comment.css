@@ -1,0 +1,139 @@
+/* Comment section */
+
+.post-comment-section {
+    display: flex;
+    padding-top: 10px;
+    flex-direction: column;
+}
+
+.post-comment {
+    display: flex;
+    padding: 10px 0;
+}
+
+.post-comment-profile-pic {
+    width: 35px;
+    border-radius: 50%;
+}
+
+.comment-card {
+    display: flex;
+    flex-direction: column;
+    border: 0.3px solid #626262;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    width: 663px;
+}
+
+.comment-header {
+    display: flex;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+.comment-header a {
+    text-decoration: none;
+    color: #f1f1f1;
+}
+
+.comment-header a:hover {
+    text-decoration: underline;
+}
+
+.comment-body {
+    color: white;
+    font-weight: 550;
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+.comment-body textarea {
+    resize: none;
+    width: 100%;
+    outline: none;
+    border: 0.5px solid #333;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: transparent;
+    color: #efefef;
+}
+
+.post-comment-inner footer {
+    display: flex;
+    align-items: center;
+    margin-left: 4px;
+    margin-top: 7px;
+    justify-content: space-between;
+}
+
+.home-page-post-comment {
+    display: flex;
+    flex-direction: column;
+}
+
+/* COMMENT EDIT */
+
+.comment-action-button {
+    display: flex;
+    gap: 30px;
+}
+
+.comment-edit-button {
+    width: 90px;
+    height: 30px;
+    background: transparent;
+    border: 0.5px solid #333;
+    border-radius: 5px;
+    color: rgb(47, 113, 255);
+    cursor: pointer;
+}
+
+.comment-edit-button:hover {
+    background: rgb(47, 113, 255);
+    color: white;
+}
+
+.comment-update-button {
+    width: 90px;
+    height: 30px;
+    background: transparent;
+    border: 0.5px solid #333;
+    border-radius: 5px;
+    color: rgb(47, 255, 99);
+    cursor: pointer;
+}
+
+.comment-update-button:hover {
+    background: rgb(47, 255, 99);
+    color: black;
+}
+
+.comment-cancel-button {
+    width: 90px;
+    height: 30px;
+    background: transparent;
+    border: 0.5px solid #333;
+    border-radius: 5px;
+    color: #efefef;
+    cursor: pointer;
+}
+
+.comment-cancel-button:hover {
+    background: #222;
+}
+
+.comment-delete-button {
+    width: 90px;
+    height: 30px;
+    background: transparent;
+    border: 0.5px solid #333;
+    border-radius: 5px;
+    color: red;
+    cursor: pointer;
+}
+
+.comment-delete-button:hover {
+    background: red;
+    color: white;
+}

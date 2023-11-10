@@ -1,4 +1,4 @@
-import BlogTags from "../BlogTags/blog-tags";
+import BlogTags from "./blog-tags";
 import Tag from "../../../../model/tag";
 import { useState, useEffect } from "react";
 import { tagApi } from "../../../../config/axios";

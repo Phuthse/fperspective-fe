@@ -12,8 +12,6 @@ function timeout(delay: number) {
   return new Promise(res => setTimeout(res, delay));
 }
 
-
-
 const HandleLogout = async () => {
   try {
     window.location.href = "http://localhost:8080/logout"
@@ -35,9 +33,9 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
     fetchLoginData();
   }, [loginApi]);
 
-  const[searchText, setSearchText] = useState<string>(' ');
+  const [searchText, setSearchText] = useState<string>();
 
-  const handleSearchTextChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value)
   }
 
@@ -51,8 +49,8 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
           />
         </Link>
         <div className="search-box">
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Search"
             value={searchText}
             onChange={handleSearchTextChange}

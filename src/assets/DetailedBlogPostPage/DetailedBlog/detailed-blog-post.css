@@ -108,65 +108,34 @@
     align-items: center;
 }
 
-/* Comment section */
 
-.post-comment-section {
-    display: flex;
-    padding-top: 10px;
-    flex-direction: column;
-}
-
-.post-comment {
-    display: flex;
-    padding: 10px 0;
-}
-
-.post-comment-profile-pic {
-    width: 35px;
-    border-radius: 50%;
-}
-
-.comment-card {
-    display: flex;
-    flex-direction: column;
-    border: 0.3px solid #626262;
-    border-radius: 10px;
-    margin-left: 10px;
-    padding: 10px;
-    width: 663px;
-}
-
-.comment-header {
-    display: flex;
-    padding-bottom: 5px;
-    font-size: 14px;
-}
-
-.comment-header a {
-    text-decoration: none;
-    color: #f1f1f1;
-}
-
-.comment-header a:hover {
-    text-decoration: underline;
-}
-
-.comment-body {
-    color: white;
-    font-weight: 550;
-    font-size: 15px;
-    padding-top: 5px;
-}
-
-.post-comment-inner footer {
-    display: flex;
-    margin-left: 4px;
-    margin-top: 4px;
-}
 
 .detail-post-divider {
     width: 40%;
     height: 0.5px;
     background-color: gray;
     margin: 25px auto;
+}
+
+.detail-post-comment-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-comment-filter {
+    display: flex;
+    gap: 10px;
+    margin-left: 42px;
+    margin-top: 30px;
+}
+
+.post-comment-filter a {
+    text-decoration: none;
+    color: #efefef;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.post-comment-filter a:hover {
+    background: #333;
 }

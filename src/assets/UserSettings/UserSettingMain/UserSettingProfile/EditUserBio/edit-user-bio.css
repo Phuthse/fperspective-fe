@@ -1,0 +1,28 @@
+/* USER BIO */
+
+.user-setting-profile-bio {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.user-setting-profile-bio label {
+    padding: 5px 0;
+    color: #efefef;
+    font-weight: 600;
+}
+
+
+.user-setting-profile-bio textarea {
+    width: 500px;
+    background: black;
+    border: 0.5px solid #333;
+    outline: none;
+    resize: none;
+    color: white;
+    font-size: 16px;
+    overflow: hidden;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+}

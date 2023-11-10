@@ -3,13 +3,13 @@ import "./blog-post.css";
 import PostUserProfile from "../UserProfile/user-profile";
 import BlogTitle from "../BlogTitle/blog-title";
 import UpAndDownVoteButtonHorizontal from "../../button/ReactionButton/up-down-vote-button-horizontal";
-import CommentButton from "../../button/CommentButton/comment-button";
 import BookmarkButton from "../../button/BookmarkButton/bookmark-button";
 import Blog from "../../../../model/blog";
-import { blogApi, userApi } from "../../../../config/axios";
-import TagList from "../TagList/tag-list";
+import { blogApi, commentApi, userApi } from "../../../../config/axios";
+import TagList from "../BlogTags/blog-tag-list";
 import User from "../../../../model/user";
 import PostSubjectList from "../BlogSubject/blog-subject-list";
+import CommentButton from "../../button/CommentButton/comment-button";
 import { Link } from "react-router-dom";
 
 type BlogPostProps = {
@@ -59,7 +59,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
     createdDate: 2,
     status: false,
     role: "",
-    loginProvider: "",
+    loginProvider: "GOOGLE",
     name: ""
   }
 
@@ -71,6 +71,15 @@ const BlogPost: React.FC<BlogPostProps> = ({
   useEffect(() => {
     fetchUserData();
   }, [userUri]);
+
+  const [numberOfComment, setNumberOfComment] = useState<number>(0);
+  const fetchCommentData = async () => {
+    const response = await commentApi.get(`/sort/latest/${blog.blogId}`, { withCredentials: true });
+    setNumberOfComment(response.data.length);
+  };
+  useEffect(() => {
+    fetchCommentData();
+  }, []);
 
   if (blog.status !== false) {
 
@@ -84,7 +93,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
               user={users}
               time={date.toLocaleString("en-US")}
             />
-            <PostSubjectList subjectList={blog.subject ?? []} />
+            <PostSubjectList uri={`/search/blog/${blog.blogId}`} />
           </div>
 
           <BlogTitle blogProp={blog} />
@@ -95,7 +104,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
             <div className="home-page-post-interact">
               <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
               <Link className='home-page-post-comment' to={`/detail-blog/${blog.blogId}`}>
-                <CommentButton NumberOfComment={2} />
+                <CommentButton NumberOfComment={numberOfComment} />
               </Link>
             </div>
 
@@ -115,7 +124,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
               user={users}
               time={date.toLocaleString("en-US")}
             />
-            <PostSubjectList subjectList={blog.subject ?? []} />
+            <PostSubjectList uri={`/search/blog/${blog.blogId}`} />
           </div>
 
           <BlogTitle blogProp={blog} />
@@ -125,7 +134,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
               <UpAndDownVoteButtonHorizontal upvote={blog.like.length} />
-              <CommentButton NumberOfComment={2} />
+              <CommentButton NumberOfComment={numberOfComment} />
             </div>
             <div className="post-approve-button">
               <button className="approve-button" onClick={HandleApprove(blog.blogId)}>Approve</button>

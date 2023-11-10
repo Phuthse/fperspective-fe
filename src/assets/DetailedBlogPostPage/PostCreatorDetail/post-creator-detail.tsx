@@ -27,7 +27,9 @@ const PostCreator: React.FC<BlogPostProps> = ({
         fullName: "test",
         createdDate: 2,
         status: false,
-        role: ''
+        role: '',
+        loginProvider: '',
+        name: ''
     }
 
     const [user, setUsers] = useState<User>(initialUser);
@@ -50,7 +52,7 @@ const PostCreator: React.FC<BlogPostProps> = ({
                     <img src={user.avatarUrl} />
                     <div className='post-creator-profile-name'>
                         <p>{user.fullName}</p>
-                        <p>{user.username}</p>
+                        <p>@{user.username}</p>
                     </div>
                 </Link>
                 <div className='follow-button'>

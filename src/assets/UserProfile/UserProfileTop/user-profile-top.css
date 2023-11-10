@@ -69,6 +69,15 @@
 
 .user-profile-header-full-name {
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-profile-header-full-name p {
+    margin-top: 10px;
+    font-size: 15px;
+    color: gray;
 }
 
 /* BIO */

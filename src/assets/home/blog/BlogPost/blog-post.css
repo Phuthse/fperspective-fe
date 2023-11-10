@@ -30,6 +30,10 @@
     align-items: center;
 }
 
+.home-page-post-interact a {
+    text-decoration: none;
+}
+
 .home-page-post-comment {
     text-decoration: none;
 }
