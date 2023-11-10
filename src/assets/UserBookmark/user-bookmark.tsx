@@ -47,7 +47,7 @@ const UserBookmark: React.FC = () => {
 
     return (
         <div className='user-bookmark-container'>
-            <BookmarkHeader NumberOfBookmark={10} />
+            <BookmarkHeader uri='/show' />
             <div className='user-bookmark-body'>
                 <BookmarkSidebar
                     BookmarkMainComponents={bookmarkMainComponents}
