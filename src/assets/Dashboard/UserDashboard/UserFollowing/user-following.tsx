@@ -21,7 +21,6 @@ const UserFollowing: React.FC<UserFollowingProps> = ({ followingUri }) => {
                 console.error('Error fetching following IDs:', error);
             }
         };
-
         fetchFollowingIdData();
     }, [followingUri]);
 
@@ -34,7 +33,6 @@ const UserFollowing: React.FC<UserFollowingProps> = ({ followingUri }) => {
                         return response.data;
                     })
                 );
-
                 setFollowingUsers(usersData);
             } catch (error) {
                 console.error('Error fetching following user data:', error);

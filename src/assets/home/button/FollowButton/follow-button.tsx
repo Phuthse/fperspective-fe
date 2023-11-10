@@ -38,15 +38,14 @@ const UserFollowButton: React.FC<FollowButtonProps> = ({ followUser }) => {
         const fetchData = async () => {
             await fetchLoginData();
         };
-
         fetchData();
-    }, []); // Empty dependency array to mimic componentDidMount
+    }, []);
 
     useEffect(() => {
         if (loginUser) {
             fetchFollowData();
         }
-    }, [loginUser]); // Only fetchFollowData if loginUser changes
+    }, [loginUser]);
 
     useEffect(() => {
         if (currentUser?.followedUser.includes(followUser.userID)) {

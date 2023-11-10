@@ -1,19 +1,7 @@
 .user-bookmark-container {
     color: white;
-}
-
-/* USER BOOKMARK BODY */
-
-.user-bookmark-body {
-    display: flex;
-}
-
-/* BOOKMARK MAIN CONTENT */
-
-.user-bookmark-main-container {
-    background: #101010;
-    border-radius: 10px;
-    width: 80%;
+    padding: 0 5%;
+    width: 1000px;
 }
 
 

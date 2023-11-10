@@ -1,6 +1,5 @@
 import React from 'react';
 import './notification-main-post.css';
-import BookmarkButton from '../../../home/button/BookmarkButton/bookmark-button';
 import CommentButton from '../../../home/button/CommentButton/comment-button';
 import UpAndDownVoteButtonHorizontal from '../../../home/button/ReactionButton/up-down-vote-button-horizontal';
 
@@ -74,7 +73,7 @@ const NotificationPageMainPost: React.FC<NotificationPageMainPostProp> =
                             <CommentButton NumberOfComment={2} />
                         </div>
 
-                        <BookmarkButton />
+                        {/* <BookmarkButton /> */}
 
                     </div>
                 </div>

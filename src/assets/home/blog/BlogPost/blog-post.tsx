@@ -108,7 +108,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
               </Link>
             </div>
 
-            <BookmarkButton />
+            <BookmarkButton currentBlog={blog} />
           </div>
         </div>
       </>

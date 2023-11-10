@@ -1,57 +1,62 @@
 import React, { useEffect, useState } from "react";
-import Bookmark from "../../../model/bookmark";
-import { bookmarkApi } from "../../../config/axios";
-import UserBookmark from "../user-bookmark";
+import { blogApi, bookmarkApi } from "../../../config/axios";
+import Blog from "../../../model/blog";
+import BookmarkHeader from "../UserBookmarkHeader/user-bookmark-header";
+import BlogPost from "../../home/blog/BlogPost/blog-post";
 
 type BookmarkListProps = {
   uri: string;
 };
 
 const BookmarkList: React.FC<BookmarkListProps> = ({ uri }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [bookmark, setBookmark] = useState<Bookmark[]>([]);
 
-  const fetchBookmarkData = async () => {
-    try {
-      const response = await bookmarkApi.get(uri, { withCredentials: true });
-      setBookmark(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.error("Error fetching bookmark data:", error);
-      setIsLoading(false);
-    }
-  };
+  const [bookmarkBlogId, setBookmarkBlogId] = useState<string[]>([]);
+  const [bookmarkBlogs, setBookmarkBlogs] = useState<Blog[]>([]);
 
   useEffect(() => {
-    fetchBookmarkData();
+    const fetchBookmarkIdData = async () => {
+      try {
+        const response = await bookmarkApi.get(uri, { withCredentials: true });
+        setBookmarkBlogId(response.data.bookmarkedPost);
+        console.log(response.data.bookmarkedPost)
+      } catch (error) {
+        console.error('Error fetching following IDs:', error);
+      }
+    };
+    fetchBookmarkIdData();
   }, [uri]);
 
-  if (isLoading) {
-    return (
-      <section style={{ color: "white" }}>
-        <h1>Loading...</h1>
-      </section>
-    );
-  }
+  useEffect(() => {
+    const fetchBookmarkBlogsData = async () => {
+      try {
+        const bookmarksData = await Promise.all(
+          bookmarkBlogId.map(async (bookmarkId) => {
+            const response = await blogApi.get(`/show/${bookmarkId}`, { withCredentials: true });
+            return response.data;
+          })
+        );
+        setBookmarkBlogs(bookmarksData);
+        console.log(bookmarkBlogs)
+      } catch (error) {
+        console.error('Error fetching following user data:', error);
+      }
+    };
+    fetchBookmarkBlogsData();
+  }, [bookmarkBlogId]);
 
-  if (bookmark.length === 0) {
-    return (
-      <section style={{ color: "white" }}>
-        <h1
-          style={{padding: '15px'}}
-        >No posts found</h1>
-      </section>
-    );
-  }
+
 
   return (
-    <>  
+    <>
+      <BookmarkHeader count={bookmarkBlogs.length} />
+      {bookmarkBlogs.map((bookmarkBlog) => {
+        console.log(bookmarkBlog)
+        const userUri = "/show/" + bookmarkBlog.userId;
         return (
-          <UserBookmark
-          />
-        );
+          <BlogPost blog={bookmarkBlog} userUri={userUri} userId={bookmarkBlog.userId} />
+        )
+      })}
     </>
   );
-};
-
+}
 export default BookmarkList;

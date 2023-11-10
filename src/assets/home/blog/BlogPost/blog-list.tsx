@@ -21,7 +21,6 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
       setIsLoading(false);
     }
   };
-
   useEffect(() => {
     fetchBlogData();
   }, [uri]);

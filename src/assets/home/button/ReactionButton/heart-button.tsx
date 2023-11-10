@@ -56,19 +56,19 @@ const HeartButton: React.FC<HeartButtonProps> = ({ currentBlog }) => {
     }, [currentUser, currentBlog]);
 
     const handleLike = () => {
+        const updatedLike = [...currentBlog.like, currentUser.userID];
         const likeData = {
             ...currentBlog,
-            like: [
-                ...(currentBlog.like || []),
-                currentUser.userID
-            ]
+            like: updatedLike || []
         };
         blogApi.post(`/like`, likeData, { withCredentials: true })
             .then((response) => {
                 console.log('BLOG LIKED:', response.data);
+                console.log(likeData.like)
             })
             .catch((error) => {
-                console.error('BLOG UNLIKED: ', error);
+                console.error('BLOG LIKED FAILED: ', error);
+                console.log(updatedLike)
             });
     };
 
@@ -81,6 +81,7 @@ const HeartButton: React.FC<HeartButtonProps> = ({ currentBlog }) => {
         blogApi.post(`/like`, likeData, { withCredentials: true })
             .then((response) => {
                 console.log('BLOG UNLIKED:', response.data);
+                console.log(likeData.like)
             })
             .catch((error) => {
                 console.error('BLOG UNLIKED: ', error);
@@ -89,12 +90,15 @@ const HeartButton: React.FC<HeartButtonProps> = ({ currentBlog }) => {
 
     const handleHeartClick = () => {
         if (isLiked) {
+            setIsLiked(!isLiked);
+            setLikes(isLiked ? likes - 1 : likes + 1);
             handleUnlike();
         } else {
+            setIsLiked(!isLiked);
+            setLikes(isLiked ? likes - 1 : likes + 1);
             handleLike();
         }
-        setIsLiked(!isLiked);
-        setLikes(isLiked ? likes - 1 : likes + 1);
+
     };
 
     return (

@@ -46,12 +46,7 @@ const UserDashboard: React.FC = () => {
                     <UserOverview />
                     <div className='user-dashboard-nav-content-container'>
                         <UserDashboardProvider>
-                            <UserDashboardSideNav
-                                NumberOfPost={1}
-                                NumberOfFollowers={42}
-                                NumberOfFollowingTags={53}
-                                currentUser={loginUser}
-                            />
+                            <UserDashboardSideNav currentUser={loginUser} />
                             <UserDashoardContent />
                         </UserDashboardProvider>
                     </div>

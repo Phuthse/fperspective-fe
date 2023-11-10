@@ -4,21 +4,16 @@ import { useUserDashboard } from '../user-dashboard-context';
 import { Link } from 'react-router-dom';
 import User from '../../../../model/user';
 import Follow from '../../../../model/follow';
-import { followApi } from '../../../../config/axios';
+import { blogApi, followApi } from '../../../../config/axios';
+import Blog from '../../../../model/blog';
 
 
 type UserDashboardSideNavProps = {
-    NumberOfPost: number;
-    NumberOfFollowers: number;
-    NumberOfFollowingTags: number;
     currentUser?: User;
 }
 
 
 const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
-    NumberOfPost,
-    NumberOfFollowers,
-    NumberOfFollowingTags,
     currentUser,
 }) => {
 
@@ -37,6 +32,28 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
         fetchFollowData();
     }, [currentUser]);
 
+    const [blogs, setBlogs] = useState<Blog[]>([]);
+    const fetchBlogData = async () => {
+        const response = await blogApi.get(`/sort/user/${currentUser?.userID}`, { withCredentials: true })
+        setBlogs(response.data);
+    };
+    useEffect(() => {
+        fetchBlogData();
+    }, [currentUser]);
+
+
+    const [followers, setFollowers] = useState<string[]>([]);
+    const fetchFollowerData = async () => {
+        try {
+            const response = await followApi.get(`/show/count/${currentUser?.userID}`, { withCredentials: true });
+            setFollowers(response.data);
+        } catch (error) {
+            console.error('Error fetching follow data:', error);
+        }
+    };
+    useEffect(() => {
+        fetchFollowerData();
+    }, [currentUser]);
 
     return (
         <div className="user-dashboard-left-nav">
@@ -48,7 +65,7 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
                     >
                         <a>
                             Posts
-                            <span>{NumberOfPost}</span>
+                            <span>{blogs.length}</span>
                         </a>
                     </li>
 
@@ -58,17 +75,7 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
                     >
                         <a>
                             Followers
-                            <span>{NumberOfFollowers}</span>
-                        </a>
-                    </li>
-
-                    <li
-                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'followingTags' ? 'active' : ''}`}
-                        onClick={() => setSelectedNavItem('followingTags')}
-                    >
-                        <a>
-                            Following tags
-                            <span>{NumberOfFollowingTags}</span>
+                            <span>{followers.length}</span>
                         </a>
                     </li>
 

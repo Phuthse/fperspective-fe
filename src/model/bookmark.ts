@@ -1,6 +1,6 @@
 type Bookmark = {
     userId: string;
-    bookmarkedBlog: string[];
+    bookmarkedPost: string[];
 }
 
 export default Bookmark

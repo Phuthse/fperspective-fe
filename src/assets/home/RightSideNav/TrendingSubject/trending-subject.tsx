@@ -91,7 +91,6 @@ const TrendingSubject: React.FC<TrendingTagProps> = ({ subjects, uri }) => {
     const [count, setCount] = useState<number>(1);
     const fetchUserData = async () => {
         const response = await subjectApi.get(uri, { withCredentials: true });
-
         setCount(response.data);
     };
     useEffect(() => {

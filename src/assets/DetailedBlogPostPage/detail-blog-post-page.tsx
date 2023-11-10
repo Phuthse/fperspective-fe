@@ -47,7 +47,7 @@ const DetailedBlogPostPage: React.FC = () => {
         <div className="container">
           <div className="detail-blog-post-page-left">
             <HeartButtonVertical currentBlog={blog} />
-            <BookmarkButton />
+            <BookmarkButton currentBlog={blog} />
           </div>
 
           <div className='detailed-post-container'>
