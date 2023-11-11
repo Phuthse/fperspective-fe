@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import PostUserProfile from "../../home/blog/UserProfile/user-profile";
 import HeartButton from "../../home/button/ReactionButton/heart-button";
 import CommentButton from "../../home/button/CommentButton/comment-button";
+import PostSubjectList from "../../home/blog/BlogSubject/blog-subject-list";
 
 type UserProfileBodyMain = {
   blog: Blog;
@@ -59,7 +60,10 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> = ({
 
   return (
     <div className="user-profile-body-main-post">
-      <PostUserProfile user={user} time={uploadDate.toLocaleString("en-US")} />
+      <div className="user-profile-user-profile-and-subject">
+        <PostUserProfile user={user} time={uploadDate.toLocaleString("en-US")} />
+        <PostSubjectList uri={`/search/blog/${blog.blogId}`} />
+      </div>
       <div className="user-profile-body-main-post-body">
         <div className="user-profile-body-main-post-body-title">
           <h2>
@@ -70,7 +74,7 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> = ({
           <TagList uri={`/search/blog/${blog.blogId}`} />
         </div>
         <div className="user-profile-body-main-post-body-bottom">
-          <HeartButton blogUri={`/show/${blog.blogId}`} />
+          <HeartButton currentBlog={blog} />
           <Link to={`/detail-blog/${blog.blogId}`}>
             <CommentButton NumberOfComment={numberOfComment} />
           </Link>

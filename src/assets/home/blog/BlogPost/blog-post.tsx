@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./blog-post.css";
 import PostUserProfile from "../UserProfile/user-profile";
 import BlogTitle from "../BlogTitle/blog-title";
-import BookmarkButton from "../../button/BookmarkButton/bookmark-button";
 import Blog from "../../../../model/blog";
-import { blogApi, commentApi, userApi } from "../../../../config/axios";
+import { blogApi, commentApi, loginApi, userApi } from "../../../../config/axios";
 import TagList from "../BlogTags/blog-tag-list";
 import User from "../../../../model/user";
 import PostSubjectList from "../BlogSubject/blog-subject-list";
@@ -21,7 +20,7 @@ type BlogPostProps = {
 const HandleApprove = (blogId: string) => () => {
   blogApi.delete(`/approve/${blogId}`, { withCredentials: true })
     .then((response) => {
-      console.log('Blog post created:', response.data);
+      console.log('Blog post approve:', response.data);
       window.location.href = "http://localhost:5173/approve";
     })
     .catch((error) => {
@@ -30,15 +29,28 @@ const HandleApprove = (blogId: string) => () => {
 };
 
 const HandleNotApprove = (blogId: string) => () => {
-  blogApi.delete(`/delete/${blogId}`, { withCredentials: true })
+  blogApi
+    .delete(`/delete/${blogId}`, { withCredentials: true })
     .then((response) => {
-      console.log('Blog post created:', response.data);
+      console.log('Blog post not approved:', response.data);
       window.location.href = "http://localhost:5173/approve";
     })
     .catch((error) => {
       console.error('Error creating blog post:', error);
     });
-}
+};
+
+const HandleDelete = (blogId: string) => () => {
+  blogApi
+    .delete(`/delete/${blogId}`, { withCredentials: true })
+    .then((response) => {
+      window.location.reload();
+      console.log("blog deleted:", response.data);
+    })
+    .catch((error) => {
+      console.error("Error deleting blog: ", error);
+    });
+};
 
 const BlogPost: React.FC<BlogPostProps> = ({
   blog,
@@ -81,12 +93,21 @@ const BlogPost: React.FC<BlogPostProps> = ({
     fetchCommentData();
   }, []);
 
-  if (blog.status !== false) {
 
+  const [loginUser, setLoginUser] = useState<User>();
+  const fetchLoginData = async () => {
+    const response = await loginApi.get("/currentUser", { withCredentials: true });
+    setLoginUser(response.data);
+  };
+  useEffect(() => {
+    fetchLoginData();
+  }, [loginApi]);
+  ;
+
+  if (blog.status === true) {
     return (
       <>
         <div className="home-page-post-container">
-
           <div className="home-user-profile-and-subject">
             <PostUserProfile
               key={users.userID}
@@ -95,11 +116,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
             />
             <PostSubjectList uri={`/search/blog/${blog.blogId}`} />
           </div>
-
           <BlogTitle blogProp={blog} />
-
           <TagList uri={`/search/blog/${blog.blogId}`} />
-
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
               <HeartButton currentBlog={blog} />
@@ -107,17 +125,19 @@ const BlogPost: React.FC<BlogPostProps> = ({
                 <CommentButton NumberOfComment={numberOfComment} />
               </Link>
             </div>
-
-            <BookmarkButton currentBlog={blog} />
+            {loginUser?.role === "ROLE_ADMIN" && (
+              <div className="admin-post-delete-button">
+                <button className="admin-delete-button" onClick={HandleDelete(blog.blogId)}>Delete</button>
+              </div>
+            )}
           </div>
         </div>
       </>
     );
-  } else {
+  } else if (blog.status === false) {
     return (
       <>
         <div className="home-page-post-container">
-
           <div className="home-user-profile-and-subject">
             <PostUserProfile
               key={users.userID}
@@ -126,11 +146,8 @@ const BlogPost: React.FC<BlogPostProps> = ({
             />
             <PostSubjectList uri={`/search/blog/${blog.blogId}`} />
           </div>
-
           <BlogTitle blogProp={blog} />
-
           <TagList uri={`/search/blog/${blog.blogId}`} />
-
           <div className="home-page-post-details">
             <div className="home-page-post-interact">
               <HeartButton currentBlog={blog} />

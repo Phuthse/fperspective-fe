@@ -100,7 +100,6 @@ const PostCreator: React.FC<BlogPostProps> = ({
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
     );

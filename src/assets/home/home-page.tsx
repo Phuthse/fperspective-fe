@@ -9,39 +9,19 @@ import User from '../../model/user';
 
 import { useParams } from 'react-router-dom';
 
-function timeout(delay: number) {
-  return new Promise(res => setTimeout(res, delay));
-}
-
 const HomePage: React.FC = () => {
 
   const { filter } = useParams();
 
-  /* IF NOT LOGGED IN BACK TO LOGIN PAGE */
   const [loginUser, setLoginUser] = useState<User>();
   const fetchLoginData = async () => {
-    try {
-      const response = await loginApi.get("/currentUser", { withCredentials: true });
-      setLoginUser(response.data);
-    }
-    catch {
-      window.location.href = "http://localhost:5173/login"
-    }
+    const response = await loginApi.get("/currentUser", { withCredentials: true });
+    setLoginUser(response.data);
   };
   useEffect(() => {
     fetchLoginData();
   }, [loginApi]);
-
-  useEffect(() => {
-    const delay = setTimeout(() => {
-      timeout(200);
-      if (loginUser === null || loginUser === undefined) {
-        // window.location.reload();
-        // window.location.href = 'http://localhost:5173/login';
-      }
-    }, 700);
-    return () => clearTimeout(delay);
-  }, [loginUser]);
+  ;
 
   const user = loginUser?.username as string;
 

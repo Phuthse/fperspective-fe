@@ -102,7 +102,6 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
     if (detailBlog.status !== false) {
         return (
             <div className="detailed-post-container">
-
                 {loginUser?.userID === user.userID && (
                     <div className="post-manage-button">
                         <Link className="post-edit-button" to={`/edit-blog/${detailBlog.blogId}`}>
@@ -111,6 +110,11 @@ const DetailedBlogPost: React.FC<DetailedBlogPostProps> = ({
                         <button className="post-delete-button" onClick={handleDelete}>
                             Delete
                         </button>
+                    </div>
+                )}
+                {loginUser?.role === "ROLE_ADMIN" && (
+                    <div className="admin-post-delete-button" style={{ marginBottom: '20px' }}>
+                        <button className="admin-delete-button" onClick={handleDelete}>Delete</button>
                     </div>
                 )}
                 <div className='user-profile-and-approve-button'>

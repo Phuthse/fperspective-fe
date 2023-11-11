@@ -13,18 +13,31 @@ type BookmarkProps = {
 const BookmarkButton: React.FC<BookmarkProps> = ({ currentBlog }) => {
 
   const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
-  const [loginUser, setLoginUser] = useState<User>();
-  const [currentUser, setCurrentUser] = useState<Bookmark>();
+  const [loginUser, setLoginUser] = useState<User | undefined>(undefined);
+  const [currentUser, setCurrentUser] = useState<Bookmark | undefined>();
   const [loading, setLoading] = useState(true);
 
   const fetchLoginData = async () => {
     try {
-      const response = await loginApi.get("/currentUser", {
-        withCredentials: true,
-      });
+      const response = await loginApi.get("/currentUser", { withCredentials: true });
       setLoginUser(response.data);
     } catch (error) {
       console.error("Error fetching login data:", error);
+    }
+  };
+
+  const fetchBookmarkData = async () => {
+    try {
+      if (loginUser?.userID) {
+        const response = await bookmarkApi.get(`show/${loginUser.userID}`, {
+          withCredentials: true,
+        });
+        setCurrentUser(response.data);
+        console.log(response.data)
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error fetching bookmark data:", error);
     }
   };
 
@@ -35,86 +48,82 @@ const BookmarkButton: React.FC<BookmarkProps> = ({ currentBlog }) => {
     fetchData();
   }, []);
 
-  const fetchBookmarkData = async () => {
-    try {
-      const response = await bookmarkApi.get(`show/${loginUser?.userID}`, {
-        withCredentials: true,
-      });
-      setCurrentUser(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching bookmark data:", error);
-    }
-  };
-
   useEffect(() => {
-    fetchBookmarkData();
+    if (loginUser && !currentUser) {
+      fetchBookmarkData();
+    }
   }, [loginUser, currentUser]);
 
+
   useEffect(() => {
-    if (currentUser?.bookmarkedPost.includes(currentBlog.blogId)) {
-      setIsBookmarked(true);
+    if (currentUser?.bookmarkedPost) {
+      setIsBookmarked(currentUser.bookmarkedPost.includes(currentBlog.blogId));
     }
-  }, [currentUser, currentBlog.blogId]);
+  }, [currentUser, currentBlog]);
 
-  const handleUnbookmark = () => {
-    const updatedBookmark = currentUser?.bookmarkedPost.filter(
-      (id) => id !== currentBlog.blogId
-    );
-    const bookmarkData = {
-      ...currentUser,
-      bookmarkedPost: updatedBookmark || [],
-    };
-    setCurrentUser(bookmarkData as Bookmark);
+  const handleBookmark = async () => {
+    if (currentUser) {
+      const updatedData: Bookmark = {
+        ...currentUser,
+        bookmarkedPost: [...(currentUser?.bookmarkedPost || []), currentBlog.blogId],
+      };
 
-    console.log(bookmarkData);
-    bookmarkApi
-      .post(`/unbookmark`, bookmarkData, { withCredentials: true })
-      .then((response) => {
-        console.log("BLOG UNBOOKMARKED:", response.data);
-        console.log(bookmarkData.bookmarkedPost);
-      })
-      .catch((error) => {
-        console.error("Error UNBOOKMARKING blog: ", error);
-      });
-  };
+      try {
+        // Update state first
+        setCurrentUser(updatedData);
+        setIsBookmarked(true);
 
-  const handleBookmark = () => {
-    const bookmarkData  = {
-      ...currentUser,
-      bookmarkedPost: [
-        ...(currentUser?.bookmarkedPost || []),
-        currentBlog.blogId,
-      ],
-    };
-    setCurrentUser(bookmarkData as Bookmark);
-
-    console.log(bookmarkData);
-    bookmarkApi
-      .post(`/bookmark`, bookmarkData, { withCredentials: true })
-      .then((response) => {
-        console.log("BLOG BOOKMARKED:", response.data);
-        console.log(bookmarkData.bookmarkedPost);
-      })
-      .catch((error) => {
+        // Then make the API call
+        await bookmarkApi.post(`/bookmark`, updatedData, { withCredentials: true });
+        console.log("BLOG BOOKMARKED:", updatedData.bookmarkedPost);
+      } catch (error) {
         console.error("Error BOOKMARK blog: ", error);
-      });
-  };
-
-  const toggleBookmark = () => {
-    if (isBookmarked) {
-      setIsBookmarked(!isBookmarked);
-      handleUnbookmark();
-    } else {
-      setIsBookmarked(!isBookmarked);
-      handleBookmark();
+      } finally {
+        // Fetch updated data after the state is updated
+        fetchBookmarkData();
+      }
     }
   };
+
+  const handleUnbookmark = async () => {
+    if (currentUser) {
+      const updatedData: Bookmark = {
+        ...currentUser,
+        bookmarkedPost: currentUser?.bookmarkedPost.filter((id) => id !== currentBlog.blogId) || [],
+      };
+
+      try {
+        // Update state first
+        setCurrentUser(updatedData);
+        setIsBookmarked(false);
+
+        // Then make the API call
+        await bookmarkApi.post(`/unbookmark`, updatedData, { withCredentials: true });
+        console.log("BLOG UNBOOKMARKED:", updatedData.bookmarkedPost);
+      } catch (error) {
+        console.error("Error UNBOOKMARKING blog: ", error);
+      } finally {
+        // Fetch updated data after the state is updated
+        fetchBookmarkData();
+      }
+    }
+  };
+
+
+  const handleClick = async () => {
+    if (isBookmarked) {
+      await handleUnbookmark();
+    } else {
+      await handleBookmark();
+    }
+    setIsBookmarked((prevIsBookmarked) => !prevIsBookmarked);
+  };
+
 
   return (
     <>
       {!loading && (
-        <div className="bookmark-button" onClick={toggleBookmark}>
+        <div className="bookmark-button" onClick={handleClick}>
           {isBookmarked ? <IconBookmarkFilled /> : <IconBookmark />}
         </div>
       )}

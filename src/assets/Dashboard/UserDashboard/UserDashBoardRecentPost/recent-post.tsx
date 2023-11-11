@@ -30,7 +30,7 @@ const RecentPost: React.FC<RecentPostProps> = ({ blog }) => {
         <BlogTitle blogProp={blog} />
         <div className="post-details">
           <div className="post-interact">
-            <HeartButton blogUri={`/show/${blog.blogId}`} />
+            <HeartButton currentBlog={blog} />
           </div>
         </div>
       </div>

@@ -9,7 +9,6 @@ import LoginForm from "./assets/Login and Register/login-form";
 import UserProfile from "./assets/UserProfile/user-profile";
 import UserBookmark from "./assets/UserBookmark/user-bookmark";
 import SearchPage from "./assets/SearchPage/search-page";
-import NotificationPage from "./assets/NotificationPage/notification-page";
 import TagsPage from "./assets/TagsPage/tags-page";
 import AdminDashboard from "./assets/Dashboard/AdminDashboard/admin-dashboard";
 import UserAnalytic from "./assets/UserAnalytics/user-analytic";
@@ -21,6 +20,7 @@ import { BrowserRouter } from "react-router-dom";
 import TagFilteredHomePage from "./assets/home/tag-filtered-home-page";
 import SubjectFilteredHomePage from "./assets/home/subject-filtered-home-page";
 import EditBlog from "./assets/EditBlog/edit-blog";
+import UserListPage from "./assets/UserListPage/user-page";
 
 function App() {
 
@@ -43,7 +43,6 @@ function App() {
             <Route path="user-profile/:userID" element={<UserProfile />} />
             <Route path='bookmark' element={<UserBookmark />} />
             <Route path='search/:searchText' element={<SearchPage />} />
-            <Route path='notification' element={<NotificationPage />} />
             <Route path='tag-page' element={<TagsPage />} />
             <Route path="admin-dashboard" element={<AdminDashboard />} />
             <Route path="user-analytic" element={<UserAnalytic />} />
@@ -53,6 +52,7 @@ function App() {
             <Route path="detail-blog/:blogId/:commentFilter" element={<DetailedBlogPostPage />} />
             <Route path='approve' element={<ApprovePage />} />
             <Route path='edit-blog/:blogId' element={<EditBlog />} />
+            <Route path='user-list-page' element={<UserListPage />} />
           </Route>
           <Route path='login' element={<LoginForm />} />
         </Routes>
