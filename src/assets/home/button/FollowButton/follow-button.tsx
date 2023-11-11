@@ -45,7 +45,7 @@ const UserFollowButton: React.FC<FollowButtonProps> = ({ followUser }) => {
         if (loginUser) {
             fetchFollowData();
         }
-    }, [loginUser]);
+    }, [loginUser, currentUser]);
 
     useEffect(() => {
         if (currentUser?.followedUser.includes(followUser.userID)) {

@@ -15,7 +15,7 @@ function timeout(delay: number) {
 const HandleLogout = async () => {
   try {
     window.location.href = "http://localhost:8080/logout"
-    await timeout(20);
+    await timeout(30);
   } catch { /* empty */ }
   finally {
     window.location.href = "http://localhost:5173/login"

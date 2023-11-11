@@ -78,7 +78,7 @@ const HeartButtonComment: React.FC<HeartButtonProps> = ({ currentComment }) => {
             ...currentComment,
             like: updatedLike || []
         };
-        commentApi.post(`/like`, likeData, { withCredentials: true })
+        commentApi.post(`/unlike`, likeData, { withCredentials: true })
             .then((response) => {
                 console.log('COMMENT UNLIKED:', response.data);
             })

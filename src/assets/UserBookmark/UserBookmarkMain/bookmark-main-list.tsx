@@ -18,7 +18,6 @@ const BookmarkList: React.FC<BookmarkListProps> = ({ uri }) => {
       try {
         const response = await bookmarkApi.get(uri, { withCredentials: true });
         setBookmarkBlogId(response.data.bookmarkedPost);
-        console.log(response.data.bookmarkedPost)
       } catch (error) {
         console.error('Error fetching following IDs:', error);
       }
@@ -36,7 +35,6 @@ const BookmarkList: React.FC<BookmarkListProps> = ({ uri }) => {
           })
         );
         setBookmarkBlogs(bookmarksData);
-        console.log(bookmarkBlogs)
       } catch (error) {
         console.error('Error fetching following user data:', error);
       }
@@ -50,7 +48,6 @@ const BookmarkList: React.FC<BookmarkListProps> = ({ uri }) => {
     <>
       <BookmarkHeader count={bookmarkBlogs.length} />
       {bookmarkBlogs.map((bookmarkBlog) => {
-        console.log(bookmarkBlog)
         const userUri = "/show/" + bookmarkBlog.userId;
         return (
           <BlogPost blog={bookmarkBlog} userUri={userUri} userId={bookmarkBlog.userId} />
