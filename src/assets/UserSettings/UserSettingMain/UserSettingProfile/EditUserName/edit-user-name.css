@@ -22,3 +22,19 @@
     width: 500px;
     color: #efefef;
 }
+
+.word-counter {
+    padding: 5px;
+    font-size: 12px;
+    position: absolute;
+    right: 5px; /* Adjust the position as needed */
+    bottom: 5px; /* Adjust the position as needed */
+    color: gray;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.user-name-input-container {
+    position: relative;
+    width: 500px;
+}

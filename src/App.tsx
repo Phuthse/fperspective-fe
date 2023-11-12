@@ -21,7 +21,6 @@ import TagFilteredHomePage from "./assets/home/tag-filtered-home-page";
 import SubjectFilteredHomePage from "./assets/home/subject-filtered-home-page";
 import EditBlog from "./assets/EditBlog/edit-blog";
 import UserListPage from "./assets/UserListPage/user-page";
-
 function App() {
 
   return (
