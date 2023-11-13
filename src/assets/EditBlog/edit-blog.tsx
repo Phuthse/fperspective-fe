@@ -124,8 +124,9 @@ const EditBlog: React.FC = () => {
                             modules={modules}
                         />
                     </div>
-                    <div className="preview">
-                        <div dangerouslySetInnerHTML={{ __html: newBlogContent }} />
+                    <h1 className="the-big-preview">Preview</h1>
+                    <div className="edit-preview">
+                        <div className="preview" dangerouslySetInnerHTML={{ __html: newBlogContent }} />
                     </div>
                 </div>
                 <div className="create-post-form-footer">

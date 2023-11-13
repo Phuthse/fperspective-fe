@@ -19,7 +19,7 @@ const BookmarkList: React.FC<BookmarkListProps> = ({ uri }) => {
         const response = await bookmarkApi.get(uri, { withCredentials: true });
         setBookmarkBlogId(response.data.bookmarkedPost);
       } catch (error) {
-        console.error('Error fetching following IDs:', error);
+        console.error('Error fetching bookmark:', error);
       }
     };
     fetchBookmarkIdData();

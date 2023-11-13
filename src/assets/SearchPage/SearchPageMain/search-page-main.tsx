@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './search-page-main.css';
 import { useSearchPage } from '../search-page-context';
 import BlogList from '../../home/blog/BlogPost/blog-list';
@@ -15,17 +15,36 @@ const SearchPageMain: React.FC = () => {
 
     const search = searchText as string;
 
+    const [sortBy, setSortBy] = useState('latest'); // default sorting
+
+    const handleSortChange = (value: string) => {
+        setSortBy(value);
+    };
+
+    const renderBlogList = () => {
+        switch (sortBy) {
+            case 'latest':
+                return <BlogList uri={`/search/text/${search}/-1`} />;
+            case 'popular':
+                return <BlogList uri={`/search/text/${search}/1`} />;
+            case 'oldest':
+                return <BlogList uri={`/search/text/${search}/1`} />;
+            default:
+                return <BlogList uri={`/search/text/${search}/-1`} />;
+        }
+    };
+
     return (
 
         <div className="search-page-main-container">
             {selectedNavItem === 'post' && (
                 <>
                     <div className="search-page-post-filter">
-                        <a href='#'>Latest</a>
-                        <a href='#'>Most Popular</a>
-                        <a href='#'>Oldest</a>
+                        <button onClick={() => handleSortChange('latest')}>Latest</button>
+                        <button onClick={() => handleSortChange('popular')}>Most Popular</button>
+                        <button onClick={() => handleSortChange('oldest')}>Oldest</button>
                     </div>
-                    <BlogList uri={`/search/text/${search}/-1`} />
+                    {renderBlogList()}
                 </>
             )}
 

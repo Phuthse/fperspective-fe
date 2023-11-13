@@ -12,15 +12,16 @@
     margin-bottom: 15px;
 }
 
-.search-page-post-filter a {
+.search-page-post-filter button {
     padding: 10px;
-    display: block;
-    text-decoration: none;
     color: #efefef;
     margin-right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
-.search-page-post-filter a:hover {
+.search-page-post-filter button:hover {
     background: #222;
     border-radius: 5px;
 }
