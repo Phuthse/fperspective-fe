@@ -3,60 +3,12 @@ import './trending-subject.css'
 import { subjectApi } from '../../../../config/axios';
 import { Link } from 'react-router-dom';
 import Subject from '../../../../model/subject';
+import { getSemester } from '../../../SubjectsPage/get-semester';
 
 type TrendingTagProps = {
     subjects: Subject;
     uri: string;
 }
-
-const getSemester = (subjectName: string) => {
-    const SemesterMap: Record<string, number> = {
-        'PRF192': 1,
-        'CEA201': 1,
-        'SSL101c': 1,
-        'CSI104': 1,
-        'NWC203c': 2,
-        'SSG104': 2,
-        'PRO192': 2,
-        'MAD101': 2,
-        'OSG202': 2,
-        'CSD201': 3,
-        'DBI202': 3,
-        'LAB211': 3,
-        'JPD113': 3,
-        'WED201c': 3,
-        'SWE201c': 4,
-        'JPD123': 4,
-        'IOT102': 4,
-        'PRJ301': 4,
-        'MAS291': 4,
-        'SWR302': 5,
-        'SWT301': 5,
-        'SWP391': 5,
-        'ITE302c': 5,
-        'PRN211': 5,
-        'ACC101': 5,
-        'OJT202': 6,
-        'ENW492c': 6,
-        'PRN221': 7,
-        'PRU211m': 7,
-        'EXE101': 7,
-        'PMG201c': 7,
-        'SWD392': 7,
-        'MLN122': 8,
-        'MLN111': 8,
-        'EXE201': 8,
-        'WDU203c': 8,
-        'PRN231': 8,
-        'PRM392': 8,
-        'MLN131': 9,
-        'VNR202': 9,
-        'HCM202': 9,
-        'SEP490': 9,
-    };
-
-    return SemesterMap[subjectName] || 1;
-};
 
 const formatNumber = (number: number): string => {
     if (number >= 1000000) {

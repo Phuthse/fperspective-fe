@@ -72,7 +72,6 @@ const BookmarkButton: React.FC<BookmarkProps> = ({ currentBlog }) => {
         // Update state first
         setCurrentUser(updatedData);
         setIsBookmarked(true);
-
         // Then make the API call
         await bookmarkApi.post(`/bookmark`, updatedData, { withCredentials: true });
         console.log("BLOG BOOKMARKED:", updatedData.bookmarkedPost);

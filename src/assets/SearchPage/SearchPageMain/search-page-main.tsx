@@ -26,7 +26,7 @@ const SearchPageMain: React.FC = () => {
             case 'latest':
                 return <BlogList uri={`/search/text/${search}/-1`} />;
             case 'popular':
-                return <BlogList uri={`/search/text/${search}/1`} />;
+                return <BlogList uri={`/sort/text/${search}`} />;
             case 'oldest':
                 return <BlogList uri={`/search/text/${search}/1`} />;
             default:

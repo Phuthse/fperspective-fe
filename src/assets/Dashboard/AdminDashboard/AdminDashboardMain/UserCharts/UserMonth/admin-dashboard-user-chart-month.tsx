@@ -3,9 +3,12 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
+// Create an array of User values for each day
+const UserData = [10, 30, 123, 421, 320, 321, 421, 50, 60, 75, 80, 110, 90, 70, 60, 1000];
+
 export function TotalUserMonth() {
-    const UserData = [10, 30, 123, 421, 320, 321, 421, 50, 60, 75, 80, 110, 90, 70, 60, 1000];
-    const sum = UserData.reduce((acc, value) => acc + value, 0);
+    const userData = [10, 30, 123, 421, 320, 321, 421, 50, 60, 75, 80, 110, 90, 70, 60, 1000];
+    const sum = userData.reduce((acc, value) => acc + value, 0);
     return sum;
 }
 
@@ -25,8 +28,6 @@ export function LineChartUserMonth() {
         return `${day} ${month}`;
     });
 
-    // Create an array of User values for each day
-    const UserData = [10, 30, 123, 421, 320, 321, 421, 50, 60, 75, 80, 110, 90, 70, 60, 1000];
 
     // Combine the day and month data with User values
     const data = dayAndMonthData.map((name, index) => ({ name, User: UserData[index] }));

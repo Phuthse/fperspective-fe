@@ -21,7 +21,6 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     fetchLoginData();
   }, [loginApi]);
-  ;
 
   const user = loginUser?.username as string;
 
