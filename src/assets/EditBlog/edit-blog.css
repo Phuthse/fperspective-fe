@@ -109,3 +109,7 @@
 .preview p {
     padding: 7px 0 0;
 }
+
+.preview a {
+    color: rgb(49, 111, 255);
+}

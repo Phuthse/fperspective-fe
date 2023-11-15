@@ -5,11 +5,12 @@ import EditBlogTags from "./EditBlogTags/edit-blog-tags";
 import EditBlogSubjects from "./EditBlogSubject/edit-blog-subjects";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { blogApi } from "../../config/axios";
+import { blogApi, loginApi } from "../../config/axios";
 import Tag from "../../model/tag";
 import Subject from "../../model/subject";
 import { useParams } from "react-router";
 import Blog from "../../model/blog";
+import User from "../../model/user";
 
 const EditBlog: React.FC = () => {
 
@@ -26,6 +27,21 @@ const EditBlog: React.FC = () => {
         status: true,
         subject: [],
     };
+
+    /* REDIRECT TO LOGIN PAGE IF NOT LOGGED IN */
+    const [currentLoginUser, setCurrentLoginUser] = useState<User>();
+    const fetchCurrentLoginData = async () => {
+        try {
+            const response = await loginApi.get("/currentUser", { withCredentials: true });
+            setCurrentLoginUser(response.data);
+        }
+        catch {
+            window.location.href = "http://localhost:5173/login"
+        }
+    };
+    useEffect(() => {
+        fetchCurrentLoginData();
+    }, [loginApi]);
 
     const [blog, setBlog] = useState<Blog>(initialBlog);
     const [loading, setLoading] = useState<boolean>(true)
@@ -102,46 +118,54 @@ const EditBlog: React.FC = () => {
                 });
         }
     };
+    
+    if (!blog.userId || !currentLoginUser?.userID) {
+        return <h1 style={{ color: 'white' }}>Loading...</h1>;
+    }
 
-    return (
-        <div className="create-blog-container">
-            <form className="create-post-form">
-                <div className="post-content-and-title">
-                    <div className="post-top">
-                        {!loading && (
-                            <>
-                                <EditBlogTitle setTitle={setTitle} currentTitle={blog.blogTitle} />
-                                <EditBlogTags setTags={setTags} uri="/show" currentTags={blog.btag} />
-                                <EditBlogSubjects setSubjects={setSubject} uri="/show" currentSubject={blog.subject} />
-                            </>
-                        )}
-                    </div>
-                    <div className="post-body">
-                        <ReactQuill
-                            value={newBlogContent}
-                            onChange={setContent}
-                            className="post-body-input-field"
-                            modules={modules}
-                        />
-                    </div>
-                    <h1 className="the-big-preview">Preview</h1>
-                    <div className="edit-preview">
-                        <div className="preview" dangerouslySetInnerHTML={{ __html: newBlogContent }} />
-                    </div>
-                </div>
-                <div className="create-post-form-footer">
-                    <button type="button" onClick={HandleUpdate}>Save Changes</button>
-                </div>
-                {
-                    validationMessage && (
-                        <div className="error-message" style={{ color: validationMessageColor }}>
-                            {validationMessage}
+    if (blog.userId === currentLoginUser?.userID) {
+        return (
+            <div className="create-blog-container">
+                <form className="create-post-form">
+                    <div className="post-content-and-title">
+                        <div className="post-top">
+                            {!loading && (
+                                <>
+                                    <EditBlogTitle setTitle={setTitle} currentTitle={blog.blogTitle} />
+                                    <EditBlogTags setTags={setTags} uri="/show" currentTags={blog.btag} />
+                                    <EditBlogSubjects setSubjects={setSubject} uri="/show" currentSubject={blog.subject} />
+                                </>
+                            )}
                         </div>
-                    )
-                }
-            </form >
-        </div >
-    );
+                        <div className="post-body">
+                            <ReactQuill
+                                value={newBlogContent}
+                                onChange={setContent}
+                                className="post-body-input-field"
+                                modules={modules}
+                            />
+                        </div>
+                        <h1 className="the-big-preview">Preview</h1>
+                        <div className="edit-preview">
+                            <div className="preview" dangerouslySetInnerHTML={{ __html: newBlogContent }} />
+                        </div>
+                    </div>
+                    <div className="create-post-form-footer">
+                        <button type="button" onClick={HandleUpdate}>Save Changes</button>
+                    </div>
+                    {
+                        validationMessage && (
+                            <div className="error-message" style={{ color: validationMessageColor }}>
+                                {validationMessage}
+                            </div>
+                        )
+                    }
+                </form >
+            </div >
+        );
+    } else {
+        window.location.href = 'http://localhost:5173'
+    }
 };
 
 export default EditBlog;
