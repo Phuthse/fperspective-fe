@@ -27,7 +27,7 @@
     cursor: pointer;
 }
 
-.active{
+.active-dashboard-option{
    background: #222;
    border-radius: 10px;
 }

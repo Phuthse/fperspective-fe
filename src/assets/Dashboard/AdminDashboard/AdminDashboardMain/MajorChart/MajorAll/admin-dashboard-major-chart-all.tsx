@@ -1,47 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-
-const data = [
-    { name: 'SE', value: 8422, fullName: 'Software Engineering' },
-    { name: 'AI', value: 2312, fullName: 'Artificial Intelligence' },
-    { name: 'GD', value: 5212, fullName: 'Digital Art Design' },
-    { name: 'IA', value: 1234, fullName: 'Information Assurance' },
-    { name: 'IS', value: 4321, fullName: 'Information System' },
-    { name: 'FIN', value: 8422, fullName: 'Finance' },
-    { name: 'HM', value: 2312, fullName: 'Hotel Management' },
-    { name: 'IB', value: 5212, fullName: 'International Business' },
-    { name: 'MC', value: 1234, fullName: 'Multimedia Communications' },
-    { name: 'MKT', value: 4321, fullName: 'Marketing' },
-    { name: 'CHN', value: 8422, fullName: 'Eng - Chinese Studies' },
-    { name: 'ENG', value: 2312, fullName: 'English Studies' },
-    { name: 'BJP', value: 5212, fullName: 'Japaneses Studies' },
-    { name: 'BKR', value: 1234, fullName: 'Korean Studies' },
-];
-
-const COLORS = [
-    'red', 'orange', 'yellow', 'blue', 'green', 'cyan',
-    '#efefef', 'pink', 'purple', '#32CD32', '#9370DB', '#FFD700', '#E75480', '#1E90FF'
-];
+import { userApi } from '../../../../../../config/axios';
+import User from '../../../../../../model/user';
 
 const PieChartMajorAll: React.FC = () => {
-    const total = data.reduce((acc, actor) => acc + actor.value, 0);
+    const [users, setUsers] = useState<User[]>([]);
 
-    const dataWithPercentage = data.map((actor) => ({
-        ...actor,
-        percentage: ((actor.value / total) * 100).toFixed(2) + '%',
+    const fetchUserData = async () => {
+        const response = await userApi.get('/show', { withCredentials: true });
+        setUsers(response.data);
+    };
+
+    useEffect(() => {
+        fetchUserData();
+    }, []);
+
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF', '#FF0080'];
+
+    // Count the number of users for each category
+    const categoryCounts: Record<string, number> = users.reduce((acc, user) => {
+        const category = user.category;
+        acc[category] = (acc[category] || 0) + 1;
+        return acc;
+    }, {} as Record<string, number>); // Use type assertion
+
+    // Transform data for the pie chart
+    const data = Object.keys(categoryCounts).map((category, _) => ({
+        name: category,
+        value: categoryCounts[category],
+        percentage: ((categoryCounts[category] / users.length) * 100).toFixed(2) + '%',
     }));
 
+    if (data.length === 0) {
+        return <h1 style={{ color: '#FFF' }}>No data found</h1>;
+    }
+
     return (
-        <PieChart width={1000} height={500} >
+        <PieChart width={1000} height={350}>
             <Pie
-                data={dataWithPercentage}
+                data={data}
                 cx="50%"
                 cy="50%"
-                innerRadius={120}
-                outerRadius={150}   
+                innerRadius={90}
+                outerRadius={120}
                 fill="#8884d8"
                 dataKey="value"
-                label={({ fullName, percentage }) => `${fullName} (${percentage})`}
+                label={({ name, percentage }) => `${name} (${percentage})`}
             >
                 {data.map((_, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

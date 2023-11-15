@@ -1,47 +1,88 @@
-/* BAR CHART FOR MOST POPULAR TAG */
-
-
+import { useState, useEffect } from 'react';
 import { BarChart, Bar, YAxis, Tooltip, Cell, LabelList, XAxis } from 'recharts';
+import { subjectApi } from '../../../../../../config/axios';
+import Subject from '../../../../../../model/subject';
 
 function BarChartSubjectAll() {
-    const data = [
-        { subjectName: 'PRF192', TotalPost: 210, color: '#4B0082' },
-        { subjectName: 'PRO192', TotalPost: 421, color: '#CC5500' },
-        { subjectName: 'SWT301', TotalPost: 531, color: '#FFC72C' },
-        { subjectName: 'SWR302', TotalPost: 942, color: 'red' },
-        { subjectName: 'SWP301', TotalPost: 214, color: '#006400' },
-        { subjectName: 'DBI202', TotalPost: 372, color: '#800000' },
-        { subjectName: 'JPD301', TotalPost: 692, color: '#800080' },
-        { subjectName: 'PRN211', TotalPost: 761, color: '#FF1493' },
-        { subjectName: 'MAD101', TotalPost: 801, color: 'orange' },
-        { subjectName: 'MAS101', TotalPost: 941, color: '#708090' },
-    ];
+    const [subjects, setSubjects] = useState<Subject[]>([]);
+    const [data, setData] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [maxYValue, setMaxYValue] = useState<number>(0);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await subjectApi.get('/sort/10', { withCredentials: true });
+                setSubjects(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error fetching tag data:", error);
+            }
+        };
+        fetchUserData();
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const predefinedColors = [
+                '#4B0082', '#CC5500', '#FFC72C', 'red', '#006400',
+                '#800000', '#800080', '#FF1493', 'orange', '#708090'
+            ];
+
+            const tagDataPromises = subjects.map(async (subject, index) => {
+                try {
+                    const response = await subjectApi.get(`/count/${subject.subjectName}`, { withCredentials: true });
+                    // Use predefined colors based on the index
+                    const color = predefinedColors[index % predefinedColors.length];
+                    return { subjectName: subject.subjectName, TotalPost: response.data, color };
+                } catch (error) {
+                    console.error(`Error fetching count for subject ${subject.subjectName}:`, error);
+                    return { subjectName: subject.subjectName, TotalPost: 0, color: '#000000' }; // Default color
+                }
+            });
+
+            const resolvedTagData = await Promise.all(tagDataPromises);
+            setData(resolvedTagData);
+
+            // Calculate the maximum Y value
+            const maxTotalPost = Math.max(...resolvedTagData.map(entry => entry.TotalPost));
+            setMaxYValue(maxTotalPost + 1); // Add 1 to extend one unit higher
+        };
+
+        if (subjects.length > 0) {
+            fetchData();
+        }
+    }, [subjects]);
 
     // Sort the data array based on TotalPost in ascending order
     const sortedData = [...data].sort((a, b) => a.TotalPost - b.TotalPost);
 
-    return (
-        <BarChart width={900} height={500} data={sortedData}>
-            <YAxis />
-            <XAxis dataKey="subjectName" tick={false} />
-            <Tooltip
-                contentStyle={{
-                    background: '#111',
-                    color: '#efefef',
-                    border: '0.5px #333',
-                    borderRadius: '5px',
-                }}
-                itemStyle={{ color: '#efefef' }}
-                cursor={{ display: 'none' }}
-            />
-            <Bar dataKey="TotalPost">
-                {sortedData.map((entry, index) => (
-                    <Cell key={index} fill={entry.color} />
-                ))}
-                <LabelList dataKey="subjectName" position="top" fill="#efefef" />
-            </Bar>
-        </BarChart>
-    );
+    if (loading) {
+        return <h1 style={{ color: 'white' }}>Loading...</h1>;
+    } else {
+        return (
+            <BarChart width={900} height={500} data={sortedData}>
+                <YAxis domain={[0, maxYValue]} />
+                <XAxis dataKey="subjectName" tick={false} />
+                <Tooltip
+                    contentStyle={{
+                        background: '#111',
+                        color: '#efefef',
+                        border: '0.5px #333',
+                        borderRadius: '5px',
+                    }}
+                    itemStyle={{ color: '#efefef' }}
+                    cursor={{ display: 'none' }}
+                />
+                <Bar dataKey="TotalPost">
+                    {sortedData.map((entry, index) => (
+                        <Cell key={index} fill={entry.color} />
+                    ))}
+                    <LabelList dataKey="subjectName" position="top" fill="#efefef" />
+                </Bar>
+            </BarChart>
+        );
+    }
 }
 
 export default BarChartSubjectAll;

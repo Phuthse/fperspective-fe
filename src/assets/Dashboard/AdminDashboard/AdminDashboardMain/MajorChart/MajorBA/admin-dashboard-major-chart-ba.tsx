@@ -1,35 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-
-const data = [
-    { name: 'FIN', value: 8422, fullName: 'Finance' },
-    { name: 'HM', value: 2312, fullName: 'Hotel Management' },
-    { name: 'IB', value: 5212, fullName: 'International Business' },
-    { name: 'MC', value: 1234, fullName: 'Multimedia Communications' },
-    { name: 'MKT', value: 4321, fullName: 'Marketing' },
-];
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF', '#FF0080', '#efefef'];
+import { userApi } from '../../../../../../config/axios';
+import User from '../../../../../../model/user';
 
 const PieChartMajorBA: React.FC = () => {
-    const total = data.reduce((acc, actor) => acc + actor.value, 0);
+    const [users, setUsers] = useState<User[]>([]);
 
-    const dataWithPercentage = data.map((actor) => ({
-        ...actor,
-        percentage: ((actor.value / total) * 100).toFixed(2) + '%',
+    const fetchUserData = async () => {
+        const response = await userApi.get('/show', { withCredentials: true });
+        setUsers(response.data);
+    };
+
+    useEffect(() => {
+        fetchUserData();
+    }, []);
+
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF', '#FF0080'];
+
+    // Count the number of users for each specific category
+    const categoryCounts: Record<string, number> = users.reduce((acc, user) => {
+        const category = user.category;
+        if (['Hotel Management', 'Finance', 'Marketing', 'International Business', 'Multimedia Communications'].includes(category)) {
+            acc[category] = (acc[category] || 0) + 1;
+        }
+        return acc;
+    }, {} as Record<string, number>); // Use type assertion
+
+    // Transform data for the pie chart
+    const data = Object.keys(categoryCounts).map((category, _) => ({
+        name: category,
+        value: categoryCounts[category],
+        percentage: ((categoryCounts[category] / users.length) * 100).toFixed(2) + '%',
     }));
 
+    if (data.length === 0) {
+        return <h1 style={{ color: '#FFF' }}>No data found</h1>;
+    }
+
     return (
-        <PieChart width={1000} height={400} >
+        <PieChart width={600} height={350}>
             <Pie
-                data={dataWithPercentage}
+                data={data}
                 cx="50%"
                 cy="50%"
-                innerRadius={80}
-                outerRadius={100}
+                innerRadius={90}
+                outerRadius={120}
                 fill="#8884d8"
                 dataKey="value"
-                label={({ fullName, percentage }) => `${fullName} (${percentage})`}
+                label={({ name, percentage }) => `${name} (${percentage})`}
             >
                 {data.map((_, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

@@ -9,8 +9,12 @@ const UserBookmark: React.FC = () => {
 
     const [loginUser, setLoginUser] = useState<User>();
     const fetchLoginData = async () => {
-        const response = await loginApi.get("/currentUser", { withCredentials: true });
-        setLoginUser(response.data);
+        try {
+            const response = await loginApi.get("/currentUser", { withCredentials: true });
+            setLoginUser(response.data);
+        } catch {
+            window.location.href = 'http://localhost:5173/login';
+        }
     };
     useEffect(() => {
         fetchLoginData();

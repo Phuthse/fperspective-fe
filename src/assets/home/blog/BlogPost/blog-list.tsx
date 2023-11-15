@@ -37,29 +37,33 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
     return (
       <section style={{ color: "white" }}>
         <h1
-          style={{padding: '15px'}}
+          style={{ padding: '15px' }}
         >No posts found</h1>
       </section>
     );
   }
 
-  return (
-    <>
-      {blogs.map((blog) => {
-        const userId = blog.userId;
-        const apiUri = "/show/" + userId;
-        return (
-          <BlogPost
-            key={blog.blogId}
-            blog={blog}
-            userUri={apiUri}
-            userId={userId}
-          />
-        );
-      }
-      )}
-    </>
-  );
+  if (!isLoading) {
+
+
+    return (
+      <>
+        {blogs.map((blog) => {
+          const userId = blog.userId;
+          const apiUri = "/show/" + userId;
+          return (
+            <BlogPost
+              key={blog.blogId}
+              blog={blog}
+              userUri={apiUri}
+              userId={userId}
+            />
+          );
+        }
+        )}
+      </>
+    );
+  }
 };
 
 export default BlogList;

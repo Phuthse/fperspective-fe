@@ -5,6 +5,7 @@ import RecentBlogList from "../UserDashBoardRecentPost/recent-post-list";
 import UserFollower from "../UserFollower/user-follower";
 import UserFollowing from "../UserFollowing/user-following";
 import { loginApi } from "../../../../config/axios";
+import LikedBlogList from "../UserDashBoardRecentPost/liked-post-list";
 
 
 const UserDashoardContent: React.FC = () => {
@@ -23,6 +24,7 @@ const UserDashoardContent: React.FC = () => {
   const { selectedNavItem } = useUserDashboard();
 
   const BLOG_URI = `/search/user/${userId}/-1`;
+  const LIKED_BLOG_URI = `/search/like/${userId}`
   const FOLLOWING_URI = `/show/user/${userId}`;
   const FOLLOWER_URI = `/show/count/${userId}`;
 
@@ -30,10 +32,16 @@ const UserDashoardContent: React.FC = () => {
     <div className="user-dashboard-content">
       {/* Display user's recent posts */}
       {selectedNavItem === "posts" && (
-        <div>
-          <h2>Recent Blogs</h2>
+        <>
           <RecentBlogList uri={BLOG_URI} />
-        </div>
+        </>
+      )}
+
+      {/* Display user's liked posts */}
+      {selectedNavItem === "liked-posts" && (
+        <>
+          <LikedBlogList uri={LIKED_BLOG_URI} />
+        </>
       )}
 
       {/* Display user's followers */}

@@ -7,10 +7,6 @@ import { UserDashboardProvider } from './user-dashboard-context';
 import { loginApi } from '../../../config/axios';
 import User from '../../../model/user';
 
-function timeout(delay: number) {
-    return new Promise(res => setTimeout(res, delay));
-}
-
 const UserDashboard: React.FC = () => {
 
     const [loginUser, setLoginUser] = useState<User>();
@@ -18,26 +14,13 @@ const UserDashboard: React.FC = () => {
         try {
             const response = await loginApi.get("/currentUser", { withCredentials: true });
             setLoginUser(response.data);
-        }
-        catch {
-            window.location.href = "http://localhost:5173/login"
+        } catch {
+            window.location.href = 'http://localhost:5173/login';
         }
     };
     useEffect(() => {
         fetchLoginData();
     }, [loginApi]);
-
-    useEffect(() => {
-        const delay = setTimeout(() => {
-            timeout(200);
-            if (loginUser === null || loginUser === undefined) {
-                // window.location.reload();
-                // window.location.href = 'http://localhost:5173/login';
-            }
-        }, 700);
-        return () => clearTimeout(delay);
-    }, [loginUser]);
-
 
     return (
         <>

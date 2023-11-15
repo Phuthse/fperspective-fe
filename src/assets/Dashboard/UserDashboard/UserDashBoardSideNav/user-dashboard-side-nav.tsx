@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './user-dashboard-side-nav.css';
 import { useUserDashboard } from '../user-dashboard-context';
-import { Link } from 'react-router-dom';
 import User from '../../../../model/user';
 import Follow from '../../../../model/follow';
 import { blogApi, followApi } from '../../../../config/axios';
@@ -41,6 +40,14 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
         fetchBlogData();
     }, [currentUser]);
 
+    const [likedBlogs, setLikedBlogs] = useState<Blog[]>([]);
+    const fetchLikedBlogData = async () => {
+        const response = await blogApi.get(`/search/like/${currentUser?.userID}`, { withCredentials: true })
+        setLikedBlogs(response.data);
+    };
+    useEffect(() => {
+        fetchLikedBlogData();
+    }, [currentUser]);
 
     const [followers, setFollowers] = useState<string[]>([]);
     const fetchFollowerData = async () => {
@@ -60,7 +67,7 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
             <nav>
                 <ul className="user-dashboard-left-nav-list">
                     <li
-                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'posts' ? 'active' : ''}`}
+                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'posts' ? 'active-dashboard-option' : ''}`}
                         onClick={() => setSelectedNavItem('posts')}
                     >
                         <a>
@@ -70,7 +77,17 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
                     </li>
 
                     <li
-                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'followers' ? 'active' : ''}`}
+                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'liked-posts' ? 'active-dashboard-option' : ''}`}
+                        onClick={() => setSelectedNavItem('liked-posts')}
+                    >
+                        <a>
+                            Liked Posts
+                            <span>{likedBlogs.length}</span>
+                        </a>
+                    </li>
+
+                    <li
+                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'followers' ? 'active-dashboard-option' : ''}`}
                         onClick={() => setSelectedNavItem('followers')}
                     >
                         <a>
@@ -80,20 +97,13 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
                     </li>
 
                     <li
-                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'followingUsers' ? 'active' : ''}`}
+                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'followingUsers' ? 'active-dashboard-option' : ''}`}
                         onClick={() => setSelectedNavItem('followingUsers')}
                     >
                         <a>
                             Following users
                             <span>{CurrentUser?.followedUser.length}</span>
                         </a>
-                    </li>
-
-                    <li
-                        className={`user-dashboard-left-nav-link ${selectedNavItem === 'analytic' ? 'active' : ''}`}
-                        onClick={() => setSelectedNavItem('analytic')}
-                    >
-                        <Link to='/user-analytic'>Analytic</Link>
                     </li>
 
                 </ul>

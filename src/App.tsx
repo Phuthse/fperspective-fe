@@ -11,7 +11,6 @@ import UserBookmark from "./assets/UserBookmark/user-bookmark";
 import SearchPage from "./assets/SearchPage/search-page";
 import TagsPage from "./assets/TagsPage/tags-page";
 import AdminDashboard from "./assets/Dashboard/AdminDashboard/admin-dashboard";
-import UserAnalytic from "./assets/UserAnalytics/user-analytic";
 import UserSetting from "./assets/UserSettings/user-setting";
 import SubjectPage from "./assets/SubjectsPage/subjects-page";
 import DetailedBlogPostPage from "./assets/DetailedBlogPostPage/detail-blog-post-page";
@@ -44,7 +43,6 @@ function App() {
             <Route path='search/:searchText' element={<SearchPage />} />
             <Route path='tag-page' element={<TagsPage />} />
             <Route path="admin-dashboard" element={<AdminDashboard />} />
-            <Route path="user-analytic" element={<UserAnalytic />} />
             <Route path="setting" element={<UserSetting />} />
             <Route path="subject-page" element={<SubjectPage />} />
             <Route path="detail-blog/:blogId" element={<DetailedBlogPostPage />} />
