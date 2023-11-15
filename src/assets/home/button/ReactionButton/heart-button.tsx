@@ -9,8 +9,8 @@ type HeartButtonProps = {
 };
 
 const HeartButton: React.FC<HeartButtonProps> = ({ currentBlog }) => {
-  const [currentBlogs, setCurrentBlogs] = useState<Blog>(currentBlog);
-  const [likes, setLikes] = useState<number>(currentBlogs.like.length);
+
+  const [likes, setLikes] = useState<number>(currentBlog.like.length);
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [loading, setLoading] = useState(true);
 
@@ -52,18 +52,18 @@ const HeartButton: React.FC<HeartButtonProps> = ({ currentBlog }) => {
   }, []);
 
   useEffect(() => {
-    if (currentBlogs.like.includes(currentUser.userID)) {
+    if (currentBlog.like.includes(currentUser.userID)) {
       setIsLiked(true);
     }
-  }, [currentUser, currentBlogs]);
+  }, [currentUser, currentBlog]);
 
   const handleLike = () => {
     const updatedLike = [...currentBlog.like, currentUser.userID];
     const likeData = {
-      ...currentBlogs,
+      ...currentBlog,
       like: updatedLike || [],
     };
-    setCurrentBlogs(likeData)
+    // setCurrentBlogs(likeData)
     blogApi
       .post(`/like`, likeData, { withCredentials: true })
       .then((response) => {
@@ -77,14 +77,14 @@ const HeartButton: React.FC<HeartButtonProps> = ({ currentBlog }) => {
   };
 
   const handleUnlike = () => {
-    const updatedLike = currentBlogs.like.filter(
+    const updatedLike = currentBlog.like.filter(
       (id) => id !== currentUser.userID
     );
     const likeData = {
-      ...currentBlogs,
+      ...currentBlog,
       like: updatedLike || [],
     };
-    setCurrentBlogs(likeData)
+    // setCurrentBlogs(likeData)
     blogApi
       .post(`/unlike`, likeData, { withCredentials: true })
       .then((response) => {
@@ -115,12 +115,12 @@ const HeartButton: React.FC<HeartButtonProps> = ({ currentBlog }) => {
       setIsLiked(!isLiked);
       handleUnlike();
       // fetchBlogData();
-      setLikes(currentBlogs.like.length);
+      setLikes(currentBlog.like.length);
     } else {
       setIsLiked(!isLiked);
       handleLike();
       // fetchBlogData();
-      setLikes(currentBlogs.like.length);
+      setLikes(currentBlog.like.length);
     }
   };
 

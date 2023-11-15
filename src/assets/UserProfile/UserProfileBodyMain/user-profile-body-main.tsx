@@ -70,7 +70,7 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> = ({
           <TagList uri={`/search/blog/${blog.blogId}`} />
         </div>
         <div className="user-profile-body-main-post-body-bottom">
-          <HeartButton blogUri={`/show/${blog.blogId}`} />
+          <HeartButton currentBlog={blog} />
           <Link to={`/detail-blog/${blog.blogId}`}>
             <CommentButton NumberOfComment={numberOfComment} />
           </Link>

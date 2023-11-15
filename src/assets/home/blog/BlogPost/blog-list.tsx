@@ -5,9 +5,10 @@ import BlogPost from "./blog-post";
 
 type BlogListProps = {
   uri: string;
+  login: string
 };
 
-const BlogList: React.FC<BlogListProps> = ({ uri }) => {
+const BlogList: React.FC<BlogListProps> = ({ uri, login }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
@@ -54,6 +55,7 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
             blog={blog}
             userUri={apiUri}
             userId={userId}
+            loginUser={login}
           />
         );
       }

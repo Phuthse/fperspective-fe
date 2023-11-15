@@ -1,43 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { IconBookmarkFilled, IconBookmark } from "@tabler/icons-react";
 import "./bookmark-button.css";
-import User from "../../../../model/user";
+// import User from "../../../../model/user";
 import Blog from "../../../../model/blog";
-import { bookmarkApi, loginApi } from "../../../../config/axios";
+import { bookmarkApi } from "../../../../config/axios";
 import Bookmark from "../../../../model/bookmark";
 
 type BookmarkProps = {
   currentBlog: Blog;
+  userId: string;
 };
 
-const BookmarkButton: React.FC<BookmarkProps> = ({ currentBlog }) => {
+const BookmarkButton: React.FC<BookmarkProps> = ({ currentBlog, userId }) => {
 
   const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
-  const [loginUser, setLoginUser] = useState<User>();
   const [currentUser, setCurrentUser] = useState<Bookmark>();
   const [loading, setLoading] = useState(true);
 
-  const fetchLoginData = async () => {
-    try {
-      const response = await loginApi.get("/currentUser", {
-        withCredentials: true,
-      });
-      setLoginUser(response.data);
-    } catch (error) {
-      console.error("Error fetching login data:", error);
-    }
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetchLoginData();
-    };
-    fetchData();
-  }, []);
-
   const fetchBookmarkData = async () => {
     try {
-      const response = await bookmarkApi.get(`show/${loginUser?.userID}`, {
+      const response = await bookmarkApi.get(`show/${userId}`, {
         withCredentials: true,
       });
       setCurrentUser(response.data);
@@ -49,7 +31,7 @@ const BookmarkButton: React.FC<BookmarkProps> = ({ currentBlog }) => {
 
   useEffect(() => {
     fetchBookmarkData();
-  }, [loginUser, currentUser]);
+  }, [userId]);
 
   useEffect(() => {
     if (currentUser?.bookmarkedPost.includes(currentBlog.blogId)) {

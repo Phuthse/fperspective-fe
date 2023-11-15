@@ -16,6 +16,7 @@ type BlogPostProps = {
   blog: Blog;
   userUri: string;
   userId: string;
+  loginUser: string;
 };
 
 const HandleApprove = (blogId: string) => () => {
@@ -43,6 +44,7 @@ const HandleNotApprove = (blogId: string) => () => {
 const BlogPost: React.FC<BlogPostProps> = ({
   blog,
   userUri,
+  loginUser
 }) => {
   const date = new Date(blog.uploadDate);
 
@@ -108,7 +110,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
               </Link>
             </div>
 
-            <BookmarkButton currentBlog={blog} />
+            <BookmarkButton currentBlog={blog} userId={loginUser} />
           </div>
         </div>
       </>

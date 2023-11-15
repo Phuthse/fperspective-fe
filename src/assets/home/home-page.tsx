@@ -17,8 +17,25 @@ const HomePage: React.FC = () => {
 
   const { filter } = useParams();
 
+  const initialUser : User = {
+    userID: '',
+    username: '',
+    bio: '',
+    email: '',
+    avatarUrl: '',
+    campus: '',
+    term: '',
+    category: '',
+    fullName: '',
+    createdDate: 0,
+    status: false,
+    role: '',
+    loginProvider: '',
+    name: ''
+  }
+
   /* IF NOT LOGGED IN BACK TO LOGIN PAGE */
-  const [loginUser, setLoginUser] = useState<User>();
+  const [loginUser, setLoginUser] = useState<User>(initialUser);
   const fetchLoginData = async () => {
     try {
       const response = await loginApi.get("/currentUser", { withCredentials: true });
@@ -60,19 +77,19 @@ const HomePage: React.FC = () => {
       <div className='home-page-main-content'>
         <HomePageFilter />
         {filter === 'latest' ? (
-          <BlogList uri={"/sort/latest"} />
+          <BlogList uri={"/sort/latest"} login={loginUser.userID} />
         ) : filter === 'top' || filter === 'week' ? (
-          <BlogList uri={`/sort/blog/week/${year}/${month}/${week}`} />
+          <BlogList uri={`/sort/blog/week/${year}/${month}/${week}`} login={loginUser.userID} />
         ) : filter === 'month' ? (
-          <BlogList uri={`/sort/blog/month/${year}/${month}`} />
+          <BlogList uri={`/sort/blog/month/${year}/${month}`} login={loginUser.userID} />
         ) : filter === 'year' ? (
-          <BlogList uri={`/sort/blog/year/${year}`} />
+          <BlogList uri={`/sort/blog/year/${year}`} login={loginUser.userID} />
         ) : filter === 'all' ? (
-          <BlogList uri={"/sort/all"} />
+          <BlogList uri={"/sort/all"} login={loginUser.userID} />
         ) : filter === 'approve' ? (
-          <BlogList uri={"/approve/all"} />
+          <BlogList uri={"/approve/all"} login={loginUser.userID} />
         ) : filter === undefined ? (
-          <BlogList uri={"/sort/latest"} />
+          <BlogList uri={"/sort/latest"} login={loginUser.userID} />
         ) : null}
       </div>
 
