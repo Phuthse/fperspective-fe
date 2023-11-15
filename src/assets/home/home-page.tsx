@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
 
   const { filter } = useParams();
 
-  const initialUser : User = {
+  const initialUser: User = {
     userID: '',
     username: 'Loading...',
     bio: '',
@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
       const response = await loginApi.get("/currentUser", { withCredentials: true });
       setLoginUser(response.data);
     } catch {
-      window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`;
+      window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/login`;
     }
   };
   useEffect(() => {

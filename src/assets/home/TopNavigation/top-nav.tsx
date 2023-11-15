@@ -14,7 +14,7 @@ function timeout(delay: number) {
 
 const HandleLogout = async () => {
   try {
-    window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/logout`
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/logout`
     await timeout(30);
   } catch { /* empty */ }
   finally {
