@@ -10,14 +10,21 @@ const AdminDashboard: React.FC = () => {
 
     const [loginUser, setLoginUser] = useState<User>();
     const fetchLoginData = async () => {
-        const response = await loginApi.get("/currentUser", { withCredentials: true });
-        setLoginUser(response.data);
+        try {
+            const response = await loginApi.get("/currentUser", { withCredentials: true });
+            setLoginUser(response.data);
+        } catch {
+            window.location.href = 'http://localhost:5173/login';
+        }
     };
     useEffect(() => {
         fetchLoginData();
     }, [loginApi]);
 
-    if (loginUser && loginUser?.role === 'ROLE_ADMIN') {
+    if (!loginUser?.userID) {
+        return <h1 style={{ color: 'white' }}>Loading...</h1>;
+    }
+    else if (loginUser && loginUser?.role !== 'ROLE_ADMIN') {
         window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`;
     }
 

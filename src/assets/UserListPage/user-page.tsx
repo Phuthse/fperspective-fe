@@ -15,7 +15,10 @@ const UserListPage: React.FC = () => {
         fetchLoginData();
     }, [loginApi]);
 
-    if (loginUser?.role === 'ROLE_USER') {
+    if (!loginUser) {
+        <h1 style={{ color: 'white' }}>Loading...</h1>
+    }
+    else if (loginUser?.role === 'ROLE_USER') {
         window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`
     }
 
