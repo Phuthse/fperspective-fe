@@ -23,25 +23,6 @@ const TagPageTagsAdmin: React.FC<TagsPageAdminProp> = ({ tags }) => {
         fetchTagData();
     }, [tagApi]);
 
-    // const handleUpdate = () => {
-    //     const tagData = {
-    //         tagId: tags.tagId,
-    //         tagName: tagName,
-    //         status
-    //     };
-    //     tagApi
-    //         .post(`/update`, tagData, { withCredentials: true })
-    //         .then((response) => {
-    //             console.log(tagData);
-    //             window.location.href = "http://localhost:5173/tag-page";
-    //             console.log("TAG updated:", response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(tagData);
-    //             console.error("Error updating tag: ", error);
-    //         });
-    // };
-
     const handleDelete = () => {
         tagApi
             .delete(`/delete/${tags.tagId}`, { withCredentials: true })

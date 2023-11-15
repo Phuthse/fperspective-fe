@@ -28,26 +28,6 @@ const SubjectItemAdmin: React.FC<SubjectItemAdminProps> = ({ subjects }) => {
 
     const [subjectName, setSubjectName] = useState(subjects.subjectName);
 
-    // const [status] = useState(subjects.status);
-    // const handleUpdate = () => {
-    //     const subjectData = {
-    //         subjectId: subjects.subjectId,
-    //         subjectName: subjectName,
-    //         status
-    //     };
-    //     subjectApi
-    //         .post(`/update`, subjectData, { withCredentials: true })
-    //         .then((response) => {
-    //             console.log(subjectData);
-    //             window.location.href = "http://localhost:5173/subject-page";
-    //             console.log("TAG updated:", response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(subjectData);
-    //             console.error("Error creating tag: ", error);
-    //         });
-    // };
-
     const handleDelete = () => {
         subjectApi
             .delete(`/delete/${subjects.subjectId}`, { withCredentials: true })

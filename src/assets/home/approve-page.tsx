@@ -17,7 +17,7 @@ const ApprovePage: React.FC = () => {
             } catch (error) {
                 console.error("Error fetching user data:", error);
                 setLoginUser(null); // Set to null in case of an error
-                window.location.href = 'http://localhost:5173/login';
+                window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/login`;
             } finally {
                 setRoleChecked(true);
             }
