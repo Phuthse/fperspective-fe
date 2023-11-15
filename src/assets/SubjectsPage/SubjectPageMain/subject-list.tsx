@@ -61,8 +61,12 @@ const SubjectList: React.FC<SubjectListProps> = ({ uri }) => {
     const handleSubjectNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSubjectName(event.target.value);
     };
-
-    if (loginUser?.role === 'ROLE_USER') {
+    if (!loginUser) {
+        return (
+            <h1 style={{ color: 'white' }}> Loading...</h1>
+        );
+    }
+    else if (loginUser?.role === 'ROLE_USER') {
         return (
             <div className='subject-page-body'>
                 <div className='subject-page-container'>

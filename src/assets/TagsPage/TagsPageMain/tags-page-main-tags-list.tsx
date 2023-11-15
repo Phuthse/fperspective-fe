@@ -61,8 +61,12 @@ const TagsPageTagsList: React.FC<TagsPageMain> = ({ uri }) => {
         setTagName(event.target.value);
     };
 
-
-    if (loginUser?.role === 'ROLE_USER') {
+    if (!loginUser) {
+        return (
+            <h1 style={{ color: 'white' }}> Loading...</h1>
+        );
+    }
+    else if (loginUser?.role === 'ROLE_USER') {
         return (
             <div className='tags-page-body'>
                 <div className='tags-page-container'>
