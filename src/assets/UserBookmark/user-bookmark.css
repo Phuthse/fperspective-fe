@@ -1,12 +1,11 @@
 .user-bookmark-container {
     color: white;
-    padding: 0 5%;
-    width: 1000px;
+    width: 70%;
 }
 
-
-
-
-
-
-
+.bookmark-container {
+    display: flex;
+    gap: 50px;
+    padding: 15px;
+    margin-left: 10px;
+}

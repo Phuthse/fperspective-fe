@@ -9,56 +9,22 @@ import User from '../../model/user';
 
 import { useParams } from 'react-router-dom';
 
-function timeout(delay: number) {
-  return new Promise(res => setTimeout(res, delay));
-}
-
 const HomePage: React.FC = () => {
 
   const { filter } = useParams();
 
-  const initialUser : User = {
-    userID: '',
-    username: '',
-    bio: '',
-    email: '',
-    avatarUrl: '',
-    campus: '',
-    term: '',
-    category: '',
-    fullName: '',
-    createdDate: 0,
-    status: false,
-    role: '',
-    loginProvider: '',
-    name: ''
-  }
-
-  /* IF NOT LOGGED IN BACK TO LOGIN PAGE */
-  const [loginUser, setLoginUser] = useState<User>(initialUser);
+  const [loginUser, setLoginUser] = useState<User>();
   const fetchLoginData = async () => {
     try {
       const response = await loginApi.get("/currentUser", { withCredentials: true });
       setLoginUser(response.data);
-    }
-    catch {
-      window.location.href = "http://localhost:5173/login"
+    } catch {
+      window.location.href = 'http://localhost:5173/login';
     }
   };
   useEffect(() => {
     fetchLoginData();
   }, [loginApi]);
-
-  useEffect(() => {
-    const delay = setTimeout(() => {
-      timeout(200);
-      if (loginUser === null || loginUser === undefined) {
-        // window.location.reload();
-        // window.location.href = 'http://localhost:5173/login';
-      }
-    }, 700);
-    return () => clearTimeout(delay);
-  }, [loginUser]);
 
   const user = loginUser?.username as string;
 
@@ -73,7 +39,6 @@ const HomePage: React.FC = () => {
   return (
     <div className="container">
       <SideNav />
-
       <div className='home-page-main-content'>
         <HomePageFilter />
         {filter === 'latest' ? (

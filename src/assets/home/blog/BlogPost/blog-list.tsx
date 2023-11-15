@@ -5,10 +5,9 @@ import BlogPost from "./blog-post";
 
 type BlogListProps = {
   uri: string;
-  login: string
 };
 
-const BlogList: React.FC<BlogListProps> = ({ uri, login }) => {
+const BlogList: React.FC<BlogListProps> = ({ uri }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
@@ -38,30 +37,33 @@ const BlogList: React.FC<BlogListProps> = ({ uri, login }) => {
     return (
       <section style={{ color: "white" }}>
         <h1
-          style={{padding: '15px'}}
+          style={{ padding: '15px' }}
         >No posts found</h1>
       </section>
     );
   }
 
-  return (
-    <>
-      {blogs.map((blog) => {
-        const userId = blog.userId;
-        const apiUri = "/show/" + userId;
-        return (
-          <BlogPost
-            key={blog.blogId}
-            blog={blog}
-            userUri={apiUri}
-            userId={userId}
-            loginUser={login}
-          />
-        );
-      }
-      )}
-    </>
-  );
+  if (!isLoading) {
+
+
+    return (
+      <>
+        {blogs.map((blog) => {
+          const userId = blog.userId;
+          const apiUri = "/show/" + userId;
+          return (
+            <BlogPost
+              key={blog.blogId}
+              blog={blog}
+              userUri={apiUri}
+              userId={userId}
+            />
+          );
+        }
+        )}
+      </>
+    );
+  }
 };
 
 export default BlogList;

@@ -8,10 +8,6 @@ import { useParams } from 'react-router';
 import { loginApi } from '../../config/axios';
 import User from '../../model/user';
 
-function timeout(delay: number) {
-    return new Promise(res => setTimeout(res, delay));
-}
-
 const SearchPage: React.FC = () => {
 
     const { searchText } = useParams();
@@ -19,7 +15,7 @@ const SearchPage: React.FC = () => {
     const search = searchText as string;
 
     /* REDIRECT TO LOGIN PAGE IF NOT LOGGED IN */
-    const [currentLoginUser, setCurrentLoginUser] = useState<User>();
+    const [, setCurrentLoginUser] = useState<User>();
     const fetchCurrentLoginData = async () => {
         try {
             const response = await loginApi.get("/currentUser", { withCredentials: true });
@@ -32,16 +28,6 @@ const SearchPage: React.FC = () => {
     useEffect(() => {
         fetchCurrentLoginData();
     }, [loginApi]);
-    useEffect(() => {
-        const delay = setTimeout(() => {
-            timeout(200);
-            if (currentLoginUser === null || currentLoginUser === undefined) {
-                // window.location.reload();
-                // window.location.href = 'http://localhost:5173/login';
-            }
-        }, 700);
-        return () => clearTimeout(delay);
-    }, [currentLoginUser]);
 
     return (
         <div className='search-page-container'>

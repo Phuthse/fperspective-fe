@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import User from "../../../model/user";
 import "./user-profile-body-main.css";
-import { commentApi, userApi } from "../../../config/axios";
+import { blogApi, commentApi, loginApi, userApi } from "../../../config/axios";
 import Blog from "../../../model/blog";
 import TagList from "../../home/blog/BlogTags/blog-tag-list";
 import { Link } from "react-router-dom";
 import PostUserProfile from "../../home/blog/UserProfile/user-profile";
 import HeartButton from "../../home/button/ReactionButton/heart-button";
 import CommentButton from "../../home/button/CommentButton/comment-button";
+import PostSubjectList from "../../home/blog/BlogSubject/blog-subject-list";
 
 type UserProfileBodyMain = {
   blog: Blog;
@@ -57,9 +58,33 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> = ({
     fetchCommentData();
   }, []);
 
+  const [loginUser, setLoginUser] = useState<User>();
+  const fetchLoginData = async () => {
+    const response = await loginApi.get('/currentUser', { withCredentials: true });
+    setLoginUser(response.data);
+  };
+  useEffect(() => {
+    fetchLoginData();
+  }, [loginApi]);
+
+  const HandleDelete = (blogId: string) => () => {
+    blogApi
+      .delete(`/delete/${blogId}`, { withCredentials: true })
+      .then((response) => {
+        window.location.reload();
+        console.log("blog deleted:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error deleting blog: ", error);
+      });
+  };
+
   return (
     <div className="user-profile-body-main-post">
-      <PostUserProfile user={user} time={uploadDate.toLocaleString("en-US")} />
+      <div className="user-profile-user-profile-and-subject">
+        <PostUserProfile user={user} time={uploadDate.toLocaleString("en-US")} />
+        <PostSubjectList uri={`/search/blog/${blog.blogId}`} />
+      </div>
       <div className="user-profile-body-main-post-body">
         <div className="user-profile-body-main-post-body-title">
           <h2>
@@ -69,11 +94,18 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> = ({
         <div className="user-profile-body-main-post-body-tags">
           <TagList uri={`/search/blog/${blog.blogId}`} />
         </div>
-        <div className="user-profile-body-main-post-body-bottom">
-          <HeartButton currentBlog={blog} />
-          <Link to={`/detail-blog/${blog.blogId}`}>
-            <CommentButton NumberOfComment={numberOfComment} />
-          </Link>
+        <div style={{ justifyContent: 'space-between', display: 'flex' }}>
+          <div className="user-profile-body-main-post-body-bottom">
+            <HeartButton currentBlog={blog} />
+            <Link to={`/detail-blog/${blog.blogId}`}>
+              <CommentButton NumberOfComment={numberOfComment} />
+            </Link>
+          </div>
+          {loginUser?.role === "ROLE_ADMIN" && (
+            <div className="admin-post-delete-button">
+              <button className="admin-delete-button" onClick={HandleDelete(blog.blogId)}>Delete</button>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -16,6 +16,8 @@ function timeout(delay: number) {
 
 const CreateBlog: React.FC = () => {
 
+
+
     const [userId, setLoginUser] = useState<string>("");
     const [blogTitle, setTitle] = useState("");
     const [btag, setTags] = useState<Tag[]>([]);
@@ -32,12 +34,14 @@ const CreateBlog: React.FC = () => {
             ["link"],
         ],
     };
-
+    
     const fetchLoginData = async () => {
-        const response = await loginApi.get("/currentUser", {
-            withCredentials: true,
-        });
-        setLoginUser(response.data.userID);
+        try {
+            const response = await loginApi.get("/currentUser", { withCredentials: true });
+            setLoginUser(response.data.userID);
+        } catch {
+            window.location.href = 'http://localhost:5173/login';
+        }
     };
     useEffect(() => {
         fetchLoginData();
@@ -127,8 +131,9 @@ const CreateBlog: React.FC = () => {
                             modules={modules}
                         />
                     </div>
-                    <div className="preview">
-                        <div dangerouslySetInnerHTML={{ __html: blogContent }} />
+                    <h1 className="the-big-preview">Preview</h1>
+                    <div className="preview-container">
+                        <div className="preview" dangerouslySetInnerHTML={{ __html: blogContent }} />
                     </div>
                 </div>
                 <div className="create-post-form-footer">

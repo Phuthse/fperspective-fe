@@ -10,7 +10,7 @@ const PostContent: React.FC<PostContentProp> = ({ blogContent }) => {
 
     return (
         <div className="post-content">
-            <div dangerouslySetInnerHTML={{ __html: blogContent.blogContent }} />
+            <div className='content' dangerouslySetInnerHTML={{ __html: blogContent.blogContent }} />
         </div>
     );
 };

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './admin-dashboard-post.css';
-import { LineChartPostWeek, TotalPostWeek } from '../PostCharts/PostWeek/admin-dashboard-post-chart-week';
-import {LineChartPostMonth, TotalPostMonth} from '../PostCharts/PostMonth/admin-dashboard-post-chart-month';
-import {LineChartPostYear, TotalPostYear} from '../PostCharts/PostYear/admin-dashboard-post-chart-year';
-import { LineChartPostAll, TotalPostAll } from '../PostCharts/PostAllTime/admin-dashboard-post-chart-all';
+import { LineChartPostWeek } from '../PostCharts/PostWeek/admin-dashboard-post-chart-week';
+import { LineChartPostMonth } from '../PostCharts/PostMonth/admin-dashboard-post-chart-month';
+import { LineChartPostYear } from '../PostCharts/PostYear/admin-dashboard-post-chart-year';
+import { LineChartPostAll } from '../PostCharts/PostAllTime/admin-dashboard-post-chart-all';
 
 interface ChartOption {
     id: number;
@@ -13,15 +13,14 @@ interface ChartOption {
 const AdminDashoardPostCharts: React.FC = () => {
 
     const [selectedChart, setSelectedChart] = useState<JSX.Element | null>(<LineChartPostWeek />);
-    const [selectedOption, setSelectedOption] = useState<number>(1);
+    const [selectedOption, setSelectedOption] = useState<number>(0);
     const [dateRange, setDateRange] = useState<string>('');
-    const [totalPost, setTotalPost] = useState<number>(TotalPostWeek);
 
     const chartOptions: ChartOption[] = [
         { id: 1, label: 'This week' },
         { id: 2, label: 'This month' },
         { id: 3, label: 'This year' },
-        { id: 4, label: ' All time' },
+        // { id: 4, label: ' All time' },
     ];
 
     const handleChartChange = (chartNumber: number) => {
@@ -47,7 +46,6 @@ const AdminDashoardPostCharts: React.FC = () => {
     useEffect(() => {
         if (selectedOption === 4) {
             setDateRange("all time");
-            setTotalPost(TotalPostAll);
         } else {
             const currentDate = new Date();
             const startDate = new Date();
@@ -57,19 +55,16 @@ const AdminDashoardPostCharts: React.FC = () => {
                 const startDateStr = formatDateMonth(startDate);
                 const endDateStr = formatDateMonth(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
-                setTotalPost(TotalPostWeek);
             } else if (selectedOption === 2) {
                 startDate.setDate(currentDate.getDate() - 30);
                 const startDateStr = formatDateMonth(startDate);
                 const endDateStr = formatDateMonth(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
-                setTotalPost(TotalPostMonth);
             } else if (selectedOption === 3) {
                 startDate.setFullYear(currentDate.getFullYear() - 1);
                 const startDateStr = formatMonthYear(startDate);
                 const endDateStr = formatMonthYear(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
-                setTotalPost(TotalPostYear);
             }
         }
     }, [selectedOption]);
@@ -103,7 +98,6 @@ const AdminDashoardPostCharts: React.FC = () => {
                 <h2>
                     Total posts
                     <span className='admin-dashboard-date-range'>&nbsp;{dateRange}</span>
-                    <span className='admin-dashboard-total-post'>&nbsp;({totalPost})</span>
                 </h2>
             </div>
             {selectedChart}

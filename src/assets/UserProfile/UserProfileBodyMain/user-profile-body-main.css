@@ -89,3 +89,8 @@
 .user-profile-body-main-post-body-bottom a {
     text-decoration: none;
 }
+
+.user-profile-user-profile-and-subject {
+    display: flex;
+    justify-content: space-between;
+}

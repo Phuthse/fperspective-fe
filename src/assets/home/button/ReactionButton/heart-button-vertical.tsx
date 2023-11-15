@@ -49,52 +49,56 @@ const HeartButtonVertical: React.FC<HeartButtonProps> = ({ currentBlog }) => {
     }, []);
 
     useEffect(() => {
-        if (currentBlog.like.includes(currentUser.userID)) {
-            setIsLiked(true);
+        if (currentUser) {
+            setIsLiked(currentBlog.like.includes(currentUser.userID));
         }
     }, [currentUser, currentBlog]);
 
     const handleLike = () => {
-        const likeData = {
+        const updatedLike = [...currentBlog.like, currentUser.userID];
+        const likeData: Blog = {
             ...currentBlog,
-            like: [
-                ...(currentBlog.like || []),
-                currentUser.userID
-            ]
+            like: updatedLike
         };
         blogApi.post(`/like`, likeData, { withCredentials: true })
             .then((response) => {
-                console.log('BLOG LIKED:', response.data);
+                console.log('BLOG LIKED:', response);
+                console.log(likeData.like)
             })
             .catch((error) => {
-                console.error('BLOG UNLIKED: ', error);
+                console.error('BLOG LIKE FAILED: ', error);
             });
     };
 
     const handleUnlike = () => {
         const updatedLike = currentBlog.like.filter(id => id !== currentUser.userID);
-        const likeData = {
+        const likeData: Blog = {
             ...currentBlog,
             like: updatedLike || []
         };
-        blogApi.post(`/like`, likeData, { withCredentials: true })
+        blogApi.post(`/unlike`, likeData, { withCredentials: true })
             .then((response) => {
                 console.log('BLOG UNLIKED:', response.data);
+                console.log(likeData.like)
             })
             .catch((error) => {
-                console.error('BLOG UNLIKED: ', error);
+                console.error('BLOG UNLIKED FAILED: ', error);
             });
     }
 
     const handleHeartClick = () => {
         if (isLiked) {
             handleUnlike();
+            setIsLiked(!isLiked);
+            setLikes(isLiked ? likes - 1 : likes + 1);
         } else {
             handleLike();
+            setIsLiked(!isLiked);
+            setLikes(isLiked ? likes - 1 : likes + 1);
         }
-        setIsLiked(!isLiked);
-        setLikes(isLiked ? likes - 1 : likes + 1);
+
     };
+    
     return (
         <>
             {!loading && (

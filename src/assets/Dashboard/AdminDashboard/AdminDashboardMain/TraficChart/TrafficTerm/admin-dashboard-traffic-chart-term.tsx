@@ -1,30 +1,57 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-
-const data = [
-    { name: 'K19', value: 2233 },
-    { name: 'K18', value: 1235 },
-    { name: 'K17', value: 4020 },
-    { name: 'K16', value: 1234 },
-    { name: 'K15', value: 4232 },
-    { name: 'K14', value: 3842 },
-    { name: 'Before K14', value: 321 },
-];
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF', '#FF0080', '#efefef'];
+import { userApi } from '../../../../../../config/axios';
+import User from '../../../../../../model/user';
 
 const PieChartTrafficTerm: React.FC = () => {
-    const total = data.reduce((acc, actor) => acc + actor.value, 0);
+    const [users, setUsers] = useState<User[]>([]);
+    const fetchUserData = async () => {
+        const response = await userApi.get('/show', { withCredentials: true });
+        setUsers(response.data);
+    };
 
-    const dataWithPercentage = data.map((actor) => ({
-        ...actor,
-        percentage: ((actor.value / total) * 100).toFixed(2) + '%',
+    useEffect(() => {
+        fetchUserData();
+    }, []);
+
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF', '#FF0080'];
+
+    // Map user terms to more readable names
+    const mapTermToReadableName = (term: string) => {
+        switch (term) {
+            case 'K19':
+                return 'K19';
+            case 'K18':
+                return 'K18';
+            case 'K17':
+                return 'K17';
+            case 'K16':
+                return 'K16';
+            case 'K15':
+                return 'K15';
+            default:
+                return 'Before K15';
+        }
+    };
+
+    // Count the number of users for each term
+    const termCounts: Record<string, number> = users.reduce((acc, user) => {
+        const term = mapTermToReadableName(user.term);
+        acc[term] = (acc[term] || 0) + 1;
+        return acc;
+    }, {} as Record<string, number>); // Use type assertion
+
+    // Transform data for the pie chart
+    const data = Object.keys(termCounts).map((term, _) => ({
+        name: term,
+        value: termCounts[term],
+        percentage: ((termCounts[term] / users.length) * 100).toFixed(2) + '%',
     }));
 
     return (
-        <PieChart width={600} height={350} >
+        <PieChart width={1000} height={350} >
             <Pie
-                data={dataWithPercentage}
+                data={data}
                 cx="50%"
                 cy="50%"
                 innerRadius={90}

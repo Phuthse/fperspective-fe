@@ -70,11 +70,11 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
         <div className="create-blog-button">
           <Link to='/create-blog'>Write a Blog</Link>
         </div>
-        <Link to='/notification'>
+        {/* <Link to='/notification'>
           <svg fill="white" width="24" height="24" viewBox="0 0 24 24">
             <path d="M20 17h2v2H2v-2h2v-7a8 8 0 1116 0v7zm-2 0v-7a6 6 0 10-12 0v7h12zm-9 4h6v2H9v-2z"></path>
           </svg>
-        </Link>
+        </Link> */}
         <div className='nav-user-icon'>
           <img src={loginUser?.avatarUrl} />
           <div className="dropdown-content">
@@ -84,7 +84,9 @@ const TopNav: React.FC<TopNavProps> = ({ uri }) => {
             <hr />
             <Link to='/create-blog'>Write a Blog</Link>
             <Link to="/user-dashboard">Dashboard</Link>
-            <Link to="/admin-dashboard">Admin Dashboard</Link>
+            {loginUser?.role === 'ROLE_ADMIN' && (
+              <Link to="/admin-dashboard">Admin Dashboard</Link>
+            )}
             <Link to='/setting'>Setting</Link>
             <Link onClick={HandleLogout} to={""}>Logout</Link>
           </div>

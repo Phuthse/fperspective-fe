@@ -1,0 +1,12 @@
+.user-page-list-container {
+    display: flex;
+    flex-direction: column;
+    color: #efefef;
+    padding: 15px;
+}
+
+.user-item-list-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}

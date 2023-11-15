@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './admin-dashboard-user.css';
-import { LineChartUserWeek, TotalUserWeek } from '../UserCharts/UserWeek/admin-dashboard-user-chart-week';
-import { LineChartUserMonth, TotalUserMonth } from '../UserCharts/UserMonth/admin-dashboard-user-chart-month';
-import { LineChartUserYear, TotalUserYear } from '../UserCharts/UserYear/admin-dashboard-user-chart-year';
-import { LineChartUserAll, TotalUserAll } from '../UserCharts/UserAll/admin-dashboard-user-chart-all';
+import { LineChartUserWeek } from '../UserCharts/UserWeek/admin-dashboard-user-chart-week';
+import { LineChartUserMonth } from '../UserCharts/UserMonth/admin-dashboard-user-chart-month';
+import { LineChartUserYear } from '../UserCharts/UserYear/admin-dashboard-user-chart-year';
+import { LineChartUserAll } from '../UserCharts/UserAll/admin-dashboard-user-chart-all';
 
 interface ChartOption {
     id: number;
@@ -14,13 +14,12 @@ const AdminDashoardUserCharts: React.FC = () => {
     const [selectedChart, setSelectedChart] = useState<JSX.Element | null>(<LineChartUserWeek />);
     const [selectedOption, setSelectedOption] = useState<number>(1);
     const [dateRange, setDateRange] = useState<string>('');
-    const [totalUser, setTotalUser] = useState<number>(TotalUserWeek);
 
     const chartOptions: ChartOption[] = [
         { id: 1, label: 'This week' },
         { id: 2, label: 'This month' },
         { id: 3, label: 'This year' },
-        { id: 4, label: 'All time' },
+        // { id: 4, label: 'All time' },
     ];
 
     const handleChartChange = (chartNumber: number) => {
@@ -42,11 +41,10 @@ const AdminDashoardUserCharts: React.FC = () => {
                 return <LineChartUserWeek />;
         }
     };
-
+ 
     useEffect(() => {
         if (selectedOption === 4) {
             setDateRange("all time");
-            setTotalUser(TotalUserAll);
         } else {
             const currentDate = new Date();
             let startDate = new Date();
@@ -56,19 +54,16 @@ const AdminDashoardUserCharts: React.FC = () => {
                 const startDateStr = formatDateMonth(startDate);
                 const endDateStr = formatDateMonth(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
-                setTotalUser(TotalUserWeek)
             } else if (selectedOption === 2) {
                 startDate.setDate(currentDate.getDate() - 30);
                 const startDateStr = formatDateMonth(startDate);
                 const endDateStr = formatDateMonth(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
-                setTotalUser(TotalUserMonth)
             } else if (selectedOption === 3) {
                 startDate.setFullYear(currentDate.getFullYear() - 1);
                 const startDateStr = formatMonthYear(startDate);
                 const endDateStr = formatMonthYear(currentDate);
                 setDateRange(`from ${startDateStr} to ${endDateStr}`);
-                setTotalUser(TotalUserYear)
             }
         }
     }, [selectedOption]);
@@ -101,7 +96,6 @@ const AdminDashoardUserCharts: React.FC = () => {
                 <h2>
                     Total user
                     <span className='admin-dashboard-date-range'>&nbsp;{dateRange}</span>
-                    <span className='admin-dashboard-total-user'>&nbsp;({totalUser})</span>
                 </h2>
             </div>
             {selectedChart}

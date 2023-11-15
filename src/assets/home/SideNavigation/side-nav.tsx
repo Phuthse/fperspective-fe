@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './side-nav.css'
 import { HomeIcon } from '@heroicons/react/24/solid';
 import {
@@ -6,17 +6,27 @@ import {
 } from '@heroicons/react/24/solid';
 import { IconBook } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
+import { IconUser } from '@tabler/icons-react';
+import { loginApi } from '../../../config/axios';
+import User from '../../../model/user';
 
 const SideNav: React.FC = () => {
+
+  const [loginUser, setLoginUser] = useState<User>();
+  const fetchLoginData = async () => {
+    const response = await loginApi.get('/currentUser', { withCredentials: true });
+    setLoginUser(response.data);
+  };
+  useEffect(() => {
+    fetchLoginData();
+  }, [loginApi]);
 
   return (
     <div className='side-nav'>
       <div className="side-nav-links">
 
         <Link to='/'><HomeIcon className='side-nav-icon' /> HOME</Link>
-
         <Link to='/bookmark'><BookmarkIcon className='side-nav-icon' />Bookmarks</Link>
-
         <Link to='/tag-page'>
           <svg viewBox="0 0 44 44" width="24" height="24">
             <g className="icon-container">
@@ -26,6 +36,9 @@ const SideNav: React.FC = () => {
           </svg> Tags
         </Link>
         <Link to='/subject-page'><IconBook className='side-nav-icon' />Subjects</Link>
+        {loginUser?.role === 'ROLE_ADMIN' && (
+          <Link to='user-list-page'><IconUser className='side-nav-icon' />Users</Link>
+        )}
       </div>
     </div>
   );

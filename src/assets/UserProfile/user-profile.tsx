@@ -30,10 +30,6 @@ const UserProfile: React.FC = () => {
   useEffect(() => {
     const delay = setTimeout(() => {
       timeout(200);
-      if (currentLoginUser === null || currentLoginUser === undefined) {
-        // window.location.reload();
-        // window.location.href = 'http://localhost:5173/login';
-      }
     }, 700);
     return () => clearTimeout(delay);
   }, [currentLoginUser]);
@@ -44,6 +40,7 @@ const UserProfile: React.FC = () => {
   const USER_URI = `/show/${userID}`;
   const BLOG_SHARED_URI = `/search/user/${userID}/-1`;
   const USER_FOLLOWING_URI = `/show/user/${userID}`;
+  const USER_FOLLOWER_URI = `/show/count/${userID}`;
 
   return (
     <div className="user-profile-container">
@@ -54,10 +51,8 @@ const UserProfile: React.FC = () => {
         <div className="user-profile-body-container">
           <UserProfileBodySide
             blogUri={BLOG_SHARED_URI}
-            followUri={USER_FOLLOWING_URI}
-            TagFollowed={32}
-            SubjectFollowed={10}
-            Follwers={23}
+            followingUri={USER_FOLLOWING_URI}
+            followerUri={USER_FOLLOWER_URI}
           />
           <div className="user-profile-body-main">
             <UserProfileBlogList

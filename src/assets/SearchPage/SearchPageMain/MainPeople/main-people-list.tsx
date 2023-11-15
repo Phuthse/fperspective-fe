@@ -9,7 +9,8 @@ type MainPeopleListProp = {
 
 const MainPeopleList: React.FC<MainPeopleListProp> = ({ uri }) => {
 
-  const [loginUser, setLoginUser] = useState<string>(' ');
+  const [loginUser, setLoginUser] = useState<string>();
+  const [loading, setLoading] = useState(true)
   const fetchLoginData = async () => {
     const response = await loginApi.get("/currentUser", { withCredentials: true });
     setLoginUser(response.data.userID);
@@ -22,6 +23,7 @@ const MainPeopleList: React.FC<MainPeopleListProp> = ({ uri }) => {
   const fetchUserData = async () => {
     const response = await userApi.get(uri, { withCredentials: true });
     setUsers(response.data);
+    setLoading(false);
   };
   useEffect(() => {
     fetchUserData();
@@ -37,16 +39,17 @@ const MainPeopleList: React.FC<MainPeopleListProp> = ({ uri }) => {
     );
   }
 
-
-  return (
-    <>
-      {users
-        .filter((user) => user.userID != loginUser)
-        .map((filteredUser) => {
-          return <SearchPageMainPeople user={filteredUser} />;
-        })}
-    </>
-  );
+  if (!loading) {
+    return (
+      <>
+        {users
+          .filter((user) => user.userID != loginUser)
+          .map((filteredUser) => {
+            return <SearchPageMainPeople user={filteredUser} />;
+          })}
+      </>
+    );
+  }
 };
 
 export default MainPeopleList;
