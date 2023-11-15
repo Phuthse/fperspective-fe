@@ -56,7 +56,6 @@ const BlogList: React.FC<BlogListProps> = ({ uri }) => {
               key={blog.blogId}
               blog={blog}
               userUri={apiUri}
-              userId={userId}
             />
           );
         }

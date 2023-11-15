@@ -43,7 +43,7 @@ const PostCommentForm: React.FC<CommentFormProps> = ({ ProfilePic }) => {
         commentApi
             .post(`/show`, commentData, { withCredentials: true })
             .then((response) => {
-                window.location.href = "http://localhost:5173/detail-user";
+                window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/detail-user`;
                 console.log("Comment created:", response.data);
             })
             .catch((error) => {

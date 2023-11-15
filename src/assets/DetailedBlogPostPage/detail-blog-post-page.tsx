@@ -4,9 +4,10 @@ import DetailedBlogPostGenerator from './DetailedBlog/detailed-blog-post-generat
 import BookmarkButton from '../home/button/BookmarkButton/bookmark-button';
 import { useParams } from 'react-router';
 import Blog from '../../model/blog';
-import { blogApi } from '../../config/axios';
+import { blogApi, loginApi } from '../../config/axios';
 import PostCreator from './PostCreatorDetail/post-creator-detail';
 import HeartButtonVertical from '../home/button/ReactionButton/heart-button-vertical';
+import User from '../../model/user';
 
 
 const DetailedBlogPostPage: React.FC = () => {
@@ -26,6 +27,19 @@ const DetailedBlogPostPage: React.FC = () => {
     status: true,
     subject: [],
   };
+
+  const [loginUser, setLoginUser] = useState<User>();
+  const fetchLoginData = async () => {
+    try {
+      const response = await loginApi.get("/currentUser", { withCredentials: true });
+      setLoginUser(response.data);
+    } catch {
+      window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`;
+    }
+  };
+  useEffect(() => {
+    fetchLoginData();
+  }, [loginApi]);
 
   const [blog, setBlog] = useState<Blog>(initialBlog);
   const [loading, setLoading] = useState<boolean>(true)
@@ -59,6 +73,7 @@ const DetailedBlogPostPage: React.FC = () => {
           <div className='detail-blog-post-page-right'>
             <PostCreator
               userUri={USER_URI}
+              currentUser={loginUser?.userID}
             />
           </div >
 

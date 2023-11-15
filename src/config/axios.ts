@@ -1,48 +1,39 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 const blogConfig: AxiosRequestConfig = {
-  // baseURL: "https://fperspective-server.onrender.com/api/v1/blog",
-  baseURL: "http://localhost:8080/api/v1/blog",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/v1/blog`,
 };
 
 const userConfig: AxiosRequestConfig = {
-  // baseURL: "https://fperspective-server.onrender.com/api/v1/user",
-  baseURL: "http://localhost:8080/api/v1/user",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/v1/user`,
 };
 
 const tagConfig: AxiosRequestConfig = {
-  // baseURL: "https://fperspective-server.onrender.com/api/v1/tag",
-  baseURL: "http://localhost:8080/api/v1/tag",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/v1/tag`,
 };
 
 const loginConfig: AxiosRequestConfig = {
-  // baseURL: "https://fperspective-server.onrender.com/api/v1/admin",
-  baseURL: "http://localhost:8080/api/v1/admin",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/v1/admin`,
 };
 
 const subjectConfig: AxiosRequestConfig = {
-  // baseURL: "https://fperspective-server.onrender.com/api/v1/subject",
-  baseURL: "http://localhost:8080/api/v1/subject",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/v1/subject`,
 };
 
 const categoryConfig: AxiosRequestConfig = {
-  // baseURL: "https://fperspective-server.onrender.com/api/v1/subject",
-  baseURL: "http://localhost:8080/api/v1/category",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/v1/category`,
 };
 
 const commentConfig: AxiosRequestConfig = {
-  // baseURL: "https://fperspective-server.onrender.com/api/v1/subject",
-  baseURL: "http://localhost:8080/api/v1/comment",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/v1/comment`,
 };
 
 const followConfig: AxiosRequestConfig = {
-  // baseURL: "https://fperspective-server.onrender.com/api/v1/subject",
-  baseURL: "http://localhost:8080/api/v1/follow",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/v1/follow`,
 }
 
 const bookmarkConfig: AxiosRequestConfig = {
-  // baseURL: "https://fperspective-server.onrender.com/api/v1/bookmark",
-  baseURL: "http://localhost:8080/api/v1/bookmark",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/v1/bookmark`,
 };
 
 export const blogApi = axios.create(blogConfig);

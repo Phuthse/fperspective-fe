@@ -40,7 +40,7 @@ const CreateBlog: React.FC = () => {
             const response = await loginApi.get("/currentUser", { withCredentials: true });
             setLoginUser(response.data.userID);
         } catch {
-            window.location.href = 'http://localhost:5173/login';
+            window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/login`;
         }
     };
     useEffect(() => {
@@ -55,7 +55,7 @@ const CreateBlog: React.FC = () => {
             setCurrentLoginUser(response.data);
         }
         catch {
-            window.location.href = "http://localhost:5173/login"
+            window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/login`
         }
     };
     useEffect(() => {
@@ -103,7 +103,7 @@ const CreateBlog: React.FC = () => {
                     console.log("Blog post created:", response.data);
                     setValidationMessage("Post successfully created");
                     setValidationMessageColor("green");
-                    window.location.href = "http://localhost:5173";
+                    window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`;
                 })
                 .catch((error) => {
                     console.log(postData);

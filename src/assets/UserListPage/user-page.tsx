@@ -16,7 +16,7 @@ const UserListPage: React.FC = () => {
     }, [loginApi]);
 
     if (loginUser?.role === 'ROLE_USER') {
-        window.location.href = 'http://localhost:5173'
+        window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`
     }
 
     return (

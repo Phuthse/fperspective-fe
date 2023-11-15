@@ -9,10 +9,9 @@ import User from "../../../../model/user";
 
 type BookmarkProps = {
   currentBlog: Blog;
-  userId: string;
 };
 
-const BookmarkButton: React.FC<BookmarkProps> = ({ currentBlog, userId }) => {
+const BookmarkButton: React.FC<BookmarkProps> = ({ currentBlog }) => {
 
   const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
   const [loginUser, setLoginUser] = useState<User | undefined>(undefined);

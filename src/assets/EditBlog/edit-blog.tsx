@@ -92,7 +92,7 @@ const EditBlog: React.FC = () => {
                     console.log("Blog post created:", response.data);
                     setValidationMessage("Post successfully updated");
                     setValidationMessageColor("green");
-                    window.location.href = `http://localhost:5173/detail-blog/${blogId}`;
+                    window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/detail-blog/${blogId}`;
                 })
                 .catch((error) => {
                     console.log(NewBlog);

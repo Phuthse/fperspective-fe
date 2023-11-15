@@ -49,7 +49,7 @@ const SubjectList: React.FC<SubjectListProps> = ({ uri }) => {
             .post(`/show`, subjectData, { withCredentials: true })
             .then((response) => {
                 console.log(subjectData);
-                window.location.href = "http://localhost:5173";
+                window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`;
                 console.log("subject created:", response.data);
             })
             .catch((error) => {

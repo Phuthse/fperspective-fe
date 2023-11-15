@@ -32,7 +32,7 @@ const ApprovePage: React.FC = () => {
                 {roleChecked && (loginUser?.role === 'ROLE_ADMIN') ? (
                     <BlogList uri={"/approve/all"} />
                 ) : roleChecked && (
-                    window.location.href = 'http://localhost:5173'
+                    window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`
                 )}
             </div>
         </div>

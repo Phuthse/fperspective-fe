@@ -23,7 +23,7 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> = ({
 
   const initialUser: User = {
     userID: "1",
-    username: "test",
+    username: "Loading...",
     bio: "test",
     email: "test",
     avatarUrl: "test",

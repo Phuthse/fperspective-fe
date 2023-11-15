@@ -13,7 +13,7 @@ const UserBookmark: React.FC = () => {
             const response = await loginApi.get("/currentUser", { withCredentials: true });
             setLoginUser(response.data);
         } catch {
-            window.location.href = 'http://localhost:5173/login';
+            window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`;
         }
     };
     useEffect(() => {

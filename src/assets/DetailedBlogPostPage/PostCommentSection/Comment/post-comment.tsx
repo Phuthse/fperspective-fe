@@ -91,7 +91,7 @@ const PostComment: React.FC<PostCommentProps> = ({ comment }) => {
         commentApi
             .delete(`/delete/${comment.commentId}`, { withCredentials: true })
             .then((response) => {
-                window.location.href = `http://localhost:5173/detail-blog/${blogId}`;
+                window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/detail-blog/${blogId}`;
                 console.log("Comment deleted:", response.data);
             })
             .catch((error) => {

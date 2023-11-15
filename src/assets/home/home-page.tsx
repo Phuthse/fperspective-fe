@@ -11,15 +11,34 @@ import { useParams } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
 
+  console.log(loginApi)
+
   const { filter } = useParams();
 
-  const [loginUser, setLoginUser] = useState<User>();
+  const initialUser : User = {
+    userID: '',
+    username: 'Loading...',
+    bio: '',
+    email: '',
+    avatarUrl: '',
+    campus: '',
+    term: '',
+    category: '',
+    fullName: '',
+    createdDate: 0,
+    status: false,
+    role: '',
+    loginProvider: '',
+    name: ''
+  }
+
+  const [loginUser, setLoginUser] = useState<User>(initialUser);
   const fetchLoginData = async () => {
     try {
       const response = await loginApi.get("/currentUser", { withCredentials: true });
       setLoginUser(response.data);
     } catch {
-      window.location.href = 'http://localhost:5173/login';
+      window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`;
     }
   };
   useEffect(() => {
@@ -42,19 +61,19 @@ const HomePage: React.FC = () => {
       <div className='home-page-main-content'>
         <HomePageFilter />
         {filter === 'latest' ? (
-          <BlogList uri={"/sort/latest"} login={loginUser.userID} />
+          <BlogList uri={"/sort/latest"} />
         ) : filter === 'top' || filter === 'week' ? (
-          <BlogList uri={`/sort/blog/week/${year}/${month}/${week}`} login={loginUser.userID} />
+          <BlogList uri={`/sort/blog/week/${year}/${month}/${week}`} />
         ) : filter === 'month' ? (
-          <BlogList uri={`/sort/blog/month/${year}/${month}`} login={loginUser.userID} />
+          <BlogList uri={`/sort/blog/month/${year}/${month}`} />
         ) : filter === 'year' ? (
-          <BlogList uri={`/sort/blog/year/${year}`} login={loginUser.userID} />
+          <BlogList uri={`/sort/blog/year/${year}`} />
         ) : filter === 'all' ? (
-          <BlogList uri={"/sort/all"} login={loginUser.userID} />
+          <BlogList uri={"/sort/all"} />
         ) : filter === 'approve' ? (
-          <BlogList uri={"/approve/all"} login={loginUser.userID} />
+          <BlogList uri={"/approve/all"} />
         ) : filter === undefined ? (
-          <BlogList uri={"/sort/latest"} login={loginUser.userID} />
+          <BlogList uri={"/sort/latest"} />
         ) : null}
       </div>
 

@@ -10,7 +10,7 @@ const UserSettingProfile: React.FC = () => {
 
   const initialUser: User = {
     userID: "",
-    username: "",
+    username: "Loading...",
     bio: "",
     email: "",
     avatarUrl: "",
@@ -61,7 +61,7 @@ const UserSettingProfile: React.FC = () => {
       .post(`/update`, NewUser, { withCredentials: true })
       .then((response) => {
         console.log("Blog post created:", response.data);
-        window.location.href = `http://localhost:5173/user-profile/${loginUser.userID}`;
+        window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/user-profile/${loginUser.userID}`;
       })
       .catch((error) => {
         console.log(NewUser);

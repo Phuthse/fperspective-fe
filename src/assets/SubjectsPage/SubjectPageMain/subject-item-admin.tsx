@@ -53,7 +53,7 @@ const SubjectItemAdmin: React.FC<SubjectItemAdminProps> = ({ subjects }) => {
             .delete(`/delete/${subjects.subjectId}`, { withCredentials: true })
             .then((response) => {
                 blogApi.delete(`/subject/${subjects.subjectName}`, { withCredentials: true })
-                window.location.href = "http://localhost:5173/subject-page";
+                window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/subject-page`;
                 console.log("TAG updated:", response.data);
             })
             .catch((error) => {

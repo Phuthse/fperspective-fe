@@ -14,11 +14,11 @@ function timeout(delay: number) {
 
 const HandleLogout = async () => {
   try {
-    window.location.href = "http://localhost:8080/logout"
+    window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/logout`
     await timeout(30);
   } catch { /* empty */ }
   finally {
-    window.location.href = "http://localhost:5173/login"
+    window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/login`
   }
 }
 

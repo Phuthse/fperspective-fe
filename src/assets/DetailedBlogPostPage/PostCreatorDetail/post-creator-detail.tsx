@@ -7,17 +7,18 @@ import { Link } from 'react-router-dom';
 
 type BlogPostProps = {
     userUri: string
+    currentUser?: string;
 }
 
 
 const PostCreator: React.FC<BlogPostProps> = ({
-    userUri
+    userUri,
+    currentUser
 }) => {
-
 
     const initialUser: User = {
         userID: "1",
-        username: "test",
+        username: "Loading...",
         bio: "test",
         email: "test",
         avatarUrl: "test",
@@ -66,9 +67,11 @@ const PostCreator: React.FC<BlogPostProps> = ({
                         <p>@{user.username}</p>
                     </div>
                 </Link>
-                <div className='follow-button'>
-                    <UserFollowButton followUser={user} />
-                </div>
+                {currentUser !== user.userID && (
+                    <div className='follow-button'>
+                        <UserFollowButton followUser={user} />
+                    </div>
+                )}
             </div>
             <div className="post-creator-bio">
                 <p>{user.bio}</p>

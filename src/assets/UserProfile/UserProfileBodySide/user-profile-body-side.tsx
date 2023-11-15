@@ -47,7 +47,7 @@ const UserProfileBodySide: React.FC<UserProfileBodySideProp> =
         };
         useEffect(() => {
             fetchFollowerData();
-        }, [followers]);
+        }, []);
 
 
 

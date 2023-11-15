@@ -16,7 +16,7 @@ const HeartButtonComment: React.FC<HeartButtonProps> = ({ currentComment }) => {
 
     const initialUser: User = {
         userID: '',
-        username: '',
+        username: 'Loading...',
         bio: '',
         email: '',
         avatarUrl: '',

@@ -15,7 +15,7 @@ const HeartButtonVertical: React.FC<HeartButtonProps> = ({ currentBlog }) => {
 
     const initialUser: User = {
         userID: '',
-        username: '',
+        username: 'Loading...',
         bio: '',
         email: '',
         avatarUrl: '',

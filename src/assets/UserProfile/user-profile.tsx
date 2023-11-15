@@ -21,7 +21,7 @@ const UserProfile: React.FC = () => {
       setCurrentLoginUser(response.data);
     }
     catch {
-      window.location.href = "http://localhost:5173/login"
+      window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/login`
     }
   };
   useEffect(() => {

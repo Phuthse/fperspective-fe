@@ -18,7 +18,7 @@ const AdminDashboard: React.FC = () => {
     }, [loginApi]);
 
     if (loginUser && loginUser?.role === 'ROLE_ADMIN') {
-        window.location.href = 'http://localhost:5173';
+        window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`;
     }
 
     return (

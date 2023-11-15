@@ -7,7 +7,7 @@ import User from '../../model/user';
 
 const LoginForm: React.FC = () => {
   const loginGoogle = () => {
-    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/oauth2/authorization/google`;
   };
 
   const [loginUser, setLoginUser] = useState<User | null>();

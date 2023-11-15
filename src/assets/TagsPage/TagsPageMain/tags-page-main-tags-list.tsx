@@ -48,7 +48,7 @@ const TagsPageTagsList: React.FC<TagsPageMain> = ({ uri }) => {
             .post(`/show`, tagData, { withCredentials: true })
             .then((response) => {
                 console.log(tagData);
-                window.location.href = "http://localhost:5173";
+                window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`;
                 console.log("TAG created:", response.data);
             })
             .catch((error) => {

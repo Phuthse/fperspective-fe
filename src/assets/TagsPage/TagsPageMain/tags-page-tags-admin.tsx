@@ -47,7 +47,7 @@ const TagPageTagsAdmin: React.FC<TagsPageAdminProp> = ({ tags }) => {
             .delete(`/delete/${tags.tagId}`, { withCredentials: true })
             .then((response) => {
                 tagApi.delete(`/subject/${tags.tagName}`, { withCredentials: true })
-                window.location.href = "http://localhost:5173/tag-page";
+                window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/tag-page`;
                 console.log("TAG updated:", response.data);
             })
             .catch((error) => {

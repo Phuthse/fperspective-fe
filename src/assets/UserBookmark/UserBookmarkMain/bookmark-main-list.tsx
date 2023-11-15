@@ -50,7 +50,7 @@ const BookmarkList: React.FC<BookmarkListProps> = ({ uri }) => {
       {bookmarkBlogs.map((bookmarkBlog) => {
         const userUri = "/show/" + bookmarkBlog.userId;
         return (
-          <BlogPost blog={bookmarkBlog} userUri={userUri} userId={bookmarkBlog.userId} />
+          <BlogPost blog={bookmarkBlog} userUri={userUri} />
         )
       })}
     </>

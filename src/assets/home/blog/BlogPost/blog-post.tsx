@@ -20,7 +20,7 @@ const HandleApprove = (blogId: string) => () => {
   blogApi.delete(`/approve/${blogId}`, { withCredentials: true })
     .then((response) => {
       console.log('Blog post approve:', response.data);
-      window.location.href = "http://localhost:5173/approve";
+      window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/approve`;
     })
     .catch((error) => {
       console.error('Error creating blog post:', error);
@@ -32,7 +32,7 @@ const HandleNotApprove = (blogId: string) => () => {
     .delete(`/delete/${blogId}`, { withCredentials: true })
     .then((response) => {
       console.log('Blog post not approved:', response.data);
-      window.location.href = "http://localhost:5173/approve";
+      window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/approve`;
     })
     .catch((error) => {
       console.error('Error creating blog post:', error);
@@ -59,7 +59,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
 
   const initialUser: User = {
     userID: "1",
-    username: "test",
+    username: "Loading...",
     bio: "test",
     email: "test",
     avatarUrl: "test",
@@ -101,7 +101,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
   useEffect(() => {
     fetchLoginData();
   }, [loginApi]);
-  ;
+  
 
   if (blog.status === true) {
     return (
