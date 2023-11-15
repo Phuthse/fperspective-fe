@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
 
   const { filter } = useParams();
 
-  const initialUser : User = {
+  const initialUser: User = {
     userID: '',
     username: 'Loading...',
     bio: '',
