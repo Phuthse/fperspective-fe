@@ -61,10 +61,18 @@ const UserItem: React.FC<BlogPostProps> = ({ user }) => {
                             </li>
                             <li>
                                 <div className="key">
+                                    Major
+                                </div>
+                                <div className="value">
+                                    {user.category}
+                                </div>
+                            </li>
+                            <li>
+                                <div className="key">
                                     Joined
                                 </div>
                                 <div className="value">
-                                    <time dateTime="2019-06-29T09:14:12Z" className="date">{formattedJoinedDate}</time>
+                                    {formattedJoinedDate}
                                 </div>
                             </li>
                         </ul>

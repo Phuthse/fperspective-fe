@@ -20,7 +20,7 @@ const PieChartMajorBA: React.FC = () => {
     // Count the number of users for each specific category
     const categoryCounts: Record<string, number> = users.reduce((acc, user) => {
         const category = user.category;
-        if (['Hotel Management', 'Finance', 'Marketing', 'International Business', 'Multimedia Communications'].includes(category)) {
+        if (['HM', 'Finance', 'Marketing', 'International Business', 'Multimedia Communications'].includes(category)) {
             acc[category] = (acc[category] || 0) + 1;
         }
         return acc;

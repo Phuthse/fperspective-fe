@@ -39,7 +39,7 @@ function BarChartTagMonth() {
 
             const tagDataPromises = tags.map(async (tag, index) => {
                 try {
-                    const response = await blogApi.get(`/sort/tag/month/${startDateString}/${endDate}/${tag.tagName}`, { withCredentials: true });
+                    const response = await blogApi.get(`/sort/tag/date/${startDateString}/${endDate}/${tag.tagName}`, { withCredentials: true });
                     console.log(`/sort/subject/month/${startDateString}/${endDate}/${tag.tagName}`)
                     const color = predefinedColors[index % predefinedColors.length];
                     return { tagName: tag.tagName, TotalPost: response.data.length, color };

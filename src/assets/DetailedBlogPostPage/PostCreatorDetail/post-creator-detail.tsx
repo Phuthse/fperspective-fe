@@ -95,6 +95,14 @@ const PostCreator: React.FC<BlogPostProps> = ({
                         </li>
                         <li>
                             <div className="key">
+                                Major
+                            </div>
+                            <div className="value">
+                                {user.category}
+                            </div>
+                        </li>
+                        <li>
+                            <div className="key">
                                 Joined
                             </div>
                             <div className="value">

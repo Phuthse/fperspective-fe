@@ -38,7 +38,7 @@ function BarChartTagWeek() {
 
             const tagDataPromises = tags.map(async (tag, index) => {
                 try {
-                    const response = await blogApi.get(`/sort/tag/month/${startDateString}/${endDate}/${tag.tagName}`, { withCredentials: true });
+                    const response = await blogApi.get(`/sort/tag/date/${startDateString}/${endDate}/${tag.tagName}`, { withCredentials: true });
                     console.log(`/sort/subject/month/${startDateString}/${endDate}/${tag.tagName}`)
                     const color = predefinedColors[index % predefinedColors.length];
                     return { tagName: tag.tagName, TotalPost: response.data.length, color };
@@ -59,7 +59,7 @@ function BarChartTagWeek() {
 
     // Sort the data array based on TotalPost in ascending order
     const sortedData = [...data].sort((a, b) => a.TotalPost - b.TotalPost);
-   
+
     if (loading) {
         return <h1 style={{ color: 'white' }}>Loading...</h1>;
     }
