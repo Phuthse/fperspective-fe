@@ -36,7 +36,7 @@ const EditBlog: React.FC = () => {
             setCurrentLoginUser(response.data);
         }
         catch {
-            window.location.href = "http://localhost:5173/login"
+            window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/login`
         }
     };
     useEffect(() => {
@@ -118,7 +118,7 @@ const EditBlog: React.FC = () => {
                 });
         }
     };
-    
+
     if (!blog.userId || !currentLoginUser?.userID) {
         return <h1 style={{ color: 'white' }}>Loading...</h1>;
     }
@@ -164,7 +164,7 @@ const EditBlog: React.FC = () => {
             </div >
         );
     } else {
-        window.location.href = 'http://localhost:5173'
+        window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`
     }
 };
 

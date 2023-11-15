@@ -5,13 +5,9 @@ import BlogList from './blog/BlogPost/blog-list';
 import RightSideBar from './RightSideNav/right-side-nav';
 import { loginApi } from '../../config/axios';
 import User from '../../model/user';
-
 import { useParams } from 'react-router-dom';
 import SubjectFilteredHomePageFilter from './blog/HomePageFilter/subject-filtered-home-page-filter';
 
-function timeout(delay: number) {
-    return new Promise(res => setTimeout(res, delay));
-}
 
 const SubjectFilteredHomePage: React.FC = () => {
 
@@ -25,26 +21,12 @@ const SubjectFilteredHomePage: React.FC = () => {
             setLoginUser(response.data);
         }
         catch {
-            window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`
+            window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/login`
         }
     };
     useEffect(() => {
         fetchLoginData();
     }, [loginApi]);
-
-    useEffect(() => {
-        const delay = setTimeout(() => {
-            timeout(200);
-            if (loginUser === null || loginUser === undefined) {
-                // window.location.reload();
-                // window.location.href = 'http://localhost:5173/login';
-            }
-        }, 700);
-        return () => clearTimeout(delay);
-    }, [loginUser]);
-
-    console.log("FILTER: " + filter);
-    console.log("TAG: " + subjectFilter);
 
     const user = loginUser?.username as string;
 

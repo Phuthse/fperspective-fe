@@ -8,15 +8,7 @@ import { blogApi, loginApi } from "../../config/axios";
 import Tag from "../../model/tag";
 import CreateBlogSubjects from "./CreateBlogSubject/create-blog-subjects";
 import Subject from "../../model/subject";
-import User from "../../model/user";
-
-function timeout(delay: number) {
-    return new Promise(res => setTimeout(res, delay));
-}
-
 const CreateBlog: React.FC = () => {
-
-
 
     const [userId, setLoginUser] = useState<string>("");
     const [blogTitle, setTitle] = useState("");
@@ -34,7 +26,7 @@ const CreateBlog: React.FC = () => {
             ["link"],
         ],
     };
-    
+
     const fetchLoginData = async () => {
         try {
             const response = await loginApi.get("/currentUser", { withCredentials: true });
@@ -46,32 +38,6 @@ const CreateBlog: React.FC = () => {
     useEffect(() => {
         fetchLoginData();
     }, [loginApi]);
-
-    /* REDIRECT TO LOGIN PAGE IF NOT LOGGED IN */
-    const [currentLoginUser, setCurrentLoginUser] = useState<User>();
-    const fetchCurrentLoginData = async () => {
-        try {
-            const response = await loginApi.get("/currentUser", { withCredentials: true });
-            setCurrentLoginUser(response.data);
-        }
-        catch {
-            window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/login`
-        }
-    };
-    useEffect(() => {
-        fetchCurrentLoginData();
-    }, [loginApi]);
-    useEffect(() => {
-        const delay = setTimeout(() => {
-            timeout(200);
-            if (currentLoginUser === null || currentLoginUser === undefined) {
-                // window.location.reload();
-                // window.location.href = 'http://localhost:5173/login';
-            }
-        }, 700);
-        return () => clearTimeout(delay);
-    }, [currentLoginUser]);
-
 
     const uploadDate = new Date();
 
