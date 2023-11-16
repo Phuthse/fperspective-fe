@@ -2,6 +2,7 @@ import React from "react";
 import "./user-item.css";
 import User from "../../../model/user";
 import { Link } from "react-router-dom";
+import { userApi } from "../../../config/axios";
 
 type BlogPostProps = {
     user: User;
@@ -23,6 +24,17 @@ const UserItem: React.FC<BlogPostProps> = ({ user }) => {
     };
     const campusName = campusNames[user.campus] || user.campus;
 
+    const handleDelete = () => {
+        userApi
+            .delete(`/delete/${user.userID}`, { withCredentials: true })
+            .then((response) => {
+                window.location.reload();
+                console.log("User deleted:", response.data);
+            })
+            .catch((error) => {
+                console.error("Error deleting user: ", error);
+            });
+    };
 
     return (
         <>
@@ -36,7 +48,7 @@ const UserItem: React.FC<BlogPostProps> = ({ user }) => {
                         </div>
                     </Link>
                     <div className='user-item-delete-button'>
-                        <button>Disable</button>
+                        <button onClick={handleDelete}>Disable</button>
                     </div>
                 </div>
                 <div className="user-item-bio">
