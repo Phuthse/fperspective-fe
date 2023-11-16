@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BarChart, Bar, YAxis, Tooltip, Cell, LabelList, XAxis } from 'recharts';
-import { subjectApi } from '../../../../../../config/axios';
+import { blogApi, subjectApi } from '../../../../../../config/axios';
 import Subject from '../../../../../../model/subject';
 
 function BarChartSubjectAll() {

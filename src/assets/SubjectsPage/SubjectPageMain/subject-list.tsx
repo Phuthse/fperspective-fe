@@ -36,7 +36,20 @@ const SubjectList: React.FC<SubjectListProps> = ({ uri }) => {
 
     const handleCreate = () => {
         // Ensure subjectName is converted to uppercase
-        const upperCaseSubjectName = subjectName.toUpperCase();
+        const trimmedSubjectName = subjectName.trim();
+        if (!trimmedSubjectName) {
+            console.error("Tag name cannot be empty or contain only spaces.");
+            // Optionally, you can set an error state or display a message to the user
+            return;
+        }
+        const upperCaseSubjectName = subjectName.toUpperCase(); 
+        
+        // Trim the tagName to remove leading and trailing spaces
+       
+    
+        // Check if the trimmedTagName is empty
+        
+    
 
         // Create a data object to send to the backend
         const subjectData = {

@@ -3,7 +3,6 @@ import './user-bookmark.css';
 import BookmarkList from './UserBookmarkMain/bookmark-main-list';
 import { loginApi } from '../../config/axios';
 import User from '../../model/user';
-import SideNav from '../home/SideNavigation/side-nav';
 
 const UserBookmark: React.FC = () => {
 
@@ -20,18 +19,24 @@ const UserBookmark: React.FC = () => {
         fetchLoginData();
     }, [loginApi]);
 
-    return (
-        <>
-            <div className="bookmark-container">
-                <div>
-                    <SideNav />
+    if(!loginUser){
+        return(
+            <h1 style={{color: 'white'}}>
+                Loading...
+            </h1>
+        )
+    }
+    else{
+        return (
+            <>
+                <div className="bookmark-container">
+                    <div className='user-bookmark-container'>
+                        <BookmarkList uri={`list/${loginUser?.userID}`} />
+                    </div>
                 </div>
-                <div className='user-bookmark-container'>
-                    <BookmarkList uri={`show/${loginUser?.userID}`} />
-                </div>
-            </div>
-        </>
-    );
+            </>
+        );
+    }
 };
 
 export default UserBookmark;

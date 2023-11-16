@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { blogApi, bookmarkApi } from "../../../config/axios";
+import { blogApi } from "../../../config/axios";
 import Blog from "../../../model/blog";
 import BookmarkHeader from "../UserBookmarkHeader/user-bookmark-header";
 import BlogPost from "../../home/blog/BlogPost/blog-post";
@@ -10,37 +10,37 @@ type BookmarkListProps = {
 
 const BookmarkList: React.FC<BookmarkListProps> = ({ uri }) => {
 
-  const [bookmarkBlogId, setBookmarkBlogId] = useState<string[]>([]);
+  // const [bookmarkBlogId, setBookmarkBlogId] = useState<string[]>([]);
   const [bookmarkBlogs, setBookmarkBlogs] = useState<Blog[]>([]);
 
   useEffect(() => {
-    const fetchBookmarkIdData = async () => {
+    const fetchBookmarkData = async () => {
       try {
-        const response = await bookmarkApi.get(uri, { withCredentials: true });
-        setBookmarkBlogId(response.data.bookmarkedPost);
+        const response = await blogApi.get(uri, { withCredentials: true });
+        setBookmarkBlogs(response.data);
       } catch (error) {
         console.error('Error fetching bookmark:', error);
       }
     };
-    fetchBookmarkIdData();
+    fetchBookmarkData();
   }, [uri]);
 
-  useEffect(() => {
-    const fetchBookmarkBlogsData = async () => {
-      try {
-        const bookmarksData = await Promise.all(
-          bookmarkBlogId.map(async (bookmarkId) => {
-            const response = await blogApi.get(`/show/${bookmarkId}`, { withCredentials: true });
-            return response.data;
-          })
-        );
-        setBookmarkBlogs(bookmarksData);
-      } catch (error) {
-        console.error('Error fetching following user data:', error);
-      }
-    };
-    fetchBookmarkBlogsData();
-  }, [bookmarkBlogId]);
+  // useEffect(() => {
+  //   const fetchBookmarkBlogsData = async () => {
+  //     try {
+  //       const bookmarksData = await Promise.all(
+  //         bookmarkBlogId.map(async (bookmarkId) => {
+  //           const response = await blogApi.get(`/show/${bookmarkId}`, { withCredentials: true });
+  //           return response.data;
+  //         })
+  //       );
+  //       setBookmarkBlogs(bookmarksData);
+  //     } catch (error) {
+  //       console.error('Error fetching following user data:', error);
+  //     }
+  //   };
+  //   fetchBookmarkBlogsData();
+  // }, [bookmarkBlogId]);
 
 
 

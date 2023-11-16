@@ -20,7 +20,7 @@ const EditBlog: React.FC = () => {
         blogId: "1",
         blogTitle: "Example Blog",
         blogContent: "This is an example blog content.",
-        userId: "user1",
+        userId: "",
         btag: [],
         like: [],
         uploadDate: Date.now(),
@@ -33,6 +33,7 @@ const EditBlog: React.FC = () => {
     const fetchCurrentLoginData = async () => {
         try {
             const response = await loginApi.get("/currentUser", { withCredentials: true });
+            console.log(response.data)
             setCurrentLoginUser(response.data);
         }
         catch {
@@ -118,12 +119,12 @@ const EditBlog: React.FC = () => {
                 });
         }
     };
-
-    if (!blog.userId || !currentLoginUser?.userID) {
+    console.log(blog.userId)
+    if (!blog.userId || !currentLoginUser?.userID || blog.userId==="") {
         return <h1 style={{ color: 'white' }}>Loading...</h1>;
     }
 
-    if (blog.userId === currentLoginUser?.userID) {
+    else if (blog.userId === currentLoginUser?.userID) {
         return (
             <div className="create-blog-container">
                 <form className="create-post-form">

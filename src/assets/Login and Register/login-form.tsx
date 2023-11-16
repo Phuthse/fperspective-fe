@@ -5,7 +5,9 @@ import GoogleButton from 'react-google-button';
 import { loginApi } from '../../config/axios';
 import User from '../../model/user';
 
+
 const LoginForm: React.FC = () => {
+
   const loginGoogle = () => {
     window.location.href = `${import.meta.env.VITE_BACKEND_URL}/oauth2/authorization/google`;
   };

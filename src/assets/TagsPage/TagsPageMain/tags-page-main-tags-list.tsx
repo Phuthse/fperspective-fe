@@ -37,15 +37,25 @@ const TagsPageTagsList: React.FC<TagsPageMain> = ({ uri }) => {
     const [status] = useState(true);
 
     const handleCreate = () => {
+        // Trim the tagName to remove leading and trailing spaces
+        const trimmedTagName = tagName.trim();
+    
+        // Check if the trimmedTagName is empty
+        if (!trimmedTagName) {
+            console.error("Tag name cannot be empty or contain only spaces.");
+            // Optionally, you can set an error state or display a message to the user
+            return;
+        }
+    
         // Create a data object to send to the backend
         const tagData = {
-            tagName,
+            tagName: trimmedTagName,
             status
         };
-
+    
         // Send a POST request to your backend
         tagApi
-            .post(`/show`, tagData, { withCredentials: true })
+            .post("/show", tagData, { withCredentials: true })
             .then((response) => {
                 console.log(tagData);
                 window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`;
@@ -56,6 +66,7 @@ const TagsPageTagsList: React.FC<TagsPageMain> = ({ uri }) => {
                 console.error("Error creating tag: ", error);
             });
     };
+    
 
     const handleTagNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTagName(event.target.value);
