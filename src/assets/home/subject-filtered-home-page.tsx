@@ -5,7 +5,6 @@ import BlogList from './blog/BlogPost/blog-list';
 import RightSideBar from './RightSideNav/right-side-nav';
 import { loginApi } from '../../config/axios';
 import User from '../../model/user';
-
 import { useParams } from 'react-router-dom';
 import SubjectFilteredHomePageFilter from './blog/HomePageFilter/subject-filtered-home-page-filter';
 
@@ -21,7 +20,7 @@ const SubjectFilteredHomePage: React.FC = () => {
             setLoginUser(response.data);
         }
         catch {
-            window.location.href = `${import.meta.env.VITE_FRONTEND_URL}`
+            window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/login`
         }
     };
     useEffect(() => {

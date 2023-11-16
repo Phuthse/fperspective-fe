@@ -79,13 +79,12 @@ const UserProfileTop: React.FC<UserProfileTopProp> = ({ userProfile }) => {
             </span>
 
             <span className="user-profile-header-detail-item">
-              <svg width="24px" height="24px">
-                <path d="M14.846 1.403l3.752 3.753.625-.626A2.653 2.653 0 0015.471.778l-.625.625zm2.029 5.472l-3.752-3.753L1.218 15.028 0 19.998l4.97-1.217L16.875 6.875z" fill="#5C5F62" />
-              </svg>
+              <svg width="24px" height="24px" viewBox="0 0 20 20"><path d="M14.846 1.403l3.752 3.753.625-.626A2.653 2.653 0 0015.471.778l-.625.625zm2.029 5.472l-3.752-3.753L1.218 15.028 0 19.998l4.97-1.217L16.875 6.875z" fill="#5C5F62" /></svg>
               <span>
                 <span>{userProfile.category}</span>
               </span>
             </span>
+
 
             <span className="user-profile-header-detail-item">
               <svg width="24" height="24">

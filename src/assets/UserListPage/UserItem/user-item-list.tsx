@@ -3,7 +3,6 @@ import "./user-item.css";
 import User from "../../../model/user";
 import { userApi } from "../../../config/axios";
 import UserItem from "./user-item";
-import UserListPagekHeader from "../UserListPageHeader/user-page-header";
 
 type BlogPostProps = {
     userUri: string;
@@ -22,7 +21,6 @@ const UserItemList: React.FC<BlogPostProps> = ({ userUri }) => {
 
     return (
         <>
-            <UserListPagekHeader count={users.length} />
             <div className="user-item-list-container">
                 {users.map((user) => {
                     return (

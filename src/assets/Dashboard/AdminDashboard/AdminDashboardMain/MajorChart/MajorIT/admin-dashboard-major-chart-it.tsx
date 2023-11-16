@@ -20,7 +20,7 @@ const PieChartMajorIT: React.FC = () => {
     // Count the number of users for each specific category
     const categoryCounts: Record<string, number> = users.reduce((acc, user) => {
         const category = user.category;
-        if (['Software Engineer', 'Artificial Intelligence', 'Graphic Design', 'Information System', 'Information Assurance'].includes(category)) {
+        if (['SE', 'AI', 'DE', 'IS', 'IA'].includes(category)) {
             acc[category] = (acc[category] || 0) + 1;
         }
         return acc;

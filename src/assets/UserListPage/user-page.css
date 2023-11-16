@@ -10,3 +10,40 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
+
+.user-page-list-filter {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+}
+
+.user-page-list-filter button {
+    width: 80px;
+    height: 30px;
+    background: transparent;
+    color: #efefef;
+    border: 0.5px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-page-list-filter button:hover {
+    background: #222;
+}
+
+.user-page-option-list-label {
+    display: flex;
+    gap: 10px;
+}
+
+.user-page-option-list option {
+    cursor: pointer;
+    padding: 5px;
+    border: 0.5px solid #333;
+    border-radius: 5px;
+    margin-bottom: 7px;
+}
+
+.user-page-option-list option:hover {
+    background: #111;
+}

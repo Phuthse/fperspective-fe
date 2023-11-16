@@ -118,7 +118,7 @@ const EditBlog: React.FC = () => {
                 });
         }
     };
-    
+
     if (!blog.userId || !currentLoginUser?.userID) {
         return <h1 style={{ color: 'white' }}>Loading...</h1>;
     }

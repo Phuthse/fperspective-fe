@@ -8,7 +8,7 @@ import User from '../../model/user';
 const ApprovePage: React.FC = () => {
     const [loginUser, setLoginUser] = useState<User | null>(null);
     const [roleChecked, setRoleChecked] = useState(false);
-   
+
     useEffect(() => {
         const fetchLoginData = async () => {
             try {
