@@ -23,19 +23,19 @@ const UserProfileBodyMain: React.FC<UserProfileBodyMain> = ({
 
   const initialUser: User = {
     userID: "1",
-    username: "Loading...",
-    bio: "test",
-    email: "test",
-    avatarUrl: "test",
-    campus: "test",
-    term: "test",
-    category: "test",
-    fullName: "test",
-    createdDate: 2,
-    status: false,
-    role: "",
-    loginProvider: "",
-    name: "",
+        username: "Loading...",
+        bio: "Loading...",
+        email: "Loading...",
+        avatarUrl: "Loading...",
+        campus: "Loading...",
+        term: "Loading...",
+        category: "Loading...",
+        fullName: "Loading...",
+        createdDate: 2,
+        status: false,
+        role: '',
+        loginProvider: '',
+        name: ''
   };
 
   const [user, setUser] = useState<User>(initialUser);

@@ -14,20 +14,20 @@ const HeartButton: React.FC<HeartButtonProps> = ({ currentBlog }) => {
   const [loading, setLoading] = useState(true);
 
   const initialUser: User = {
-    userID: '',
-    username: 'Loading...',
-    bio: '',
-    email: '',
-    avatarUrl: '',
-    campus: '',
-    term: '',
-    category: '',
-    fullName: '',
-    createdDate: 0,
-    status: false,
-    role: '',
-    loginProvider: '',
-    name: ''
+    userID: "1",
+        username: "Loading...",
+        bio: "Loading...",
+        email: "Loading...",
+        avatarUrl: "Loading...",
+        campus: "Loading...",
+        term: "Loading...",
+        category: "Loading...",
+        fullName: "Loading...",
+        createdDate: 2,
+        status: false,
+        role: '',
+        loginProvider: '',
+        name: ''
   }
 
   const [currentUser, setCurrentUser] = useState<User>(initialUser);

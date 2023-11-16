@@ -15,18 +15,18 @@ const BookmarkMain: React.FC<BookmarkMainProps> = ({ bookmarkBlog, userUri }) =>
     const initialUser: User = {
         userID: "1",
         username: "Loading...",
-        bio: "test",
-        email: "test",
-        avatarUrl: "test",
-        campus: "test",
-        term: "test",
-        category: "test",
-        fullName: "test",
+        bio: "Loading...",
+        email: "Loading...",
+        avatarUrl: "Loading...",
+        campus: "Loading...",
+        term: "Loading...",
+        category: "Loading...",
+        fullName: "Loading...",
         createdDate: 2,
         status: false,
-        role: "",
-        loginProvider: "GOOGLE",
-        name: ""
+        role: '',
+        loginProvider: '',
+        name: ''
     }
     const [users, setUsers] = useState<User>(initialUser);
     const fetchUserData = async () => {
