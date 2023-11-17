@@ -15,7 +15,7 @@ const SearchPageSide: React.FC = () => {
                         className={`search-page-side-option ${selectedNavItem === 'post' ? 'active' : ''}`}
                         onClick={() => setSelectedNavItem('post')}
                     >
-                        Post
+                        Blogs
                     </a>
                 </li>
                 <li>
@@ -31,7 +31,7 @@ const SearchPageSide: React.FC = () => {
                         className={`search-page-side-option ${selectedNavItem === 'subject' ? 'active' : ''}`}
                         onClick={() => setSelectedNavItem('subject')}
                     >
-                        Subject
+                        Subjects
                     </a>
                 </li>
                 <li>

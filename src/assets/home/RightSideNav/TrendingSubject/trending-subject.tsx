@@ -58,7 +58,7 @@ const TrendingSubject: React.FC<TrendingTagProps> = ({ subjects, uri }) => {
                 style={{ color: SemesterColor }}
             >
                 <span> {subjects.subjectName}</span>
-                <p> {formatNumber(count)} posts </p>
+                <p> {formatNumber(count)} blogs </p>
             </Link>
         </div>
     );

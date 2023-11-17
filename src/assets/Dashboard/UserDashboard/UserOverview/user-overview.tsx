@@ -54,7 +54,7 @@ const UserOverview: React.FC = () => {
                 </div>
                 <div className="user-total-post">
                     <strong>{formatNumber(totalPosts)}</strong>
-                    <span>Total Posts</span>
+                    <span>Total Blogs</span>
                 </div>
             </div>
         </header>

@@ -31,7 +31,7 @@ const SearchPageMainSubject: React.FC<SearchPageMainTagProp> = ({ subject, uri }
                         {subject.subjectName}
                     </Link>
                 </h2>
-                <p>{count} posts</p>
+                <p>{count} blogs</p>
             </div>
         </div>
     );

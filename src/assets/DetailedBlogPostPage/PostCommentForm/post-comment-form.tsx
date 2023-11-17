@@ -31,6 +31,12 @@ const PostCommentForm: React.FC<CommentFormProps> = ({ ProfilePic }) => {
 
     const handleComment = () => {
 
+        const trimmedComment = comment?.trim();
+        if (!trimmedComment) {
+            console.error("Comment name cannot be empty or contain only spaces.");
+            return;
+        }
+
         const commentData = {
             commentContent: comment,
             userId: loginUser?.userID,

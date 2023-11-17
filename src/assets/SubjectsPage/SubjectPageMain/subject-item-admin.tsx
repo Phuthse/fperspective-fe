@@ -68,7 +68,7 @@ const SubjectItemAdmin: React.FC<SubjectItemAdminProps> = ({ subjects }) => {
                     to={`/subject/${subjects.subjectName}`}
                     key={subjects.subjectId}
                 >
-                    <h4>{count} posts</h4>
+                    <h4>{count} blogs</h4>
                 </Link>
             </div>
             <div className="admin-subject-button">

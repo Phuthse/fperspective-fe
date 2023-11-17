@@ -59,7 +59,7 @@ const TagPageTagsAdmin: React.FC<TagsPageAdminProp> = ({ tags }) => {
                         value={tagName}
                     />
                 </h3>
-                <h4>{count} posts</h4>
+                <h4>{count} blogs</h4>
             </div>
             <div className="admin-tag-button">
                 {/* <button className='admin-tag-update' onClick={handleUpdate}>Update</button> */}

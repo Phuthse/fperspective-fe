@@ -32,7 +32,7 @@ const SearchPageMainTag: React.FC<SearchPageMainTagProp> = ({ btag, uri }) => {
             {btag.tagName}
           </Link>
         </h2>
-        <p>{count} posts</p>
+        <p>{count} blogs</p>
       </div>
     </div>
   );

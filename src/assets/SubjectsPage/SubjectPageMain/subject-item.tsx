@@ -47,7 +47,7 @@ const SubjectItem: React.FC<SubjectItemProps> = ({ subjects }) => {
                     </Link>
                 </h3>
                 <h4>
-                    {count} posts
+                    {count} blogs
                 </h4>
             </div>
             <span style={{ color: SemesterColor }} className="semester-number">Semester {Semester}</span>

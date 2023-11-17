@@ -71,7 +71,7 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
                         onClick={() => setSelectedNavItem('posts')}
                     >
                         <a>
-                            Posts
+                            Recent Blogs
                             <span>{blogs.length}</span>
                         </a>
                     </li>
@@ -81,7 +81,7 @@ const UserDashboardSideNav: React.FC<UserDashboardSideNavProps> = ({
                         onClick={() => setSelectedNavItem('liked-posts')}
                     >
                         <a>
-                            Liked Posts
+                            Liked Blogs
                             <span>{likedBlogs.length}</span>
                         </a>
                     </li>

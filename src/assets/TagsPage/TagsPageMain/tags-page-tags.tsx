@@ -34,7 +34,7 @@ const TagsPageTags: React.FC<TagsPageMain> = ({ tags }) => {
                     </Link>
                 </h3>
                 <h4>
-                    {count} posts
+                    {count} blogs
                 </h4>
             </div>
             {/* <FollowButton /> */}
