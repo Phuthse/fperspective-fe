@@ -44,14 +44,6 @@ const SubjectList: React.FC<SubjectListProps> = ({ uri }) => {
         }
         const upperCaseSubjectName = subjectName.toUpperCase(); 
         
-        // Trim the tagName to remove leading and trailing spaces
-       
-    
-        // Check if the trimmedTagName is empty
-        
-    
-
-        // Create a data object to send to the backend
         const subjectData = {
             subjectName: upperCaseSubjectName,
             status

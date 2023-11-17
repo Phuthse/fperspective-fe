@@ -54,7 +54,6 @@ const TagFilteredHomePage: React.FC = () => {
     };
     const { startDateString, endDateString } = calculateDateRange(filter);
 
-
     return (
         <>
             <h1 className='current-home-page-filter'>Filtering by<span>&nbsp;{tagFilter}</span></h1>
