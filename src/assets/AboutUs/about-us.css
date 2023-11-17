@@ -1,0 +1,20 @@
+.about-us-container {
+    color: white;
+    padding: 20px;
+    gap: 10px;
+}
+
+.about-us-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-us-inner h1 {
+    margin-bottom: 10px;
+}
+
+.dev-info-container {
+    gap: 10px;
+    font-size: 15px;
+    color: rgb(192, 192, 192);
+}

@@ -20,6 +20,8 @@ import TagFilteredHomePage from "./assets/home/tag-filtered-home-page";
 import SubjectFilteredHomePage from "./assets/home/subject-filtered-home-page";
 import EditBlog from "./assets/EditBlog/edit-blog";
 import UserListPage from "./assets/UserListPage/user-page";
+import AboutUs from "./assets/AboutUs/about-us";
+
 function App() {
 
   return (
@@ -50,6 +52,7 @@ function App() {
             <Route path='approve' element={<ApprovePage />} />
             <Route path='edit-blog/:blogId' element={<EditBlog />} />
             <Route path='user-list-page' element={<UserListPage />} />
+            <Route path='about-us' element={<AboutUs />} />
           </Route>
           <Route path='login' element={<LoginForm />} />
         </Routes>
