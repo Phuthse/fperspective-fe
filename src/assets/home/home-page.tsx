@@ -17,19 +17,19 @@ const HomePage: React.FC = () => {
 
   const initialUser: User = {
     userID: "1",
-        username: "Loading...",
-        bio: "Loading...",
-        email: "Loading...",
-        avatarUrl: "Loading...",
-        campus: "Loading...",
-        term: "Loading...",
-        category: "Loading...",
-        fullName: "Loading...",
-        createdDate: 2,
-        status: false,
-        role: '',
-        loginProvider: '',
-        name: ''
+    username: "Loading...",
+    bio: "Loading...",
+    email: "Loading...",
+    avatarUrl: "Loading...",
+    campus: "Loading...",
+    term: "Loading...",
+    category: "Loading...",
+    fullName: "Loading...",
+    createdDate: 2,
+    status: false,
+    role: '',
+    loginProvider: '',
+    name: ''
   }
 
   const [loginUser, setLoginUser] = useState<User>(initialUser);
@@ -47,13 +47,34 @@ const HomePage: React.FC = () => {
 
   const user = loginUser?.username as string;
 
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth() + 1;
-  const startDate = new Date(currentDate.getFullYear(), 0, 1);
-  const days = Math.floor((currentDate.valueOf() - startDate.valueOf()) /
-    (24 * 60 * 60 * 1000));
-  const week = Math.ceil(days / 7);
+  // Utility function to format date as yyyy-mm-dd
+  const formatDate = (date: Date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  // Utility function to calculate start and end dates based on filter
+  const calculateDateRange = (selectedFilter: string | undefined) => {
+    const today = new Date();
+    let startDate = new Date();
+
+    if (selectedFilter === 'top' || selectedFilter === 'week') {
+      startDate.setDate(today.getDate() - 7);
+    } else if (selectedFilter === 'month') {
+      startDate.setDate(today.getDate() - 28);
+    } else if (selectedFilter === 'year') {
+      startDate.setFullYear(today.getFullYear() - 1);
+    }
+
+    return {
+      startDateString: formatDate(startDate),
+      endDateString: formatDate(today),
+    };
+  };
+
+  const { startDateString, endDateString } = calculateDateRange(filter);
 
   return (
     <div className="container">
@@ -63,11 +84,11 @@ const HomePage: React.FC = () => {
         {filter === 'latest' ? (
           <BlogList uri={"/sort/latest"} />
         ) : filter === 'top' || filter === 'week' ? (
-          <BlogList uri={`/sort/blog/week/${year}/${month}/${week}`} />
+          <BlogList uri={`/sort/date/range/${startDateString}/${endDateString}`} />
         ) : filter === 'month' ? (
-          <BlogList uri={`/sort/blog/month/${year}/${month}`} />
+          <BlogList uri={`/sort/date/range/${startDateString}/${endDateString}`} />
         ) : filter === 'year' ? (
-          <BlogList uri={`/sort/blog/year/${year}`} />
+          <BlogList uri={`/sort/date/range/${startDateString}/${endDateString}`} />
         ) : filter === 'all' ? (
           <BlogList uri={"/sort/all"} />
         ) : filter === 'approve' ? (
