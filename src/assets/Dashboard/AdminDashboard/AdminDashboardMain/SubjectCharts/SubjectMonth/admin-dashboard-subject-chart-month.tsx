@@ -41,8 +41,9 @@ function BarChartSubjectMonth() {
             const tagDataPromises = subjects.map(async (subject, index) => {
                 try {
                     const response = await blogApi.get(`/sort/subject/date/${startDateString}/${endDate}/${subject.subjectName}`, { withCredentials: true });
-                    console.log(`/sort/subject/month/${startDateString}/${endDate}/${subject.subjectName}`)
+                    console.log(`/sort/subject/date/${startDateString}/${endDate}/${subject.subjectName}`)
                     const color = predefinedColors[index % predefinedColors.length];
+                    console.log(response.data)
                     return { subjectName: subject.subjectName, TotalPost: response.data.length, color };
                 } catch (error) {
                     console.error(`Error fetching count for subject ${subject.subjectName}:`, error);

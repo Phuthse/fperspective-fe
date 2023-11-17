@@ -48,7 +48,7 @@ const AdminDashoardSubjectCharts: React.FC = () => {
             setDateRange("all time");
         } else {
             const currentDate = new Date();
-            let startDate = new Date();
+            const startDate = new Date();
 
             if (selectedOption === 1) {
                 startDate.setDate(currentDate.getDate() - 7);

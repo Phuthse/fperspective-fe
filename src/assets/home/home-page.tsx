@@ -47,19 +47,23 @@ const HomePage: React.FC = () => {
 
   const user = loginUser?.username as string;
 
-  // Utility function to format date as yyyy-mm-dd
+  // const currentDate = new Date();
+  // const year = currentDate.getFullYear();
+  // const month = currentDate.getMonth() + 1;
+  // const startDate = new Date(currentDate.getFullYear(), 0, 1);
+  // const days = Math.floor((currentDate.valueOf() - startDate.valueOf()) /
+  //   (24 * 60 * 60 * 1000));
+  // const week = Math.ceil(days / 7);
+
   const formatDate = (date: Date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
   };
-
-  // Utility function to calculate start and end dates based on filter
   const calculateDateRange = (selectedFilter: string | undefined) => {
     const today = new Date();
-    let startDate = new Date();
-
+    const startDate = new Date();
     if (selectedFilter === 'top' || selectedFilter === 'week') {
       startDate.setDate(today.getDate() - 7);
     } else if (selectedFilter === 'month') {
@@ -67,13 +71,11 @@ const HomePage: React.FC = () => {
     } else if (selectedFilter === 'year') {
       startDate.setFullYear(today.getFullYear() - 1);
     }
-
     return {
       startDateString: formatDate(startDate),
       endDateString: formatDate(today),
     };
   };
-
   const { startDateString, endDateString } = calculateDateRange(filter);
 
   return (
@@ -97,6 +99,7 @@ const HomePage: React.FC = () => {
           <BlogList uri={"/sort/latest"} />
         ) : null}
       </div>
+
 
       <RightSideBar
         tagUri={"/sort/4"}
